@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            border: solid 1px darkseagreen;
+        }
+        .title{
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        .subTitle{
+            font-size:18px;
+            margin-bottom: 20px;
+        }
+        .box{
+            margin:auto;
+        }
+        .box1, .box2,.box3 {
+            text-align: center;
+        }
+        .conclusion{
+            color:red;
+        }
+        .box3 .content{
+            clear:both;
+            overflow: hidden;
+            width:100px;
+        }
+        .box3 .content div{
+          float:left;
+        }
+    </style>
+</head>
+<body>
+<div class="title">1.使用text-align:center</div>
+<div class="subTitle">里面内容为块级元素</div>
+<div class="box box1">
+    <p>123</p>
+    <p>123</p>
+    <p>123</p>
+</div>
+<div class="subTitle">里面内容为行内元素</div>
+<div class="box box2">
+    <span>123</span>
+    <span>123</span>
+    <span>123</span>
+</div>
+<div class="subTitle">里面内容为容器</div>
+<div class="box box3">
+      <div class="content">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+      </div>
+
+</div>
+<div class="conclusion">
+    <p>结论：1.对块级元素行内元素都适用;</p>
+    <p>2.让容器中的内容，相对于自身，水平居中</p>
+    <p>3.子元素浮动后，不再受控制</p>
+
+</div>
+</body>
+</html>
