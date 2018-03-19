@@ -31,6 +31,10 @@
         }
         .conclusion{
             color:red;
+            margin-bottom: 10px;
+        }
+        .conclusion p{
+            font-weight: bold;
         }
         .box3 .content{
             clear:both;
@@ -39,6 +43,11 @@
         }
         .box3 .content div{
           float:left;
+        }
+        .box4 p{
+            margin:0 auto;
+            width:30px;
+            border:solid 1px red;
         }
     </style>
 </head>
@@ -66,10 +75,26 @@
 
 </div>
 <div class="conclusion">
-    <p>结论：1.对块级元素行内元素都适用;</p>
+    <p>结论：1.对块级元素、行内元素都适用;</p>
     <p>2.让容器中的内容，相对于自身，水平居中</p>
     <p>3.子元素浮动后，不再受控制</p>
+</div>
+<div class="title">2.使用margin:auto</div>
+<div class="subTitle">里面内容为块级元素(p元素要设置宽度，否则行内元素默认宽度为100%)</div>
+<div class="box box4">
+    <p>123</p>
+    <p>123</p>
+    <p>123</p>
+</div>
 
+
+<div class="subTitle">里面内容为行内元素(因为行内元素无法设置宽高，所以不起作用。将display:inline-block也不行)</div>
+<div class="box box5">
+    <span style="width:30px;border:solid 1px red;">123</span>
+</div>
+<div class="conclusion">
+    <p>结论：1.相对于父元素，自身水平居中</p>
+    <p>2.只有对块级元素才适用;</p>
 </div>
 </body>
 </html>
