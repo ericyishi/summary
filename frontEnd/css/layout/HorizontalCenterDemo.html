@@ -37,13 +37,10 @@
             font-weight: bold;
         }
         .box3 .content{
-            clear:both;
-            overflow: hidden;
             width:100px;
+            border:solid 1px red;
         }
-        .box3 .content div{
-          float:left;
-        }
+
         .box4 p{
             margin:0 auto;
             width:30px;
@@ -53,7 +50,7 @@
 </head>
 <body>
 <div class="title">1.使用text-align:center</div>
-<div class="subTitle">里面内容为块级元素</div>
+<div class="subTitle">里面内容为块级元素【样式的继承性让p元素里的内容居中】</div>
 <div class="box box1">
     <p>123</p>
     <p>123</p>
@@ -65,7 +62,7 @@
     <span>123</span>
     <span>123</span>
 </div>
-<div class="subTitle">里面内容为容器</div>
+<div class="subTitle">里面内容为容器(里面还有嵌套其他元素)</div>
 <div class="box box3">
       <div class="content">
           <div>1</div>
@@ -77,7 +74,7 @@
 <div class="conclusion">
     <p>结论：1.对块级元素、行内元素都适用;</p>
     <p>2.让容器中的内容，相对于自身，水平居中</p>
-    <p>3.子元素浮动后，不再受控制</p>
+    <p>3.只针对内容，容器不行</p>
 </div>
 <div class="title">2.使用margin:auto</div>
 <div class="subTitle">里面内容为块级元素(p元素要设置宽度，否则行内元素默认宽度为100%)</div>
