@@ -1,3 +1,4 @@
+# 元素水平居中的几种方式
 
 ### 1.使用text-align:center;
    * **让元素中的子元素，相对于自身，水平居中。【父元素中设置】**
@@ -17,15 +18,15 @@
  ```
 
 ### 3.绝对定位配合其他
-   【1】 translate(-50%);
+   【1】 translateX(-50%);
    * IE9以下不支持
 ```
 <div class="box" style="width: 300px;height: 200px;border: solid 1px darkseagreen;position:relative ">
-    <span style="position: absolute;left:50%;transform: translate(-50%)">123</span>
+    <span style="position: absolute;left:50%;transform: translateX(-50%)">123</span>
 </div>
 ```
 
-   【2】 margin:-50%;
+   【2】 margin-left:-50%;
    * 需要在子元素外面加一层包裹层,因为百分比却是相对于包含块的【改变原有结构不建议使用】
    ```
   <div class="box" style="position:relative">

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin:0 auto;
+            border:solid 1px darkseagreen;
+            width: 300px;
+            height: 200px;
+        }
+
+        .title{
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        .subTitle{
+            font-size:18px;
+            margin-bottom: 20px;
+        }
+        .conclusion{
+            color:red;
+            margin-bottom: 10px;
+        }
+        .conclusion p{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="title">1.使用line-height</div>
+<div class="subTitle">设置子元素line-height</div>
+<div class="box">
+    <span style="line-height: 200px;">Markdown 支援两种形式的链接语法： 行内 和 参考 两种形式</span>
+</div>
+<div class="conclusion" style="margin-bottom:100px;">
+    <p>结论：1.只能是单行内容，如果当文字内容的长度大于块的宽时，就有内容脱离了块</p>
+
+</div>
+
+<div class="title">2.使用vertical-align</div>
+<div class="subTitle">子元素是图片，通过设置父元素的line-height等于height（或者直接只使用line-height），且设置父元素的font-size为0</div>
+<div class="box" style="line-height: 200px;font-size: 0;">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" style="vertical-align: middle;" alt="">
+</div>
+<div class="conclusion">
+    <p>vertical-align:middle的解释是元素的中垂点与父元素的基线加1/2父元素中字母X的高度对齐。由于字符X在em框中并不是垂直居中的，且各个字体的字符X的高低位置不一致。所以，当字体大小较大时，这种差异就更明显。当font-size为0时，相当于把字符X的字体大小设置为0，于是可以实现完全的垂直居中</p>
+</div>
+
+
+<div class="title">2.使用vertical-align</div>
+<div class="subTitle">子元素是行内元素span</div>
+<div class="box" style="line-height: 200px;">
+    <span style="vertical-align: middle;height:30px;font-size:18px;">哈哈哈</span>
+</div>
+
+<div class="title">3.使用display:table-cell</div>
+<div class="subTitle">子元素是行内元素span</div>
+<div class="box" style="display:table-cell;vertical-align:middle">
+    <div style="">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+<div class="conclusion">
+    <p>使用display:table-cell后，margin：0 auto失效了</p>
+</div>
+
+
+<div class="title">4.absolute</div>
+<div class="subTitle">（1）absolute+translateY</div>
+<div class="box" style="position:relative">
+    <div style="position:absolute;top:50%;transform: translateY(-50%)">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+<div class="conclusion">
+    <p>适用于高度不固定（以及高度固定）</p>
+</div>
+
+
+<div class="subTitle">（2）absolute</div>
+<div class="box" style="position:relative">
+    <div style="position:absolute;top:0; bottom:0;height:100px;margin:auto 0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+<div class="conclusion">
+    <p>适用于高度固定</p>
+</div>
+
+<div class="title">5.flex</div>
+<div class="subTitle">在伸缩容器上侧轴上设置</div>
+<div class="box" style="display:flex;align-items: center;">
+    <div style="">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+
+
+<div class="subTitle">在伸缩项目上设置</div>
+<div class="box" style="display:flex;">
+    <div style="margin:auto 0;">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+
+<div class="title">6.grid</div>
+<div class="subTitle">在网格容器上布局,使用display:grid;同时设置align-items:center;或者align-content:center;</div>
+<div class="box" style="display:grid;/*align-items:center;*/align-content:center;">
+    <div style="">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+
+<div class="subTitle">在网格容器上布局,使用display:grid;网格项目中设置align-self:center;或者margin:auto 0;</div>
+<div class="box" style="display:grid;">
+    <div style="/*margin:auto 0;*/align-self:center;">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+</body>
+</html>
