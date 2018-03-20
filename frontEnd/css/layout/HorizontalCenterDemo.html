@@ -14,6 +14,7 @@
             height: 200px;
             border: solid 1px darkseagreen;
         }
+
         .title{
             font-size: 20px;
             font-weight: 300;
@@ -26,9 +27,7 @@
         .box{
             margin:auto;
         }
-        .box1, .box2,.box3 {
-            text-align: center;
-        }
+
         .conclusion{
             color:red;
             margin-bottom: 10px;
@@ -36,39 +35,34 @@
         .conclusion p{
             font-weight: bold;
         }
-        .box3 .content{
-            width:100px;
-            border:solid 1px red;
-        }
 
-        .box4 p{
-            margin:0 auto;
-            width:30px;
-            border:solid 1px red;
-        }
     </style>
 </head>
 <body>
 <div class="title">1.使用text-align:center</div>
 <div class="subTitle">里面内容为块级元素【样式的继承性让p元素里的内容居中】</div>
-<div class="box box1">
+<div class="box box1" style="text-align: center;">
     <p>123</p>
     <p>123</p>
     <p>123</p>
 </div>
 <div class="subTitle">里面内容为行内元素</div>
-<div class="box box2">
+<div class="box box2" style="text-align: center;">
     <span>123</span>
     <span>123</span>
     <span>123</span>
 </div>
 <div class="subTitle">里面内容为容器(里面还有嵌套其他元素)</div>
-<div class="box box3">
-      <div class="content">
+<div class="box box3" style="text-align: center;">
+      <div class="content" style="width:100px; border:solid 1px red;">
           <div>1</div>
           <div>2</div>
           <div>3</div>
       </div>
+
+</div>
+
+
 
 </div>
 <div class="conclusion">
@@ -77,11 +71,9 @@
     <p>3.只针对内容，容器不行</p>
 </div>
 <div class="title">2.使用margin:auto</div>
-<div class="subTitle">里面内容为块级元素(p元素要设置宽度，否则行内元素默认宽度为100%)</div>
+<div class="subTitle">里面内容为块级元素(p元素要设置宽度，否则块级元素默认宽度为100%，里面内容也不会居中)</div>
 <div class="box box4">
-    <p>123</p>
-    <p>123</p>
-    <p>123</p>
+    <p  style=" margin:0 auto; width:30px; border:solid 1px red;">123</p>
 </div>
 
 
@@ -93,5 +85,68 @@
     <p>结论：1.相对于父元素，自身水平居中</p>
     <p>2.只有对块级元素才适用;</p>
 </div>
+
+<div class="subTitle">子元素使用display:table</div>
+<div class="box box6">
+    <span style="display:table;margin: 0 auto;">123</span>
+</div>
+
+<div class="subTitle" >使用transform: translate(-50%)</div>
+<div class="box" style="position:relative">
+    <span style="position: absolute;left:50%;transform: translate(-50%)">123</span>
+</div>
+
+
+<div class="subTitle" >使用margin:-50%</div>
+<div class="box" style="position:relative">
+    <div style="position: absolute;left:50%;">
+        <span style="margin-left:-50%;">123</span>
+    </div>
+</div>
+
+
+<div class="subTitle" >使用flex布局,justify-content: center;子元素为行内元素</div>
+<div class="box" style="display:flex; justify-content: center;">
+        <span style="">123</span>
+</div>
+
+<div class="subTitle" >使用flex布局,justify-content: center;子元素为块级元素</div>
+<div class="box" style="display:flex; justify-content: center;">
+    <div style="">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</div>
+
+
+<div class="subTitle" >使用flex布局,子元素使用margin:0 auto</div>
+<div class="box" style="display:flex;">
+    <div style="margin:0 auto">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</div>
+
+<div class="subTitle" >使用grid布局,父元素使用justify-items:center;或者justify-content:center;</div>
+<div class="box" style="display:grid;/*justify-content:center;*/justify-items:center;">
+    <div style="">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</div>
+
+
+<div class="subTitle" >使用grid布局,子元素使用margin:0 auto;或者justify-self:center;</div>
+<div class="box" style="display:grid;">
+    <div style="/*justify-self:center;*/margin:0 auto;">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</div>
+
 </body>
 </html>
