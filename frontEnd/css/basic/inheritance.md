@@ -1,0 +1,23 @@
+# 样式继承性种类
+### 大致分为三类：
+##### 1.文本相关：
+* font-family
+* font-size
+* font-style(normal;italic;oblique)
+* font-variant(normal;small-caps【小型大写字母】)
+* font-weight
+* font
+* letter-spacing(字母之间的间隙)
+* word-spacing(单词之间的间距)
+* line-height
+* text-align
+* text-indent（定义文字段落缩进）
+* text-transform（控制文字大小写：capitalize;uppercase;lowercase）
+
+##### 2.列表相关：
+* list-style-type（表项标记的类型，内置的不同形状和字符）
+* list-style-position（表项标记的类型位置）
+* list-style-image（将默认的图标，换成自定义）
+* list-style(前面三个的合集)
+##### 3.颜色相关：
+* color
