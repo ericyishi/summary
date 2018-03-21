@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;//不出现水平滚动条
+        }
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        div {
+            height: 100px;
+        }
+
+        .d1 {
+            background: red;
+        }
+
+        .d2 {
+            background: blue;
+        }
+
+        #f1 .d1 {
+            width: 300px;
+            float: left;
+        }
+
+        #f1 .d2 {
+            width: 100%;
+            margin-left: 300px;
+        }
+
+        #f2 {
+            display: table;
+            width: 100%;
+             /*table-layout: fixed;*/
+        }
+
+        #f2>div {
+            display: table-cell;
+
+        }
+
+        #f2 .d1 {
+            width: 300px;
+        }
+
+        #f3 {
+            position: relative;
+            height:100px; //绝对定位会导致父容器没有高度，以至于#f4，会躲在f3下面。所以高度必须要设置或者使用overflow:hidden;
+        }
+
+        #f3 .d1 {
+            position: absolute;
+            left: 0;
+            width: 300px;
+        }
+
+        #f3 .d2 {
+            position: absolute;
+            right: 0;
+            left: 300px;//通过left、right同时使用巧妙地设置了容器的宽度
+        }
+
+
+        #f4 {
+            display: flex;
+        }
+
+        #f4 .d1 {
+            flex: 0 0 300px;//不扩展，不收缩，宽度300px
+            width: 300px; //兼容性写法
+        }
+
+        #f4 .d2 {
+            flex: 1; //让所有弹性盒模型对象的子元素都有相同的长度
+        }
+
+
+
+        #f5{
+            display: grid;
+            grid-template-columns: 300px auto;
+            /*grid-template-rows: 100px;*/
+        }
+
+
+    </style>
+</head>
+
+<body>
+<section id="f1">
+    <div class="d1"></div>
+    <div class="d2">方法1、float</div>
+</section>
+
+<section id="f2">
+    <div class="d1"></div>
+    <div class="d2">方法2、table</div>
+</section>
+
+<section id="f3">
+    <div class="d1"></div>
+    <div class="d2">方法3、absolute</div>
+</section>
+
+<section id="f4">
+    <div class="d1"></div>
+    <div class="d2">方法4、flex</div>
+</section>
+
+<section id="f5">
+    <div class="d1"></div>
+    <div class="d2">方法5、 grid</div>
+</section>
+
+
+</body>
+
+</html>

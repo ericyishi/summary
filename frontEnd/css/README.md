@@ -8,4 +8,4 @@
       * [垂直布局](layout/VerticalCenter.md)
 
 * 常用应用
-  1. [让容器高度等于屏幕高度](example/height_100_percent.md)      
+  1. [让容器高度等于屏幕高度](example/height_100_percent.md)
