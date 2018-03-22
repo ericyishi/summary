@@ -3,6 +3,7 @@
   *  [样式的引入方式](basic/importCss.md)
   *  [样式继承性](basic/inheritance.md)
   *  [样式优先级](basic/priority.md)
+  *  [常用选择器](basic/selector.md)
 
   *  [兼容性](basic/Compatibility.md)
 * css3
