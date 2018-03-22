@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            background: brown;
+        }
+
+        .round{
+            border-radius: 50%;
+        }
+        .roundBorder{
+            border-radius: 10px;
+        }
+
+        .box.roundBorder{
+            border: solid 5px seagreen;
+        }
+        /*li ~ li {*/
+            /*color:red;*/
+        /*}*/
+
+        .l2 + li {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box roundBorder">
+
+</div>
+<div class="box round">
+
+</div>
+<div>
+    <ul>
+        <li class="l1">List item 1</li>
+        <li class="l2">List item 2</li>
+        <li class="l3">List item 3</li>
+        <li class="l4">List item 4</li>
+    </ul>
+</div>
+</body>
+</html>
