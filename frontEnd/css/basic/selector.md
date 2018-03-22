@@ -150,13 +150,39 @@ p:nth-of-type(2) { color: red; }
 ```
 上面选择是：我是第2个p标签
 
-3. 选择器效率
-   1. 从右到左解析；
-   2. 最右边被称为关键选择器：
-
-   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/selectorPriority.png)
-
-
+3. nth-child()用法
+    1. 选择第3个元素:nth-child(3)
+    ```
+    ul.list li:nth-child(3){background: #000;}
+    ```
+    2. 选择前三个:nth-child(-n+3)
+    ```
+    ul.list li:nth-child(-n+3){background: #000;}
+    ```
+    3. 选择从第四个开始到最后:nth-child(n+4)
+    ```
+    ul.list li:nth-child(n+4){background: #000;}
+    ```
+    4. 选择第四个到第八个:nth-child(n+4):nth-child(-n+8)
+    ```
+    ul.list li:nth-child(n+4):nth-child(-n+8){background: #000;}
+    ```
+    5. 选择奇数行:nth-child(2n+1)【写法等同于 :nth-child(odd)】
+    ```
+    ul.list li:nth-child(2n+1){background: #000;}
+    ```
+    6. 选择偶数行:nth-child(2n)【写法等同于 :nth-child(even)】
+    ```
+    ul.list li:nth-child(2n){background: #000;}
+    ```
+    7. 选择 5\10 等五倍数行 :nth-child(5n)
+    ```
+    ul.list li:nth-child(5n){background: #000;}
+    ```
+    8. 选择第三个到第九个之间的奇数行(不包括3\9)
+    ```
+    ul.list li:nth-child(2n+1):nth-child(n+4):nth-child(-n+8){background: #000;}
+    ```
 ### 7.分组选择器
 ```
     div1,div2{
@@ -207,5 +233,10 @@ p:nth-of-type(2) { color: red; }
         ```
 
 
+### 注意：选择器效率
+   1. 从右到左解析；
+   2. 最右边被称为关键选择器：
+
+   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/selectorPriority.png)
 
 
