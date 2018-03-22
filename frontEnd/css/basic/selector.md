@@ -92,8 +92,53 @@
  ```
 
 ### 6.伪类和伪元素选择器
-nth-child与nth-of-child区别
-选择器效率
+
+
+1. 种类：
+* E:first-child 匹配元素E的第一个子元素
+* E:link 匹配所有未被点击的链接
+* E:visited 匹配所有已被点击的链接
+* E:active 匹配所有已经按下，但未释放
+* E:hover 匹配鼠标悬停其上的E元素
+* E:focus 匹配获得当前焦点的E元素
+* E:enabled 匹配表单中可用元素
+* E:disable 匹配表单中不可用元素
+* E:checked 匹配表单中被选中的radio或checkbox元素
+* E::selection 匹配用户当前选中的元素
+* E:root 匹配文档的根元素，对于HTML，就是HTML元素
+```
+     :root
+        {
+          background:#ff0000;
+        }
+```
+* E:nth-child(n) 匹配其父元素下的第n个子元素，且为E元素
+* E:nth-of-type(n) 匹配父元素下面第n个E元素
+2. nth-child与nth-of-child区别
+```
+<section>
+    <div>我是一个普通的div标签</div>
+    <p>我是第1个p标签</p>
+    <p>我是第2个p标签</p>  <!-- 希望这个变红 -->
+</section>
+```
+
+```
+p:nth-child(2) { color: red; }
+````
+上面选择是：我是第1个p标签
+
+
+```
+p:nth-of-type(2) { color: red; }
+```
+上面选择是：我是第2个p标签
+
+3. 选择器效率
+   1. 从右到左解析；
+   2. 最右边被称为关键选择器：
+
+   
 
 ### 7.分组选择器
 ```
