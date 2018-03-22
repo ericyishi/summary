@@ -30,6 +30,7 @@
 * scale(n);等同于同时设置scaleX(n),scaleY(n);
 * 默认基线是上边，如果增长，上边固定，沿着下边进行变化。所以希望下边固定，沿着上边缩放，需要设置transform-origin(100%,100%,0)
 ### 4.扭曲 skew
+* 单位也是deg
 * skew(deg)等同于skewX(deg)
 * skew(deg,deg)不！等同于分别设置skewX(deg);skewY(deg);
 
