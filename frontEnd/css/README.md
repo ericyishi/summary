@@ -16,4 +16,4 @@
 * 常用应用
   1. [让容器高度等于屏幕高度](example/height_100_percent.md)
   2. [实现边框为1像素的九宫格](example/nineSquare.md)
-  3. [立方体动画](../example/cubicAnimation.md)
+  3. [立方体动画](example/cubicAnimation.md)
