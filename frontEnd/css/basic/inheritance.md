@@ -12,7 +12,7 @@
 * line-height
 * text-align
 * text-indent（定义文字段落缩进）
-* text-transform（控制文字大小写：capitalize;uppercase;lowercase）
+* text-transform.md（控制文字大小写：capitalize;uppercase;lowercase）
 
 ##### 2.列表相关：
 * list-style-type（表项标记的类型，内置的不同形状和字符）

@@ -5,6 +5,8 @@
   *  [样式优先级](basic/priority.md)
 
   *  [兼容性](basic/Compatibility.md)
+* css3
+  * [动画](css3/animation.md)
 
 * 布局
   1. 布局方式

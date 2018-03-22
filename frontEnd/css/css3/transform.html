@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width:200px;
+            height:200px;
+            background: #ffe0a6;
+            line-height: 200px;
+            text-align: center;
+            margin-left: 100px;
+        }
+        .row{
+            width:2000px;
+            height:500px;
+            overflow: auto;
+        }
+        .row>div{
+            float:left;
+        }
+        .box1{
+            transform: rotate(30deg);
+            transform-origin: 0 0 0;
+        }
+        .box2{
+            transform: rotate(30deg);
+            transform-origin: 100% 0 0;
+        }
+        .box3{
+            transform: rotate(30deg);
+            transform-origin: 0 100% 0;
+        }
+        .box4{
+            transform: rotate(30deg);
+            transform-origin: 100% 100% 0;
+        }
+
+        .box5{
+            transform: skew(50deg);
+        }
+        .box6{
+            transform: skewY(50deg);
+        }
+        .box7{
+            transform: skew(50deg,50deg);
+        }
+        .box8{
+            transform: skewY(50deg) skewX(50deg) ;
+        }
+        .box9{
+            transform: scaleX(1.2);
+        }
+        .box10{
+            transform: scale(1.2,1.7);
+            transform-origin: 100% 100% 0;
+        }
+
+        .box11{
+            transform: scale(0.8,0.8);
+        }
+
+        .box12{
+            transform: scaleX(0.8) scaleY(0.8);
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="box">默认未旋转</div>
+    <div class="box box1">中心点基于左上角</div>
+    <div class="box box2">中心点基于右上角</div>
+    <div class="box box3">中心点基于左下角</div>
+    <div class="box box4">中心点基于右下角</div>
+
+</div>
+<div class="row">
+    <div class="box">默认未扭曲</div>
+    <div class="box box5">5</div>
+    <div class="box box6">6</div>
+    <div class="box box7">7</div>
+    <div class="box box8">8</div>
+</div>
+<div class="row">
+    <div class="box">默认未缩放</div>
+    <div class="box box9">9</div>
+    <div class="box box10">10</div>
+    <div class="box box11">11</div>
+    <div class="box box12">12</div>
+</div>
+</body>
+</html>

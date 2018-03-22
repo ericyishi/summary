@@ -1,5 +1,8 @@
 # 动画 animation
-* animation复合属性
+* animation是一个复合属性
+```
+animation: 动画名 持续时间
+```
 
 ### 八大属性
 
@@ -30,8 +33,26 @@
      **animation-play-state:paused; 当鼠标经过时动画停止，鼠标移开动画继续执行**
   8.  animation-fill-mode 设置对象动画时间之外的状态
      * none:默认值，不设置对象动画之外的状态
-     * forwards:设置后，让动画停留在结束时候的效果
+     * forwards:设置后，让动画停留在结束时候的效果【注意单词后面有s】
      * backwards:设置对象状态为动画开始时的状态
      * both:设置对象状态为动画开始或结束时的状态
+
+ * 定义动画
+   ```
+   @keyframes 动画名{
+    from{
+
+    }
+    to{
+
+    }
+   }
+   ```
+
+   ### 注意
+   1. from 里面的对应的原始样式，所以我们可以不用设置；
+   2. 也可以使用百分比。0%对应“from”，100%对应“to”；
+   3. 如果结束时（to）属性值有left、top等那么开始值（from）里面也一定要有，不然会出现跳帧的感觉。
+
 
    [立方体动画](../example/cubicAnimation.md)
