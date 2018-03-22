@@ -5,6 +5,8 @@
 3. box-sizing的应用以及兼容性写法（-webkit-）
 4. 保持九宫格在原来的位置 (  div:nth-child(3n+1){margin-left: 0;})
 5. hover上去能完整显示效果（要设置z-index）
+![image](https://github.com/ericyishi/img-folder/blob/master/summary/cubic.png)
+
 
 ```
 <!DOCTYPE html>

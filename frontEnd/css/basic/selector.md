@@ -105,7 +105,7 @@
 * E:disable 匹配表单中不可用元素
 * E:checked 匹配表单中被选中的radio或checkbox元素
 * E::selection 匹配用户当前选中的元素
-* E:root 匹配文档的根元素，对于HTML，就是HTML元素
+  * :root 匹配文档的根元素，对于HTML，就是HTML元素
 ```
      :root
         {
@@ -114,6 +114,22 @@
 ```
 * E:nth-child(n) 匹配其父元素下的第n个子元素，且为E元素
 * E:nth-of-type(n) 匹配父元素下面第n个E元素
+* :not(E) 匹配非E元素的元素选择器
+  * 设置非p元素的所有元素的背景色：
+```
+:not(p)
+{
+background-color: #ff0000;
+}
+```
+* E:empty
+  * 指定空的 p 元素的背景色：
+```
+p:empty
+{
+background:#ff0000;
+}
+```
 2. nth-child与nth-of-child区别
 ```
 <section>
@@ -138,7 +154,8 @@ p:nth-of-type(2) { color: red; }
    1. 从右到左解析；
    2. 最右边被称为关键选择器：
 
-   
+   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/selectorPriority.png)
+
 
 ### 7.分组选择器
 ```
