@@ -34,4 +34,4 @@
      * backwards:设置对象状态为动画开始时的状态
      * both:设置对象状态为动画开始或结束时的状态
 
-   [立方体动画](../example/cubicAnimation.html)
+   [立方体动画](../example/cubicAnimation.md)
