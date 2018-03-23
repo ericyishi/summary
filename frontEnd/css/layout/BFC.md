@@ -9,3 +9,4 @@
 * 内层元素 加float:left;或display:inline-block;
 * 内层元素padding:1px;
 
+![image](https://github.com/ericyishi/img-folder/blob/master/summary/BFC.png)
