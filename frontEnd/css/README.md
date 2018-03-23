@@ -11,6 +11,10 @@
   * [变换](css3/transform.md)
 
 * 布局
+  1. 标准文档流
+      * 外边界重叠与BFC
+  2. 定位
+      * [定位方式](layout/position.md)
   1. 布局方式
       * [水平布局](layout/HorizontalCenter.md)
       * [垂直布局](layout/VerticalCenter.md)

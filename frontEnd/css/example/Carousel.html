@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+        <style>
+        #frame{position:absolute;width:300px;height:200px;overflow:hidden;border-radius:5px}
+        #dis{position:absolute;left:-50px;top:-10px;opacity:.5}
+        #dis li{display:inline-block;width:200px;height:20px;margin:0 50px;float:left;text-align:center;color:#fff;border-radius:10px;background:#000}
+        #photos img{float:left;width:300px;height:200px}
+        #photos {  position: absolute;z-index:9;  width: calc(300px * 4);/*---修改图片数量的话需要修改下面的动画参数*/  }
+        .play{ animation: ma 5s ease-out infinite normal;}
+        @keyframes ma {
+            0%,25% {        margin-left: 0px;       }
+            30%,50% {       margin-left: -300px;    }
+            55%,75% {       margin-left: -600px;    }
+            80%,100% {       margin-left: -900px;    }
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="frame" >
+    <div id="photos" class="play">
+        <img src="images/1.jpg" >
+        <img src="images/3.jpg" >
+        <img src="images/4.jpg" >
+        <img src="images/5.jpg" >
+        <ul id="dis">
+            <li>111111111111111</li>
+            <li>22222222222222</li>
+            <li>33333333333333</li>
+            <li>44444444444444</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
