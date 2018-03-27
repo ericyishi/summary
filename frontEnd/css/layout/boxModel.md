@@ -17,5 +17,11 @@
 ### 怪异盒模型（IE盒模型）
 * box-sizing:border-box;
 ![image](https://github.com/ericyishi/img-folder/blob/master/summary/borderBox.png)
+![image](https://github.com/ericyishi/img-folder/blob/master/summary/IEBox.png)
 * width: 指得是内容的宽度+padding+border;
 * height：指得是内容的高度+padding+border;
+
+
+### 怪异盒模型触发条件
+* box-sizing:border-box
+* 一般没有DTD定义，浏览器会自动促发quirks模式，但是刚才测试了，发现，ie10及其他标准浏览器，都不会促发怪异模式，IE9，IE8，IE7，IE6会促发，
