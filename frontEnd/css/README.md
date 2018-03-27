@@ -11,17 +11,18 @@
   * [变换](css3/transform.md)
 
 * 布局
+  1. [标准盒模型和怪异盒模型](layout/boxModel.md)
   1. 标准文档流
       * [外边界重叠与BFC](layout/BFC.md)
       * 边框
         * [利用边框实现三角形](example/borderTriangle.md)
   2. 定位
       * [定位方式](layout/position.md)
-  1. 布局方式
+  3. 布局方式
       * [水平布局](layout/HorizontalCenter.md)
       * [垂直布局](layout/VerticalCenter.md)
       * [两栏布局(其中一栏固定)](layout/oneColFixedInTwoDemo.md)
-  2. 浮动
+  4. 浮动
       * [清除浮动](basic/clearFloat.md)
 * 常用应用
   1. [让容器高度等于屏幕高度](example/height_100_percent.md)
