@@ -100,6 +100,7 @@ public class ArrayDemo_4{
   		 再外层for循环中嵌套一个for循环遍历每一个一维数组arr[i],得到每一元素
 
   	* B:举例:遍历二维数组
+  	```
   		public class ArrayArrayDemo_2{
   			public static void main(String[] args){
   				int[][] arr = { {1,2,3},{4,5},{6,7,8,9},{0} };
@@ -113,8 +114,9 @@ public class ArrayDemo_4{
   					System.out.println();
   				}
   			}
-
+    ```
   	* C:二维数组累加求和
+  	```
   	   class ArrayDemo09 {
   			public static void main(String[] args){
   			  	int[][] arr2 = { {1,2},{3,4,5},{6,7,8,9,10} };
@@ -128,3 +130,4 @@ public class ArrayDemo_4{
   				System.out.println("sum2= "+ sum2);
   			}
   		}
+  	```
