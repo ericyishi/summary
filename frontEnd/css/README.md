@@ -23,11 +23,11 @@
       * [水平布局](layout/HorizontalCenter.md)
       * [垂直布局](layout/VerticalCenter.md)
       * [两栏布局(其中一栏固定)](layout/oneColFixedInTwoDemo.md)
-      * [stickyFooter](layout/sticky-footer.md)
+      * [sticky-Footer](layout/sticky-footer.md)
   4. 浮动
       * [清除浮动](basic/clearFloat.md)
 * 常用应用
   1. [让容器高度等于屏幕高度](example/height_100_percent.md)
   2. [实现边框为1像素的九宫格](example/nineSquare.md)
   3. [立方体动画](example/cubicAnimation.md)
-
+  4.
