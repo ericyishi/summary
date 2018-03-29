@@ -6,6 +6,7 @@
 * 工具
   * 版本管理
     * [gitbash](tools/gitbash.md)
+    * [git的使用](tools/git.md)
   * 开发工具
     * 前端
       * [webstorm](tools/frontEnd/webstorm.md)
