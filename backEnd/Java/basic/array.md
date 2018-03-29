@@ -21,6 +21,7 @@
     * 第一行代码 int[] x; 声明了一个变量x，该变量的类型为int[]，即一个int类型的数组。变量x会占用一块内存单元，它没有被分配初始值
     * 第二行代码 x = new int[100]; 创建了一个数组，将数组的地址赋值给变量x。在程序运行期间可以使用变量x来引用数组，这时内存中的状态会发生变化
 
+![image](https://github.com/ericyishi/img-folder/blob/master/summary/backend/array_store.png)
 ### 数组中常见的异常
 * 1.下标越界
 * 2.空指针
