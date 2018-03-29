@@ -60,7 +60,7 @@ public static void printStore(String[] brand,double[] size,double[] price,int[] 
 ### 方法调用内存图
 ![image](https://github.com/ericyishi/img-folder/blob/master/summary/backend/callMethodInMem.png)
 ### 方法的重载【overload】
-* 在<u>同一个类</u>中，<u>方法名</u>相同，<u>参数列表(个数、类型)</u>不同。与返回值类型无关。
+* 在<u>同一个类</u>中，<u>方法名</u>相同，<u>参数列表(个数、类型、顺序)</u>不同。与返回值类型无关。
 
 		* 参数列表不同：
 			* A:参数 个数! 不同
