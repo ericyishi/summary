@@ -6,4 +6,7 @@
     * [指定范围随机数](ECMAScript/skill//randomNumber.md)
 
 * BOM
+   * window对象
+     * [定时器](BOM/timer.md)
+
 * DOM
