@@ -6,7 +6,7 @@
 
 ### 定义方法【setInterval、setInterval定义方式一致】
 
- * 1.使用回调函数方式
+ * 1.使用匿名函数方式
  ```
    setInterval(function(){},毫秒数)
  ```
