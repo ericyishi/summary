@@ -6,9 +6,9 @@
   * [js](frontEndjs/README.md)
 * 后端
   * 开发语言
-    * [Java](backend/Java/Java.md)
+    * [Java](backEnd/Java/Java.md)
   * 操作系统
-    * [DOS常用命令](backend/system/DOS/commandOfDOS.md)
+    * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
 * [算法](algorithm/algorithm.md)
 * 工具
   * 版本管理
