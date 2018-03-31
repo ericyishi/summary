@@ -3,7 +3,7 @@
 * 前端
   * [html](frontEnd/html/html.md)
   * [CSS](frontEnd/css/README.md "CSS页面")
-  * [js](frontEndjs/README.md)
+  * [js](frontEnd/js/README.md)
 * 后端
   * 开发语言
     * [Java](backEnd/Java/Java.md)
