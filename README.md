@@ -9,6 +9,10 @@
     * [Java](backEnd/Java/Java.md)
   * 操作系统
     * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
+* 数据库
+  * 关系型数据库
+    * [数据库设计过程以及范式](database/format.md)
+  * 非关系型数据库
 * [算法](algorithm/algorithm.md)
 * 工具
   * 版本管理
