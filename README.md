@@ -11,6 +11,7 @@
     * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
 * 数据库
   * 关系型数据库
+    * [基础概念](database/basicContent.md)
     * [数据库设计过程以及范式](database/format.md)
   * 非关系型数据库
 * [算法](algorithm/algorithm.md)
