@@ -265,11 +265,11 @@
   * MYSQL 不支持check。
   * 所以对于离散值要使用SET或者ENUM
   * 连续值只能通过触发器
-    ```
+  ```
       CREATE TABLE demoI(
                 sex SET('男','女')
                )
-    ```
+  ```
 * **创建表时设置数据库引擎**
   ```
     mysql> create table test(
@@ -281,6 +281,85 @@
         -> engine=MyISAM
         -> ;
   ```
+
+* 插入数据行
+    ```
+     INSERT INTO 表名(字段)VALUES('对应字段的值');
+    ```
+    * 字段名可以省略，但是后面的值需要一一匹配，包括类型，精度。
+    ```
+     INSERT INTO student VALUES("张三",1,79);
+    ```
+    * 每次插入一行数据，不能只插入半行或者几列数据；插入的数据是否有效将按照整行的完整性的要求来检查。
+
+* 插入多行数据
+    ```
+    INSERT INTO AddrBook(tname,taddr,temail)
+    SELECT sName,sAddr,sEmail
+    FROM student;
+    # 选择student表下的字段sName,sAddr,sEmail的数据插入AddrBook表下的tname、taddr、temail字段下
+    # AddrBook是已经建好的
+    ```
+    或者
+    ```
+    insert into score values
+    ("张三",1,79);
+    ("张三",2,34);
+    ("李四",1,56);
+    ("李四",2,60);
+    ("王五",3,45);
+    ("张三",3,87);
+    ("李四",3,92);
+    ("王五",1,77);
+    ```
+* 更新数据行
+   ```
+    UPDATE 表名 SET <列名=更新值>[WHERE<更新条件>]
+   ```
+   ```
+    UPDATE school SET location='中国';
+    或者
+    UPDATE score SET score=score+5
+    WHERE score<=50;
+   ```
+* 删除表(**注意三种方式的区别**)
+  ```
+   TRUNCATE TABLE 表名
+  ```
+  ```
+   TRUNCATE TABLE stu
+  ```
+  ```
+   DROP TABLE stu
+  ```
+  ```
+   DELETE FROM stu
+  ```
+  * DROP 直接表删掉了
+  * TRUNCATE 干掉表,重新创建,不会记录删除详细日志，因而数据不能回滚
+    * truncate属于DDL(数据定义语言 )语句
+    * 表结构、列、约束不变
+    * 不能用于有外键约束的表
+    * 全局记录自增的记录值重新开始编号
+    * 速度快
+  * DELETE 一条一条数据删除
+    * DELETE 属于DML(数据操作语言)语句
+    * DELETE 逐条删除
+    * 且保留全局记录自增的记录值
+    * 执行时间久
+   ```
+    开发中很少使用delete,数据无价,删除有物理和逻辑(常用),
+    逻辑删除一般会在表中添加一个字段(isdel:若值为1,代表删除了;若为0代表没有删除),
+    此时的删除操作变成了更新操作.
+   ```
+ * 删除数据
+   ```
+   DELETE FROM 表名 [WHERE  条件];
+   ```
+   ```
+    DELETE  FROM user WHERE username='jerry';
+   ```
+ 例如：
 
 ### 数据类型
 * 整数数据类型
@@ -327,3 +406,5 @@
   ```
    支持的范围是’1000-01-01 00:00:00’到’9999-12-31 23:59:59’。
   ```
+  #### 注意：
+  *符合日期、时间格式的字符串，可以由mysql自动转换为日期时间格式的值，如"2018-04-02 15:12:30"
