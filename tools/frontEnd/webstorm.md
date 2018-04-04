@@ -10,3 +10,4 @@
 #### 安装插件失败，需要科学上网注意事项
  * 需要在webstorm里面开启自动检测代理设置
    * 将File--settings--Apperance--System Setting-- HTTP Proxy--选择Auto-detect proxy setting即可
+
