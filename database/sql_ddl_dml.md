@@ -1,4 +1,4 @@
-# SQL命令(mysql为例)
+# SQL命令-DDL、DML
 ### mysql连接
 * **mysql -u 用户名 -p**  是连接mysql数据库服务器的命令，然后输入密码。
 
