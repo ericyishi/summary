@@ -1,5 +1,5 @@
 # SQL基础
-### mysql连接
+### 在cmd下登录MYSQL数据库：
 * **mysql -u 用户名 -p**  是连接mysql数据库服务器的命令，然后输入密码。
 
 ### SQL(Structured Query Language)结构化查询语言

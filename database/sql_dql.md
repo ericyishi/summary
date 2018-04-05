@@ -96,6 +96,9 @@
     ```
        # 找出姓名是以“张”开头且是两个字的所有学生信息
          SELECT * FROM student WHERE sname LIKE "张_";
+
+       # 找出四个字的姓名的学生信息
+         SELECT * FROM student WHERE sname LIKE "____";
     ```
   * 空行查询
     * NULL

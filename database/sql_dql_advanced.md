@@ -21,7 +21,11 @@
   * 将数据行按照分组列来分组，结果是按每个分组输出一行结果。
 
   * HAVING子句
-    * 从分组计算结果中进行过滤筛选.注意与WHERE语句的区别
+    * 从分组计算结果中进行过滤筛选。
+    * 注意与WHERE语句的区别：
+      1. where 是对分组前的数据进行过滤 ;having 是对分组后的数据进行过滤。
+      2. where 后面不能使用聚合函数,having可以。
+
   ```
     SELECT depNo,count(*)
     FROM employee,
@@ -39,7 +43,8 @@
    4. 为每个组计算SELECT子句聚合函数的值，并为每组生成查询结果中的一行；
    5. 如果有HAVING子句，则根据HAVING子句过滤条件，再次对分组结果过滤；
    6. 如果有ORDER BY子句中，则根据ORDER BY子句中的列，对结果集进行排序。
-   7. 如果LIMIT语句,再根据限定输出结果行。
+   7. 如果LIMIT语句,再根据限定输出结果行数。
+   8. 根据SELECT后面的字段确定显示那些数据。
 
    ```
    # 位置顺序也不能乱
@@ -195,15 +200,17 @@
        2. 右外联接【right join】
   2. 内联接
     ```
+      #【显式】
       # INNER关键字可以省
       SELECT S.sname,C.score
       FROM student AS stu
       INNER JOIN course AS co
       ON stu.sno=co.sno
     ```
-    上面可以简写成
+    上面可以简写成：
 
     ```
+      #【隐式】
       #逗号代替JOIN，WHERE代替ON
       SELECT S.sname,C.score
       FROM student AS stu,course AS co
