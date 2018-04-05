@@ -187,3 +187,33 @@
   ● 修改限制：当用户试图修改视图的某些行时，SQL Server必须把它转化为对基本表的某些行的修改。对于简单视图来说，这是很方便的，但是，对于比较复杂的视图，可能是不可修改的。搜索
   所以，在定义数据库对象时，不能不加选择地来定义视图，应该权衡视图的优点和缺点，合理地定义视图。
   ```
+* 联接查询
+  1. 表联接分类
+     * 内联接【inner join】
+     * 外联接
+       1. 左外联接【left join】
+       2. 右外联接【right join】
+  2. 内联接
+    ```
+      # INNER关键字可以省
+      SELECT S.sname,C.score
+      FROM student AS stu
+      INNER JOIN course AS co
+      ON stu.sno=co.sno
+    ```
+    上面可以简写成
+    
+    ```
+      #逗号代替JOIN，WHERE代替ON
+      SELECT S.sname,C.score
+      FROM student AS stu,course AS co
+      WHERE stu.sno=co.sno
+    ```
+
+  3. 外联接
+     * 注意: 所谓左右表只是针对JOIN而言，JOIN之前的为左表，JOIN之后的为右表
+
+  4. 三者区别
+     * left join(左联接) 返回包括左表中的所有记录和右表中联结字段相等记录
+     * right join(右联接) 返回包括右表中的所有记录和左表中联结字段相等记录
+     * inner join(等值连接) 只返回两个表中联结字段相等的行
