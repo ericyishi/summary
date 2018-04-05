@@ -15,6 +15,7 @@
     * [数据库设计过程以及范式](database/format.md)
     * [SQL基础概念(mysql为例)](database/sql_basic.md)
     * [SQL【DML、DDL】(mysql为例)](database/sql_ddl_dml.md)
+    * [SQL【DQL】(mysql为例)](database/sql_dql.md)
   * 非关系型数据库
 * [算法](algorithm/algorithm.md)
 * 工具

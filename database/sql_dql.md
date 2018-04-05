@@ -40,7 +40,7 @@
   ```
    SELECT DISTINCT sno FROM score WHERE degree >70 AND degree<90 ;
   ```
-* 选择操作(过滤操作)
+* 选择操作(过滤操作)【where】
   * 单条件选择
   ```
    SELECT 列名 FROM 表 WHERE 条件=值
@@ -51,3 +51,9 @@
   ```
 
   * SQL中的运算符
+    * =
+    * \>
+    * <
+    * \>=
+    * <=
+    * !=或者<>
