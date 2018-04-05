@@ -202,7 +202,7 @@
       ON stu.sno=co.sno
     ```
     上面可以简写成
-    
+
     ```
       #逗号代替JOIN，WHERE代替ON
       SELECT S.sname,C.score

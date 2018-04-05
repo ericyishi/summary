@@ -11,3 +11,5 @@
  * 需要在webstorm里面开启自动检测代理设置
    * 将File--settings--Apperance--System Setting-- HTTP Proxy--选择Auto-detect proxy setting即可
 
+#### 注册
+ * http://idea.codebeta.cn/
