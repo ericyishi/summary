@@ -1,2 +1,5 @@
 # nodejs
- * [nodejs简介以及使用nvm安装](./node_install_nvm.md)
+ 1. 基础篇
+    * [nodejs简介以及使用nvm安装](basic/node_install_nvm.md)
+    * [npm包管理工具](basic/node_npm.md)
+    * [使用nrm或cnpm加速](basic/node_nrm_cnpm.md)
