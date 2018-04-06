@@ -54,6 +54,12 @@
 * 类的成员
   * 属性叫做成员变量
   * 方法叫做成员方法
+### 创建对象
+* 格式：
+```
+类名 对象名 = new 类名();
+```
+
 
 ### 对象内存图
 ![image](https://github.com/ericyishi/img-folder/blob/master/summary/backend/objectInMem.png)

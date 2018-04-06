@@ -7,6 +7,10 @@
  * [变量](basic/variable.md)
  * [运算符](basic/operator.md)
  * [数组](basic/array.md)
- * [方法定义与调用以及重载](basic/method.md)
+ * [方法定义与调用以及重载overload](basic/method.md)
  * [面向对象](basic/object-oriented.md)
-   * [封装](basic/enclosure.md)
+   * 面向对象三个特性：
+     * [封装](basic/enclosure.md)
+     * 继承
+     * 多态
+   * [访问控制关键字](basic/AccessCtrlKeyWords.md)

@@ -13,10 +13,11 @@
 * **ctrl+1** 提示错误建议
 * **ctrl+2** 改名
 * **Alt+/** 内容自动补全
+* **ctrl+O** 调出类中所有的方法
 ```
 ①补充方法
 输入syso然后按快捷键alt+/就可以自动补全了
-输入main+alt+/快速不全main方法
+输入main+alt+/快速补全main方法
 ②引入系统的类
 输入sc，alt+/,选择Scanner
 这时自动补全，并自动导入包import java.util.Scanner
@@ -27,7 +28,12 @@ for (int i = 0; i < args.length; i++) {
 
 		}
 ```
-
+* **shift+alt+l** 类自动补全
+```
+new CarWrapper(qq);
+按下快捷键后，补全的结果：
+CarWrapper carWrapper = new CarWrapper(qq);
+```
 ### 常用设置
 * **代码行显示** 在代码区域的左边空白区域，右键 -- Show Line Numbers
 * **还原默认显示模式** Window -- Reset Prespective
