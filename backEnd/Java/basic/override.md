@@ -57,7 +57,7 @@
 ```
 
 ### 子类重写注意事项
-* 子类重写父类方法，必须保证子类的修饰符的权限大于或等于父类方法修饰符的权限
+* 子类重写父类方法，必须保证子类的修饰符的权限>=父类方法修饰符的权限
     ```
     package com.test.inheritance
     public class Fu{
@@ -67,8 +67,37 @@
     ```
     package com.test.inheritance
     public class ZI{
-      void show(){}//这样会报错的，使用默认权限，因为小于父类public访问权限
+      void show(){}//这样会编译错误，使用默认权限，因为小于父类public访问权限
     }
     ```
     * 四大访问权限的范围
-      * public>protected>不写（默认权限）>private
+      * public>protected>不写（默认权限protected）>private
+* 子类方法和要重写的父类的方法:方法的**方法名**和**参数列表**都要一样。
+* 返回值类型
+  * 如果是**基本数据类型**,子类的方法和重写的父类的方法返回值类型**必须相同**
+  * 如果是引用数据类型,子类的方法和重写的父类的方法返回值类型可以相同或者子类方法的返回值类型是父类方法返回值类型的子类
+  ```
+   class Fu{
+   	int show(){
+
+   	}
+   	public Fu method(){
+
+   	}
+
+   	public Fu method2(){
+
+   	}
+
+   }
+   class Zi() extends Fu{
+   	public int show(){//返回值为基本类型INT的重写，必须要和父类保持一致
+
+   	}
+   	public Fu method(){//子类的方法和重写的父类的方法返回值类型FU可以相同
+
+   	}
+   	public Zi method2(){//子类方法的返回值类型是父类方法返回值类型的子类
+   	}
+   }
+  ```
