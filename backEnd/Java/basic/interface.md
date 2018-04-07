@@ -171,3 +171,79 @@ class 缉毒猪 implements 缉毒{//让不同的类也能实现这个接口
 * 二者的选用:
  	1. 优先选用接口,尽量少用抽象类;
  	1. 需要定义子类的行为,又要为子类提供共性功能时才选用抽象类;
+
+### 案例
+```
+// 笔记本电脑案例代码实现
+定义鼠标、键盘，笔记本三者之间应该遵守的规则
+interface USB {
+	void open();// 开启功能
+
+	void close();// 关闭功能
+}
+
+	鼠标实现USB规则
+class Mouse implements USB {
+	public void open() {
+		System.out.println("鼠标开启");
+	}
+
+	public void close() {
+		System.out.println("鼠标关闭");
+	}
+}
+
+	键盘实现USB规则
+class KeyBoard implements USB {
+	public void open() {
+		System.out.println("键盘开启");
+	}
+
+	public void close() {
+		System.out.println("键盘关闭");
+	}
+}
+
+	定义笔记本
+class NoteBook {
+	// 笔记本开启运行功能
+	public void run() {
+		System.out.println("笔记本运行");
+	}
+
+	// 笔记本使用usb设备，这时当笔记本对象调用这个功能时，必须给其传递一个符合USB规则的USB设备
+	public void useUSB(USB usb) {
+		// 判断是否有USB设备
+		if (usb != null) {
+			usb.open();
+			usb.close();
+		}
+	}
+
+	public void shutDown() {
+		System.out.println("笔记本关闭");
+	}
+}
+
+public class Test {
+	public static void main(String[] args) {
+		// 创建笔记本实体对象
+		NoteBook nb = new NoteBook();
+		// 笔记本开启
+		nb.run();
+
+		// 创建鼠标实体对象
+		Mouse m = new Mouse();
+		// 笔记本使用鼠标
+		nb.useUSB(m);
+
+		// 创建键盘实体对象
+		KeyBoard kb = new KeyBoard();
+		// 笔记本使用键盘
+		nb.useUSB(kb);
+
+		// 笔记本关闭
+		nb.shutDown();
+	}
+}
+```
