@@ -35,9 +35,9 @@
 ### 抽象类的注意事项
    1. 抽象类是不能实例化的，不能实例化的原因是，无法调用其抽象方法，没有方法主体。
    2. 抽象类和抽象方法都要被abstract修饰。抽象方法一定要定义在抽象类中。
-   3. 只有覆盖了抽象类中**所有**的抽象方法，子类才可以创建对象。否则子类还是一个抽象类。
+   3. 只有覆盖了抽象类中**所有**的抽象方法，子类才可以创建对象(使用new)。否则子类还是一个抽象类。
    4. 之所以继承抽象类，更多的是在思想，是面对共性类型操作会更简单。
-   5. 抽象类可以不定义抽象方法【目的：不让该类创建对象,方法可以直接让子类去使用】
+   5. 抽象类也可以不定义抽象方法【目的：不让该类创建对象,方法可以直接让子类去使用】
    ```
       pulic abstract class Animal(){
       public void sleep(){
@@ -45,7 +45,7 @@
       }
 
 
-      ublic class Cat extends Animal{
+      public class Cat extends Animal{
 
       }
 
@@ -116,7 +116,16 @@ A:员工案例Employee类的编写:按照分析的继承体系来逐个实现
     public class Android extends Develope {
        @Override
         public void work() {
-     	 System.out.println("员工号为 " + getId() + " 的 " + getName() + " 员工，正在研发淘宝手机客户端软件");
+     	 System.out.println(andorid工程师，正在研发淘宝手机客户端软件");
         }
       }
+
+```
+```
+  public class Test{
+   public static void main(String args[]){
+     Android ad = new Android();
+     ad.work();
+   }
+  }
 ```
