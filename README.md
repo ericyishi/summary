@@ -18,6 +18,7 @@
     * [SQL【DML、DDL】(mysql为例)](database/sql_ddl_dml.md)
     * [SQL【DQL-基础查询】(mysql为例)](database/sql_dql.md)
     * [SQL【DQL-高级查询】(mysql为例)](database/sql_dql_advanced.md)
+    * [SQL【高级特性】(mysql为例子)](database/sql_highLevel.md)
   * 非关系型数据库
 * [算法](algorithm/algorithm.md)
 * 工具
