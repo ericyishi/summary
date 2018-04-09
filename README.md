@@ -9,7 +9,10 @@
   * 开发语言
     * [Java](backEnd/Java/Java.md)
   * 操作系统
-    * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
+    * DOS系统
+      * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
+    * LINUX系统
+      * [使用虚拟机的网络配置](backEnd/system/linux/configureNetwork.md)
 * 数据库
   * 关系型数据库
     * [基础概念](database/basicContent.md)
