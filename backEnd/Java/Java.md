@@ -8,6 +8,7 @@
  * [运算符](basic/operator.md)
  * [数组](basic/array.md)
  * [方法定义与调用以及重载overload](basic/method.md)
+ * [构造方法](basic/constructor.md)
  * [面向对象](basic/object-oriented.md)
    * 面向对象三个特性：
      * [封装](basic/enclosure.md)
@@ -17,3 +18,4 @@
    * [子类重写override](basic/override.md)
    * [抽象类和抽象方法](basic/abstractClass.md)
    * [接口](basic/interface.md)
+

@@ -10,7 +10,7 @@
      class 子类 extends 父类{}
    ```
    使用的方式：
-   * ①子类可以直接使用父类中的可继承的成员变量
+   * ①子类可以直接使用父类中的可继承的成员变量【即使子类不声明父类有的成员变量】
    * ②通过子类的对象去调用也可以。
 ### 继承的好处
 * 1.提高代码的复用性。
@@ -20,16 +20,16 @@
 * 可以多层次继承
 ```
  class A{public void function(){}}
- class B extends A{public void function(){}}
+ class B extends A{public void getName(){}}
  class C extends B{}
- new C().function();//这是调用的B中的方法
+ new C().getName();//这是调用的B中的方法
  C类：同时拥有A和B的属性和方法
  B类：只能拥有A类属性和方法
 ```
 * 继承后成员变量的特点
   * 子类的对象，调用成员变量：
     * 1.子类自己有该成员变量，则使用自己的；
-    * 2.子类自己没有，则调用父类的
+    * 2.子类自己没有，则调用父类的;
     * 3.层级向上寻找，如果都没有，就报错了。
     ```
       	class Fu{
