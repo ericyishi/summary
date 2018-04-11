@@ -12,6 +12,7 @@
     * DOS系统
       * [DOS常用命令](backEnd/system/DOS/commandOfDOS.md)
     * LINUX系统
+      * [常用命令](backEnd/system/linux/command.md)
       * 常见问题
         1. [使用虚拟机的网络配置](backEnd/system/linux/configureNetwork.md)
 * 数据库
