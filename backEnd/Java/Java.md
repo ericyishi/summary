@@ -15,6 +15,7 @@
      * [继承](basic/inheritance.md)
      * [多态](basic/polymorphism.md)
    * [访问控制关键字](basic/AccessCtrlKeyWords.md)
+   * [关键字final和static](basic/finalNStatic.md)
    * [子类重写override](basic/override.md)
    * [抽象类和抽象方法](basic/abstractClass.md)
    * [接口](basic/interface.md)
