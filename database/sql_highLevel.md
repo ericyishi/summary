@@ -428,25 +428,175 @@
        ```
 ### 事务
   * 概述
+    * 事务作为单个逻辑单元的执行的一系列操作
+    * 多个操作作为一个整体向系统提交，要么执行，要么都不执行，事务是一个不可分割的工作逻辑单元。
+    * 适用于多用户同时操作的数据通系统，例如：订票，银行，保险，证券等。
+    * **注意**MyISAM:不支持事务，适用于只读程序提高性能。
   * **特性**(ACID)
     1. 原子性(Atomicity)
       * 事务是数据库的逻辑工作单位，事务中包括的诸操作要么全做，要么全不做。
     2. 一致性(Consistency)
       * 事务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态。
+      * 比如银行系统转账过程，要么转账金额从一个账户转入另一个账户，要么两个账户都不变，没有其他情况。
     3. 隔离性(Isolation)
       * 一个事务的执行不能被其他事务干扰。
     4. 持久性(Durability)
       * 一个事务一旦提交，它对数据库中数据的改变就应该是永久性的
   * 事务控制语句
+    1. 开启一个事务
+      ```
+       BEGIN;
+       或者
+       START TRANSACTION
+      ```
+    2. 提交事务
+      ```
+       COMMIT;
+       或者
+       COMMIT WORK;
+      ```
+    3. 回滚
+      ```
+       ROLLBACK;
+      ```
   * 事务的处理方式
+    * 方式1: 用 BEGIN, ROLLBACK, COMMIT来实现
+      ```
+       BEGIN 开始一个事务
+       ROLLBACK 事务回滚
+       COMMIT 事务确认
+      ```
+    * 方式2: 直接用 SET 来改变 MySQL 的自动提交模式:
+      ```
+       SET AUTOCOMMIT=0 禁止自动提交
+       SET AUTOCOMMIT=1 开启自动提交
+      ```
+   * DEMO
+      ```
+       mysql> use RUNOOB;
+       Database changed
+       mysql> CREATE TABLE runoob_transaction_test( id int(5)) engine=innodb;  # 创建数据表
+       Query OK, 0 rows affected (0.04 sec)
+
+       mysql> select * from runoob_transaction_test;
+       Empty set (0.01 sec)
+
+       mysql> begin;  # 开始事务
+       Query OK, 0 rows affected (0.00 sec)
+
+       mysql> insert into runoob_transaction_test value(5);
+       Query OK, 1 rows affected (0.01 sec)
+
+       mysql> insert into runoob_transaction_test value(6);
+       Query OK, 1 rows affected (0.00 sec)
+
+       mysql> commit; # 提交事务
+       Query OK, 0 rows affected (0.01 sec)
+
+       mysql>  select * from runoob_transaction_test;
+       +------+
+       | id   |
+       +------+
+       | 5    |
+       | 6    |
+       +------+
+       2 rows in set (0.01 sec)
+
+       mysql> begin;    # 开始事务
+       Query OK, 0 rows affected (0.00 sec)
+
+       mysql>  insert into runoob_transaction_test values(7);
+       Query OK, 1 rows affected (0.00 sec)
+
+       mysql> rollback;   # 回滚
+       Query OK, 0 rows affected (0.00 sec)
+
+       mysql>   select * from runoob_transaction_test;   # 因为回滚所以数据没有插入
+       +------+
+       | id   |
+       +------+
+       | 5    |
+       | 6    |
+       +------+
+       2 rows in set (0.01 sec)
+      ```
 ### 数据库的备份、还原
   * 备份
+    1. 导出整个数据库(包括数据库中的数据）
+        ```
+         MYSQLDUMP -u用户名 -p密码 数据库名 > 备份的数据库名字.sql
+        ```
+        ```
+         MYSQLDUMP -uroot -pjsb backup > backup.sql
+        ```
+    2. 备份MySQL数据库某个(些)表
+       ```
+        MYSQLDUMP -u用户名 -p密码 数据库名字 数据库表名1 数据库其他表名2 > 备份数据库名字.sql
+       ```
+    3. 同时备份多个MySQL数据库
+       ```
+        MYSQLDUMP -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
+       ```
+       * 注意：
+          1. --databases  是 "--";
+          2. 需要备份的数据库名字1 需要备份的数据库名字2 中间是空格。
+    4. 仅仅备份数据库结构
+       ```
+        MYSQLDUMP --no-data -h主机名 -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
+       ```
+    5. 备份服务器上所有数据库
+       ```
+        MYSQLDUMP --all-databases -h主机名 -u用户名 -p密码 > 备份数据库名字.sql
+       ```
+    6. 直接将MySQL数据库压缩备份
+       ```
+        MYSQLDUMP -u用户名 -p密码 数据库名字  | GZIP >备份的数据库名字.sql.gz
+       ```
   * 还原
+    1. 还原MySQL数据库的命令
+       ```
+          MYSQL -h主机名 -u用户名 -p密码  需要恢复的数据库名字 < 已备份的数据库名字.sql 
+       ```
+       ```
+          MYSQL -uroot -pjsb bk < bk.sql
+       ```
+    2. 还原压缩的MySQL数据库
+       ```
+         GUNZIP < 刚开始备份集中的数据库名字.sql.gz | MYSQL -u用户名字 -p用户密码 需要恢复的数据库名字
+       ```
 ### 用户管理
   * 创建用户
-  * 创建用户并授权
+     * 只创建用户
+       ```
+        CREATE USER 用户名 IDENTIFIED BY '密码'
+
+       ```
+     * 创建用户并分配权限
+       ```
+        GRANT 权限类型 PRIVILEGES ON *.* TO '将权限授予哪个用户' IDENTIFIED BY '密码'; 
+        
+	     # 权限类型:[ALL|SELECT|INSERT|DELETE|UPDATE]
+	     # ON:on：表示这些权限对哪些数据库和表生效，格式：数据库名.表名，这里写“*”表示所有数据库，所有表。如果我要指定将权限应用到test库的user表中，可以这么写：test.user
+         # to：将权限授予哪个用户。格式：”用户名”@”登录IP或域名”。%表示没有限制，在任何主机都可以登录。比如：”yangxin”@”192.168.0.%”，表示yangxin这个用户只能在192.168.0IP段登录
+       ```
+       ```
+        GRANT SELECT ON db2.invoice TO 'jack'@'localhost';
+	    # 将数据库db2下的invoice的查看权限表授权给jack'@'localhost
+       ```
   * 删除用户
+       ```
+        DROP USERS '用户名'@'主机名';
+       ```
+       ```
+        DROP USER 'yangxin'@'localhost';
+       ```
   * 显示用户权限
+       ```
+         SHOW GRANTS FOR 用户名； //查看指定用户的权限
+       ```
+       ```
+         SHOW PROFILES; //查看所有权限
+       ```
 
 
 
