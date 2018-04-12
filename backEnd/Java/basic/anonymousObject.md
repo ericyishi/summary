@@ -2,18 +2,18 @@
 ### 匿名对象
 * 概念
   * 匿名对象是指创建对象时，只有创建对象的语句，却没有把对象地址值赋值给某个变量。
-        ```
+       ```
          public class Person{
-         	 public void eat(){
-         	 	System.out.println("有个人在吃饭");
-         	   }
-         	}
+          public void eat(){
+          	System.out.println("有个人在吃饭");
+            }
+         }
 
          创建一个普通对象
          Person p = new Person();
          创建一个匿名对象
          new Person();
-        ```
+       ```
 * 匿名对象的特点
   a. 创建匿名对象直接使用，没有变量名
      ```
