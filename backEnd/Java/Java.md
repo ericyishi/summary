@@ -19,4 +19,5 @@
    * [子类重写override](basic/override.md)
    * [抽象类和抽象方法](basic/abstractClass.md)
    * [接口](basic/interface.md)
+   * [匿名内部类的使用](basic/anonymousObject.md)
 
