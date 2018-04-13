@@ -23,6 +23,16 @@
   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/tool/gitHash.png)
   * **git log -p <file>** 查看指定文件提交历史记录
 
+#### 暂存
+  * **git stash "名字"** 比如想pull 最新代码，又不想加新commit;或者当在需要紧急处理一个bug时，工作区内容又没有完成，不适合提交，需要暂存起来。
 
+  * **git stash list** 列出所有保存的进度列表
+  * **git stash pop|apply [--index] [<stash>]**
+    * apply 只会读取暂存区的数据，通过  apply 后，暂存区的数据仍然存在；
+    * pop 是取出最新的一次暂存数据，取出后，这次数据就不会存在于暂存区中了。
+### 撤销
+  * **git reset HEAD** 适用于撤销掉git add .【绿字变红字(撤销add)】
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
+
+
