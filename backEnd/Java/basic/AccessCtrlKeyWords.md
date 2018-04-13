@@ -1,7 +1,15 @@
-# 访问控制关键字
+# 访问权限修饰符
 
-### 访问控制关键字类型
+### 访问权限修饰符类型
 ![img](https://github.com/ericyishi/img-folder/blob/master/summary/backend/accessCtrlKeyWords.png)
+* 在日常开发过程中，用于对类、方法、成员变量的访问的控制
+* 要想仅能在本类内部访问使用private修饰；
+* 要想本包中的类都可以访问不加修饰符即可；
+* 要想本包中的类与其他包中的子类可以访问使用protected修饰
+* 要想所有包中的所有类都可以访问使用public修饰。
+* **注意**如果类用public修饰，则类名必须与文件名相同。一个文件中只能有一个public修饰的类。
+
+
 ### private关键字
  * A.private概述
 	* private可以修饰成员内容包括成员方法和成员变量
