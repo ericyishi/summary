@@ -86,50 +86,50 @@
     ```
 * 循环
   * REPEAT
-   ```
-    标签名: REPEAT
-      循环体
-     UNTIL 退出循环条件
-     END REPEAT 标签名;
-
-     # 标签名是可以省略的，视情况而定。
-   ```
-   ```
-    CREATE PRODUCE dorepeat(p1 INT)
-     BEGIN
-      SET @X=0;
-      iter: REPEAT
-       SET @X=@X+1;
-       SELECT @X;
-       UNTIL @X>p1;
-       END REPEAT iter;
-     END
-   ```
-  * WHILE
-   ```
-    标签名: WHILE 执行条件 DO
+    ```
+     标签名: REPEAT
        循环体
-    END WHILE 标签名
-   ```
-   ```
-    CREATE PROCEDURE dowhile()
-    BEGIN
-      DECLARE v INT DEFAULT 5;
-      WHILE v>0 DO
-       SELECT v;
-       SET v=v-1;
-       END WHILE;
-     END
-   ```
+      UNTIL 退出循环条件
+      END REPEAT 标签名;
+
+      # 标签名是可以省略的，视情况而定。
+    ```
+    ```
+     CREATE PRODUCE dorepeat(p1 INT)
+      BEGIN
+       SET @X=0;
+       iter: REPEAT
+        SET @X=@X+1;
+        SELECT @X;
+        UNTIL @X>p1;
+        END REPEAT iter;
+      END
+    ```
+  * WHILE
+    ```
+     标签名: WHILE 执行条件 DO
+        循环体
+     END WHILE 标签名
+    ```
+    ```
+     CREATE PROCEDURE dowhile()
+     BEGIN
+       DECLARE v INT DEFAULT 5;
+       WHILE v>0 DO
+        SELECT v;
+        SET v=v-1;
+        END WHILE;
+      END
+    ```
   * 跳出循环
     * 跳出本次循环【作用类似于continue语句。只出现在REPEAT、WHILE、LOOP语句】
-    ```
-     ITERATE 标签名
-    ```
+      ```
+       ITERATE 标签名
+      ```
     * 跳出循环体【作用类似于break;】
-    ```
-    LEAVE 标签名
-    ```
+      ```
+      LEAVE 标签名
+      ```
 ### 存储过程
  * 概述
    * 存储过程是一种数据库对象，将一组预编译的SQL语句以一个存储单元的形式存储在服务器上，方便用户调用。
@@ -233,15 +233,15 @@
 	        * CONCAT(S1,S2,...Sn); //将S1，S2,...Sn连接成字符串。
 	        * CONCAT(SEP,S1,S2,...Sn)；//将S1，S2,...Sn连接成字符串，并用Sep字符间隔。
 	        * SUBSTRING(str,index,length);//从下标index【下标从1开始】开始以length长度来截取字符串
-	        ```
-	         UPDATE COURSE SET CNAME=SUBSTRING("www.baidu.com",2,3) WHERE CID=1;
-	         # 截取的结果是：ww.
-	        ```
-             SUBSTRING_INDEX(str,seprator,length);//从分隔符分隔，截止到以第length长度之前的来截取字符串
-	        ```
-             SUBSTRINGINDEX("www.baidu.com",".",2);
-	         # 截取的结果是：www.baidu
-	        ```
+	           ```
+	            UPDATE COURSE SET CNAME=SUBSTRING("www.baidu.com",2,3) WHERE CID=1;
+	            # 截取的结果是：ww.
+	           ```
+                SUBSTRING_INDEX(str,seprator,length);//从分隔符分隔，截止到以第length长度之前的来截取字符串
+	           ```
+                SUBSTRINGINDEX("www.baidu.com",".",2);
+	            # 截取的结果是：www.baidu
+	           ```
 	        * TRIM(str);//去除字符串首尾的所有空格
 	        * UUID();//生成具有唯一值的字符串， UUID很好用的一点是这样设计出来的id永远不会是重复的
 	        * LAST_INSERT_ID();//返回最后插入的id值【在使用MySQL时，若表中含自增字段（auto_increment类型），则向表中insert一条记录后，可以调用last_insert_id()来获得最近insert的那行记录的自增字段值】
@@ -250,59 +250,59 @@
          * CURDATE()或者CURRENT_DATE() //返回当前的日期
          * CURTIME()或者CURRENT_TIME() //返回当前的时间
          * DATE_ADD(date,INTERVAL int type)//返回的日期date加上间隔时间int结果(int必须按照关键字进行格式化)
-         ```
-          SELECT OrderId,DATE_ADD(OrderDate,INTERVAL 2 DAY) AS OrderPayDate
-          FROM Orders
-         ```
+           ```
+            SELECT OrderId,DATE_ADD(OrderDate,INTERVAL 2 DAY) AS OrderPayDate
+            FROM Orders
+           ```
          * DATE_SUB(date,INTERVAL int type)// 从日期减去指定的时间间隔。
          * DATE_FORMAT(date,format)//用于以不同的格式显示日期/时间数据。
-         ```
-          DATE_FORMAT(NOW(),'%d %b %y')
-         ```
+           ```
+            DATE_FORMAT(NOW(),'%d %b %y')
+           ```
          * NOW() //返回当前的日期和时间
          format 规定日期/时间的输出格式。
     2. 自定义函数
       * 语法
         1. 创建
-        ```
-         CREATE FUNCTION func_name(参数)
-         RETURNS type [DETERMINSTIC|NOT DETERMINSTIC(默认)]
-         BEGIN
-           函数体
-           RETURN
-         END
-        # 返回值确定性DETERMINSTIC，优化用，如果输入值跟上次一样，就不再计算，直接返回上次结果。
-        # 必须至少一个return语句
-        # 声明的地方时returns！
-        ```
-        ```
-         CREATE FUNCTION func_sum(num1 INT,num2 INT)
-         RETURNS INT
-         BEGIN
-           DECLARE i INT DEFAULT num1；
-           DECLARE result INT DEFAULT 0;
-           WHILE i<= num2 DO
-           SET result=result+i;
-           SET i=i+1;
-           END WHILE;
-           RETURN result;
-         END
+            ```
+             CREATE FUNCTION func_name(参数)
+             RETURNS type [DETERMINSTIC|NOT DETERMINSTIC(默认)]
+             BEGIN
+               函数体
+               RETURN
+             END
+            # 返回值确定性DETERMINSTIC，优化用，如果输入值跟上次一样，就不再计算，直接返回上次结果。
+            # 必须至少一个return语句
+            # 声明的地方时returns！
+            ```
+            ```
+             CREATE FUNCTION func_sum(num1 INT,num2 INT)
+             RETURNS INT
+             BEGIN
+               DECLARE i INT DEFAULT num1；
+               DECLARE result INT DEFAULT 0;
+               WHILE i<= num2 DO
+               SET result=result+i;
+               SET i=i+1;
+               END WHILE;
+               RETURN result;
+             END
 
-        ```
+            ```
 
         2. 删除
-        ```
-         DROP FUNCTION [IF EXISTS] func_name;
-        ```
+           ```
+            DROP FUNCTION [IF EXISTS] func_name;
+           ```
         3. 查看
-        ```
-          SHOW CREATE FUNCTION func_name;
-        ```
+           ```
+             SHOW CREATE FUNCTION func_name;
+           ```
         4. 使用
-        ```
-         SELECT 数据库名.函数名;
-         # 注意与存储过程的区别，不是CALL
-        ```
+           ```
+            SELECT 数据库名.函数名;
+            # 注意与存储过程的区别，不是CALL
+           ```
 ### 触发器
   * 概述
     * 触发器是一种特殊类型的存储过程，不由用户直接调用。主要用于强制类型完整性设置。
@@ -311,15 +311,15 @@
     * 用于MYSQL约束、默认值和规则的完整性检查。
   * 语法
     1. 创建
-      ```
-        CREATE TRIGGER 触发器名字 触发时间 触发事件 ON 表名 FOR EACH ROW
-        BEGIN
-         逻辑体
-        END
-        # 触发时间:[BEFORE|AFTER]
-        # 触发事件：[INSERT|UPDATE|DELETE]
-        # 逻辑体中不能再对本表进行INSERT、UPDATE、DELETE操作，以免递归循环触发。
-      ```
+       ```
+         CREATE TRIGGER 触发器名字 触发时间 触发事件 ON 表名 FOR EACH ROW
+         BEGIN
+          逻辑体
+         END
+         # 触发时间:[BEFORE|AFTER]
+         # 触发事件：[INSERT|UPDATE|DELETE]
+         # 逻辑体中不能再对本表进行INSERT、UPDATE、DELETE操作，以免递归循环触发。
+       ```
       * old和new的使用
         * 即操作前状态，和操作后状态
            ```
@@ -336,42 +336,42 @@
            ```
 	
     2. 删除
-      ```
-       DROP TRIGGER [IF EXISTS]触发器名字
-      ```
+        ```
+         DROP TRIGGER [IF EXISTS]触发器名字
+        ```
     3. 查看
-      ```
-       SHOW CREATE TRIGGER 触发器名字
-      ```
+       ```
+        SHOW CREATE TRIGGER 触发器名字
+       ```
     4. 使用
-      ```
-       无需手动调用，触发器自动监听状态变化
-      ```
+       ```
+        无需手动调用，触发器自动监听状态变化
+       ```
 
   * 条件处理器（异常处理）
     * 条件处理器相当于对异常的处理，当出现某种错误时候，将交由相应的处理器进行处理。
     * 语法
       1. 创建
-      ```
-       DECLARE 处理动作 HANDLER FOR 异常状态,[异常状态,...] 执行语句
-       # 处理动作:[CONTINUE(继续执行),EXIT(跳出BEGIN END 语句块)]
-       # 异常状态:[mysql_erroe_code|NOT FOUND|SQLWARNING|SQLEXCEPTION]
-      ```
-      ```
-       DROP PROCEDURE IF EXISTS exp_pro_demo;
-       CREATE PROCEDURE exp_pro_demo(IN p_name VARCHAR(10))
-       BEGIN
-        DECLARE vname VARCHAR(10) DEFAULT "hello";
-        # 所有局部变量的申明必须放在异常声明的前面，会话变量无此限制。
-        DECLARE EXIT HANDLER FOR NOT FOUND SET @info='data not found';
-        SELECT `sname` INTO vanem from stu where sname=p_name;
-        SELECT vname;
-       END
+         ```
+          DECLARE 处理动作 HANDLER FOR 异常状态,[异常状态,...] 执行语句
+          # 处理动作:[CONTINUE(继续执行),EXIT(跳出BEGIN END 语句块)]
+          # 异常状态:[mysql_erroe_code|NOT FOUND|SQLWARNING|SQLEXCEPTION]
+         ```
+         ```
+          DROP PROCEDURE IF EXISTS exp_pro_demo;
+          CREATE PROCEDURE exp_pro_demo(IN p_name VARCHAR(10))
+          BEGIN
+           DECLARE vname VARCHAR(10) DEFAULT "hello";
+           # 所有局部变量的申明必须放在异常声明的前面，会话变量无此限制。
+           DECLARE EXIT HANDLER FOR NOT FOUND SET @info='data not found';
+           SELECT `sname` INTO vanem from stu where sname=p_name;
+           SELECT vname;
+          END
 
-       # 调用
-       CALL exp_pro_demo('VINCENT');//传入一个没有的值@info的值就被赋予data not found
-       SELECT @info;
-      ```
+          # 调用
+          CALL exp_pro_demo('VINCENT');//传入一个没有的值@info的值就被赋予data not found
+          SELECT @info;
+         ```
 ### 游标
   * 概念
      * 游标(cursor) 是一个存储在MYSQL服务器上的数据库查询，它不是一条SELECT语句，而是被该语句检索出来的**结果集**。
@@ -446,21 +446,21 @@
       * 一个事务一旦提交，它对数据库中数据的改变就应该是永久性的
   * 事务控制语句
     1. 开启一个事务
-      ```
-       BEGIN;
-       或者
-       START TRANSACTION
-      ```
+       ```
+        BEGIN;
+        或者
+        START TRANSACTION
+       ```
     2. 提交事务
-      ```
-       COMMIT;
-       或者
-       COMMIT WORK;
-      ```
+       ```
+        COMMIT;
+        或者
+        COMMIT WORK;
+       ```
     3. 回滚
-      ```
-       ROLLBACK;
-      ```
+       ```
+        ROLLBACK;
+       ```
   * 事务的处理方式
     * 方式1: 用 BEGIN, ROLLBACK, COMMIT来实现
       ```
