@@ -4,25 +4,25 @@
 
 ### SQL(Structured Query Language)结构化查询语言
 * 用于管理关系型数据库，并与数据库中数据进行通信的语言。
-* 不同的RDBMS，即关系数据库管理系统(Relational Database Management System)对SQL写法上有所不同。
+* 不同的RDBMS，即关系数据库管理系统(Relational Database Management System)对SQL写法上有所不同:MySQL、Oracle...。
 * 不区分大小写，但习惯将内置命令大写。
 ### SQL语句的分类
 
 * DDL(Data Definition Language)
-  * **create**
-  * **alter**
-  * **drop**
-  * **rename**
-  * **truncate**
+  * **CREATE**
+  * **ALTER**
+  * **DROP**
+  * **RENAME**
+  * **TRUNCATE**
 * DML(Data Manipulation Language)
-  * **insert**
-  * **update**
-  * **delete**
+  * **INSERT**
+  * **UPDATE**
+  * **DELETE**
 * DQL(Data Query Language)
-  * **select**
+  * **SELECT**
 * DCL(Data Control Language)
-  * **grant** 授权
-  * **revoke** 解除授权
+  * **GRANT** 授权
+  * **REVOKE** 解除授权
 ### SQL注释
   * 使用 #注释一行
     ```
