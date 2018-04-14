@@ -325,7 +325,7 @@
           定义一个触发器tri_student_check_sex ,用于检测向student表插入数据性别列（sex）和年龄列（age）的有效性 （只包含 男 女, 触发器用于插入之前，默认为男，年龄0-100 有效，默认为0）10'
             CREATE TRIGGER tri_student_check_sex BEFORE INSERT ON student FOR EACH ROW
                 BEGIN
-                 IF NEW.sex !="男" AND / && NEW.sex != "女" THEN
+                 IF NEW.sex !="男" AND (或使用&&) NEW.sex != "女" THEN
                  SET NEW.sex = "男";
                  END IF;
                  IF NEW.age < 0 OR NEW.age >100 then
