@@ -101,7 +101,8 @@
       iter: REPEAT
        SET @X=@X+1;
        SELECT @X;
-       UNTIL @X>p1 END REPEAT iter;
+       UNTIL @X>p1;
+       END REPEAT iter;
      END
    ```
   * WHILE
@@ -117,7 +118,7 @@
       WHILE v>0 DO
        SELECT v;
        SET v=v-1;
-      END WHILE
+       END WHILE;
      END
    ```
   * 跳出循环
