@@ -208,6 +208,12 @@
       username VARCHAR(50) UNIQUE
      )
     ```
+    * 对于已存在的列需要添加约束可以使用
+      ```
+       ALTER TABLE 表名 ADD CONSTRAINT UNIQUE(字段名);
+       或者
+       ALTER TABLE 表名 MODIFY 字段名 类型 UNIQUE;
+      ```
 * 创建非空约束
     ```
      CREATE TABLE demoI(
