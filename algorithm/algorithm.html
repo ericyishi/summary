@@ -1,0 +1,58 @@
+html<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        code{
+            background-color: #ffe0a6;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>冒泡排序</h1>
+    <code>
+        var examplearr = [92,1, 4, 55, 32, 21, 44, 2];
+        function sortarr(arr) {
+        for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = 0; j < arr.length - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+        var temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        }
+        }
+        }
+        document.write(arr);
+        }
+
+        sortarr(examplearr);
+    </code>
+    <p class="result r1"></p>
+
+</section>
+<script>
+    (function(){
+        var examplearr = [92,1, 4, 55, 32, 21, 44, 2];
+        function sortarr(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            document.write(arr);
+        }
+
+        sortarr(examplearr);
+    })()
+</script>
+</body>
+</html>
