@@ -26,26 +26,26 @@
        * 对全局变量的修改会影响到整个服务器的用户，但是对会话变量的修改，只会影响到当前的用户(也就是当前的数据库连接)
 
   3. 局部变量
-    * 使用declare定义
-      ```
-       DECLARE local_gender CHAR(1) DEFAULT "male";
-      ```
-    * 赋值
-      ```
-      # 方式1：直接赋值
-       SET local_gender="female";
-      ```
-       或者
-      ```
-      # 方式2： 选择复制
-       SELECT sex INTO local_gender FROM stu WHERE sname="zhangsan";
-      ```
-    * 显示值
-      ```
-       SELECT local_gender;
-      ```
-    * 作用范围。局部变量只在begin-end语句块之间有效。在begin-end语句块运行完之后，局部变量就消失了。
-    * 局部变量前面不能加@，不要与会话变量同名，避免覆盖。
+     * 使用declare定义
+       ```
+        DECLARE local_gender CHAR(1) DEFAULT "male";
+       ```
+     * 赋值
+       ```
+       # 方式1：直接赋值
+        SET local_gender="female";
+       ```
+        或者
+       ```
+       # 方式2： 选择复制
+        SELECT sex INTO local_gender FROM stu WHERE sname="zhangsan";
+       ```
+     * 显示值
+       ```
+        SELECT local_gender;
+       ```
+     * 作用范围。局部变量只在begin-end语句块之间有效。在begin-end语句块运行完之后，局部变量就消失了。
+     * 局部变量前面不能加@，不要与会话变量同名，避免覆盖。
 ### 流程控制
 * **注意**
   1. mysql中没有{},只有BEGIN和END，代替{}
