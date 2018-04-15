@@ -2,12 +2,27 @@
 
 ### 访问权限修饰符类型
 ![img](https://github.com/ericyishi/img-folder/blob/master/summary/backend/accessCtrlKeyWords.png)
-* 在日常开发过程中，用于对类、方法、成员变量的访问的控制
+* 不能同时使用的修饰符
+  * 同时，abstract与private不能同时使用；
+  * 同时，abstract与static不能同时使用；
+  * 同时，abstract与final不能同时使用。
 * 要想仅能在本类内部访问使用private修饰；
 * 要想本包中的类都可以访问不加修饰符即可；
 * 要想本包中的类与其他包中的子类可以访问使用protected修饰
 * 要想所有包中的所有类都可以访问使用public修饰。
 * **注意**如果类用public修饰，则类名必须与文件名相同。一个文件中只能有一个public修饰的类。
+
+### public 关键字
+* 公共访问,
+* 能修饰：类,方法,成员变量
+
+### protected 关键字
+* 受保护访问
+* 能修饰：方法,成员变量
+
+### 默认不写
+* 默认访问
+* 能修饰：类,方法,成员变量
 
 
 ### private关键字

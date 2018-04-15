@@ -33,6 +33,8 @@
       			return new Person();
       		}
       		public static void method(Person p){//作为方法接收的参数
+      		  p.eat();
+
       		}
       	}
 

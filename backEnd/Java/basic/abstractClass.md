@@ -1,6 +1,7 @@
 # 抽象类
 * 关键字abstract
 * 就是将一类具体的事物，具有的行为相同，但是具体的内容又不一样，将这种共性抽取出来。就是抽象类。
+* 可以用来修饰**类**和**方法**
 ### 抽象类的用途
 * 抽象类是对象的抽象，继承抽象类,强制子类重写抽象的方法
 ### 定义格式
@@ -69,6 +70,66 @@
 * 1.可以当注释用,方便阅读；
 * 2.编译器可以给你验证@Override下面的方法是否是你父类中所有的，如果不是则报错。例如，你想重写父类中的某个方法，如果没写@Override，而你下面的方法又写错了，比如参数类型个数或者方法名不同，这时你的编译器是可以编译通过的，因为编译器以为这个方法是你的子类中自己增加的方法。
 
+
+### 抽象类作为方法参数与返回值
+1. 抽象类作为方法参数
+   * 开发中，抽象类作为方法参数的情况也很多见。当遇到方法参数为抽象类类型时，要**传入一个实现抽象类所有抽象方法的子类对象**。
+     ```
+      //抽象类
+      		abstract class Person{
+      			public abstract void show();
+      		}
+      		class Student extends Person{
+      			@Override
+      			public void show() {
+      				System.out.println("重写了show方法");
+      			}
+      		}
+      		//测试类
+      		public class Test {
+      			public static void main(String[] args) {
+      				//通过多态的方式，创建一个Person类型的变量，而这个对象实际是Student
+      				Person p = new Student();
+      				//调用method方法
+      				method(p);
+      			}
+
+      			//定义一个方法method，用来接收一个Person类型对象【Person是一个抽象类】，在方法中调用Person对象的show方法
+      			public static void method(Person p){//抽象类作为参数
+      				//通过p变量调用show方法,这时实际调用的是Student对象中的show方法
+      				p.show();
+      		}
+      		}
+     ```
+2. 抽象类作为方法返回值
+  * 抽象类作为方法返回值的情况，也是有的，这时需要**返回一个实现抽象类所有抽象方法的子类对象**
+  ```
+   //抽象类
+   		abstract class Person{
+   			public abstract void show();
+   		}
+   		class Student extends Person{
+   			@Override
+   			public void show() {
+   				System.out.println("重写了show方法");
+   			}
+   		}
+   		//测试类
+   		public class Test {
+   			public static void main(String[] args) {
+   				//调用method方法，获取返回的Person对象
+   				Person p = method();
+   				//通过p变量调用show方法,这时实际调用的是Student对象中的show方法
+   				p.show();
+   			}
+
+   			//定义一个方法method，用来获取一个Person对象，在方法中完成Person对象的创建
+   			public static Person method(){
+   				Person p = new Student();
+   				return p;
+   			}
+   		}
+  ```
 
 ### 案例
 ```

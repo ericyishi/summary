@@ -247,3 +247,65 @@ public class Test {
 	}
 }
 ```
+
+
+### 接口作为方法参数与返回值
+1. 接口作为方法参数
+   * 接口作为方法参数的情况是很常见的，经常会碰到。当遇到方法参数为接口类型时，那么该方法要**传入一个接口实现类对象**。
+     ```
+       //接口
+       		interface Smoke{
+       			public abstract void smoking();
+       		}
+       		class Student implements Smoke{
+       			@Override
+       			public void smoking() {
+       				System.out.println("课下吸口烟，赛过活神仙");
+       			}
+       		}
+       		//测试类
+       		public class Test {
+       			public static void main(String[] args) {
+       				//通过多态的方式，创建一个Smoke类型的变量，而这个对象实际是Student
+       				Smoke s = new Student();
+       				//调用method方法
+       				method(s);
+       			}
+
+       			//定义一个方法method，用来接收一个Smoke类型对象，在方法中调用Smoke对象的show方法
+       			public static void method(Smoke sm){//接口作为参数
+       				//通过sm变量调用smoking方法，这时实际调用的是Student对象中的smoking方法
+       				sm.smoking();
+       			}
+       		}
+     ```
+
+2. 接口作为方法返回值
+   * 当遇到方法返回值是接口类型时，那么该方法需要**返回一个接口实现类对象**。
+     ```
+       //接口
+       		interface Smoke{
+       			public abstract void smoking();
+       		}
+       		class Student implements Smoke{
+       			@Override
+       			public void smoking() {
+       				System.out.println("课下吸口烟，赛过活神仙");
+       			}
+       		}
+       		//测试类
+       		public class Test {
+       			public static void main(String[] args) {
+       				//调用method方法，获取返回的会吸烟的对象
+       				Smoke s = method();
+       				//通过s变量调用smoking方法,这时实际调用的是Student对象中的smoking方法
+       				s.smoking();
+       			}
+
+       			//定义一个方法method，用来获取一个具备吸烟功能的对象，并在方法中完成吸烟者的创建
+       			public static Smoke method(){
+       				Smoke sm = new Student();
+       				return sm;
+       			}
+       		}
+     ```
