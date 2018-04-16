@@ -1,6 +1,6 @@
 # 继承
 ### 继承的概念
-* 子类会自动拥有父类所有**可继承的**（除开私有的）属性和方法。
+* 子类会自动拥有父类所有**可继承的**（除开私有的）**属性和方法**。
 ### 继承的体系
   * a: 父类: 具有所有子类的共性内容;
 	   子类: 不但有共性还有自身特有的内容
@@ -100,5 +100,25 @@
      }
 
     ```
+* 继承方法并调用
+   ```
+     package com.test_2.eclipse;
 
+     public class People {
+       public void speak(){
+     	  System.out.println("i'm a people");
+       }
+     }
+
+
+
+     package com.test_2.eclipse;
+     public class Student extends People{
+       public static void main(String args[]){
+     	  Student stu=new Student();
+     	  stu.speak();//继承后可以直接调用
+       }
+
+     }
+   ```
 

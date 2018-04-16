@@ -13,27 +13,36 @@
 * **ctrl+1** 提示错误建议
 * **ctrl+2** 改名
 * **Alt+/** 内容自动补全
-* **ctrl+O** 调出类中所有的方法
-```
-①补充方法
-输入syso然后按快捷键alt+/就可以自动补全了
-输入main+alt+/快速补全main方法
-②引入系统的类
-输入sc，alt+/,选择Scanner
-这时自动补全，并自动导入包import java.util.Scanner
-③循环遍历
-输入for，alt+/,选择iterate
-自动生成：
-for (int i = 0; i < args.length; i++) {
+    ```
+    ①补充方法
+    输入syso然后按快捷键alt+/就可以自动补全了
+    输入main+alt+/快速补全main方法
+    ②引入系统的类
+    输入sc，alt+/,选择Scanner
+    这时自动补全，并自动导入包import java.util.Scanner
+    ③循环遍历
+    输入for，alt+/,选择iterate
+    自动生成：
+    for (int i = 0; i < args.length; i++) {
 
-		}
-```
+    		}
+    ```
+* **ctrl+O** 调出类中所有的方法
+
 * **shift+alt+l** 类自动补全
 ```
 new CarWrapper(qq);
 按下快捷键后，补全的结果：
 CarWrapper carWrapper = new CarWrapper(qq);
 ```
+
+* **ctrl+T** 安装ctrl鼠标移动到类名上，按T，会出现所选中类的继承树
 ### 常用设置
 * **代码行显示** 在代码区域的左边空白区域，右键 -- Show Line Numbers
 * **还原默认显示模式** Window -- Reset Prespective
+
+
+### 导入jar
+1. 在根文件夹下创建lib文件夹，用于同一管理所有的jar文件
+2. 将所有外部的jar放入这个文件夹下
+3. 右键点击jar文件，点击Build Path，选择Add to Build Path，此时查看项目根文件夹下的.classpath文件，发现新加入的jar包路径被配置到了该文件中。说明可以使用jar包中所有类了。
