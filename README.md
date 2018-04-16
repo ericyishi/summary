@@ -27,6 +27,9 @@
     * [SQL【DQL-高级查询】(mysql为例)](database/sql_dql_advanced.md)
     * [SQL【高级特性】(mysql为例子)](database/sql_highLevel.md)
   * 非关系型数据库
+* 测试
+  * 开发语言
+    * [python](testing/python/python.md)
 * [算法](algorithm/algorithm.md)
 * 工具
   * 版本管理
