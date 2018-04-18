@@ -394,4 +394,64 @@
 1. 定义
    * 使用 {键1:值1,键2:值2}
    * 通过键来存取元素的，不是索引
-2.
+   * 根据键获取来获取值
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      print(dic_a["d1"]) # haha
+     ```
+2. 常用方法
+   * update() 向另一个字典里添加一个字典
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      dic_b = {"1": 123}
+      dic_a.update(dic_b)  # 将dic_b追加到dic_a
+     ```
+   * get() 获取指定的键。就返回none。
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      print(dic_a.get("d1")) # haha
+      print(dic_a.get("d3"))  # none
+     ```
+   * setdefault() 可以获取键，若键不存在，会默认添加为添加键值，值为none。
+     * 所以也可以用这个方法直接添加键值
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      print(dic_a.setdefault("d1")) # haha
+      print(dic_a.setdefault("d3")) # None
+      print(dic_a) # {'d1': 'haha', 'd2': 'hehe', 'd3': None}
+      print(dic_a.setdefault("wang", "33")) # 33
+      print(dic_a) # {'wang': '33', 'd1': 'haha', 'd2': 'hehe', 'd3': None}
+     ```
+   * clear() 清除所有键值元素
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      dic_a.clear()
+      print(dic_a) # {}
+     ```
+   * values() 返回所有的值
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      print(dic_a.values()) # dict_values(['haha', 'hehe'])
+     ```
+   * keys() 返回所有键
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      print(dic_a.keys()) # dict_keys(['d1', 'd2'])
+     ```
+   * copy() 深度拷贝
+     ```
+      dic_a = {"d1": "haha", "d2": "hehe"}
+      dic_c = dic_a.copy()
+      print(dic_a==dic_c) # True
+      print(id(dic_c)) # 4164704
+      print(id(dic_a)) # 4164424
+     ```
+   * fromkeys() 创建一个新字典，以seq作为键【可以是多个值】，值只能有一个
+     ```
+      # dict 对象是固定的写法
+
+      seq = ['name', 'age', 'sex']
+      value = 10
+      dic_d = dict.fromkeys(seq, value)
+      print(dic_d) # {'sex': 10, 'age': 10, 'name': 10}
+     ```
