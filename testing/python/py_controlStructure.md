@@ -19,7 +19,7 @@
 ### 循环结构
 * 没有switch case语句，也没有do while
 1. for循环
-   1. 循环遍历元素
+   1. for 变量 in 对象
       ```
        # 遍历的是字符串
        str="hello world"
@@ -28,20 +28,36 @@
         print(i,end=" ") # 所有结果都在一行，并以一个空格分隔
       ```
        * 这里用end=" "指定输出以空格分隔，而不是默认换行
+
+    2. for 变量 in range()
+       * range() 指定区间范围
+         ```
+          range(10) 取值是[0,10)
+          区间值里面也能够切片
+          rang(0:10:2)
+         ```
+       * 常与for语句搭配使用
+         ```
+          # 这里的i是下标
+          for i in rang(3):
+           print(i) # 0,1,2
+         ```
 2. while循环
-3. 常用函数
-   * range() 指定区间范围
-     ```
-      range(10) 取值是[0,10)
-      区间值里面也能够切片
-      rang(0:10:2)
-     ```
-     * 常与for语句搭配使用
-       ```
-        # 这里的i是下标
-        for i in rang(3)
-        print(i) # 0,1,2
-       ```
+   1. while
+      ```
+       while(退出循环的条件):
+         循环体
+      ```
+   2. while else
+      ```
+       while(退出循环的条件):
+
+         循环体
+       else:
+         退出循环时执行一次
+      ```
+
+
 4. continue与break
    * continue跳出本次循环
    * break 跳出循环体

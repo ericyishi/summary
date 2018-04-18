@@ -6,6 +6,13 @@
 * Tuple【元组】
 * Sets【集合】
 * Dictionary【字典】
+```
+ * Python中的变量是没有类型的，我们可以把它看做一个(*void)类型的指针
+ * 变量是可以指向任何对象的，而对象才是有类型的。
+ * 而且Python中的对象有不可变【指内存地址】对象（number，string，tuple等）和可变
+对象之分（list，dict等）。
+```
+
 
 
 ### 数值型
