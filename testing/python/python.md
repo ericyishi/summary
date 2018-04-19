@@ -7,3 +7,6 @@
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
+  * [安装第三方库](py_installThirdPartyLibraries.md)
+* 常用操作
+  * [连接数据库](py_installThirdPartyLibraries.md)
