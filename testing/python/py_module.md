@@ -10,16 +10,18 @@
 * import module
   ```
    import math
-   #使用
+   #导入了math包
    math.random(1,10)
   ```
 * from moudule import funcname
   ```
    from math import random
-   #使用
-   math.random(1,10)
+   #使用直接导入了math包下的random方法
+   random(1,10)
   ```
 
+* **注意：**
+  * 避免两个模块之间相互导包，会报错的！
 
 ### 包【package】
 #### 包的定义

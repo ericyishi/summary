@@ -45,12 +45,12 @@
 2. while循环
    1. while
       ```
-       while(退出循环的条件):
+       while(循环的条件):
          循环体
       ```
    2. while else
       ```
-       while(退出循环的条件):
+       while(循环的条件):
 
          循环体
        else:

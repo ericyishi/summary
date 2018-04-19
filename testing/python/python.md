@@ -9,4 +9,4 @@
   * [模块与包](py_module.md)
   * [安装第三方库](py_installThirdPartyLibraries.md)
 * 常用操作
-  * [连接数据库](py_installThirdPartyLibraries.md)
+  * [连接数据库](py_PDBC.md)
