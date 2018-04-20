@@ -90,3 +90,25 @@
   ```
   * **注意：**
      * 符合日期、时间格式的字符串，可以由mysql自动转换为日期时间格式的值，如"2018-04-02 15:12:30"
+
+  ## 注意事项
+     1. 设置字符集为utf-8的时候是utf8【不是utf-8】
+        ```
+         CREATE DATABASE 'LUCAS' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_cs;
+        ```
+     2. 默认数据库是不区分大小写的【需要配置】
+        ```
+         SELECT * FROM USER WHERE UNAME="Zhang";
+         SELECT * FROM USER WHERE UNAME="zhang";
+         两个语句是一样的
+
+        ```
+        * 1.将数据库数据通过mysqldump导出;
+        * 2.在my.cnf中更改lower_case_tables_name = 2，并重启mysql数据库。
+        * 3.将导出的数据导入mysql数据库中。
+
+     3. 除了上面的方法外，还可以在创建表的时候改变字符编码
+        ```
+         CREATE DATABASE LUCAS DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+        ```
+        * 网上有的地方写得是utf8_general_cs 但是mysql不支持这种字符集，所以使用utf8_bin就好了。

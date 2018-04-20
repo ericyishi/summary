@@ -25,6 +25,7 @@
     ```
      CREATE DATABASE 数据库名 CHARACTER SET utf8;
     ```
+    * 数据库名不用引号包裹
 
 * 修改数据库字符编码集
     ```

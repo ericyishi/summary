@@ -100,6 +100,7 @@
        # 找出四个字的姓名的学生信息
          SELECT * FROM student WHERE sname LIKE "____";
     ```
+
   * 空行查询
     * NULL
       * 注意关键字是IS，而不是等于号=
