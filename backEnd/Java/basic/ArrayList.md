@@ -120,9 +120,60 @@ import java.util.ArrayList;
 ### 迭代器的使用
 * 因为集合对应了，不同的数据类型【ArrayList是数组,LinkedList底层是链表】，迭代器就就提供了统一的接口，将不同类型的数据元素都能遍历出来。
 * 迭代器提供的方法：
+   *  .iterator() 实例一个迭代器对象
    *  boolean hasNext() 判断集合中还有没有可以被取出的元素,如果有返回true
    *  next() 取出集合中的下一个元素
+
 * 迭代器的定义
     ```
      Iterator<数据类型> it =集合.iterator() //运行结果就是Iterator接口的实现类的对象
     ```
+* 迭代器的使用
+    ```
+     	public static void main(String[] args) {
+		          Collection<String> coll = new ArrayList<String>();
+		          coll.add("abc1");
+		          coll.add("abc2");
+		          coll.add("abc3");
+		          coll.add("abc4");
+		          //迭代器,对集合ArrayList中的元素进行取出
+		          //调用集合的方法iterator()获取出,Iterator接口的实现类的对象
+		          Iterator<String> it = coll.iterator();
+		          String s1 = it.next(); //这个条语句s1是abc1
+		          //迭代是反复内容,使用循环实现,循环的条件,集合中没元素, hasNext()返回了false
+		          while(it.hasNext()){
+		            String s = it.next();
+		            System.out.println(s);//"abc2","abc3","abc4"
+		          }
+
+		        }
+    ```
+* 使用for循环迭代写法
+    ```
+     for (Iterator<String> it2 = coll.iterator(); it2.hasNext();  ) {
+         System.out.println(it2.next());
+       }
+    ```
+
+### for循环升级版
+* 可以遍历数组、集合等！
+* jdk1.5以上才支持
+* 格式
+   ```
+   //数组
+     String[] str = {"321","123","ABC"};
+     for(String s : str){
+       System.out.println(s);
+     }
+   ```
+   ```
+   //集合
+    public void function_2(){
+          ArrayList<Person> array = new ArrayList<Person>();
+          array.add(new Person("a",20));
+          array.add(new Person("b",10));
+          for(Person p : array){
+            System.out.println(p);// System.out.println(p.toString());
+          }
+        }
+   ```
