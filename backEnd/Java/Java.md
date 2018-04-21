@@ -3,10 +3,20 @@
  * [编译与运行](basic/compileAndRun.md)
  * [数据类型与转换](basic/dataType.md)
    * 引用类型
-      * [集合ArrayList与迭代器Iterator](basic/ArrayList.md)
+      * [Collection接口与迭代器Iterator](basic/collection.md)
+         1. List接口
+             * ArrayList
+         2. set接口
+      * Map接口
+      * [集合ArrayList](basic/ArrayList.md)
           * [泛型的概念](basic/generics.md)
  * [变量](basic/variable.md)
  * [运算符](basic/operator.md)
+ * 控制结构
+     1. 顺序
+     2. 选择
+     3. 循环
+          * [for循环](basic/for.md)
  * [数组](basic/array.md)
  * [方法定义与调用以及重载overload](basic/method.md)
  * [构造方法](basic/constructor.md)
