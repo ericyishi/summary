@@ -3,13 +3,13 @@
  * [编译与运行](basic/compileAndRun.md)
  * [数据类型与转换](basic/dataType.md)
    * 引用类型
-      * [Collection接口与迭代器Iterator](basic/collection.md)
+      * [Collection接口与迭代器Iterator](basic/Collection/collection.md)
          1. List接口
-             * [ArrayList实现类](basic/ArrayList.md)
+             * [ArrayList实现类](basic/Collection/List/ArrayList.md)
                   * [泛型的概念](basic/generics.md)
 
-             * [LinkedList实现类](basic/LinkedList.md)
-             * [Vector实现类](basic/vector.md)
+             * [LinkedList实现类](basic/Collection/List/LinkedList.md)
+             * [Vector实现类](basic/Collection/List/vector.md)
          2. Set接口
       * Map接口
 
