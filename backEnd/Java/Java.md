@@ -14,8 +14,8 @@
              1. [HashSet](basic/Collection/Set/HashSet.md)
              2. [LinkedHashSet](basic/Collection/Set/LinkedHashSet.md)
       * [Map接口](basic/Map/map.md)
-         1. HashMap
-         2. LinkedHashMap
+         1. [HashMap](basic/Map/HashMap.md)
+         2. [LinkedHashMap](basic/Map/LinkedHashMap.md)
 
  * [变量](basic/variable.md)
  * [运算符](basic/operator.md)
