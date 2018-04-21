@@ -41,7 +41,7 @@
 * 使用ArrayList也可以直接调用这些方法，因为其是Collection具体实现类
 1. toArray() 集合转为数组
   ```
-   //使用了多态，调用父类Collection的方法
+   //使用了多态，调用父类Collection的方法,因为Collection是接口，无法直接new的
    Collection<String> coll=new ArrayList<String>()
    coll.add("123");
    coll.add("456");
@@ -102,3 +102,29 @@
          System.out.println(it2.next());
        }
     ```
+### 迭代器的并发修改异常
+    * 在迭代过程中不要去对集合做增删操作，改变集合的长度。否则会报错：java.util.ConcurrentModificationException
+    * 修改内容是允许的
+    ```
+     public static void test_iterator_error(){
+     		List<String> list = new ArrayList<String>();
+             list.add("abc1");
+             list.add("abc2");
+             list.add("abc3");
+             list.add("abc4");
+
+             //对集合使用迭代器进行获取,获取时候判断集合中是否存在 "abc3"对象
+             //如果有,添加一个元素 "ABC3"
+             Iterator<String> it = list.iterator();
+             while(it.hasNext()){
+               String s = it.next();
+               //对获取出的元素s,进行判断,是不是有"abc3"
+               if(s.equals("abc3")){
+               // list.add("ABC3"); // 会报错
+                   s="zhang"; // 可以修改内容
+               }
+               System.out.println(s);
+             }
+     	}
+    ```
+    * 或者通过ListIterator迭代器操作元素是可以的，ListIterator的出现，解决了使用Iterator迭代过程中可能会发生的错误情况。

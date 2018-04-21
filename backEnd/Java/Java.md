@@ -5,11 +5,12 @@
    * 引用类型
       * [Collection接口与迭代器Iterator](basic/collection.md)
          1. List接口
-             * ArrayList
+             * [ArrayList](basic/ArrayList.md)
+                  * [泛型的概念](basic/generics.md)
+             *
          2. set接口
       * Map接口
-      * [集合ArrayList](basic/ArrayList.md)
-          * [泛型的概念](basic/generics.md)
+
  * [变量](basic/variable.md)
  * [运算符](basic/operator.md)
  * 控制结构
