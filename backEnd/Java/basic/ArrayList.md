@@ -1,7 +1,9 @@
-# 集合ArrayList
-### 集合的定义
+# ArrayList集合
+### 特点
+* 底层采用的是数组结构
+### 定义
 ```
-  数据类型<集合存储的数据类型> 变量名=new 数据类型<集合存储的数据类型 >();
+  ArrayList<集合存储的数据类型> 变量名=new ArrayList<集合存储的数据类型 >();
 ```
 * 首先要导入包 import java.util.ArrayList
 ```
