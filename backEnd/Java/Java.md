@@ -10,9 +10,9 @@
 
              2. [LinkedList](basic/Collection/List/LinkedList.md)
              3.  [Vector](basic/Collection/List/vector.md)
-         2. Set接口
+         2. [Set接口](basic/Collection/Set/Set.md)
              1. [HashSet](basic/Collection/Set/HashSet.md)
-             2. LinkedHashSet
+             2. [LinkedHashSet](basic/Collection/Set/LinkedHashSet.md)
       * Map接口
 
  * [变量](basic/variable.md)
