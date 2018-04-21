@@ -4,13 +4,15 @@
  * [数据类型与转换](basic/dataType.md)
    * 引用类型
       * [Collection接口与迭代器Iterator](basic/Collection/collection.md)
-         1. List接口
-             1. [ArrayList实现类](basic/Collection/List/ArrayList.md)
+         1. [List接口](basic/Collection/List/list.md)
+             1. [ArrayList](basic/Collection/List/ArrayList.md)
                   * [泛型的概念](basic/generics.md)
 
-             2. [LinkedList实现类](basic/Collection/List/LinkedList.md)
-             3.  [Vector实现类](basic/Collection/List/vector.md)
+             2. [LinkedList](basic/Collection/List/LinkedList.md)
+             3.  [Vector](basic/Collection/List/vector.md)
          2. Set接口
+             1. [HashSet](basic/Collection/Set/HashSet.md)
+             2. LinkedHashSet
       * Map接口
 
  * [变量](basic/variable.md)
