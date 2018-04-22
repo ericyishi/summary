@@ -8,5 +8,7 @@
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
   * [安装第三方库](py_installThirdPartyLibraries.md)
+* 虚拟环境
+  * [virtualenv与virtualenvwrapper](./tools/py_virtualenv.md)
 * 常用操作
-  * [连接数据库](py_PDBC.md)
+  * [连接数据库](./tools/py_PDBC.md)
