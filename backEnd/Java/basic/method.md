@@ -89,3 +89,92 @@ public static void printStore(String[] brand,double[] size,double[] price,int[] 
   * d: 重载和修饰符无关
   * e: 技巧: 重载看方法名和参数列表
 
+
+### 参数
+1. 可变参数
+   *  JDK1.5新的特性,方法的可变参数
+   *  前提: 方法参数数据类型确定,参数的个数任意
+   *  可变参数语法: 数据类型...变量名
+   *  可变参数,本质就是一个数组
+   ```
+    public class VarArgumentsDemo {
+         	public static void main(String[] args) {
+         		//调用一个带有可变参数的方法,传递参数,可以任意
+         	//	getSum();
+         		int sum = getSum(5,34,3,56,7,8,0);
+         		System.out.println(sum);
+
+         	}
+
+         	/*
+         	 * 定义方法,计算10个整数和
+         	 * 方法的可变参数实现
+         	 */
+         	public static int getSum(int...a){
+         		int sum = 0 ;
+         		for(int i : a){
+         			sum = sum + i;
+         		}
+         		return sum;
+         	}
+
+         	/*
+         	 * 定义方法,计算3个整数和
+         	 */
+         	/*public static int getSum(int a,int b ,int c){
+         		return a+b+c;
+         	}*/
+
+         	/*
+         	 * 定义方法,计算2个整数和
+         	 */
+         	/*public static int getSum(int a,int b){
+         		return a+b;
+         	}*/
+         }
+   ```
+   * **注意事项：**
+   * 一个方法只能有一个可变长参数，并且这个可变长参数必须是该方法的最后一个参数
+     ```
+       以下两种方法定义都是错误的。
+
+        public void test(String... strings,ArrayList list){
+
+        }
+
+        public void test(String... strings,ArrayList... list){
+
+        }
+     ```
+   * 避免对可变参数的方法的重载，以及使用没有指定数据类型的null
+     ```
+      package com;public class VarArgsTest1 {
+
+          public void print(String test, Integer... is) {
+
+          }
+
+          public void print(String test,String...args ){
+
+          }
+
+          public static void main(String[] args) {
+              VarArgsTest1 test = new VarArgsTest1();
+              test.print("hello");//编译不通过
+              test.print("hello", null);//编译不通过
+          }
+      }
+     ```
+     * 上面的demo两个例子都不通过的原因，编译器无法识别选择执行哪一个方法：
+       1. 第一个是因为重载后，两个方法都符合要求
+          * 解决：避免可变参数方法的重载
+
+       2. 第二个是因为null也并没有指定类型，也都符合
+          * 解决：
+              ```
+               public static void main(String[] args) {
+                       VarArgsTest1 test = new VarArgsTest1();
+                       String[] strs = null;
+                       test.print("hello", strs);
+                   }
+              ```

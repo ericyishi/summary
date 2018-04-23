@@ -1,10 +1,10 @@
 # 基础数据类型
 ### 标准的数据类型6大类：
 * Number【数字】
-* String【字符串】
-* List【列表】
-* Tuple【元组】
-* Sets【集合】
+* String【字符串】 " "
+* List【列表】 \[ \]
+* Tuple【元组】（）
+* Sets【集合】{}
 * Dictionary【字典】
 ```
  * Python中的变量是没有类型的，我们可以把它看做一个(*void)类型的指针

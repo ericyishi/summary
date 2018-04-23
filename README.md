@@ -30,6 +30,8 @@
 * 测试
   * 开发语言
     * [python](testing/python/python.md)
+* 爬虫
+  * [scrapy框架的安装](crawler/InstallScrapy.md)
 * [算法](algorithm/algorithm.md)
 * 工具
   * 版本管理
