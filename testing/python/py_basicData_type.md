@@ -91,6 +91,32 @@
 
      print(str.split("l"))  # ['he', '', 'o wor', 'd'] ，以l来分隔字符串
     ```
+  * "分隔符".join(list|str|dict|tuple|sets) 可以将其他数据类型的数据，按指定分隔，转化为字符串
+    * 里面的元素要是字符串才能够使用
+    * 字典元素拼接的只是键
+    ```
+     t1 = ("a", "b", "c", "d", "e")
+     str1 = "-".join(t1)
+     print(str1)// "a-b-c-d-e"
+    ```
+    ```
+     str2 = "哈哈哈哈哈"
+     print(",".join(str2))//"哈,哈,哈,哈,哈"
+    ```
+    ```
+     l1 = ["1", "2", "3"]
+     print("abc".join(l1)) //"1abc2abc3"
+    ```
+    ```
+     dic = {"01": "lee", "02": "rebeta"}
+     print("&".join(dic)) //"01&02"
+    ```
+    ```
+     lis = {"zhang", "wang", "lee"}
+     print("&".join(lis)) //"lee&zhang&wang"
+
+    ```
+
   * capitalize() 将字符串的第一个字母转化成大写
     ```
      print(str.capitalize()) # Hello world
@@ -344,6 +370,10 @@
 1. 定义
    * 使用 {}，以,分隔
    * 无序的，不重复的元素集，所以没有下标，也不能进行切片
+     ```
+      lis={"zhang","wang","lee","zhang"}
+      print(lis)//{'zhang', 'wang', 'lee'}自动去重复
+     ```
    * 支持交、并、差集、对称差集等集合运算
    * 因为无序，每次打印输出的结果的位置也是变化的
    ```
