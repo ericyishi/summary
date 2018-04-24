@@ -61,6 +61,7 @@
 4. continue与break
    * continue跳出本次循环
    * break 跳出循环体
+   * exit()
 5. pass占位语句
    * 保持程序结构的完整性，使用pass,不做任何操作。
      ```

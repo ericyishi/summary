@@ -35,12 +35,14 @@
           def eat(self):
             print("%s is eating"%self.name)
    ```
-   * 使用self
+   * 调用的时候，使用self.属性名
+   * self代表对象本身
 
 4. 实例属性
    * 写在方法里面的属性
+   * 将实例属性前面加self.就能变为类属性
 
-### 方法
+### 类中方法
 1. 定义
    ```
     def 方法(self):
@@ -137,5 +139,37 @@
       ```
        class 子类(父类1,父类2,...):
       ```
-   * 重写
+
+   * 重写（overwrite）
+     * 重写后，还想调用父类原来的方法，使用super().方法名()来调用
+
+
+```
+  # Person.py
+  class Person:
+      __name =
+      def __init__(self, name):
+          self.__name = n
+      def make_money(self):
+          print("赚钱")
+
+
+*****************************
+  # Student.py
+  import Per
+  class Student(Person.Person):
+      def __init__(self, name, age):
+          Person.__init__(name) # 使用父类的构造函数
+          self.age = age
+
+
+      def make_money(self): # 重写父类的方法
+          print("学生赚钱")
+
+
+  s1 = Student("zhang", 12)
+  s1.make_money()
+```
+
 * 多态
+   * Python 没有覆写（override）的概念。严格来讲，Python 并不支持「多态」。

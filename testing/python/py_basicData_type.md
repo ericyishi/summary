@@ -117,6 +117,7 @@
     ```
      print(str.replace("el", "我")) #h我lo world
     ```
+  * endswith()用于判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False。
   * isalNum() 判断字符串中所有值都为数字或者字母且不含有空格，则返回true
     ```
      str = "hello world"
