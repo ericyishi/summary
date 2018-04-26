@@ -10,7 +10,7 @@
   * [安装第三方库](py_installThirdPartyLibraries.md)
   * [文件IO操作](py_IO.md)
   * [异常处理](py_exception.md)
-  *
+  * [socket通信](py_socket.md)
 * 虚拟环境
   * [virtualenv与virtualenvwrapper](./tools/py_virtualenv.md)
 * 常用操作
