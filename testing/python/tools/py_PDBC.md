@@ -41,7 +41,7 @@
       db.close()
      ```
 
-### 游标对象的常用方法
+### 游标对象CUR的常用方法
   1. execute(sql) 执行一条sql语句
      ```
       sql="insert into stu value(1,'zhang1',36,a)"
@@ -61,9 +61,11 @@
      ```
   3. fetchone() 返回一条查询结果
   4. fetchmany(size) 返回指定长度的查询结果
-### 连接对象的常用方法
+
+### 连接对象DB的常用方法
   1. rollback() 即撤销指定的sql语句(只能回退insert delete update语句)，**回滚到上一次commit的位置**
   2. commit() 提交事务，提交未存储的事务
+
 ### 异常处理
   1. 格式
       ```

@@ -108,5 +108,10 @@
       ```
    * 删除虚拟环境
       ```
-       rmvitualenv venv
+       rmvirtualenv venv
       ```
+
+### 在pycharm使用指定的虚拟环境
+```
+file--setting--Project Interpreter--在里面指定需要的虚拟环境的路径即可
+```

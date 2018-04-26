@@ -13,13 +13,20 @@
 对象之分（list,sets,dict）。
 ```
 
+### 查看数据类型有的方法
+```
+ help(数据类型)
+ 按回车查看更多
+```
+```
+ help(list)
+```
 
-
-### 数值型
+### 数字型
 1. 分类
    * int 整型
    * float 浮点数
-   * complex 复数
+   * complex 复数【complex(a,b)】
 2. 数值类型转换
    * input获取的内容，都是字符串类型
      * 可以使用type()验证
@@ -37,34 +44,15 @@
       ```
        str1="hey"
        str2="man"
-       print(str1+str2)  # hey man
+       print(str1+str2)  # heyman
       ```
-
-   * 切片
-     * 取值范围是[a,b)
-       ```
-        str = "hello world";
-        str[0:3]   # 取值是hel
-       ```
-     * 按步长截取[startIndex:endIndex:step]
-       ```
-        str = "hello";
-        str[0:3:2]  # 取值是hl,每隔一个取值
-       ```
-       * 步长为负，是倒序输出。
-       ```
-        str[::-1]  # dlrow olleh
-        str[3::-1] # lleh,倒序将下标0至3的值输出
-       ```
-     * 反向截取
-       ```
-        str[-1] # 输出最后一位d
-        str[-1:] # 输出最后一位d
-        str[:-1] # 输出：hello worl
-        str[-3:-1] # 输出：rl
-        str[-3:] # 输出：rld，从最后往前到倒数第三位
-
-       ```
+      * 使用逗号“,”,两个字符串之间有空格
+        ```
+         str1="hey"
+         str2="man"
+         print(str1+str2)  # hey man
+        ```
+      * 同种类型之间的连接，都可以使用加号
 
 3. 字符串函数
   ```
@@ -144,6 +132,11 @@
      print(str.replace("el", "我")) #h我lo world
     ```
   * endswith()用于判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False。
+    ```
+     str="hello world"
+     str.endswith("world") # True
+    ```
+  * startswith() 与上面类似，但是判断开头
   * isalNum() 判断字符串中所有值都为数字或者字母且不含有空格，则返回true
     ```
      str = "hello world"
@@ -186,10 +179,10 @@
      str7 = "aa aa"
      str8 = "aA"
      str9 = "AB C"
-     print(str6.islower()) # false
-     print(str7.islower()) # false
-     print(str8.islower()) # false
-     print(str9.islower()) # true
+     print(str6.isupper()) # false
+     print(str7.isupper()) # false
+     print(str8.isupper()) # false
+     print(str9.isupper()) # true
     ```
   * upper() 所有字母都变成大写
     ```
@@ -201,10 +194,12 @@
      str8 = "aA"
      print(str8.lower()) #aa
     ```
-  * isspace() 判断字符串中只包含空格，返回true
+  * isspace() 判断字符串中第一位是否空格，返回true
     ```
+     str9 = "hello world"
      str10 = "     "
      str11 = ""
+     print(str9.isspace())  # false
      print(str10.isspace())  # true
      print(str11.isspace())  # false
     ```
@@ -215,6 +210,7 @@
      print(str12.istitle())  # true
      print(str13.istitle())  # false
     ```
+  * strip() 用于移除字符串头尾指定的字符（默认为空格）
 
 ### 列表【List】
 1. 定义
@@ -232,14 +228,18 @@
        l-t1[1]="jerry"
        print(l_t1) # [1, "jerry", "ac", 65 ]
       ```
-   2. 删除
+   2. 删除del()
+     * 也可以不使用括号
+      ```
+       del l_t1[0]
+      ```
       ```
        del(l_t1[0])
        print(l_t1)  # [ "jerry", "ac", 65 ]
        del(l_t1)
        print(l_t1) #NameError: name 'l_test1' is not defined
       ```
-   3. 清空内容
+   3. 清空内容.clear()
       ```
        l-t1.clear()
        print(l_t1) # []
@@ -258,7 +258,7 @@
        l_t4 = ["123", "ac", 3, 10, [10]]
        print(l_t4.count(10)) # 1
      ```
-   * append() 列表末尾增加新的内容
+   * append(obj) 列表末尾增加新的内容,把整个对象都放进去
      ```
        l_t2 = ["123", "ac", 3]
        l_t2.append(10)
@@ -266,7 +266,8 @@
        l_t2.append([10])
        print(l_t2) # ["123", "ac", 3,10,[10]]
      ```
-   * extend() 向一个列表中添加另一个列表
+   * extend(seq) 向一个列表中添加另一个列表
+     * 是把元素里面的值一个个放入
      * **注意**当添加内容是一个字符串的时候，会拆分成单个元素添加进去，这就是与append区别
       ```
         l_t2 = ["123", "ac", 3]
@@ -276,20 +277,21 @@
         l_t3.extend("abc")
         print(l_t3) # ['new', 'hey', 'on', 'a', 'b', 'c']
       ```
-   * index() 查找某个值第一次出现的索引值，不在是会报错的【列表没有find方法】
+   * index() 查找某个值第一次出现的索引值，不存在是会报错的【列表没有find方法】
      ```
       l_t4 = [1, [2,[3]],[3], 3, "123", "ac", 3]
       l_t4.index(3) # 3
       print(l_t2.index([3])) # 2
       print(l_t2.index(9)) # 9 is not in list
      ```
-   * insert(index,content) 将内容插入列表的指定位置
+   * insert(index,content) 将内容插入列表的指定位置，原来位置上的往后移
      ```
       l_t2 = ["123", "ac", 3]
       l_t2.insert(1,"haha")
       print(l_t2) # ["123","haha", "ac", 3]
      ```
    * pop(index) 移除元素，不传参数是最后一个
+     * 返回移除的元素
      ```
       l_t2 = ["123", "ac", 3]
       l_t2.pop(1)
@@ -299,7 +301,9 @@
       print(l_t3) # ['new', 'hey']
      ```
 
-   * remove() 移除列表中某个值的第一个匹配项
+   * remove(obj) 移除列表中某个值的第一个匹配项
+     * 没有返回值
+     * 比较常用
      ```
      l_t5 =["ok",1,"haha",2,3,"2",1]
      l_t5.remove(1)
@@ -319,7 +323,7 @@
         ```
    * sort() 排序
      * 会对原来的列表进行修改
-     * 默认是升序
+     * 默认是升序,按ASCII码来的。
      * reverse=True 是降序，注意关键字True首字母要大写
      ```
       l_t5 = [9, 1, 4, 5, 77, 22]
@@ -346,12 +350,15 @@
    ```
     tup_a = (1, "1sd", "hello")
    ```
-   * 元组的元素无法修改，这里指的是内存地址，对于元组内有列表，那么依然是可以改变其值的
+   * **元组的元素无法修改**，但对于元组内有列表，那么是可以改变列表里的值
+
      ```
       tup_c = (1, ["hello", 2, 3], "1sd", "hello")
       tup_c[1][0]="zhang"
       print(tup_c)  # (1, ['zhang', 2, 3], '1sd', 'hello')
      ```
+      * 不允许修改的是内存地址，所以修改列表里面的值，是不影响元组分配列表的地址。
+
 2. 常用操作
    ```
     tup_a = (1, "1sd", "hello")
@@ -493,3 +500,34 @@
       dic_d = dict.fromkeys(seq, value)
       print(dic_d) # {'sex': 10, 'age': 10, 'name': 10}
      ```
+
+### 切片
+
+ * 取值范围是[a,b)
+ * 适用类型：只要有索引的，都可以应用
+   ```
+    str = "hello world";
+    str[0:3]   # 取值是hel
+   ```
+ * 按步长截取[startIndex:endIndex:step]
+   * 步长默认是1
+   ```
+    str = "hello";
+    str[0:3:2]  # 取值是hl,每隔一个取值
+   ```
+   * 步长为负，是倒序输出。
+   ```
+    str[::-1]  # dlrow olleh
+    str[3::-1] # lleh,倒序将下标0至3的值输出
+   ```
+ * 反向截取，从-1开始表示最后一个
+   ```
+    str[-1] # 输出最后一位d
+    str[-1:] # 输出最后一位d
+    str[:-1] # 输出：hello worl
+    str[-3:-1] # 输出：rl
+    str[-3:] # 输出：rld，从最后往前到倒数第三位
+
+   ```
+
+### 不同类型之间的转换
