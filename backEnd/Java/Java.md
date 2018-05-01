@@ -43,5 +43,5 @@
 
    * [易混淆概念](basic/remember.md)
  * IO操作
-   * [File类的操作](basic/IO/file.md)
+   * [File类的操作](basic/IO/File.md)
    * [字节流与字符流](basic/IO/ByteStreamNCharacterFlow.md)
