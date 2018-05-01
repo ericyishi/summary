@@ -1,6 +1,6 @@
 # 爬取文章类型网站数据到本地数据库
 ### 目标网站
-* 以http://blog.jobbole.com/all-posts/为例
+* 以 http://blog.jobbole.com/all-posts/   为例
 
 ### 分析
 * 通过列表页中每条概述，进入详情页，进行需要内容爬取。
