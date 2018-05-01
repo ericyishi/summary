@@ -55,6 +55,9 @@
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     execute(["scrapy", "crawl", "jobbole"])
    ```
+   * 将文件放入path路径下才能调试
+   * 启动爬虫，格式：scrapy crawl spider名字
+
 10. 修改配置文件settings.py。将ROBOTSTXT_OBEY 设为false
      ```
       ROBOTSTXT_OBEY = False

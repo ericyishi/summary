@@ -32,6 +32,7 @@
     * [python](testing/python/python.md)
 * 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
+  * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
 * [算法](algorithm/algorithm.md)
 * 工具
   * 版本管理
