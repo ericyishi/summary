@@ -13,7 +13,7 @@
          2. [Set接口](basic/Collection/Set/Set.md)
              1. [HashSet](basic/Collection/Set/HashSet.md)
              2. [LinkedHashSet](basic/Collection/Set/LinkedHashSet.md)
-      * [Map接口](basic/Map/map.md)
+      * [Map接口以及Entry对象](basic/Map/map.md)
          1. [HashMap](basic/Map/HashMap.md)
          2. [LinkedHashMap](basic/Map/LinkedHashMap.md)
 
@@ -39,5 +39,7 @@
    * [抽象类和抽象方法](basic/abstractClass.md)
    * [接口](basic/interface.md)
    * [匿名内部类的使用](basic/anonymousObject.md)
+   * [File类的操作](basic/file.md)
    * [易混淆概念](basic/remember.md)
+
 
