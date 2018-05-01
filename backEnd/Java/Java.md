@@ -39,7 +39,9 @@
    * [抽象类和抽象方法](basic/abstractClass.md)
    * [接口](basic/interface.md)
    * [匿名内部类的使用](basic/anonymousObject.md)
-   * [File类的操作](basic/file.md)
+
+
    * [易混淆概念](basic/remember.md)
-
-
+ * IO操作
+   * [File类的操作](basic/IO/file.md)
+   * [字节流与字符流](basic/IO/ByteStreamNCharacterFlow.md)
