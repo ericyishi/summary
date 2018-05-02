@@ -30,6 +30,8 @@
 * 测试
   * 开发语言
     * [python](testing/python/python.md)
+  * 自动化测试框架
+    * [selenium](testing/selenium/selenium.md)
 * 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
