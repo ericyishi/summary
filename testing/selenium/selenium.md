@@ -4,3 +4,9 @@
   * [操作元素](controlElement.md)
   * [操作浏览器](controlBrowser.md)
   * [鼠标事件和键盘事件](mouseNkeyboardEvent.md)
+  * [等待时间的三种方式](waitTime.md)
+* 常用操作
+  * [打开本地文件](openLocalFile.md)
+  * [frame窗口切换](switchToframe.md)
+  * [新窗口或者标签页的切换](switchToWindow.md)
+  * [alert弹出框的处理](switchToAlert.md)

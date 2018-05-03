@@ -49,4 +49,3 @@
   * send_keys(Keys.CONTROL,'x') 剪切
   * send_keys(Keys.CONTROL,'v') 粘贴
   * send_keys(Keys.F1) 键盘F1
-  

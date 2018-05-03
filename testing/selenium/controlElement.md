@@ -6,6 +6,7 @@
     #  {'height': 22, 'width': 500}
   ```
 * element.text 获取元素文本
+
 ### 常用方法
 * is_displayed()是否元素可见
   ```
@@ -23,4 +24,10 @@
 * send_keys() 输入内容，也可以给上传按钮的input添加路径
 * submit() 用于提交表单或者搜索框输入内容后的回车操作
 
+### 验证点
+* 自动化需要验证点，通常除了前面element.text以外还有两个：
+  ```
+   driver.title  //获取当前页面的head中的title内容
+   driver.current_url // 获取当前页面的url地址
+  ```
 
