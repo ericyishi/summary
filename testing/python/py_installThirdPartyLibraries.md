@@ -18,3 +18,7 @@
            https://pypi.mirrors.ustc.edu.cn/simple/
           ```
       3. 重启一下pycharm，差不多就能刷出安装列表了。
+
+
+### 安装路径
+包安装在Python35\Lib\site-packages\下

@@ -3,6 +3,7 @@
 * Number【数字】
 * String【字符串】 " "
 * List【列表】 \[ \]
+  * 有的地方，也把它称作数组
 * Tuple【元组】（）
 * Sets【集合】{}
 * Dictionary【字典】
@@ -482,6 +483,14 @@
      ```
       dic_a = {"d1": "haha", "d2": "hehe"}
       print(dic_a.keys()) # dict_keys(['d1', 'd2'])
+     ```
+   * items() 将所有字典项以列表返回，这些列表每一项都包含key和value
+     ```
+       dicts={"username":"zhang","age":12}
+       content=dicts.items() #[('username','zhang'),('age':12)]
+       for k,v in content:
+            print("key is %r",k)
+            print("value is %r",v)
      ```
    * copy() 深度拷贝
      ```

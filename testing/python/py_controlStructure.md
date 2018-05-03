@@ -29,7 +29,18 @@
       ```
        * 这里用end=" "指定输出以空格分隔，而不是默认换行
 
+      ```
+       # 也能够遍历列表、字典
+       * 但是先要转换成items
+       dicts={"username":"zhang","age":12}
+       content=dicts.items() #[('username','zhang'),('age':12)]
+       for k,v in content:
+            print("key is %r",k)
+            print("value is %r",v)
+      ```
+
     2. for 变量 in range()
+       * 对于进行一定次数的循环，需要使用range()
        * range() 指定区间范围，结束范围是开区间。
          ```
           range(10) 取值是[0,10)

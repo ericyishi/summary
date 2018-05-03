@@ -15,3 +15,4 @@
   * [virtualenv与virtualenvwrapper](./tools/py_virtualenv.md)
 * 常用操作
   * [连接数据库](./tools/py_PDBC.md)
+  * [操作excel](./tools/py_operateExcel.md)
