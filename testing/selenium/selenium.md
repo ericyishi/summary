@@ -11,3 +11,5 @@
   * [新窗口或者标签页的切换](switchToWindow.md)
   * [alert弹出框的处理](switchToAlert.md)
   * [上传文件](uploadFiles.md)
+  * [操作cookie](operateCookie.md)
+  * [调用js](execute_script.md)
