@@ -16,7 +16,7 @@
       * [Map接口以及Entry对象](basic/Map/map.md)
          1. [HashMap](basic/Map/HashMap.md)
          2. [LinkedHashMap](basic/Map/LinkedHashMap.md)
-
+         3. [Properties类](basic/Map/Properties.md)
  * [变量](basic/variable.md)
  * [运算符](basic/operator.md)
  * 控制结构
