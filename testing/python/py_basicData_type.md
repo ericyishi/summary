@@ -458,7 +458,7 @@
       print(dic_a.get("d1")) # haha
       print(dic_a.get("d3"))  # none
      ```
-   * setdefault() 可以获取键，若键不存在，会默认添加为添加键值，值为none。
+   * setdefault() 可以通过键获取值，若键不存在，会默认添加为添加键值，值为none。
      * 所以也可以用这个方法直接添加键值
      ```
       dic_a = {"d1": "haha", "d2": "hehe"}
