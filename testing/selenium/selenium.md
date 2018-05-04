@@ -10,3 +10,4 @@
   * [frame窗口切换](switchToframe.md)
   * [新窗口或者标签页的切换](switchToWindow.md)
   * [alert弹出框的处理](switchToAlert.md)
+  * [上传文件](uploadFiles.md)
