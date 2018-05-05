@@ -47,3 +47,4 @@
       * [emmet](tools/frontEnd/emmet.md)
     * 后端
       * [eclipse](tools/backEnd/eclipse.md)
+      * [intellij](tools/backEnd/intellij.md)
