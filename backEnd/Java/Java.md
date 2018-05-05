@@ -49,4 +49,4 @@
    * [线程池](basic/thread/threadPool.md)
  * 连接数据库
    * [jdbc](basic/dbc/jdbc.md)
-   * [DBUtils](basic/dbc/dbutils.md)
+   * [DBUtils](basic/dbc/DBUtils.md)
