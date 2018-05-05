@@ -1,4 +1,12 @@
 # SQL基础
+### 开启与关闭mysql数据库服务
+* 方式1 window下的界面化操作：
+  * 右键点击我的电脑→管理→服务→可以找到MySQL服务开启或停止。
+* 方式2 cmd中：
+  * net start mysql 开启服务
+  * net stop mysql 关闭服务
+
+
 ### 在cmd下登录MYSQL数据库：
 * **mysql -u 用户名 -p**  是连接mysql数据库服务器的命令，然后输入密码。
 
