@@ -47,6 +47,7 @@
  * 线程操作
    * [多线程](basic/thread/thread.md)
    * [线程池](basic/thread/threadPool.md)
- * 连接数据库
+ * 操作数据库
    * [jdbc](basic/dbc/jdbc.md)
    * [DBUtils](basic/dbc/DBUtils.md)
+   * [连接池](basic/dbc/connectionPool.md)

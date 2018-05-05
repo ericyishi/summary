@@ -7,6 +7,9 @@
 1. 注册驱动.
    * 首先创建lib目录，用于存放当前项目需要的所有jar包
    * 将数据库驱动包放入其中
+     ```
+      mysql-connector-java-5.1.37-bin.jar
+     ```
    * 点击右键build path / Add to Build Path
    * JDBC规范定义驱动接口：java.sql.Driver，MySql驱动包提供了实现类：com.mysql.jdbc.Driver
      ```
