@@ -9,10 +9,12 @@
 ### 种类
 * Java为数据库连接池提供了公共的接口：javax.sql.DataSource，各个厂商需要让自己的连接池实现这个接口。这样应用程序可以方便的切换不同厂商的连接池！
 * DataSource接口，它是java与每种数据库连接池 连接的规范标准
-* 常用连接池：DBCP、C3P0
-
+* 常用连接池：DBCP【tomcat使用的技术】、C3P0【Hibernate、Spring】
+* 单独使用DBCP需要3个包：common-dbcp.jar,common-pool.jar
+* C3P0是一个开放源代码的JDBC连接池，在使用时需要导入c3p0-*.jar包。
+* DBCP有着比C3P0更高的效率，但是实际应用中，DBCP可能出现丢失连接的可能，而C3P0稳定性较高。因此在实际应用中,C3P0使用较为广泛。
 ### DBCP
-* 导入jdbc包
+* 导入mysql驱动包
   ```
    mysql-connector-java-5.1.37-bin.jar
   ```

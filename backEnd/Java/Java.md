@@ -44,6 +44,7 @@
  * IO操作
    * [File类的操作](basic/IO/File.md)
    * [字节流与字符流](basic/IO/ByteStreamNCharacterFlow.md)
+### 常用操作
  * 线程操作
    * [多线程](basic/thread/thread.md)
    * [线程池](basic/thread/threadPool.md)
@@ -51,3 +52,7 @@
    * [jdbc](basic/dbc/jdbc.md)
    * [DBUtils](basic/dbc/DBUtils.md)
    * [连接池](basic/dbc/connectionPool.md)
+ * 解析xml文件
+   * [dom4j](application/xml/dom4j.md)
+### java web
+ * servlet
