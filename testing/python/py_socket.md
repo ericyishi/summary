@@ -128,3 +128,10 @@ if __name__ == "__main__":
     client()
 
 ```
+
+###
+repr() //将其他类型转成字符串
+eval() //将字符串转为原来的类型
+
+json.dumps() //在前端使用
+json.loads()
