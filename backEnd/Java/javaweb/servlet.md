@@ -256,5 +256,20 @@
  }
 
 ```
-
+* servletConfig:
+	* servlet的配置对象:
+	* 获取servlet名称 初始化参数
+	* 获取全局管理者★ getServletContext()
+* servletContext:
+	* 上下文
+	* 作用:
+		1. 获取全局的初始化参数
+		 * getInitParameter("key")
+		2. 共享资源(域对象)
+		 * xxxAttribute()
+		3. 获取资源
+		 * getRealPath("/1.txt"):获取项目发布到服务器上位置的根目录
+		 * getResourceAsStream("/1.txt"):以流的形式返回一个文件
+		4. 获取文件mime类型
+		 * getMimeType(文件名称)
 
