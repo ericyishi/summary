@@ -7,9 +7,10 @@
 ### 编写一个servlet步骤
 
 1. 编写一个类
-    * javaweb src中新建
-	* 继承HttpServlet
-    * 重写doGet或者doPost方法
+    1. javaweb src中新建
+	2. 继承HttpServlet
+    3. 重写doGet或者doPost方法
+       * doPost在表单提交method=post情况下使用，或者ajax请求为post
     ```
      package com.test.a;
 
@@ -116,6 +117,8 @@
   * 当serlvet被移除的时候服务器正常关闭的时候,服务器调用servlet的destroy方法实现销毁操作.
 
 ### 配置Servlet的启动时加载
+* load-on-startup 修改servlet初始化时机
+* 数值越大，优先级越低
 ```
  <load-on-startup>2</load-on-startup>
 ```
@@ -148,6 +151,7 @@
 	当请求URL为“/xxx/yyy/a.do”时，“/*”和“*.do”都匹配，哪个servlet响应
 		Servlet引擎将调用Servlet2。
 ```
+* 当我们项目处理不了的请求的时候，服务器里面的defaultservlet来处理
 
 ### 系统登录成功后页面5秒后跳转到成功页面
 * Refresh的响应头
@@ -204,7 +208,49 @@
     </html>
   ```
 
-### 统计一下网站被登录的总次数
+
+* servletConfig:
+	* servlet的配置对象:
+	* 获取servlet名称 初始化参数
+	* 获取全局管理者★ getServletContext()
+
+
+* servletContext:
+	* 上下文（全局管理者）
+	* 如何获取上下文
+	  * 在servlet中直接调用getServletContext()
+	  ```
+	   getServletContext()
+	  ```
+	* 作用:
+		1. 获取全局的初始化参数
+		 * getInitParameter("key")
+		   ```
+		    # web.xml配置
+		    <context-param>配置是是一组键值对，比如：
+            <context-param>
+                   <param-name>home-page</param-name>
+                   <param-value>home.jsp</param-value>
+            </context-param>
+		   ```
+
+		2. 共享资源(域对象)
+		 * xxxAttribute()
+		3. 获取资源
+		 * getRealPath("/1.txt"):获取项目发布到服务器上位置的根目录
+		 * getResourceAsStream("/1.txt"):以流的形式返回一个文件
+		4. 获取文件mime类型
+		 * getMimeType(文件名称)
+
+
+### 域对象
+* 创建:在服务器启动的时候,服务器会为每一个项目创建一个全局管理者,servletcontext就是当前项目的引用
+* 销毁:在项目被移除或者服务器关闭的时候销毁
+* 常用的方法:
+   * xxxAttribute()
+
+* demo
+  ### 统计一下网站被登录的总次数
 * ServletContext Servlet中全部的内容ServletContext都了解.
 * 一个WEB应用只有一个ServletContext对象.服务器启动的时候，服务器为每个WEB工程创建一个属于自己项目的ServletContext对象.服务器关闭的时候或者项目从服务器中移除ServletContext才会被销毁.
 * 如果将值保存在ServletContext中.值就有一个作用的范围.所以这个对象称为”域对象”.
@@ -256,20 +302,12 @@
  }
 
 ```
-* servletConfig:
-	* servlet的配置对象:
-	* 获取servlet名称 初始化参数
-	* 获取全局管理者★ getServletContext()
-* servletContext:
-	* 上下文
-	* 作用:
-		1. 获取全局的初始化参数
-		 * getInitParameter("key")
-		2. 共享资源(域对象)
-		 * xxxAttribute()
-		3. 获取资源
-		 * getRealPath("/1.txt"):获取项目发布到服务器上位置的根目录
-		 * getResourceAsStream("/1.txt"):以流的形式返回一个文件
-		4. 获取文件mime类型
-		 * getMimeType(文件名称)
+### 通过类加载器获取文件的路径(处于classes目录下的文件)
+* servlet中能使用外，在普通文件下也能使用
+  ```
+   类名.class.getClassLoader().getReource("文件路径").getPath()
+  ```
+  ```
+   类名.class.getClassLoader().getReourceAsStream("文件路径")
+  ```
 
