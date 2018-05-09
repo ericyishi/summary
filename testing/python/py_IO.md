@@ -19,8 +19,23 @@
 * f.tell() 返回当前位置
 * f.write(str) 将字符串写入文件，没有返回值
 * f.read() 读取文件内容
-* f.readlines() 读取文件内容，以列表的形式返回
-* f.readline() 读取文件内容，并返回字符串
+* f.readlines() 读取文件内容，以**列表**的形式返回
+  ```
+   //s.txt【注意需要换行，因为readlines是以每一行作为一个元素来返回】
+   apple
+   banana
+   orange
+  ```
+  ```
+   //随机点名
+   import random
+   f = open(".//s.txt",encoding='UTF-8')
+   content=f.readlines() //返回的是列表[]
+   r=random.choice(content) //从列表中选1个元素出来
+   print(r)
+
+  ```
+* f.readline() 读取文件内容，并返回**字符串**
 * f.writelines() 写入文件内容，可以是字符串也可以是列表
 ### I/O操作符
 * w

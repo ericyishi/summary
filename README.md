@@ -28,7 +28,7 @@
     * [SQL【高级特性】(mysql为例子)](database/sql_highLevel.md)
   * 非关系型数据库
 * 测试
-  * 测试理论
+  * [测试理论](testing/theory/theory.md)
   * 开发语言
     * [python](testing/python/python.md)
   * 自动化测试框架
