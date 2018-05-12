@@ -457,7 +457,8 @@
            ```
         2. read committed 读已提交  可避免脏读的发生
         3. repeatable read 可重复读 可避免脏读和不可重复读的发生
-        4. serializable 串行化 可以避免上面三种的问题出现
+        4. serializable 串行化【类似于锁表操作】 可以避免上面三种的问题出现
+        * mysql默认级别是repeatable read，oracle默认级别：read committed
     4. 持久性(Durability)
       * 一个事务一旦提交，它对数据库中数据的改变就应该是永久性的
   * 事务控制语句

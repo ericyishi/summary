@@ -104,27 +104,6 @@
             ```
      2. 编写sql
      3. 执行sql
-### 事务的特性
-* ACID
-  * 原子性
-  * 一致性
-  * 隔离性
-    * 如果不考虑隔离性的出现的问题
-      1. 脏读：在一个事务中读取到另一个事务没有提交的事务
-      2. 不可重复读：在一个事务中，两次查询的结果不一致【针对update操作】
-      3. 虚读(幻读)：在一个事务中，两次查询的结果不一致【针对insert操作】
-    * 通过设置数据库的**隔离级别**来避免
-      * 查看数据库隔离级别
-        ```
-          select @@tx_isolation;
-        ```
-      1. read uncommited 读未提交 上面三个问题都会出现
-         ```
-          set session transaction isolation level read uncommitted;
-         ```
-      2. read committed 读已提交  可避免脏读的发生
-      3. repeatable read 可重复读 可避免脏读和不可重复读的发生
-      4. serializable 串行化 可以避免上面三种的问题出现
-  * 持久性
+
 
 
