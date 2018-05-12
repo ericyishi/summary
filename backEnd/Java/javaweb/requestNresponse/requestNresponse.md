@@ -392,12 +392,12 @@
   * 创建:一次请求来的时候
   * 销毁:响应生成的时候
   * 作用:一次请求里面的数据
-* 请求转发(请求链,请求串)
+* 请求转发(请求链,请求串)【如果使用了request域对象，就只能用请求转发，其他的可以重定向】
    * 将多个servlet串起来，值传递
   	  ```
   	   request.getRequestDispatcher("内部路径").forward(request,response);
   	  ```
-  	* url-pattern里面的值
+  	* 跳转的地方是url-pattern里面的值
   	  ```
   	  //diservlet1
        request.setAttribute("username",request.getParameter("username"))
@@ -409,6 +409,7 @@
   	   System.out.println("你好"+request.getArribute("username"))
   	  ```
   	  * 最后服务器就能直接输出你好，xxx
+
 ### 注册案例
 1. 数据库与表
 2. 前端

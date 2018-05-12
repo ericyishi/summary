@@ -311,3 +311,11 @@
    类名.class.getClassLoader().getReourceAsStream("文件路径")
   ```
 
+### web.xml配置文件
+* 指定错误页面
+  ```
+   <error-page>
+     <error-code>404</error-code>
+     <location>/404.jsp</location>
+   </error-page>
+  ```
