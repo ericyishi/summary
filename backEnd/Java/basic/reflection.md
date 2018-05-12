@@ -2,17 +2,48 @@
 * 我们的程序在运行时，需要动态的加载一些类这些类可能之前用不到所以不用加载到jvm，而是在运行时根据需要才加载的操作
 * 常见例子：项目底层有时是用mysql，有时用oracle，需要动态地根据实际情况加载驱动类，这个时候反射就有用了，假设 com.java.dbtest.myqlConnection，com.java.dbtest.oracleConnection这两个类我们要用，这时候我们的程序就写得比较动态化，通过Class tc = Class.forName("com.java.dbtest.TestConnection");通过类的全类名让jvm在服务器中找到并加载这个类，而如果是oracle则传入的参数就变成另一个了。
 
-# 反射技术
+### 反射技术
   * 条件：运行状态
   * 已知：一个类或一个对象(根本是已知.class文件)
   * 结果：得到这个类或对象的所有方法和属性
 
-# 加载方式
-  * 通过Class类中的方法（将类名作为字符串传递给Class类中的静态方法forName即可）
+### 加载方式
+  * 方式一：通过Class类中的方法（将全限定名作为字符串传递给Class类中的静态方法forName即可）
     ```
-     Class c3 = Class.forName("Student");
+     Class c1 = Class.forName("全限定名");
     ```
-# 应用
+    ```
+     Class cz=Class.forName("com.domain.Person");
+    ```
+  * 方式二：
+    ```
+     Class c2 = 类名.class;
+    ```
+  * 方式三：
+    ```
+     Class c3 = 对象.getClass;
+    ```
+### 获取构造器
+    ```
+     Constructor con=cz.getConstructor();
+    ```
+    ```
+     //实例化对象
+     Person p=(Person)con.newInstance();
+    ```
+### 获取类中任意方法
+    ```
+     //这种方式只能获取公有方法
+     Method m= cz.getMethod("方法名");
+     m.invoke(p)
+
+     //可以获取所有的方法【包括私有方法】
+     Method m= cz.getDeclaredMethod("私有方法名");
+     //如果是私有方法，还需要下面一步
+     m.setAccessible(true)
+
+    ```
+### 应用
   * 通过配置文件来决定运行的步骤
     * 通过配置文件得到类名和要运行的方法名,用反射的操作类名得到对象和调用方法
     * 实现步骤:
