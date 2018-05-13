@@ -576,6 +576,7 @@
        ```
           MYSQL -h主机名 -u用户名 -p密码  需要恢复的数据库名字 < 已备份的数据库名字.sql 
        ```
+	    * 导入的sql，只能是table，数据库需要手动建立。
        ```
           MYSQL -uroot -pjsb bk < bk.sql
        ```
