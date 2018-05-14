@@ -10,7 +10,7 @@
      * 作用：主要用于展示数据，一般jsp担任
    * C： ctrl 控制
      * 作用： 接受请求，找到相应的javabean完成业务逻辑
-2. mvc的体现
+2. mvc的产生
     * servlet
        * 缺点：生成html内容太麻烦，所以产生了jsp
     * jsp
