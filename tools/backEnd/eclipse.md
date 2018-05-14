@@ -46,3 +46,9 @@ CarWrapper carWrapper = new CarWrapper(qq);
 1. 在根文件夹下创建lib文件夹，用于同一管理所有的jar文件
 2. 将所有外部的jar放入这个文件夹下
 3. 右键点击jar文件，点击Build Path，选择Add to Build Path，此时查看项目根文件夹下的.classpath文件，发现新加入的jar包路径被配置到了该文件中。说明可以使用jar包中所有类了。
+
+
+### 切换为Package Explorer窗口
+1. 在顶部菜单中找到Window——Show View——Others，
+2. 在对话框窗口中找到java一项，并点击打开java下的项目
+3. 在java项目下找到Package Explorer，即包浏览器。然后选择OK按钮确认选择 
