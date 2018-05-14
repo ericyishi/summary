@@ -1,4 +1,6 @@
 # Fiddler
+### 用途
+* 程序将会把自己作为一个代理，所以的http请求在达到目标服务器之前都会经过fiddler，同样的，所有的http响应都会在返回客户端之前流经fiddler。
 ### 抓取https网页
 * 设置步骤
   1. 下载证书生成器，并安装 https://telerik-fiddler.s3.amazonaws.com/fiddler/addons/fiddlercertmaker.exe
@@ -20,6 +22,18 @@
       * 然后点HTTPS选项卡，再点击actions下的Reset All Certificates，
       * 重置证书。
   7. 重启浏览器和fiddler，发现已经可以打开https页面了。
+### 增加请求方式列
+* 设置步骤
+  1. 在显示列右键，选择“cumstomize columns”
+  2. 弹出框里面的，collection列选择“Miscellaneous”，field选择“requestMethod”，点击保存
+  3. 此时显示列，就多了一行。RequestMethod列了。
 
+### 注意事项
+* 模拟post请求的时候，请求头要带上
+  ```
+   Content-Type: application/x-www-form-urlencoded
+  ```
+   * 使用了数据编码为名称/值对。这是标准的编码格式
+   * ajax的POST请求的时候也需要带上。
 
 

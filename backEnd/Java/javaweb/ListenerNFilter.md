@@ -356,7 +356,7 @@
                         chain.doFilter(request, response);
                     }
             ```
-### 统一字符编码【使用静态代理】
+### 统一字符编码【**使用静态代理**】
 * 以前我们开发的时候若有参数,第一步都是设置编码,才不会出现乱码,通过过滤器设置,到servlet或者jsp上的时候已经没有乱码问题
 * 技术分析:
 	* filter 配置路径/* 过滤器的第一个位置
@@ -519,4 +519,238 @@
         }
 
     }
+  ```
+### 类加载器
+* 概念
+    * 类加载：我们编写的.java文件,jvm会将变成.class文件.该文件要想运行,必须加载内存中,然后会生成一个对象.Class对象
+    * 类加载器：实现类加载的东西，就是类加载器
+* 类加载的种类
+  * 引导类加载器	rt.jar【核心类都在这个这个jar包中】
+  * 扩展类加载器	ext/*.jar【基本用不到】
+  * 应用类加载器	我们自己编写类
+* 全盘负责委托机制
+  * 当一个类运行的时候,有可能有其他类,应用类加载器询问扩展类加载器:你加载过这些类吗?
+  * 扩展类加载器在向上问(引导类加载器):你加载过这些类吗?
+  * 引导类加载器:我查查,有一个是我负责,我加载.
+  * 扩展类加载器:接下来我来查,有几个是我负责,我加载,还有几个类我已经加载完成了,你可以直接使用
+  * 应用类加载器:收到了 剩下的我来
+* 动态代理
+  * 在项目运行的时候才创建一个代理对象,对方法进行增强(控制)
+  * 实现的方式
+    * 方式1:
+		* jdk中Proxy类,前提:实现接口
+		  * 动态的在内存中创建一个代理对象
+		    ```
+		     Object Proxy.newProxyInstance(ClassLoader loader, Class[] interfaces, InvocationHandler h)
+		    ```
+		    * 参数说明:
+			  1. ClassLoader:代理对象类加载器 一般我们使用的是被代理对象的类加载器
+			  2. Class[]:代理对象需要实现接口 一般我们使用的是被搭理对象所实现的所有接口
+			  3. InvocationHandler:执行处理类.在这里面对方法进行加强
+                 * invocationHandler中只有一个方法
+                   ```
+                    Object invoke(Object proxy, Method method, Object[] args)
+                   ```
+                   * 参数说明
+                   1. proxy:代理对象
+				   2. method:当前执行的方法
+				   3. args:当前方法执行的时候所需要的参数
+				   4. 返回值:就是当前method对象执行的返回值
+		  * demo
+		  	```
+		  	//Car.java 定义一个车的接口
+            package com.test.c_proxy;
+
+            public interface Car {
+                void run();
+                void stop();
+            }
+
+		  	 //  QQ.java 一个qq车实现类
+            package com.test.c_proxy;
+
+            public class QQ implements Car{
+
+                @Override
+                public void run() {
+                    System.out.println("qq在跑");
+                }
+
+                @Override
+                public void stop() {
+                    System.out.println("qq刹车");
+                }
+
+            }
+
+		  	// Test.java 测试类
+            package com.test.c_proxy;
+
+            import java.lang.reflect.InvocationHandler;
+            import java.lang.reflect.Method;
+            import java.lang.reflect.Proxy;
+
+            public class Test {
+
+                public static void main(String[] args) {
+                    final QQ qq=new QQ();
+                    //qq.run();
+                    //qq.stop();
+
+                    //创建代理对象
+                    Car qqProxy=(Car) Proxy.newProxyInstance(QQ.class.getClassLoader(), new Class[]{Car.class}, new InvocationHandler() {
+                        @Override
+                        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                            //System.out.println("哈哈哈哈");
+                            //System.out.println(method.getName());
+                            //obj 就是代理对象
+                            //Object obj=method.invoke(qq, args);
+                            //return obj;
+
+                            //对所有方法进行加强
+                            /*System.out.println("加上电池");
+                            Object obj = method.invoke(qq, args);
+                            System.out.println("5秒破百");
+
+                            return obj;*/
+
+
+                            //只对run方法进行加强,通过method.getName()来区分调用的方法
+                            if("run".equals(method.getName())){
+                                System.out.println("加上电池");
+                                Object obj = method.invoke(qq, args);
+                                System.out.println("5秒破百");
+                                return obj;
+                            }
+                            return method.invoke(qq, args);//其他的还是调用默认的方法
+                        }
+                    });
+
+                    qqProxy.run();//加上电池了
+                    qqProxy.stop();//原来的“qq刹车”
+                }
+
+            }
+
+		  	```
+
+	* 方式2:
+		* spring中cglib,前提:继承类
+
+* demo:使用**动态代理**在过滤器中完成统一编码
+  * 动态代理可以想象成孙悟空拔猴毛变万物
+  * 静态代理可以想象成钢铁侠穿上装备，只是包装了一下
+  ```
+   //LoginServlet.java
+    package com.test.c_proxy.encoding;
+
+    import java.io.IOException;
+    import javax.servlet.ServletException;
+    import javax.servlet.http.HttpServlet;
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+
+    public class LoginServlet extends HttpServlet {
+        private static final long serialVersionUID = 1L;
+
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            String username = request.getParameter("username");
+            String memo = request.getParameter("memo");
+
+            System.out.println(username);
+            System.out.println(memo);
+        }
+
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            // TODO Auto-generated method stub
+            doGet(request, response);
+        }
+
+    }
+   // EncodingFilter.java
+
+        package com.test.c_proxy.encoding;
+        import java.io.IOException;
+        import java.lang.reflect.InvocationHandler;
+        import java.lang.reflect.Method;
+        import java.lang.reflect.Proxy;
+        import javax.servlet.Filter;
+        import javax.servlet.FilterChain;
+        import javax.servlet.FilterConfig;
+        import javax.servlet.ServletException;
+        import javax.servlet.ServletRequest;
+        import javax.servlet.ServletResponse;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+
+        public class EncodingFilter implements Filter {
+
+            @Override
+            public void init(FilterConfig filterConfig) throws ServletException {
+
+            }
+
+            @Override
+            public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+                    throws IOException, ServletException {
+                //1.强转
+                final HttpServletRequest request=(HttpServletRequest) req;
+                HttpServletResponse response=(HttpServletResponse) resp;
+
+
+                //创建代理对象
+                // request.getClass().getInterfaces()获取所有接口
+                HttpServletRequest requestProxy=(HttpServletRequest) Proxy.newProxyInstance(HttpServletRequest.class.getClassLoader(), request.getClass().getInterfaces(), new InvocationHandler() {
+
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        if("getParameter".equals(method.getName())){
+                            //获取请求方式
+                            String m = request.getMethod();
+
+                            if("get".equalsIgnoreCase(m)){
+                                String s = (String) method.invoke(request, args);//相当于  request.getParameter(args);
+                                return new String(s.getBytes("iso8859-1"),"utf-8");
+                            }else if("post".equalsIgnoreCase(m)){
+                                request.setCharacterEncoding("utf-8");
+                                return method.invoke(request, args);
+                            }
+                        }
+
+                        //不需要加强的方法
+                        return method.invoke(request, args);
+                    }
+                });
+
+                //2.放行
+                chain.doFilter(requestProxy, response);
+
+            }
+
+            @Override
+            public void destroy() {
+
+            }
+
+        }
+
+   //web.xml中的配置
+        <filter>
+            <filter-name>EncodingFilter</filter-name>
+            <filter-class>com.test.c_proxy.encoding.EncodingFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>EncodingFilter</filter-name>
+            <url-pattern>/login</url-pattern>
+        </filter-mapping>
+        <servlet>
+          <description></description>
+          <display-name>LoginServlet</display-name>
+          <servlet-name>LoginServlet</servlet-name>
+          <servlet-class>com.test.c_proxy.encoding.LoginServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+          <servlet-name>LoginServlet</servlet-name>
+          <url-pattern>/login</url-pattern>
+        </servlet-mapping>
   ```

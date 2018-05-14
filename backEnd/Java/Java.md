@@ -57,10 +57,11 @@
    * [dom4j](application/xml/dom4j.md)
 ### java web
    * [servlet](javaweb/servlet.md)
-   * [request请求与response相应](javaweb/requestNresponse/requestNresponse.md)
+   * [servlet3.0](javaweb/servlet3.md)
+   * [request请求与response响应](javaweb/requestNresponse/requestNresponse.md)
    * [jsp](javaweb/jsp.md)
    * [el与jstl](javaweb/el-jstl.md)
    * [cookie&session](javaweb/cookieNsession.md)
    * [mvc](javaweb/mvc.md)
-   * [监听器与过滤器](javaweb/ListenerNFilter.md)
+   * [监听器与过滤器（静态代理与动态代理的应用）](javaweb/ListenerNFilter.md)
    * [注释](javaweb/annotation.md)
