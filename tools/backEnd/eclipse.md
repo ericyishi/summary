@@ -52,3 +52,12 @@ CarWrapper carWrapper = new CarWrapper(qq);
 1. 在顶部菜单中找到Window——Show View——Others，
 2. 在对话框窗口中找到java一项，并点击打开java下的项目
 3. 在java项目下找到Package Explorer，即包浏览器。然后选择OK按钮确认选择 
+
+
+### “Implicit super constructor Object() is undefined for default constructor. Must define an 
+explicit constructor”的解决
+* 没导入java的JRE库
+* 步骤
+1. 在工程上右键选择属性->Java Build Path的Libraries->Add Library
+2. 选择JRE System Library->点击Next->
+3. 选择Execution environment并选择版本或workspace default jre->点击Finish。
