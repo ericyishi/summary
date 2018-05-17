@@ -91,9 +91,41 @@
      c=2 * math.pi * r
      print("计算后的值为:%.2f" %(c))
     ```
+  * 填入的数据也可以是字典类型
+    ```
+     x="this is a %(obj)s"% {"obj":"pen"}
+     print(x) # this is a pen
+    ```
 
-
-
+### 格式化format
+  ```
+    a = "i am {},age {}".format("seven",18,"alex")
+    print(a) # i am seven,age alex
+    b = "i am {},age {}, {}".format(*["seven", 18 ,"alex"])
+    print(b) # i am seven,age 18, alex
+    c = "i am {0}, age {1}, really {0}".format("seven", 18)
+    print(c) # i am seven, age 18, really seven
+    d = "i am {0}, age{1}, really {0}".format(*["seven", 18])# 列表前面加一个*
+    print(d) # i am seven, age18, really seven
+    e = "i am {name}, age {age}, really {name}".format(name="seven", age = 18)
+    print(e) # i am seven, age 18, really seven
+    f = "i am {name}, age {age}, rally {name}".format(**{"name":"seven", "age":18}) # 字典前面加两个**
+    print(f) # i am seven, age 18, really seven
+    g = "i am {0[0]},age{0[1]}, really{0[2]}".format([1,2,3],[11,22,33])
+    print(g) # i am 1,age2, really3
+    h = "i am {:s}, age {:d}, money {:f}".format("seven", 18, 888.1)
+    print(h) # i am seven, age 18, money 888.100000
+    i = "i am {:s}, age {:d}".format(*["seven", 18])
+    print(i) # i am seven, age 18
+    j = "i am {name:s}, age {age:d}".format(name="seven",age=18)
+    print(j) # i am seven, age 18
+    k = "i am {name:s}, age {age:d}".format(**{"name":"seven","age":18})
+    print(k) # i am seven, age 18
+    m = "numbers:{0:b},{0:o},{0:d},{0:x},{0:%}".format(15) # 显示百分比（默认显示小数点后6位）
+    print(m) # numbers:1111,17,15,f,1500.000000%
+    tpl = "numbers: {num:b},{num:o},{num:d},{num:x},{num:X}, {num:%}".format(num=15)
+    print(tpl) # numbers: 1111,17,15,f,F, 1500.000000%
+  ```
 
 
 
