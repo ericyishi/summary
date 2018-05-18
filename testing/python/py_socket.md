@@ -3,6 +3,22 @@
 * 网络上的两个程序通过一个双向的通信连接实现数据的交换，连接的一端称为一个socket
 * 打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。
 
+### socket函数
+```
+ int socket(int domain,int type,int protocal)
+```
+* 功能描述:初始化创建socket对象，通第是第一个调用的socket函数。成功时,返回非负数的，失败返回-1
+* 参数：
+  * domain:指明使用协议族,常用协议族有,AF_INET、AF_INET6、AF_LOCAL(或称AF_UNIX、Unix域socket)、AF_ROUTE等等,协议族决定了socket的地址类型,通信中必须采用对应的地址。
+    * 例如：AF_INET决定了IPV4地址（32位）与端口号（16位）的组合
+  * type:指明socket类型
+    * SOCK_STREAM 【TCP类型】【默认】
+    * SOCK_DGRAM 【UDP类型】
+    * SOCK_RAW 【原始类型，允许对底层协议IP或者ICMP进行直接访问】
+  * protocol:通常赋值0，由系统自己选择
+
+
+
 ### 服务器端
 ```
 import socket
@@ -133,5 +149,5 @@ if __name__ == "__main__":
 repr() //将其他类型转成字符串
 eval() //将字符串转为原来的类型
 
-json.dumps() //在前端使用
+json.dumps() //在前端使用，转化成json文件
 json.loads()
