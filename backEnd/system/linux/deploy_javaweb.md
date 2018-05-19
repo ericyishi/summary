@@ -33,13 +33,23 @@
      ```
       cd apache-tomcat-7.0.70
       cd bin
-      sh startup.sh// 就能启动了startup.sh
+      sh startup.sh// 就能启动了startup.sh或者使用命令./startup.sh
      ```
   4. 检验是否成功
      ```
       服务器IP地址:8080
      ```
      * 访问不了，可能是服务器防火墙没有关
+       * 要么使用防火墙关闭命令
+         ```
+          service iptables stop # 关闭防火墙
+          service network restart # 重启服务
+         ```
+       * 要么在防火墙中添加规则，放行8080端口
+         ```
+		       /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT  //8080端口放行
+		       /etc/rc.d/init.d/iptables save    //将该设置添加到防火墙的规则中
+         ```
      * 端口冲突
   5. 部署war包
      * 将打包好的war放置到webapps路径下（例如 123.war）。

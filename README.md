@@ -14,9 +14,11 @@
     * LINUX系统
       * [常用命令](backEnd/system/linux/command.md)
       * 常见问题
-        1. [使用虚拟机的网络配置](backEnd/system/linux/configureNetwork.md)
+        1. [使用虚拟机的网络配置](backEnd/system/linux/solution/configureNetwork.md)
+        2. [重置mysql的root密码](backEnd/system/linux/solution/resetPWD_mysql.md)
       * 部署
         1. [javaweb项目:使用tomcat+mysql](backEnd/system/linux/deploy_javaweb.md)
+        2. [nginx安装与配置](backEnd/system/linux/nginx.md)
 ### 数据库
   * 关系型数据库
     * [基础概念](database/basicContent.md)

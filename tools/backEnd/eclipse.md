@@ -61,3 +61,12 @@ explicit constructor”的解决
 1. 在工程上右键选择属性->Java Build Path的Libraries->Add Library
 2. 选择JRE System Library->点击Next->
 3. 选择Execution environment并选择版本或workspace default jre->点击Finish。
+
+
+### 打war包
+* war特点是，放在在tomcat/webapps目录下 只要tomcat启动 war会自动解压
+* 操作：
+  1. 鼠标移至项目，右键鼠标，选择“Export”
+  2. 搜索war，点击“next”
+  3. 在destination下选择输出路径
+  4. 点击“finish”
