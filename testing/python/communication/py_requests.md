@@ -34,6 +34,19 @@ print(response.content) #以字节流形式打印
     response = requests.get('http://httpbin.org/get', params=data)
     print(response.text)
    ```
+ * 传递json格式
+   * 可以用 json.dumps() 方法把表单数据序列化。
+   ```
+     import requests
+
+    data = {
+        'name': 'tom',
+        'age': 20
+    }
+
+    response = requests.get('http://httpbin.org/get', params=json.dumps(data))
+    print(response.text)
+   ```
  * 解析json
    ```
    import requests
@@ -51,6 +64,15 @@ print(response.content) #以字节流形式打印
     b = response.content
     with open('F://fengjing.jpg','wb') as f:
         f.write(b)
+   ```
+ * 上传文件
+   * 使用file参数
+   ```
+    import requests
+    url='http://img.ivsky.com/upload'
+    files={'files':open('123.txt','rb')}
+    r=requests.post(url,files=files)
+
    ```
  * 请求添加头信息
    ```
@@ -117,7 +139,7 @@ for k,v in response.cookies.items():
     print(k+':'+v)
 ```
 
-4. 会话维持【用它来管理cookie，就不用手动传入cookie了】
+4. 会话维持【用它来管理cookie，因为对于http请求是无状态，是有session让其有状态】
 ```
 import requests
 
@@ -128,7 +150,9 @@ print(response.text)
 ```
 
 5. 证书验证设置【用于https网站的访问必须使用】
-* verify=False
+   * Requests可以为HTTPS请求验证SSL证书，就像web浏览器一样。要想检查某个主机的SSL证书，你可以使用 verify 参数。
+   * 如果你将 verify 设置为 False，Requests 能忽略对 SSL 证书的验证：
+     * verify=False
 ```
 import requests
 from requests.packages import urllib3
@@ -154,6 +178,16 @@ except HTTPError:
 except RequestException:
     print('reqerror')
 ```
+7. 重定向
+   * 默认情况下，除了 HEAD, Requests会自动处理所有重定向。
+   * 如果你使用的是GET, OPTIONS, POST, PUT, PATCH 或者 DELETE,，那么可以通过allow_redirects 参数禁用重定向处理
+     ```
+      r=requests.get("http://github.com",allow_redirects=False)
+     ```
+   * 如果使用的是HEAD，你也可以启用重定向
+     ```
+      r=requests.head("http://github.com",allow_redirects=False)
+     ```
 ### demo
 1. 使用会话维持，模拟登录bugfree
 ```
