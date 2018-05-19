@@ -3,6 +3,11 @@
 1. 这个包位于偏底层，常用的requests包也是基于它
 2. 需要引入http.client包
 ### get请求
+1. 建立连接 con=http.client.HTTPConnection("主机名")
+2. 发送请求 con.request("方式"，"资源路径"，参数)
+   * 参数这里可以是header、以及POST请求才有的请求体body
+3. 获取响应 resp = con.getresponse()
+* demo：访问bugfree页面
 ```
 import http.client
  con = http.client.HTTPConnection("localhost")
@@ -15,10 +20,23 @@ import http.client
  resp = con.getresponse()
  print(resp.status)
 ```
-1. 建立连接 con=http.client.HTTPConnection("主机名")
-2. 发送请求 con.request("方式"，"资源路径"，参数)
-   * 参数这里可以是header、以及POST请求才有的请求体body
-3. 获取响应 resp = con.getresponse()
+* demo：访问https请求
+  * 需要引入ssl加密！
+  * 建立连接使用的是HTTPSConnection
+```
+import http.client,ssl
+context=ssl._create_unverified_context()
+con = http.client.HTTPSConnection("cx.zfgjj.cn",context=context)
+con.request("GET", "/dzyw-grwt/index.do")
+
+resp = con.getresponse()
+headers = resp.headers
+print(headers)
+# 获取响应头中的cookie
+cookie = headers['Set-Cookie'].split(";")[0]
+print(cookie)
+print(resp.read())
+```
 
 ### POST请求
 1. 模拟bugfree登录，并获取cookie

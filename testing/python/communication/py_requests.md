@@ -127,7 +127,8 @@ response = session.get('http://httpbin.org/cookies')
 print(response.text)
 ```
 
-5. 证书验证设置
+5. 证书验证设置【用于https网站的访问必须使用】
+* verify=False
 ```
 import requests
 from requests.packages import urllib3
