@@ -32,9 +32,9 @@
   * 开发语言
     * [python](testing/python/python.md)
   * 单元测试
-    * [unittest](testing/python/unittest/unittest.md)
+    * [unittest](testing/unittest/unittest.md)
   * 接口测试
-    * [接口测试理论](testing/python/interface/interface.md/)
+    * [接口测试理论](testing/interface/interface.md/)
   * 自动化测试框架
     * [selenium](testing/selenium/selenium.md)
 ### 爬虫
