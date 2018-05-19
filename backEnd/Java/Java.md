@@ -67,3 +67,8 @@
    * [注释](javaweb/annotation.md)
 ### 配置
    * [多版本jdk切换](config/manyJDKs.md)
+### 架构
+   * SOA面向服务架构
+     * [webservice](structure/webservice.md)
+       * 基于REST风格
+       * 基于SOAP
