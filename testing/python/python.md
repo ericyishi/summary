@@ -23,3 +23,5 @@
   * [操作excel](./tools/py_operateExcel.md)
 * 前端框架
   * [Django](/frontend/py_django.md)
+    * [MTV开发模式](/frontend/py_mtv.md)
+    * [常见问题](/frontend/problem.md)
