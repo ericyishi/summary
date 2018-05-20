@@ -57,3 +57,8 @@
    ```
     pip uninstall pymysql
    ```
+
+4. 指定版本安装
+   ```
+    pip install django==1.10.3
+   ```

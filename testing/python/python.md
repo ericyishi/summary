@@ -2,13 +2,13 @@
 * 基础
   * [基础概念](py_basic.md)
   * [编码问题](py_coding.md)
+  * [安装第三方库](py_installThirdPartyLibraries.md)
   * [基础语法](py_basic_grammer.md)
   * [运算符以及优先级](py_operator.md)
   * [数据类型](py_basicData_type.md)
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
-  * [安装第三方库](py_installThirdPartyLibraries.md)
   * [文件IO操作](py_IO.md)
   * [异常处理](py_exception.md)
 * 通信
@@ -21,3 +21,5 @@
 * 常用操作
   * [连接数据库](./tools/py_PDBC.md)
   * [操作excel](./tools/py_operateExcel.md)
+* 前端框架
+  * [Django](/frontend/py_django.md)
