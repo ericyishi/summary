@@ -5,7 +5,7 @@
    2. 在此路径下进入cmd
    3. 使用命令安装
       ```
-       pip install pymysql
+       pip install 包名
       ```
 2. 方式二:在pycharm里面直接安装
    1. File-settings-Project-Project interpreter
@@ -21,4 +21,39 @@
 
 
 ### 安装路径
-包安装在Python35\Lib\site-packages\下
+* 包安装在Python35\Lib\site-packages\下
+    * 对于有些不支持pip安装或者不能上网的场合，可以直接放在这个包下面或者手动安装
+       ```
+        python setup.py install
+       ```
+    * whl文件的安装
+      ```
+       pip install 文件名.whl
+      ```
+      * wheel本质是一个zip包格式，它使用.whl扩展名，用于python模块的安装。
+      * 使用pip命令安装whl文件
+### pip常用命令
+1. 查看已经安装的包
+   ```
+    pip list 或者 pip freeze
+   ```
+2. 查看某个已安装包的信息
+   ```
+    pip show pymysql
+   ```
+   ```
+    Name: PyMySQL
+    Version: 0.8.0
+    Summary: Pure Python MySQL Driver
+    Home-page: https://github.com/PyMySQL/PyMySQL/
+    Author: INADA Naoki
+    Author-email: songofacandy@gmail.com
+    License: MIT
+    Location: d:\program files\lib\site-packages
+    Requires:
+    Required-by:
+   ```
+3. 卸载某个包
+   ```
+    pip uninstall pymysql
+   ```
