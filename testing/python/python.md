@@ -25,3 +25,4 @@
   * [Django](frontend/py_django.md)
     * [MTV开发模式](frontend/py_mtv.md)
     * [常见问题](frontend/problem.md)
+    * [SQLit与mysql配置](frontend/py_sqlite_mysql.md)
