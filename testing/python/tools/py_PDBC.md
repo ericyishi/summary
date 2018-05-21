@@ -62,6 +62,25 @@
   3. fetchone() 返回一条查询结果
   4. fetchmany(size) 返回指定长度的查询结果
 
+### demo
+   ```
+    from pymysql import cursors,connect
+    conn=connect('localhost', 'root', 'root', 'test', charset='utf8')
+    try:
+      with conn.cursor() as cursor: #创建游标
+        studentInfo = [(8, '张三', '男', 12, 'a1'), (9, 'lee', '女', 20, 'a2'), (10, 'lee', '女', 20, 'a2')]
+        sql = "insert into student values(%s, %s, %s, %s, %s);" # 虽然数据id是int型的，但是这里要写成%s,但是存入数据库依然是int型
+        cur.executemany(sql, params)
+      conn.commit()
+      with conn.cursor() ad cursor:
+        sql="select * from student where gender=%s"
+        cursor.excute(sql,('男',))
+        result=cursor.fetchall()
+        print(result)
+    finally:
+        conn.close()
+   ```
+
 ### 连接对象DB的常用方法
   1. rollback() 即撤销指定的sql语句(只能回退insert delete update语句)，**回滚到上一次commit的位置**
   2. commit() 提交事务，提交未存储的事务
