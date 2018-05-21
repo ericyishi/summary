@@ -6,7 +6,7 @@
   * 有的地方，也把它称作数组
 * Tuple【元组】（）
 * Sets【集合】{}
-* Dictionary【字典】
+* Dictionary【字典】键值对
 ```
  * Python中的变量是没有类型的，我们可以把它看做一个(*void)类型的指针
  * 变量是可以指向任何对象的，而对象才是有类型的。
@@ -351,6 +351,19 @@
    ```
     tup_a = (1, "1sd", "hello")
    ```
+   * 单个元素的元组要在后面加上逗号，例如（1,）
+     ```
+      >>> a=(1,2)
+      >>> b=(3)
+      >>> c=a+b
+      Traceback (most recent call last):
+        File "<interactive input>", line 1, in <module>
+      TypeError: can only concatenate tuple (not "int") to tuple
+      >>> d=(3,)
+      >>> c=a+d
+      >>> print c
+      (1, 2, 3)
+     ```
    * **元组的元素无法修改**，但对于元组内有列表，那么是可以改变列表里的值
 
      ```
