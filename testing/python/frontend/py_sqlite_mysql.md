@@ -51,3 +51,9 @@
       python manage.py migrate
      ```
      * 此时打开guest数据库，里面就能看到直接sqlit一致的数据表了。
+  6. 超级管理员也需要重新创建
+     ```
+      python manage.py createsuperuser
+     ```
+     * 输入用户名
+     * 密码
