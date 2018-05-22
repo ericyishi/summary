@@ -59,3 +59,4 @@
     * 测试
       * [fiddler](tools/testing/fiddler.md)
       * [wireshark](tools/testing/wireshark.md)
+      * [loadrunner](tools/testing/loadrunner/loadrunner.md)
