@@ -1,20 +1,17 @@
 # Requests包
 ### 概述
-* requests是python实现的简单易用的HTTP库，使用起来比urllib简洁很多
-* 安装：pip install requests
+* requests是python实现的简单易用的HTTP库，基于python 内置库urllib
+* 第三方库，安装：pip install -i https://pypi.douban.com/simple requests
 ### 用法
-1. GET请求
-```
-import requests
-response = requests.get('http://www.baidu.com')
-print(response.status_code)  # 打印状态码
-print(response.url)          # 打印请求url
-print(response.headers)      # 打印头信息
-print(response.cookies)      # 打印cookie信息
-print(response.text)  #以文本形式打印网页源码
-print(response.content) #以字节流形式打印
-```
- * 带参数的GET请求
+1. 请求方式
+   ```
+    response=requests.get('http://httpbin.org/get')
+    response=requests.post('http://httpbin.org/post')
+    response=requests.put('http://httpbin.org/put')
+    等等
+   ```
+
+ * 带参数的请求
    ```
     import requests
 
@@ -34,6 +31,11 @@ print(response.content) #以字节流形式打印
     response = requests.get('http://httpbin.org/get', params=data)
     print(response.text)
    ```
+   ```
+    import requests
+    data = {'name':'tom','age':'22'}
+    response = requests.post('http://httpbin.org/post', data=data)
+   ```
  * 传递json格式
    * 可以用 json.dumps() 方法把表单数据序列化。
    ```
@@ -47,26 +49,8 @@ print(response.content) #以字节流形式打印
     response = requests.get('http://httpbin.org/get', params=json.dumps(data))
     print(response.text)
    ```
- * 解析json
-   ```
-   import requests
-
-   response = requests.get('http://httpbin.org/get')
-   print(response.text)
-   print(response.json())  #response.json()方法同json.loads(response.text)
-   print(type(response.json()))
-   ```
- * 简单保存一个二进制文件
-   ```
-    import requests
-
-    response = requests.get('http://img.ivsky.com/img/tupian/pre/201708/30/kekeersitao-002.jpg')
-    b = response.content
-    with open('F://fengjing.jpg','wb') as f:
-        f.write(b)
-   ```
  * 上传文件
-   * 使用file参数
+    * 使用file参数
    ```
     import requests
     url='http://img.ivsky.com/upload'
@@ -122,12 +106,43 @@ print(response.content) #以字节流形式打印
         url = 'http://www.kuaidaili.com/free/'
         get_ipport(get_html(url))
    ```
-2. POST请求
-```
-import requests
-data = {'name':'tom','age':'22'}
-response = requests.post('http://httpbin.org/post', data=data)
-```
+2. 响应
+ * 响应的常用参数
+    ```
+    import requests
+    response = requests.get('http://www.baidu.com')
+    print(response.status_code)  # 打印状态码
+    print(response.url)          # 打印请求url
+    print(response.headers)      # 打印头信息
+    print(response.cookies)      # 打印cookie信息
+    print(response.text)  #以文本形式打印网页源码
+    print(response.content) #以字节流形式打印
+    ```
+    * 使用正确的编码，让响应文本正确显示
+       ```
+        response.encoding="utf-8"
+        print(response.text)
+       ```
+ * 解析json
+   * response.json()
+   ```
+   import requests
+
+   response = requests.get('http://httpbin.org/get')
+   print(response.text)
+   print(response.json())  #response.json()方法同json.loads(response.text)
+   print(type(response.json()))
+   ```
+ * 简单保存一个二进制文件
+   ```
+    import requests
+
+    response = requests.get('http://img.ivsky.com/img/tupian/pre/201708/30/kekeersitao-002.jpg')
+    b = response.content
+    with open('F://fengjing.jpg','wb') as f:
+        f.write(b)
+   ```
+
 3. 获取cookie
 ```
 import requests
@@ -135,9 +150,13 @@ import requests
 response = requests.get('http://www.baidu.com')
 print(response.cookies)
 print(type(response.cookies))
+# 获取每一个cookie
 for k,v in response.cookies.items():
     print(k+':'+v)
+# 获取指定的cookie的值
+print(response.cookies['PHPSESSION'])
 ```
+
 
 4. 会话维持【用它来管理cookie，因为对于http请求是无状态，是有session让其有状态】
 ```
@@ -188,6 +207,8 @@ except RequestException:
      ```
       r=requests.head("http://github.com",allow_redirects=False)
      ```
+8. 历史请求
+   * response.history()
 ### demo
 1. 使用会话维持，模拟登录bugfree
 ```

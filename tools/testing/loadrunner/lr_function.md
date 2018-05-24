@@ -58,7 +58,35 @@
 		LAST);
   ```
   * Text 是要查找的内容
-  * SaveCount 是对应的出现的次数
+  * SaveCount 是对应的出现的次数，可以用于后续的判断
+    ```
+         web_reg_find("SaveCount=pages_count",
+            "Text=Pages",
+            LAST);
+
+         web_url("模块",
+		  "URL=http://localhost/phpwind/thread.php?fid={myfid}",
+		  "TargetFrame=_blank",
+		  "Resource=0",
+		  "RecContentType=text/html",
+		  "Referer=http://localhost/phpwind/",
+		  "Snapshot=t5.inf",
+		  "Mode=HTML",
+		  EXTRARES,
+		  "Url=images/close.gif", "Referer=http://localhost/phpwind/thread.php?fid={myfid}", ENDITEM,
+		  LAST);
+
+		  if (atoi(lr_eval_string("{pages_count}")) > 0){    //判断如果pages_count字符串出现次数大于0
+
+           lr_output_message("帖子数大于20，出现了分页.");
+           }
+           else{ //如果出现次数小于等于0
+
+         lr_output_message("帖子数小于20条"); //在日志中输出Log on failed
+
+
+        }
+    ```
 
 * 取随机数
   ```

@@ -33,12 +33,15 @@
   * [测试理论](testing/theory/theory.md)
   * 开发语言
     * [python](testing/python/python.md)
-  * 单元测试
-    * [unittest](testing/unittest/unittest.md)
   * 接口测试
     * [接口测试理论](testing/interface/interface.md/)
-  * 自动化测试框架
-    * [selenium](testing/selenium/selenium.md)
+  * [自动化测试](testing/automatic/auto_basic.md/)
+    * 单元测试
+      * [unittest](testing/unittest/unittest.md)
+    * API自动化测试
+    * UI自动化测试
+      * [selenium](testing/selenium/selenium.md)
+  * [性能测试](testing/performance/pt_basic.md)
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)

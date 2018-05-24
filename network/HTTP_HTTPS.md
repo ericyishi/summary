@@ -74,6 +74,12 @@ www.aspxfans.com
 * 无状态
   1. 指协议对事务处理没有记忆能力，缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样导致每次连接传输量增大
      * 解决：cookie、session
+       * 1，存放位置：session在服务器端，cookie 在客户端（浏览器）
+       * 2，session 默认被存在在服务器的一个文件里（不是内存）
+       * 3，session 的运行依赖 session id，而 session id 是存在 cookie 中的，也就是说，如果浏览器禁用了 cookie 【也可以由前端存放在localstorage中】
+       * 5，用户验证这种场合一般会用 session
+
+
 
 #### 6. HTTP请求方式
  1. GET
