@@ -22,6 +22,7 @@
 
 5. unittest.defaultTestLoader() 自定义套件
    * .discover方法，可以自动根据规则加载测试用例至套件中
+   * 当测试用例达到一定数量后，就需要考虑分文件分目录地划分用例，此时使用discover就能满足这个需求
      * discover(start_dir, pattern='test*.py',top_level_dir=None)
        1. 参数1：匹配查找路径
        2. 参数2：匹配规则,默认pattern='test*.py'
@@ -107,6 +108,8 @@
 ```
  http://tungwaiyip.info/software/HTMLTestRunner.html
 ```
+* 这个是原版，但是很久没有更新了，只支持python2
+* python3的修改版网上可以找
 2. 保存路径
 ```
  放在python的lib文件夹下
