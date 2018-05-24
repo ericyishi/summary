@@ -543,18 +543,21 @@
   * 备份
     1. 导出整个数据库(包括数据库中的数据）
         ```
-         MYSQLDUMP -u用户名 -p密码 数据库名 > 备份的数据库名字.sql
+         MYSQLDUMP -u用户名 -p 数据库名 > 备份的数据库名字.sql
         ```
         ```
-         MYSQLDUMP -uroot -pjsb backup > backup.sql
+         MYSQLDUMP -u root -p backup > backup.sql
         ```
+        * 再输入数据库的密码
+        * mysqldump是在cmd下的命令，不能在mysql下面，即不能进入mysql的
+        * sql文件生成在cmd的当前路径下
     2. 备份MySQL数据库某个(些)表
        ```
-        MYSQLDUMP -u用户名 -p密码 数据库名字 数据库表名1 数据库其他表名2 > 备份数据库名字.sql
+        MYSQLDUMP -u 用户名 -p  数据库名字 数据库表名1 数据库其他表名2 > 备份数据库名字.sql
        ```
     3. 同时备份多个MySQL数据库
        ```
-        MYSQLDUMP -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
+        MYSQLDUMP -u 用户名 -p  --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
        ```
        * 注意：
           1. --databases  是 "--";
@@ -573,13 +576,15 @@
        ```
   * 还原
     1. 还原MySQL数据库的命令
-       ```
-          MYSQL -h主机名 -u用户名 -p密码  需要恢复的数据库名字 < 已备份的数据库名字.sql 
-       ```
-	    * 导入的sql，只能是table，数据库需要手动建立。
-       ```
-          MYSQL -uroot -pjsb bk < bk.sql
-       ```
+	    * 导入的sql，只能是table，所以数据库需要手动建立。
+	      ```
+	       mysql -u root -p # 进入数据库
+	       mysql> create database guest_test # 创建数据库表
+	       mysql> source d:/guest.sql
+	      ```
+	    * 注意：①导入的时候要跟上路径②注意斜杠的方向
+
+
     2. 还原压缩的MySQL数据库
        ```
          GUNZIP < 刚开始备份集中的数据库名字.sql.gz | MYSQL -u用户名字 -p用户密码 需要恢复的数据库名字
