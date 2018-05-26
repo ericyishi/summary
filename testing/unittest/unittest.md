@@ -16,6 +16,12 @@
     if __name__=='__main__':
         unittest.main()
    ```
+   * 如果希望按指定顺序执行，那么就要使用TestSuite.addTest,执行顺序是按照，添加的顺序执行的
+     ```
+       mysuite = unittest.TestSuite()
+       mysuite.addTest(TestA("test_hello"))
+       mysuite.addTest(TestB("test_greeting"))
+     ```
 3. unittest.TestSuite() 用来创建测试套件的
 
 4. unittest.TextTextRunner(套件名) 运行套件的类
@@ -48,7 +54,7 @@
 
     2. @unittest.skipIf(condition, reason) condition为true的时候跳过
     3. @unittest.skipUnless(condition, reason) condition为False的时候跳过
-    4. @unittest.expectedFailure 断言的时候跳过
+    4. @unittest.expectedFailure 无论执行结果是否失败，统一标记为失败
 
 ### TestCase类的属性
 1. setUp():用于测试用例执行前的**初始化**工作。
@@ -58,6 +64,7 @@
 2. tearDown() 用于测试用例执行之后的善后工作。析构方法
    * 如关闭数据库连接。关闭浏览器
    * 每执行一个测试用例，就会运行一次析构方法
+   * teardown的过程很重要，因为要为下一个testcase留下一个干净的环境
 
 3. assert*()断言
     * assertEqual(a,b，[msg='测试失败时打印的信息']):断言a和b是否相等，相等则测试用例通过。
@@ -104,6 +111,7 @@
    * 这种方式可以把所有的测试用例添加进测试集中
 
 ### 生成HTMLTextRunner报告
+#### 使用步骤：
 1. 下载地址
 ```
  http://tungwaiyip.info/software/HTMLTestRunner.html
@@ -114,16 +122,24 @@
 ```
  放在python的lib文件夹下
 ```
-3. 使用。在需要运行的测试用例，添加
+3. 检验
 ```
- import HTMLTestRunner
+ #python shell环境下
+ >import HTMLTestRunner
+```
+* 如果没有报错，则说明添加成功
+
+4. 使用。在需要运行的测试用例，添加
+* 首先需要将HTMLTestRunner导入进来
+```
+import HTMLTestRunner
 import unittest
 from TestCalc import TestCalc
 
 if __name__ == '__main__':
 suite = unittest.TestSuite()
 tests = [TestCalc("test_add"), TestCalc("test_minus")]
-suite.addTests(tests)
+suite.addTests(tests) # 加入需要运行的测试用例
 with open('testresult.html', 'wb') as f:
 
     runner = HTMLTestRunner.HTMLTestRunner(
@@ -131,9 +147,19 @@ with open('testresult.html', 'wb') as f:
     title='jisuanqi',
     description='jisuanqi'
     )
-    runner.run(suite)
+    runner.run(suite)  # 运行测试用例
 ```
 * 运行后，就会在当前文件夹下生成了一个testresult.html文件
+* 运行流程：
+  1. 通过以open()方法以二进制写模式打开当前的目录下的testresult.html文件，如果没有，则动态创建。
+  2. 接着调用HTMLTestRunner下的HTMLTestRunner类。
+     * stream指定测试报告文件
+     * title用于定义测试报告的标题
+     * description用于定义测试报告的副标题
+  3. 通过HTMLTestRunner的run方法来运行测试套件中所有组装的测试用例。
+  4. 使用with的方式可以不必再手动close()
+#### 优化
+1. HTMLTestRunner可以直接读取doc string类型的注释，所有我们可以给测试类或方法添加即可让报告中显示更具有语义化
 
 ### 运行
 1. 如果想当前的脚本上所有的用例一起执行，只需把鼠标放到if __name__ == "__main__":这句话的后面或者下方就行了，右键 run 'Unittests in xxx'
