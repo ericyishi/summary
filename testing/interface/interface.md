@@ -79,5 +79,5 @@
 1. 浏览器插件：postman这类
 2. 接口自动化测试工具：jmeter、Robot Framework
 3. 接口性能测试：LR、Jmeter
-* 注意：除了使用工具以外，我们还能通过代码的方式，进行接口测试。[使用requests库](../python/communication/py_request.md)
+* 注意：除了使用工具以外，我们还能通过代码的方式，进行接口测试。[使用requests库](../python/communication/py_requests.md)
 
