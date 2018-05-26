@@ -9,6 +9,7 @@
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
+     * [time模块](py_time.md)
   * [文件IO操作](py_IO.md)
   * [异常处理](py_exception.md)
 * 通信
@@ -21,6 +22,7 @@
 * 常用操作
   * [连接数据库](./tools/py_PDBC.md)
   * [操作excel](./tools/py_operateExcel.md)
+  * [发送邮件](./tools/py_sendEmail.md)
 * 前端框架
   * [Django](frontend/py_django.md)
     * [MTV开发模式](frontend/py_mtv.md)

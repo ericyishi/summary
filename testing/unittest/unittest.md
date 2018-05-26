@@ -160,7 +160,32 @@ with open('testresult.html', 'wb') as f:
   4. 使用with的方式可以不必再手动close()
 #### 优化
 1. HTMLTestRunner可以直接读取doc string类型的注释，所有我们可以给测试类或方法添加即可让报告中显示更具有语义化
+2. 将每次运行后的测试报告加上当前时间，避免被覆盖
+   ```
+    test_dir="./report"
+    currentTime=time.strftime("%Y-%m-%d %H-%M-%S")
+    filename=test_dir+'/'+currentTime+'result.html'
 
+   ```
+#### 查找最新的测试报告
+```
+import os
+# 查找的路径
+result_dir=r'./report/'
+# 获取路径下的所有文件
+lists=os.listdir(result_dir)
+# 重新按时间对目录下的文件进行排序
+# #sort按key的关键字进行升序排序，lambda的入参fn为lists列表的元素，获取文件的最后修改时间，所以最终以文件时间从小到大排序
+lists.sort(key=lambda fn:os.path.getmtime(result_dir+"\\"+fn))
+print('最近文件名：'+lists[-1])
+file=os.path.join(result_dir,lists[-1])
+print('最近文件路径：',file)
+```
+* 使用了一个lambda函数，相当于
+```
+def key(fn):
+    return os.path.getmtime(test_dir+'\\'+fn)
+```
 ### 运行
 1. 如果想当前的脚本上所有的用例一起执行，只需把鼠标放到if __name__ == "__main__":这句话的后面或者下方就行了，右键 run 'Unittests in xxx'
 2. 想运行某个测试用例，鼠标放到该测试用例区域右键，就会显示：Run 'Unittest xxx'
