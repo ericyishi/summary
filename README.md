@@ -63,3 +63,5 @@
       * [fiddler](tools/testing/fiddler.md)
       * [wireshark](tools/testing/wireshark.md)
       * [loadrunner](tools/testing/loadrunner/loadrunner.md)
+    * 其他
+      * [持续集成jenkins](tools/others/jenkins.md)
