@@ -3,6 +3,10 @@
   1. 下载对应的jdk。
   2. 放入linux目录中（例如：/opt）
      * 可以使用xshell也可以使用FileZilla
+     * lrzsz使用，使用后，直接往xshell里面拖（先用xshell定位到要移动到的目录文件下，然后直接拖）
+       ```
+        yum install lrzsz
+       ```
   3. 配置环境变量
      1. 修改/root/.bash_profile
         ```
