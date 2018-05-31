@@ -10,6 +10,7 @@
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
      * [time模块](py_time.md)
+     * [logging模块](py_logging.md)
   * [文件IO操作](py_IO.md)
   * [异常处理](py_exception.md)
 * 通信
