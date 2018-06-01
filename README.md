@@ -42,6 +42,9 @@
     * UI自动化测试
       * [selenium](testing/selenium/selenium.md)
   * [性能测试](testing/performance/pt_basic.md)
+  * 移动端测试
+    * [测试环境](testing/android/adroid_environment.md)
+    * [ADB常用命令](testing/android/adroid_ADBinstruction.md)
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
