@@ -37,7 +37,7 @@
     * [接口测试理论](testing/interface/interface.md/)
   * [自动化测试](testing/automatic/auto_basic.md/)
     * 单元测试
-      * [unittest](testing/unittest/unittest.md)
+      * [unittest框架](testing/unittest/unittest.md)
     * API自动化测试
     * UI自动化测试
       * [selenium](testing/selenium/selenium.md)
@@ -45,6 +45,11 @@
   * 移动端测试
     * [测试环境](testing/android/adroid_environment.md)
     * [ADB常用命令](testing/android/adroid_ADBinstruction.md)
+    * [Android常用命令](testing/android/android_AndroidInstruction.md)
+    * [monkey](testing/android/android_monkey.md)
+    * [monkeyServer](testing/android/android_monkeyServer.md)
+    * [Android常用keycode](testing/android/android_keycode.md)
+    *
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
@@ -66,5 +71,6 @@
       * [fiddler](tools/testing/fiddler.md)
       * [wireshark](tools/testing/wireshark.md)
       * [loadrunner](tools/testing/loadrunner/loadrunner.md)
+      * 
     * 其他
       * [持续集成jenkins](tools/others/jenkins.md)
