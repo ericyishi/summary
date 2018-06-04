@@ -49,7 +49,7 @@
     * [monkey](testing/android/android_monkey.md)
     * [monkeyServer](testing/android/android_monkeyServer.md)
     * [Android常用keycode](testing/android/android_keycode.md)
-    *
+    * [monkeyRunner黑盒测试工具](testing/android/MonkeyRunner.md)
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
