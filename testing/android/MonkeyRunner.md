@@ -1,23 +1,25 @@
 # MonkeyRunner
-### 概述
+### 一、概述
 * MonkeyRunner是Android SDK中自带的一个和黑测试工具
 * 与monkey没有什么关系。monkeyrunner则是在PC端通过API发送特定的命令和事件来控制设备
 * monkey是直接运行在adb中在设备上
 
-### 作用
+### 二、作用
 * 对多个设备控制，功能测试，回归测试，截频。可以扩展api
 
-### 模块
+### 三、模块
 1. MonkeyRunner
-   * 提供连接真机和模拟器方法waitForConnection(float timeout,string deviceid)，还有显示提示显示信息的alert()方法
+   * 提供连接真机和模拟器方法waitForConnection(float timeout,string deviceid)，还有显示提示显示信息常用弹框
 2. MonkeyDevice
+   * 负责与设备的交互
+   * 提供了安装和卸载程序包、开启Activity、发送按键和点击事件、运行测试包等方法
 3. MonkeyImage
-
-### 运行
+   * 主要是对图像处理的相关模块，对截频的图像进行操作
+### 四、运行
 * 方式1：直接在cmd中输入:monkeyrunner
 * 方式2：在SDK中\tools文件夹下运行monkeyrunner.bat
 
-### 使用
+### 五、使用
 * 方式1：可以直接在进入monkeyrunner环境中运行
   ```
    # 需要先导入包
@@ -56,8 +58,7 @@
     mr.sleep(2)  
   ```
 
-### MonkeyRunner模块
-* 提供连接方法和常用弹框
+### 六、MonkeyRunner模块
 1. waitForConnection()连接真机和模拟器方法
 ```
 MonkeyRunner.waitForConnection()
@@ -84,9 +85,7 @@ MonkeyRunner.waitForConnection()
   MonkeyRunner.sleep(4)
 ```
 
-### MonkeyDevice模块
-* 负责与设备的交互
-* 提供了安装和卸载程序包、开启Activity、发送按键和点击事件、运行测试包等方法
+### 七、MonkeyDevice模块
 ```
  # 下面所有方法是基于建立连接后的
  from com.android.monkeyrunner import MonkeyRunner as mr,MonkeyDevice as md
@@ -130,8 +129,7 @@ device.type("+")
  # 获取屏幕的宽度
 ```
 
-### MonkeyImage模块
-* 主要是对图像处理的相关模块，对截频的图像进行操作
+### 八、MonkeyImage模块
 * 下面所有方法是基于截频以后的操作
 ```
  from com.android.monkeyrunner import MonkeyRunner as mr,MonkeyDevice as md
@@ -158,10 +156,10 @@ subimge.sameAs(subimge2,0.9) #false
 4. writeToFile将图片写到文件当中生成图片文件
 5. getRawPixel(x,y)获取像素点αrgb
 
-### 录制和回放
+### 九、录制和回放
 * SDK中没有，需要从monkeyRunner源码中拷取，放在sdk的tool文件夹下。
 * 录制对应monkey_recorder.py，回放对应monkey_playback.py
-#### 录制
+#### 1. 录制
 * 启动录制界面，会弹出一个MonkeyRecord窗口界面会弹出一个MonkeyRecord窗口界面，会把模拟器的动作同步到recorder里面
 ```
  py monkey_recorder.py 或者使用：monkeyrunner  monkey_record.py
@@ -176,7 +174,7 @@ subimge.sameAs(subimge2,0.9) #false
    * Fling：用来进行拖动操作，可以向上、下、左、右，以及操作的范围
    *  Export Actions：用来导出脚本，不需要后缀名，也可以添加后缀名.mr
    * Refresh Display：用来刷新手机界面，估计只有在断开手机后，重新连接时才会用到
-#### 回放
+#### 2. 回放
 ```
  monkeyrunner monkey_playback.py C:\users\Administrator\test.mr
 ```
