@@ -43,14 +43,25 @@
       * [selenium](testing/selenium/selenium.md)
   * [性能测试](testing/performance/pt_basic.md)
   * 移动端测试
-    * [测试环境](testing/android/adroid_environment.md)
-    * [ADB常用命令](testing/android/adroid_ADBinstruction.md)
-    * [Android常用命令](testing/android/android_AndroidInstruction.md)
-    * [monkey](testing/android/android_monkey.md)
-    * [monkeyServer](testing/android/android_monkeyServer.md)
+    * 环境
+      1. [测试环境](testing/android/adroid_environment.md)
+    * SDK Tools  
+      1. [ADB常用命令](testing/android/adroid_ADBinstruction.md)
+      2. [Android常用命令](testing/android/android_AndroidInstruction.md)
+    * Monkey工具  
+      1. [monkey](testing/android/android_monkey.md)
+      2. [monkeyServer](testing/android/android_monkeyServer.md)
     * [Android常用keycode](testing/android/android_keycode.md)
-    * [monkeyRunner黑盒测试工具](testing/android/MonkeyRunner.md)
-    * [EasyMonkeyDevice](testing/android/EasyMonkeyDevice.md)
+    * MonkeyRunner自动化测试框架
+      1. [monkeyRunner黑盒测试工具](testing/android/MonkeyRunner.md)
+      2. [EasyMonkeyDevice](testing/android/EasyMonkeyDevice.md)
+    * Robotium-java框架
+      1. [apk重签名](testing/android/android_resign.md)
+      2. [robotium框架的使用](testing/android/android_robotium.md)
+         * [核心类solo的常用api](testing/android/android_robotium_solo_api.md)
+    * UIAutomator
+    * Appium跨平台测试框架
+     
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
