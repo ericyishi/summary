@@ -59,6 +59,7 @@
       1. [apk重签名](testing/android/android_resign.md)
       2. [robotium框架的使用](testing/android/android_robotium.md)
          * [核心类solo的常用api](testing/android/android_robotium_solo_api.md)
+         * [Robotium录制回放工具](testing/android/android_robotium_recorder.md)
     * UIAutomator
     * Appium跨平台测试框架
      
