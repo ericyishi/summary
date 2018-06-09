@@ -61,6 +61,8 @@
          * [核心类solo的常用api](testing/android/android_robotium_solo_api.md)
          * [Robotium录制回放工具](testing/android/android_robotium_recorder.md)
     * UIAutomator
+      1. [UIAutomator配置与使用](testing/android/android_uiautomator.md)
+          * [快速调试工具UiautomatorHelper](testing/android/android_uiautomator_uiautomatorHelper.md)
     * Appium跨平台测试框架
      
 ### 爬虫

@@ -12,7 +12,7 @@
 
 ### 使用
 * 以eclipse为例
-  1.File->New->Android Test Project，输入测试的工程名字，选择要测试的工程；
+  1.File->New->Android Test Project【注意是Android项目】，输入测试的工程名字，选择要测试的工程；
     * 如果只有apk，就选第一个This Project  
   2.右键新建的工程名，选择Properties->Java Build Path->Libraries ->Add External JARs…，选择下载好的robotium-solo.jar包，我选择的是robotium-solo-5.6.0.jar，为了方便阅读，建议将robotium-solo-5.6.0-javadoc.jar也一并导入.还要在Order and Export里面勾选上； 
     * 这一步可以在Add Libraries中导入JUnit4
