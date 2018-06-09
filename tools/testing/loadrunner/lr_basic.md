@@ -1,10 +1,21 @@
 # loadrunner
 ### 概述
 1. Loadrunner默认使用c语言
-2. 最好的环境是win7+Loadrunner11最好使用IE9，其他版本录制脚本时候会有问题
+2. 最好的环境是win7（32位）+Loadrunner11最好使用IE9，其他版本录制脚本时候会有问题
+3. VUGen，不支持64位
+### 工作原理
+1. 使用VuGen虚拟用户生成器，产生不同的用户
+2. 通过Controller控制器对生成的用户进行控制，对目标网站进行访问
+3. 使用Analysis去搜集相应数据
+### 如何模拟许多用户行为进行压力测试
+1. 通过浏览器录制脚本模拟用户
+2. 增强脚本产生多个用户和数据
+3. 通过controller控制压力
+4. 监控压力过程并收集数据
+5. 根据数据分析结果输出报告
 
 ### 常用配置
-1. 启用运行效果实时查看窗口
+1. 启用后，回放可以实时查看
    ```
     Tools--General Options-Display，勾选[Show run-time viewer during re]
    ```
