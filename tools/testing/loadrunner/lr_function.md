@@ -1,7 +1,8 @@
 # 常用方法
+* lr_eval_string("{param}") 从参数中提取对应的值，将变量转换成字符串
 * lr_output_message("str"); 输出字符串
+  * lr_output_message("用户名：%s",lr_eval_string("{param}"));
 * lr_error_message("str");输入错误的信息
-* lr_eval_string("{param}") 将变量转换成字符串
 * 字符串、数字互转
     * atoi(lr_eval_string("{param}")) 将LR参数{param}转换为数字
     * lr_save_int(要转化的字符串,"变量名"); 将字符串转化为数字并保存在变量中
