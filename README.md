@@ -1,5 +1,5 @@
 # summary
-###### 整理之前保存在印象笔记里面的知识
+###### 整理之前保存在印象笔记里面的知识，每天更新一点点。
 ### 前端
   * [html](frontEnd/html/html.md)
   * [CSS](frontEnd/css/README.md "CSS页面")
