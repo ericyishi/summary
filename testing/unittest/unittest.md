@@ -1,5 +1,7 @@
 # unittest单元测试框架
 *  unittest单元测试框架不仅可以适用于单元测试，还可以适用WEB自动化测试用例的开发与执行，该测试框架可组织执行测试用例，并且提供了丰富的断言方法，判断测试用例是否通过，最终生成测试结果
+* 是python自带的一个单元测试模块
+
 ### 使用
 ```
  import unittest
@@ -27,7 +29,7 @@
 
 4. unittest.TextTextRunner(套件名) 运行套件的类
 
-5. unittest.defaultTestLoader() 自定义套件
+5. unittest自定义套件
    * .discover方法，可以自动根据规则加载测试用例至套件中
    * 当测试用例达到一定数量后，就需要考虑分文件分目录地划分用例，此时使用discover就能满足这个需求
      * discover(start_dir, pattern='test*.py',top_level_dir=None)
@@ -41,8 +43,8 @@
       # 将F:\PythonProject\test1路径下的所有以test开头的py文件加入至套件mysuite中
    ```
 
-6 unittest.skip() 装饰器，跳过用例
-  * skip装饰器一共有四个
+6. unittest.skip() 装饰器，跳过用例
+   * skip装饰器一共有四个
     1. @unittest.skip(reason) 无条件跳过用例，reason是说明原因
        ```
         @unittest.skip("暂时不测")
@@ -55,51 +57,75 @@
 
     2. @unittest.skipIf(condition, reason) condition为true的时候跳过
     3. @unittest.skipUnless(condition, reason) condition为False的时候跳过
+       ```
+        # 如果系统是linux则不执行该测试用例
+        @unittest.skipUnless(sys.platform.startwith("linux"), "requires windows")
+        def test_sample(self):
+          pass
+        
+       ```
     4. @unittest.expectedFailure 无论执行结果是否失败，统一标记为失败
 
 ### TestCase类的属性
-1. setUp():用于测试用例执行前的**初始化**工作。
-   * 如测试用例中需要访问数据库，可以在setUp中建立数据库连接并进行初始化
-   * 如测试用例需要登录web，可以先实例化浏览器
-   * 每执行一个测试用例，就会输出运行一次初始化方法
-2. tearDown() 用于测试用例执行之后的善后工作。析构方法
-   * 如关闭数据库连接。关闭浏览器
-   * 每执行一个测试用例，就会运行一次析构方法
-   * teardown的过程很重要，因为要为下一个testcase留下一个干净的环境
+1. 特殊的方法
+    1. setUp():用于测试用例执行前的**初始化**工作。
+       * 如测试用例中需要访问数据库，可以在setUp中建立数据库连接并进行初始化
+       * 如测试用例需要登录web，可以先实例化浏览器
+       * 每执行一个测试用例，就会输出运行一次初始化方法
+    2. tearDown() 用于测试用例执行之后的善后工作。析构方法
+       * 如关闭数据库连接。关闭浏览器
+       * 每执行一个测试用例，就会运行一次析构方法
+       * teardown的过程很重要，因为要为下一个testcase留下一个干净的环境
+    3. setUpClass() 所有测试方法前运行
+       * 必须使用@classmehtod装饰器进行装饰
+       * setUp()函数前执行
+       * 整个测试过程只执行一次
+       ```
+        @classmehtod
+        setUpClass(cls):
+         print("-----setUpClass---")
+       ```  
+    4. tearDownClass() 所有测试方法之后运行
+       * 必须使用@classmehtod装饰器进行装饰
+       * tearDown()函数前执行
+       * 整个测试过程只执行一次      
+ 
+2. assert*()断言
+    * assertEqual(a,b,[msg='测试失败时打印的信息']):断言a和b是否相等，相等则测试用例通过。
 
-3. assert*()断言
-    * assertEqual(a,b，[msg='测试失败时打印的信息']):断言a和b是否相等，相等则测试用例通过。
-
-    * assertNotEqual(a,b，[msg='测试失败时打印的信息']):断言a和b是否相等，不相等则测试用例通过。
+    * assertNotEqual(a,b,[msg='测试失败时打印的信息']):断言a和b是否相等，不相等则测试用例通过。
 
     * assertTrue(x，[msg='测试失败时打印的信息'])：断言x是否True，是True则测试用例通过。
 
-    * assertFalse(x，[msg='测试失败时打印的信息'])：断言x是否False，是False则测试用例通过。
+    * assertFalse(x,[msg='测试失败时打印的信息'])：断言x是否False，是False则测试用例通过。
 
-    * assertIs(a,b，[msg='测试失败时打印的信息']):断言a是否是b，是则测试用例通过。
+    * assertIs(a,b,[msg='测试失败时打印的信息']):断言a是否是b，是则测试用例通过。
 
-    * assertNotIs(a,b，[msg='测试失败时打印的信息']):断言a是否是b，不是则测试用例通过。
+    * assertNotIs(a,b,[msg='测试失败时打印的信息']):断言a是否是b，不是则测试用例通过。
 
-    * assertIsNone(x，[msg='测试失败时打印的信息'])：断言x是否None，是None则测试用例通过。
+    * assertIsNone(x,[msg='测试失败时打印的信息'])：断言x是否None，是None则测试用例通过。
 
-    * assertIsNotNone(x，[msg='测试失败时打印的信息'])：断言x是否None，不是None则测试用例通过。
+    * assertIsNotNone(x,[msg='测试失败时打印的信息'])：断言x是否None，不是None则测试用例通过。
 
-    * assertIn(a,b，[msg='测试失败时打印的信息'])：断言a是否在b中，在b中则测试用例通过。
+    * assertIn(a,b,[msg='测试失败时打印的信息'])：断言a是否在b中，在b中则测试用例通过。
 
-    * assertNotIn(a,b，[msg='测试失败时打印的信息'])：断言a是否在b中，不在b中则测试用例通过。
+    * assertNotIn(a,b,[msg='测试失败时打印的信息'])：断言a是否在b中，不在b中则测试用例通过。
 
-    * assertIsInstance(a,b，[msg='测试失败时打印的信息'])：断言a是是b的一个实例，是则测试用例通过。
+    * assertIsInstance(a,b,[msg='测试失败时打印的信息'])：断言a是是b的一个实例，是则测试用例通过。
 
-    * assertNotIsInstance(a,b，[msg='测试失败时打印的信息'])：断言a是是b的一个实例，不是则测试用例通过。
+    * assertNotIsInstance(a,b,[msg='测试失败时打印的信息'])：断言a是是b的一个实例，不是则测试用例通过。
 
-4. 定义测试用例，以“test_”开头命名的方法
+3. 定义测试用例，以“test_”开头命名的方法
 
 ### TestSuite类的属性
 1. addTest() 添加套件
    ```
-    mysuit = unittest.TestSuite()
-    mysuit.addTest(TestCalculator("test_add"))
+    mysuite = unittest.TestSuite()
+    mysuite.addTest(TestCalculator("test_add"))
+    runner=unitttest.TextTestRunner()
+    runner.run(mysuite)
    ```
+   * 以这种方式可以指定测试用例的执行顺序
 2. run()方法来运行suite所组装的测试用例
    ```
     runner=unittest.TextTestRunner()
@@ -110,7 +136,24 @@
     mysuit.addTests(unittest.TestLoader().loadTestsFromTestCase(测试用例类名))
    ```
    * 这种方式可以把所有的测试用例添加进测试集中
-
+4. 实例化测试集的时候，加入多个测试类加入
+   ```
+    testcases1=unittest.TestLoader().loadTestsFromTestCase(测试用例类名)
+    testcases2=unittest.TestLoader().loadTestsFromTestCase(测试用例类名)
+    suite=unittest.TextSuite([testcases1,testcases2])
+    unittest.TextTestRunner(verbosity=2).run(suite)
+   ```
+   * TestLoader类：测试用例加载器，返回一个测试用例集合
+   * loadTestsFromTestCase类：根据给定的测试类，取其中的所有以test开头的测试方法，并返回一个测试集合。
+   * TextSuite类：组装测试用例的实例，支持添加和删除用例，最后将传递给testrunner进行测试执行。
+   * TextTestRunner类：测试用例执行类，其中Text表示以文本形式输出测试结果。
+   
+#### verbosity 参数
+* 在unittest.main()中加 verbosity 参数可以控制输出的错误报告的详细程度
+* 默认是 1，结果仅以点(.)表示执行成功的用例数
+* 如果设为 0，则不输出每一用例的执行结果，即没有上面的结果中的第1行；
+* 如果设为 2，则输出详细的执行结果   
+   
 ### 生成HTMLTextRunner报告
 #### 使用步骤：
 1. 下载地址
@@ -123,6 +166,7 @@
 ```
  放在python的lib文件夹下
 ```
+* 也可以放在项目文件下，导包进入即可
 3. 检验
 ```
  #python shell环境下
@@ -133,22 +177,22 @@
 4. 使用。在需要运行的测试用例，添加
 * 首先需要将HTMLTestRunner导入进来
 ```
-import HTMLTestRunner
-import unittest
-from TestCalc import TestCalc
-
-if __name__ == '__main__':
-suite = unittest.TestSuite()
-tests = [TestCalc("test_add"), TestCalc("test_minus")]
-suite.addTests(tests) # 加入需要运行的测试用例
-with open('testresult.html', 'wb') as f:
-
-    runner = HTMLTestRunner.HTMLTestRunner(
-    stream=f,
-    title='jisuanqi',
-    description='jisuanqi'
-    )
-    runner.run(suite)  # 运行测试用例
+    import HTMLTestRunner
+    import unittest
+    from TestCalc import TestCalc
+    
+    if __name__ == '__main__':
+    suite = unittest.TestSuite()
+    tests = [TestCalc("test_add"), TestCalc("test_minus")]
+    suite.addTests(tests) # 加入需要运行的测试用例
+    with open('testresult.html', 'wb') as f:
+    
+        runner = HTMLTestRunner.HTMLTestRunner(
+        stream=f,
+        title='jisuanqi',
+        description='jisuanqi'
+        )
+        runner.run(suite)  # 运行测试用例
 ```
 * 运行后，就会在当前文件夹下生成了一个testresult.html文件
 * 运行流程：
@@ -191,9 +235,6 @@ def key(fn):
 1. 如果想当前的脚本上所有的用例一起执行，只需把鼠标放到if __name__ == "__main__":这句话的后面或者下方就行了，右键 run 'Unittests in xxx'
 2. 想运行某个测试用例，鼠标放到该测试用例区域右键，就会显示：Run 'Unittest xxx'
 
+### 
 
-#### verbosity 参数
-* 在unittest.main()中加 verbosity 参数可以控制输出的错误报告的详细程度
-* 默认是 1
-* 如果设为 0，则不输出每一用例的执行结果，即没有上面的结果中的第1行；
-* 如果设为 2，则输出详细的执行结果
+
