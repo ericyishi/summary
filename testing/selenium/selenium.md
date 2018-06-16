@@ -4,6 +4,7 @@
 * webdriver API
   * 基础知识
     * [webdriver原理](principleOfWebdriver.md)
+    * [加载驱动](loadDriver.md)
     * [webdriver定位元素方式](locateForWD.md)
     * [操作元素](controlElement.md)
     * [操作浏览器](controlBrowser.md)
