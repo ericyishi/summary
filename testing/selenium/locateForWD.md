@@ -26,12 +26,13 @@
   * driver.find_element_by_partial_link_text()
   * driver.find_elements_by_partial_link_text()
 ### 7. xpath
+* xml path的缩写
 * 性能不算好，尽量少用
 * **xpath中没有第0元素这样的表示方法，都是从1开始**
   * driver.find_element_by_xpath()
   * driver.find_elements_by_xpath()
 1. 绝对路径定位
-  * 从跟根路径开始寻找
+  * 从根路径开始寻找
   * 元素的xpath绝对路径可通过浏览器工具直接查询复制，一般不需要你手工去写
   * 一般不推荐使用绝对路径的写法，因为一旦页面结构发生变化，该路径也随之失效，必须重新写。
   * 绝对路径以单/号开头表示
@@ -48,6 +49,24 @@
    查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
    查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，不管还嵌套了多少个其他标签，使用相对路径表示，双//号)：//form[1]//input
   ```
+3. xpath的函数
+   1. starts-with(str1,str2)
+      ```
+       //img[starts-with(@alt,'decription')]
+       # 这里的//不是注释，而是相对路径
+       # 查找属性alt的属性值以'decription'关键字开始的页面
+      ```
+   2. contains(str1,str2)
+      ```
+       //img[contains(@alt,'img')]
+       # 查找alt属性值包含‘img’关键字的页面元素
+      ```
+   3. text() 获取定位元素的文本值
+      ```
+       //a[text()='搜狗搜索']
+       //a[contains(text(),'百度')]
+      ```
+     
 ### 8. css
 * 性能优于xpath
   * driver.find_element_by_css_selector()
