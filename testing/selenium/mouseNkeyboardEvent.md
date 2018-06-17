@@ -7,6 +7,7 @@
    from selenium.webdriver.common.action_chains import ActionChains
 
   ```
+*  selenium.webdriver.ActionChains包是WebDriver针对python语言专门用于模拟鼠标操作事件的包，包括双击、悬浮、拖拽等
 * 使用方式
   ```
    ActionChains(driver).操作方法(定位的元素).perform()
@@ -15,6 +16,10 @@
 * ActionChains类提供的操作方法
   * context_click() 右击
   * double_click() 双击
+    ```
+     action_chains=ActionChains(self.driver)
+     action_chains.double_click(inputBox).perform()
+    ```
   * drag_and_drop(source,target) 拖动
     ```
     source_element = driver.find_element_by_id("el1")
