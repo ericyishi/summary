@@ -1,5 +1,6 @@
 # 多窗口切换
 * 使用driver.switch_to().window(handle)来切换窗口
+* selenium3不建议是使用：driver.switch_to_window(handle)
 ```
  from selenium import webdriver
 
@@ -15,5 +16,6 @@ for handle in allhandles: # 循环判断窗口是否为当前窗口
 * 核心就是获取当前页以及所有页面并遍历
   ```
    driver.current_window_handle # 得到当前页
+   # 也可以是使用下面的语句，获取当前打开页面的句柄：driver.window_handles[-1]
    driver.window_handles # 获取所有页面
   ```
