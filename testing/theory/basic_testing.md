@@ -153,8 +153,8 @@
 <table>
    <thead>
     <tr>
-      <th>敏捷测试</th>
       <th>传统测试</th>
+      <th>敏捷测试</th>
     </tr>
    </thead>
    <tbody>

@@ -9,6 +9,7 @@
   * 需要用的地方就要调用一次
 ### 显示等待
 * 这种方式WebDriverWait是由webDriver提供的，这是全局方法，直接使用
+* 推荐使用这种方式
 * 使webDriver等待某个条件成立时继续执行，否则达到最大时长时候抛出异常（TimeoutException）
 * 方法的参数说明
   ```
