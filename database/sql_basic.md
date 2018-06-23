@@ -102,8 +102,9 @@
   ## 注意事项
      1. 设置字符集为utf-8的时候是utf8【不是utf-8】
         ```
-         CREATE DATABASE 'LUCAS' DEFAULT CHARACTER SET utf8 COLLATE utf8_general_cs;
+         CREATE DATABASE 'LUCAS' DEFAULT CHARACTER SET utf8
         ```
+        * 设置数据库的字符集编码默认为utf8
      2. 默认数据库是不区分大小写的【需要配置】
         ```
          SELECT * FROM USER WHERE UNAME="Zhang";
@@ -115,8 +116,14 @@
         * 2.在my.cnf中更改lower_case_tables_name = 2，并重启mysql数据库。
         * 3.将导出的数据导入mysql数据库中。
 
-     3. 除了上面的方法外，还可以在创建表的时候改变字符编码
+     3. 还可以在创建表的时候改变字符编码
         ```
          CREATE DATABASE LUCAS DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
         ```
+        * 数据库校验规则
+          ```
+           utf8_bin：区分大小写；
+	       utf8_general_cs：大小写敏感； # cs，即case sensitive，大小写敏感
+	       utf8_general_ci：大小写不敏感。 # ci是case insensitive的缩写
+          ```
         * 网上有的地方写得是utf8_general_cs 但是mysql不支持这种字符集，所以使用utf8_bin就好了。
