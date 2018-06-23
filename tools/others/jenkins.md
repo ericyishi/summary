@@ -13,6 +13,13 @@
 1. 安装路径的选择。在选择安装目录时，指定安装到 Tomcat 的 webapps\目录下
 2. 启动jerkins。进入 Tomcat 的 bin/目录下启动 startup.bat ，通过浏览器访问：http://localhost:8080/
 
+### 修改镜像源
+* 【系统管理】【管理插件】【高级】升级站点项的的地址修改成：
+   ```
+    https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/stable-2.60/update-center.json
+   ```
+   * 更多镜像源参看：http://mirrors.jenkins-ci.org/status.html
+
 ### 使用
 1. 创建任务
    * 单击首页“创建一个新任务”的链接【注意项目名称不要是中文】
