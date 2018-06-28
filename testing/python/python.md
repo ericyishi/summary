@@ -15,6 +15,7 @@
      * [json模块](py_JSON.md)
   * [文件IO操作](py_IO.md)
   * [异常处理](py_exception.md)
+  * [多线程](py_thread.md)
 * 通信
   * HTTP
     * [使用http.client包](communication/py_http_client.md)
