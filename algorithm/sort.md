@@ -27,6 +27,46 @@
 2,4,7,21,32,44,55
 ```
 
+【冒泡算法的优化】
+```
+ //循环控制趟数
+        var s = 0;
+        var s1 = 0;
+ 
+        //为什么 isSort = true，不能写在循环外面
+        //因为 交换位置 isSort = false.  isSort的值永远是false 。我们要检测的是某一趟是否交换位置
+ 
+        for (var i = 0; i < array.length - 1; i++) {
+            var isSort = true; //假设排序ok
+            //控制两两比较的次数       1--6      2--5   4 3 2 1
+            for (var j = 0; j < array.length - 1 - i; j++) {
+                //两两比较   从小到大排序
+ 
+                //如果交换位置，说明没有排序好，如果不交换位置，说明排序好
+                if (array[j] > array[j + 1]) {
+                    isSort = false;  //没有排序好呢
+                    //交换位置
+                    var tmp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
+                }
+ 
+                s++; //记录内循环的次数
+            }
+            s1++;  //记录外循环的次数
+ 
+            if(isSort) {
+                //如果排序好了
+                break;
+            }
+        }
+ 
+        console.log("内循环的次数" + s);
+        console.log("外循环的次数" + s1);
+        console.log(array);
+
+```
+
 ### 选择排序
 * 核心思想：选择排序，让数组中的每一个数，依次与后面的数进行比较，如果前面的数大于后面的数，就进行位置的交换。
 * 下面代码是从小到大，如果要从大到小，只需要将判断条件改为：arr[j] < arr[j + 1]
