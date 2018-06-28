@@ -1,4 +1,8 @@
 # Django
+### 安装
+```
+ pip install django
+```
 ### 1.创建一个项目
 * 网页展示hello world
 1. 查看django提供的命令
