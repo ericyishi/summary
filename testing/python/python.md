@@ -1,6 +1,7 @@
 ﻿# python
 * 基础
   * [基础概念](py_basic.md)
+  * [python语言差异化](py_mubeknow.md)
   * [编码问题](py_coding.md)
   * [安装第三方库](py_installThirdPartyLibraries.md)
   * [基础语法](py_basic_grammer.md)
