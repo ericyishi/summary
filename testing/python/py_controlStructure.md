@@ -41,7 +41,7 @@
 
     2. for 变量 in range()
        * 对于进行一定次数的循环，需要使用range()
-       * range() 指定区间范围，结束范围是开区间。
+       * range() 指定区间范围，结束范围是**开区间**。
          ```
           range(10) 取值是[0,10)
           区间值里面也能够切片
@@ -52,6 +52,9 @@
           # 这里的i是下标
           for i in rang(3):
            print(i) # 0,1,2
+		  
+          for i in range(1,3):
+            print(i) # 1,2  		  
          ```
 2. while循环
    1. while
