@@ -38,3 +38,33 @@
     return fact_iter(num - 1, num * product)
 ```
 * return fact_iter(num - 1, num * product)仅返回递归函数本身，num - 1和num * product在函数调用前就会被计算，不影响函数调用
+
+### 应用：斐波拉切函数
+1. 普通写法：
+```
+ # 递归
+def Fib(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return Fib(n - 1) + Fib(n - 2)
+```	
+
+2. 优化写法【使用yield】
+```
+ def Fib_Yield(n):
+    a, b = 0, 1
+    while n > 0:
+        yield b
+        a, b = b, a + b
+        n -= 1
+
+
+def Fib(n):
+    # return [f for i, f in enumerate(Fib_Yield(n))]
+    return list(Fib_Yield(n))
+	
+print(Fib(10))	
+```
