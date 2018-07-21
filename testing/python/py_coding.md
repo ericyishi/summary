@@ -15,10 +15,12 @@
   1. python程序文件的编码
      ```
       #coding=utf-8
+	  或者
+	  # -*- coding:utf-8 -*-
      ```
      * 程序开头第一行加上
      * 注意：#coding=utf-8 的 = 号两边不要空格。
-     * Python中默认的编码格式是 ASCII 格式
+     * Python2中默认的编码格式是 ASCII 格式
      * Python3.X 源码文件默认使用utf-8编码，所以可以正常解析中文，无需指定 UTF-8 编码。
   2. IDE需要设置 py 文件存储的格式为 UTF-8
      * Pycharm 设置步骤：
