@@ -30,3 +30,26 @@
      * 通过decode()、encode()方法来编码转换
        * encode()作用是将Unicode编码转化成其他编码
        * decode()作用是将其他编码字符串转化成unicode
+	     * 字节码bytes类型转换成String（是unicode编码）类型使用decode
+		 * python3中使用网络数据传输必须是二进制字节码，所以需要将字符串转码。python2中则不需要
+		    ```
+			  # bytes object
+			  b = b"example"
+			 
+			  # str object
+			  s = "example"
+			 
+			  # str to bytes
+			  bytes(s, encoding = "utf8")
+			 
+			  # bytes to str
+			  str(b, encoding = "utf-8")
+			 
+			  # an alternative method
+			  # str to bytes
+			  str.encode(s)
+			 
+			  # bytes to str
+			  bytes.decode(b)
+			```
+		  
