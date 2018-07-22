@@ -268,7 +268,7 @@
 			  l_t2.insert(1,"haha")
 			  print(l_t2) # ["123","haha", "ac", 3]
 			 ``` 
-	   3. extend(seq) 向一个列表中添加另一个列表
+	   3. extend(seq) 扩展。向一个列表中添加另一个列表
 			* 是把元素里面的值一个个放入
 			* **注意**当添加内容是一个字符串的时候，会拆分成单个元素添加进去，这就是与append区别
 			  ```
@@ -298,6 +298,10 @@
 			 l_t5.remove(1)
 			 print(l_t5)  # ['ok', 'haha', 2, 3, '2', 1]
 			 ```
+		3. 删除整个变量
+           ```
+		    del l_t5
+		   ```		   
 	3. 改
 	    * 使用下标
 		   ```
@@ -313,6 +317,10 @@
 		  print(l_t2.index([3])) # 2
 		  print(l_t2.index(9)) # 9 is not in list
 		 ```
+		 * 应用:提取
+		   ```
+		    print(name[name.index("zhangsan")]) #zhangsan
+		   ```
     5. 其他
 	   1. 统计某个元素在列表中出现的次数
 	      * count() 

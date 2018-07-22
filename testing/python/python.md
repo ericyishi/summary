@@ -8,7 +8,7 @@
   * [安装第三方库](py_installThirdPartyLibraries.md)
   * [基础语法](py_basic_grammer.md)
   * [运算符以及优先级](py_operator.md)
-  * [数据类型](py_basicData_type.md)
+  * [数据类型与切片](py_basicData_type.md)
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
   * [模块与包](py_module.md)
