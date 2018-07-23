@@ -383,6 +383,19 @@
 				 print(a) # [1,2,3,['hel',42],5]
 				 print(b) # [1,2,3,['hel',42],5]
 			   ```
+			3. 浅拷贝几种方式：
+               a. 默认方式
+                  ```
+				   person=['name',['saving',100]]
+				   p1 = person.copy()
+				  ```	
+               b. 引入copy模块
+                  ```
+				   import copy
+				   p2=copy.copy(person)
+                  ```	
+               c. p3=person[:]		
+               d. p4=list(person)			   
 	   5. 深拷贝【本质来说就是for循环，新开辟了一块内存地址】
           需要引入copy模块
           ```
@@ -433,7 +446,21 @@
     print(tup_a + tup_b) # (1, '1sd', 'hello', 3, 4) 元组之间也可以使用+进行连接
     print(tuple(ls_a) + tup_a) # (1, 2, 1, '1sd', 'hello')
    ```
-
+3. 常用方法
+   1. count()
+      ```
+	    a=(1,1,3,4)
+		a.count(1) # 2
+	  ```
+   2. index()
+      * 如果给的值有多个，返回第一个值的下标位置
+      * 如果给的值不存在，报错
+        ```
+		 a=(1,1,3,4)
+		 a.index(1) # 0
+		 a.index(2) # ValueError
+		 a.index(3) #2
+        ```		
 
 ### 集合
 1. 定义
