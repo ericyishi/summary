@@ -384,18 +384,18 @@
 				 print(b) # [1,2,3,['hel',42],5]
 			   ```
 			3. 浅拷贝几种方式：
-               a. 默认方式
+               1. 默认方式
                   ```
 				   person=['name',['saving',100]]
 				   p1 = person.copy()
 				  ```	
-               b. 引入copy模块
+               2. 引入copy模块
                   ```
 				   import copy
 				   p2=copy.copy(person)
                   ```	
-               c. p3=person[:]		
-               d. p4=list(person)			   
+               3. p3=person[:]		
+               4. p4=list(person)			   
 	   5. 深拷贝【本质来说就是for循环，新开辟了一块内存地址】
           需要引入copy模块
           ```
