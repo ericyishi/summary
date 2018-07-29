@@ -42,4 +42,8 @@
 	 
 	  # bytes to str
       bytes.decode(b)
+	  # 或者使用：
+	  b'\xe2\x82\xac20'.decode('utf-8')
   ```
+  ### 更多
+  * https://www.cnblogs.com/kendrick/p/7478304.html
