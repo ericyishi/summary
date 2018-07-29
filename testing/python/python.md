@@ -3,6 +3,7 @@
   * [基础概念](py_basic.md)
   * [python与其他语言差异化](py_mubeknow.md)
   * [python2与python3的区别](py_py2py3.md)
+  * [python2与python3共存](py_py2with3.md)
   * [编码问题](py_coding.md)
   * [编译](py_compile.md)
   * [安装第三方库](py_installThirdPartyLibraries.md)
