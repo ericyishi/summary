@@ -30,3 +30,18 @@
  binary=FirefoxBinary(r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe")
  driver=webdriver.Firefox(firefox_binary=binary,executable_path='c:\\geckodriver\\geckodriver.exe')
 ```
+
+3. 加载带插件的浏览器（默认打开的是纯净版，不方便后期调试）
+   1. 首先找到插件的路径
+      1. 打开命令行 Windows+R
+	  2. 输入 %APPDATA%\Mozilla\Firefox\Profiles\
+	  3. 进入.default文件夹，拷贝路径
+	  4. 按下面代码方式添加，即可打开带插件的浏览器
+```
+from selenium import webdriver
+
+pro = r'C:\Users\Administrator\AppData\Roaming\Mozilla\Firefox\Profiles\qrlgt4z4.default'
+profile = webdriver.FirefoxProfile(pro)
+driver = webdriver.Firefox(executable_path=u'F:\seleniumTest\driver\geckodriver',firefox_profile=profile)
+driver.get('http://www.baidu.com')
+```
