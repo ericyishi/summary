@@ -61,13 +61,13 @@
          print(count(str, "c", 5, 9))
         ```
   4. 不定长参数
-     * 其中一个*号代表list或者tuple，\*\*代表map或者dic（字典）
+     * 其中一个*号代表list或者tuple，两个\*\*代表map或者dic（字典）
      * 在形参前面使用*号，代表整个数据以元组的形式传入
        ```
-        def add(*b):
-          sum=0
-          for i in b:
-            sum =sum +i
+        def add(self,a,b,*d):
+          sum=a+b
+          for i in d:
+            sum += i
           return sum
         print(add(4,3,5))
        ```
