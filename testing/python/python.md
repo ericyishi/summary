@@ -12,6 +12,8 @@
   * [数据类型与切片](py_basicData_type.md)
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
+     * 内置函数
+	   * [range()](py_function_range.md)
   * [模块与包](py_module.md)
      * [time模块](py_time.md)
      * [logging模块](py_logging.md)
