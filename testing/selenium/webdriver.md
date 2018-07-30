@@ -7,6 +7,10 @@
   * 里面notes.txt对各版本支持说明
   * 嫌麻烦可以看大神整理的https://blog.csdn.net/huilan_same/article/details/51896672
   * 下载后需要放到环境变量中，当然也可以直接放在python下，因为python是加入到环境变量中了的。
+
+### geckdriver驱动下载
+* https://github.com/mozilla/geckodriver/releases 
+
 ### 所有版本firefox浏览器下载
 * http://ftp.mozilla.org/pub/firefox/releases/
   * 建议selenium 2.53以及以下的朋友，用47以下的火狐。
@@ -16,3 +20,5 @@
 
 ### selenium各版本的下载
 * https://selenium-release.storage.googleapis.com/index.html
+
+
