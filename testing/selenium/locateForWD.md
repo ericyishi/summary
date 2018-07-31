@@ -35,43 +35,66 @@
 * 性能不算好，尽量少用
 * 优势在于更加灵活，就算页面没有id、name等标签属性也能够定位
 * **xpath中没有第0元素这样的表示方法，都是从1开始**
-  * driver.find_element_by_xpath()
-  * driver.find_elements_by_xpath()
-1. 绝对路径定位
-  * 从根路径开始寻找
-  * 元素的xpath绝对路径可通过浏览器工具直接查询复制，一般不需要你手工去写
-  * 一般不推荐使用绝对路径的写法，因为一旦页面结构发生变化，该路径也随之失效，必须重新写。
-  * 绝对路径以单/号开头表示
-    ```
-     driver.driver.find_element_by_xpath("/html/body/div/div[1]/span")
-     # 注意在xpath中下标是从1开始的
-    ```
-2. 相对路径定位【推荐】
-  * 相对路径则以//表示
-  * 当xpath路径以//开头时，则表示让xpath引擎从文档的任意符合的元素节点开始进行解析。
-  ```
-   查找页面上所有的input元素：//input
-   查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
-   查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，不管还嵌套了多少个其他标签，使用相对路径表示，双//号)：//form[1]//input
-  ```
-3. xpath的函数
-   1. starts-with(str1,str2)
-      ```
-       //img[starts-with(@alt,'decription')]
-       # 这里的//不是注释，而是相对路径
-       # 查找属性alt的属性值以'decription'关键字开始的页面
-      ```
-   2. contains(str1,str2)
-      ```
-       //img[contains(@alt,'img')]
-       # 查找alt属性值包含‘img’关键字的页面元素
-      ```
-   3. text() 获取定位元素的文本值
-      ```
-       //a[text()='搜狗搜索']
-       //a[contains(text(),'百度')]
-      ```
-     
+* driver.find_element_by_xpath()或driver.find_elements_by_xpath()
+	1. 绝对路径定位
+	  * 从根路径开始寻找
+	  * 元素的xpath绝对路径可通过浏览器工具直接查询复制，一般不需要你手工去写
+	  * 一般不推荐使用绝对路径的写法，因为一旦页面结构发生变化，该路径也随之失效，必须重新写。
+	  * 绝对路径以单/号开头表示
+		```
+		 driver.driver.find_element_by_xpath("/html/body/div/div[1]/span")
+		 # 注意在xpath中下标是从1开始的
+		```
+	2. 相对路径定位【推荐】
+	  * 相对路径则以//表示
+	  * 当xpath路径以//开头时，则表示让xpath引擎从文档的任意符合的元素节点开始进行解析。
+	  ```
+	   查找页面上所有的input元素：//input
+	   查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
+	   查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，不管还嵌套了多少个其他标签，使用相对路径表示，双//号)：//form[1]//input
+	  ```
+	3. xpath的函数
+	   1. starts-with(str1,str2)
+		  ```
+		   //img[starts-with(@alt,'decription')]
+		   # 这里的//不是注释，而是相对路径
+		   # 查找属性alt的属性值以'decription'关键字开始的页面
+		  ```
+	   2. contains(str1,str2)
+		  ```
+		   //img[contains(@alt,'img')]
+		   # 查找alt属性值包含‘img’关键字的页面元素
+		  ```
+	   3. text() 获取定位元素的文本值
+		  ```
+		   //a[text()='搜狗搜索']
+		   //a[contains(text(),'百度')]
+		  ```
+    4. xpath的运算符
+       1. |【获取多个节点集】
+	     ```
+		  //div|//a
+		 ```
+       2. +
+	     ```
+		  //div[1+1]
+		 ```
+       3. -
+       4. *
+       5. div 【**除**】
+       6. =
+	      ```
+		   //div[a=10] # 查找子元素有a元素，且其文本内容为数字且为10的div元素
+		   //div=10 #【逻辑判断】如果div是10，那么返回true，反之亦然
+		  ```
+       7. !=
+       8. <
+       9. <=
+       10. >
+       11. >=
+       12. and【逻辑运算与】
+       13. or
+       14. mod 【取余】	   
 8. css
 * 性能优于xpath
   * driver.find_element_by_css_selector()
