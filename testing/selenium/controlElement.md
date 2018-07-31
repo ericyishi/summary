@@ -23,18 +23,24 @@
     driver.find_element_by_id("su").get_attribute('type')
     # su是百度的搜索按钮，返回值：‘submit’
   ```
+  
 * value_of_css_property()获取页面元素的css样式属性值：
   ```
    searchBox=driver.find_element(By.ID,"kw")
    font=searchBox.value_of_css_property("font-family")
   ```
+  
 * click() 单击
+  * 如果双击需要导入ActionChains包，模拟鼠标操作的事件包。查看：https://github.com/ericyishi/summary/blob/master/testing/selenium/mouseNkeyboardEvent.md
+
 * clear() 清除文本信息
-* send_keys() 输入内容，也可以给上传按钮的input添加路径
+
+* send_keys() ①输入内容②也可以给上传按钮的input添加路径
   * 如果python2,输入中文时，需要将中文字符串前加一个u
   ```
-   input.send_keys(u'学中文')
+   inputEle.send_keys(u'学中文')
   ```
+
 * submit() 用于提交表单或者搜索框输入内容后的回车操作
 
 ### 验证点
