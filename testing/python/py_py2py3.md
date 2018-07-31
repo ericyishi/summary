@@ -1,5 +1,8 @@
 # python2与python3的区别
 ### 区别
+```
+ PYTHON3不是向下兼容PYTHON2，所以很多在python2里面能用的库在python3里面都不能用了。
+```
 1. print函数
 * Python3中print为一个函数，必须用括号括起来；Python2中print为class
 * python2：
@@ -45,5 +48,5 @@
 	  # 或者使用：
 	  b'\xe2\x82\xac20'.decode('utf-8')
   ```
-  ### 更多
+ ### 更多
   * https://www.cnblogs.com/kendrick/p/7478304.html

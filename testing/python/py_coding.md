@@ -49,6 +49,7 @@
 			  # str to bytes
 			  str.encode(s)
 			 
+			 
 			  # bytes to str
 			  bytes.decode(b)
 			```

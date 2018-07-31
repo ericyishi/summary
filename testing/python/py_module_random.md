@@ -44,6 +44,6 @@ random.choice((1, 2, 3)) #元组
 * 不支持字符串和元祖
 ```
  a=[1,2,3,4,5]
- random.shuffle(a)
+ random.shuffle(a) # 没有返回值，所以不能用print(random.shuffle(a))来输出打印打乱
  print(a)
 ```
