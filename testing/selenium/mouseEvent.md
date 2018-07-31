@@ -1,5 +1,8 @@
-# 鼠标与键盘事件
-### 鼠标事件
+
+# 鼠标事件
+* selenium.webdriver.ActionChains包是WebDriver针对python语言专门用于模拟鼠标操作事件的包，包括双击、悬浮、拖拽等
+
+### 使用方法
 * 需要导入包
   ```
    from selenium.webdriver import ActionChains
@@ -7,13 +10,13 @@
    from selenium.webdriver.common.action_chains import ActionChains
 
   ```
-*  selenium.webdriver.ActionChains包是WebDriver针对python语言专门用于模拟鼠标操作事件的包，包括双击、悬浮、拖拽等
+
 * 使用方式
   ```
    ActionChains(driver).操作方法(定位的元素).perform()
   ```
   * **注意：**最后一定要使用perform()才有效果
-* ActionChains类提供的操作方法
+### 常用方法
   * context_click() 右击
   * double_click() 双击
     ```
@@ -26,6 +29,13 @@
     target_element = driver.find_element_by_id("el2")
     ActionChains(driver).drag_and_drop(source_element, target_element).perform()
     ```
+  * drag_and_drop_by_offset 拖拽位移
+    ```
+	 action_chains=ActionChains(self.driver)
+	 for i in range(10):
+       action_chains.drag_and_drop_by_offset(ele,10,10).perform()
+	   # 执行10次，每次将元素向右和下移动10个像素
+    ```	
   * move_to_element() 鼠标悬停
   * perform() 只有执行了前面的操作才有效
 
