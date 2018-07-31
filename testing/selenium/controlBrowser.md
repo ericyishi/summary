@@ -80,3 +80,4 @@
         self.assertTrue(u"地图" in pageSource,"not found")
         self.assertIn(u"地图",pageSource,"not found")
    ```
+   * 有时候会因为页面还没有完全加载出来导致断言失败
