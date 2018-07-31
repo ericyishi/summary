@@ -9,6 +9,10 @@
      # 将当前时间转换成字符串的时间戳
       import time
       timeStamp=time.strftime("%Y%m%d%H%M%S",time.localtime())
-      driver.get_screenshot_as_file(r"C:\Users\Administrator\Desktop\%s.jpg"%timeStamp)
-    ```
+	  try：
+		driver.get_screenshot_as_file(r"C:\Users\Administrator\Desktop\%s.jpg"%timeStamp)
+      except IOError,e
+         print e	  
+	```
     * 截取当前框口，并以时间戳来命名保存
+	* get_screenshot_as_file（）截图成功后返回true
