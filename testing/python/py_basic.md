@@ -44,7 +44,13 @@
 
 
 ### python下查看命令
+1. help()帮助文档，写的比较详细
 ```
  import math
- 使用help(math)
+ help(math)
+```
+2. dir() 概要文档，列出有的方法
+```
+ import math
+ dir(math)
 ```
