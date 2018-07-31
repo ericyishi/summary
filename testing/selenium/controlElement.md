@@ -15,14 +15,15 @@
   ```
   * 返回值布尔类型
 * is_enabled()判断元素是否可以操作
-  * 当标签元素是disabled的时候，返回时true
+  * 当标签元素是disabled的时候，返回时false
+  * 当标签元素是readonly的时候,返回为True
   
 * get_attribute(name) 获取属性值
   ```
     driver.find_element_by_id("su").get_attribute('type')
     # su是百度的搜索按钮，返回值：‘submit’
   ```
-* 获取页面元素的css样式属性值
+* value_of_css_property()获取页面元素的css样式属性值：
   ```
    searchBox=driver.find_element(By.ID,"kw")
    font=searchBox.value_of_css_property("font-family")
