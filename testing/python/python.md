@@ -14,6 +14,7 @@
   * [函数使用](py_function.md)
      * 内置函数
 	   * [range()](py_function_range.md)
+	   * map()待写
   * [模块与包](py_module.md)
      * [time模块](py_module_time.md)
      * [logging模块](py_module_logging.md)

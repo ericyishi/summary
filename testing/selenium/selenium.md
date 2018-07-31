@@ -15,7 +15,7 @@
     * [frame窗口切换](switchToframe.md)
     * [新窗口或者标签页的切换](switchToWindow.md)
     * [alert弹出框的处理](switchToAlert.md)
-    * [下拉列表的处理](selectList.md)
+    * [下拉列表select-option的处理](selectList.md)
     * [上传文件](uploadFiles.md)
     * [操作cookie](operateCookie.md)
     * [利用js来操作浏览器](execute_script.md)
