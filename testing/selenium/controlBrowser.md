@@ -37,7 +37,14 @@
    ```
     driver.title
 	assert self.driver.title.find(u"百度一下")>0,"assert error" # 断言是否打开百度网页，通过网页head标签里的title确定
+	# **注意：**这里的assert是python下面，后面跟判断语句，再后面跟异常语句，与后面assertEqual是有区别的
 	# 注意找不到返回的是-1
+	# find方法是部分匹配即可。
+   ```
+   * 另外一种写法
+   ```
+    title=self.driver.title
+	self.assertEqual(title,u"百度一下，你就知道"，"assert error") # 这里assertEqual是unittest下面的一个方法，所以需要完全匹配
    ```
    * 一般用于断言是否已经成功打开某个页面
 6. 获取当前页面url
@@ -59,3 +66,17 @@
    ```   
    * 获取坐标返回的是字典
    * 部分浏览器获取设置坐标方法会失效
+8. 获取HTML页面源码
+   ```
+    driver.page_source
+   ```   
+   ```
+        def test_getPageSource(self):
+        self.driver.get('http://www.baidu.com')
+        pageSource=self.driver.page_source
+        # print(pageSource)
+		# 下面三种断言方式，来判断
+        assert u"地图" in pageSource,"not found"
+        self.assertTrue(u"地图" in pageSource,"not found")
+        self.assertIn(u"地图",pageSource,"not found")
+   ```
