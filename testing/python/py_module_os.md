@@ -13,6 +13,7 @@ import os
 
 #### 路径相关命令
 1. os.getcwd() 获取当前工作的绝对路径
+   * 还可以使用os.path.abspath('.')获取当前的绝对路径
 2. os.listdir(‘字符串目录’) 列出字符串目录下的所有文件以及文件夹【返回的是列表类型返回的是列表类型】
 ```
  os.listdir('.') //列出当前目录下所有文件或文件夹
@@ -31,6 +32,7 @@ import os
      'D:\\pythontest\\ostest'
    ```
    * os.path.dirname(os.path.abspath(__file__)) //获取当前文件的绝对路径
+   
 #### 时间相关命令
 1. os.path.getmtime(path) 文件或文件夹的最后**修改**时间，从新纪元到访问时的秒数。
 2. os.path.getatime(path) 文件或文件夹的最后**访问**时间，从新纪元到访问时的秒数。

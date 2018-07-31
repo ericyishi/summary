@@ -12,7 +12,7 @@
   ```
    ActionChains(driver).操作方法(定位的元素).perform()
   ```
-  * 最后一定要使用perform()才有效果
+  * **注意：**最后一定要使用perform()才有效果
 * ActionChains类提供的操作方法
   * context_click() 右击
   * double_click() 双击
