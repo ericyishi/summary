@@ -6,9 +6,16 @@
 
 ### 获取弹框的办法
 * 上面三种弹框都使用同一个方法:driver.switch_to_alert()
+* 较高的版本更推荐使用属性的方式获取
+```
+ alert=driver.switch_to.alert
+```
 
-* 获取到弹窗以后，就能对上面做操作了
+* 获取到弹窗对象以后，就能对上面做操作了
   * text 获取文本 上面三个弹窗都有效
+    ```
+	 alert.text
+	```
   * accept() 点击确定按钮，对上面三种类型都有效
   * dismiss() 点击取消按钮，对上面confirm、prompt类型有效
   * send_keys("内容") 发送内容，针对prompt类型有效
