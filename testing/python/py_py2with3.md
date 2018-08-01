@@ -22,6 +22,7 @@
 ```
  # 当需要python2的pip时，只需
  py -2 -m pip install xxx
+ py -2 -m pip install -i https://pypi.douban.com/simple xxx
 ```
 ```
  # 当需要python3的pip时，只需
