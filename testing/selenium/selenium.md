@@ -10,6 +10,7 @@
     * [操作元素](controlElement.md)
     * [鼠标事件](mouseEvent.md)
     * [键盘事件](keyboardEvent.md)
+	  * [组合键](keyboardEvent_keyCombination.md)
     * [等待时间的三种方式](waitTime.md)
   * 常用操作
     * [打开本地文件](openLocalFile.md)
