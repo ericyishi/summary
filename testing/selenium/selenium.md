@@ -16,7 +16,7 @@
     * [打开本地文件](openLocalFile.md)
     * [frame窗口切换](switchToframe.md)
     * [新窗口或者标签页的切换](switchToWindow.md)
-    * [alert弹出框的处理](SwitchToAlert.md)
+    * [alert弹出框的处理](switchToAlertWindow.md)
     * [单多选下拉列表select-option的处理](selectList.md)
 	* [单选框radio的处理](radio.md)
 	* [复选框checkbox的处理](checkbox.md)
