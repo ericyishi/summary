@@ -12,6 +12,7 @@
     * [键盘事件](keyboardEvent.md)
 	  * [组合键](keyboardEvent_keyCombination.md)
     * [等待时间的三种方式](waitTime.md)
+	  * [使用js中止加载继续执行](waitTime_stopWaitInJS.md)
   * 常用操作
     * [打开本地文件](openLocalFile.md)
     * [frame窗口切换](switchToframe.md)
