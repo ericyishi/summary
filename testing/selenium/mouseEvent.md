@@ -18,11 +18,28 @@
   * **注意：**最后一定要使用perform()才有效果
 ### 常用方法
   * context_click() 右击
+    * 点击以后配合其他命令一起使用
+	   ```
+	    # 鼠标右键选择粘贴的快捷键（p）
+	    ActionChains(self.driver).context_click(searchBox).perform()
+		ActionChains(self.driver).send_keys('p').perform()
+		
+	   ```
   * double_click() 双击
     ```
      action_chains=ActionChains(self.driver)
      action_chains.double_click(inputBox).perform()
+
     ```
+  * click_and_hold()左键按下并保持
+    ```
+	 ActionChains(self.driver).click_and_hold(divBox).perform()
+    ```	
+	* 释放
+	  ```
+	    ActionChains(self.driver).release(divBox).perform()
+	  ```
+	  
   * drag_and_drop(source,target) 拖动
     ```
     source_element = driver.find_element_by_id("el1")
