@@ -26,5 +26,7 @@
     * [截频操作](screenshot.md)
 	* 使用js
 	   * [操作DOM元素](execute_script_dom.md)
+	   * [操作浏览器滚动条](execute_script_scrollbar.md)
+	   * [操作textarea文本框](execute_script_textarea.md)
   * 异常处理
     * [元素是否存在](isElementExists.md)
