@@ -24,7 +24,7 @@
     * [上传文件](uploadFiles.md)
     * [操作cookie](operateCookie.md)
     * [截频操作](screenshot.md)
-	* [利用js]
+	* 使用js
 	   * [操作DOM元素](execute_script_dom.md)
   * 异常处理
     * [元素是否存在](isElementExists.md)
