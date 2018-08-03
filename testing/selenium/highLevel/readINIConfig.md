@@ -1,5 +1,10 @@
-# 将定位参数与程序分离
-* 实现了locator的分层，便于维护
+# 读取配置文件ini
+* 将定位参数与程序分离,实现了locator的分层，便于维护
+### 前置条件
+* 安装ConfigParser模块
+```
+ pip install ConfigParser
+```
 ### 文件结构
 ```
  --
