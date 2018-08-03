@@ -10,7 +10,7 @@
     * [操作元素](controlElement.md)
     * [鼠标事件](mouseEvent.md)
     * [键盘事件](keyboardEvent.md)
-	  * [组合键](keyboardEvent_keyCombination.md)
+	  * [组合键的三种方式(包括使用win32con)](keyboardEvent_keyCombination.md)
     * [等待时间的三种方式](waitTime.md)
 	  * [使用js中止加载继续执行](waitTime_stopWaitInJS.md)
   * 常用操作
@@ -21,6 +21,7 @@
     * [单多选下拉列表select-option的处理](selectList.md)
 	* [单选框radio的处理](radio.md)
 	* [复选框checkbox的处理](checkbox.md)
+	* [操作富文本编辑器](richTextEditor.md)
     * [上传文件](uploadFiles.md)
     * [操作cookie](operateCookie.md)
     * [截频操作](screenshot.md)
