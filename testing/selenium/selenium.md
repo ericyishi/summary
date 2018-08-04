@@ -31,6 +31,7 @@
 	   * [操作textarea文本框](execute_script_textarea.md)
 	   * [操作dom元素的属性值](execute_script_attribute.md)
   * 项目常用
-    * [配置文件ini](highLevel/readINIConfig.md)  
+    * [配置文件ini](highLevel/readINIConfig.md) 
+    * [异常时截图](highLevel/screenShotWhenException.md)	
   * 异常处理
     * [元素是否存在](isElementExists.md)
