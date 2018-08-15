@@ -90,7 +90,7 @@
       * [wireshark](tools/testing/wireshark.md)
       * [loadrunner](tools/testing/loadrunner/loadrunner.md)
       * 
+    * 浏览器
+      * [Chrome](tools/browser/chrome/chrome.md)	  
     * 其他
       * [持续集成jenkins](tools/others/jenkins.md)
-	* 浏览器
-      * [Chrome]()	
