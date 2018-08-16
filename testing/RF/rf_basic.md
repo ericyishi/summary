@@ -38,6 +38,7 @@
   2. wxPython
      * wxPython 是 Python 非常有名的一个 GUI 库，因为 RIDE 是基于这个库开发的，所以这个必须安装。必须是 **wxPython 2.8.12.1** 版本，RIDE 基于该版本开发。
      * 下载地址：https://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/
+	 * 如果系统是64位就装64位版本
   3. 安装 RIDE
      ```
       pip install robotframework-ride==1.5.2.1
@@ -53,6 +54,9 @@
 ### 运行RIDE
 * 需切换至python2环境下才能正常启动，双击或者使用python ride.py
 * 也可以使用批处理文件.bat文件，来运行ride.py
+  ```
+   python ride.py
+  ```
 * 最简单办法，是配置环境变量时候，将python2写在前面。再将python3安装文件夹下的python.exe改名成python3.exe。这样默认python是2，要运行python3则写python3
 * cmd下输入path可以查看环境变量的配置     
 * pybot是执行RF脚本的命令     
