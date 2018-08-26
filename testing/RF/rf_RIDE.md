@@ -134,7 +134,37 @@
            | Log Many | @{val}| 
            | Log Many | @{val2}| 
 		   
-           * 注意list需要Log Many输出，log只能输出scalar这样的单变量		   
+           * 注意list需要Log Many输出，log只能输出scalar这样的单变量	
+     2. 变量的使用
+	 
+	       |@{val2}	|Create List|1|warn|
+		   |---|---|---|---|
+           |@{val}|	Set Variable |	999	| warn |
+           |${kw}|	Set Variable|	log	|
+           |Run Keyword	|${kw}	|@{val}	|
+		   
+		   * 这里使用Run Keyword关键字【传入两个参数，第一个是Scalar，第二是List 】，主要是用于将关键字log作为一个参数传入，后面一个参数可以是可变函数类型
+     
+	 3. 获取List元素
+        1. @{变量名}[index]
+           1. 一维
+              ```
+			    @{userList}[1]
+              ```	
+           2. 二维
+              ```
+			   @{listC[1]}[1]
+              ```	
+               * 注意写法			  
+		2. ${变量名[index]}
+		   1. 一维
+		      ```
+		        ${userList[1]}
+              ```		   
+		   2. 二维
+		      ```
+			    ${userList[1][1]}
+			  ```
 3. Dict 【字典对象】
    * 使用&{c}
    * 字典
