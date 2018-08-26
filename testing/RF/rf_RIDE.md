@@ -109,8 +109,9 @@
 			   |---|---|---|
                |log|${val1[2]}|
                | log|${val1[0:2]}|	 
-		 4. 参加运算
+		 4. 参加运算Evaluate
            	* 这里指的是数值型的变量计算【可以加减乘除】
+			  * 对于字符串类型的数值，需要强制转换后才有效
 			
                |${val1} | Set Variable |88|
 			   |---|---|---|
@@ -122,6 +123,17 @@
 2. List 【多值变量】 
    * 使用@符号表示：@{b}
    * 对象
+   * 常用方法
+     1. 变量赋值
+	    1. Create List【推荐】
+		2. Set Variable【不推荐，主要用于设置Scalar变量】
+		   
+		   | @{val} | Set Variable | 1 | 2 | 3| 
+           | @{val2}| Create List| 1 | 2 | 3| 
+           | Log Many | @{val}| 
+           | Log Many | @{val2}| 
+		   
+           * 注意list需要Log Many输出，log只能输出scalar这样的单变量		   
 3. Dict 【字典对象】
    * 使用&{c}
    * 字典
@@ -148,7 +160,7 @@
    
 ### 打印
 * log：适用于scalar变量
-* log many：用于输出List、dict变量
+* log many：**用于输出List、dict变量**
    
 ### 运行测试用例
 * run--Start
