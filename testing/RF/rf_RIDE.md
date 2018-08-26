@@ -129,6 +129,7 @@
 		2. Set Variable【不推荐，主要用于设置Scalar变量】
 		   
 		   | @{val} | Set Variable | 1 | 2 | 3| 
+		   |---|---|---|---|---|
            | @{val2}| Create List| 1 | 2 | 3| 
            | Log Many | @{val}| 
            | Log Many | @{val2}| 
