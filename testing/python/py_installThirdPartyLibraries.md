@@ -32,6 +32,10 @@
       ```
       * wheel本质是一个zip包格式，它使用.whl扩展名，用于python模块的安装。
       * 使用pip命令安装whl文件
+	* 本地的txt文件
+      ```
+	   pip install -r requirement.txt
+      ```	  
 ### pip常用命令
 1. 查看已经安装的包
    ```
