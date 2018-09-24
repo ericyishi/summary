@@ -51,7 +51,7 @@
 	  ```
 	   查找页面上所有的input元素：//input
 	   查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
-	   查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，不管还嵌套了多少个其他标签，使用相对路径表示，双//号)：//form[1]//input
+	   查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，**不管还嵌套了多少个其他标签，使用相对路径表示，双//号**)：//form[1]//input
 	  ```
 	3. xpath的函数
 	   1. starts-with(str1,str2)
@@ -67,8 +67,9 @@
 		  ```
 	   3. text() 获取定位元素的文本值
 		  ```
-		   //a[text()='搜狗搜索']
-		   //a[contains(text(),'百度')]
+		   //a[text()='搜狗搜索']   # 完全匹配
+		   //a[contains(text(),'百度')]    #包含即可
+		   //div[@class=" commonDiv mydiv"][text()='搜狗搜索']   #注意前面class必须要写全，与css写部分即可是有区别的
 		  ```
     4. xpath的运算符
        1. "|"【获取多个节点集】
