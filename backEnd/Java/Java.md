@@ -72,3 +72,5 @@
      * [webservice](structure/webservice.md)
        * 基于REST风格
        * 基于SOAP
+### 常见问题
+   * [环境变量配置](basic/configureEnvironment.md)       
