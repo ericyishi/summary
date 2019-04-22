@@ -50,5 +50,11 @@
 
        //修改user.email
        git config --global --replace-all user.email"your user email"
-    
+
+     ```
+      * 默认作用域是local、一般用global、还有system
+      
+   * 查询配置
+     ```
+      git config --global --list
      ```
