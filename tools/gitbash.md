@@ -21,7 +21,7 @@
                  注：“path”中，每个路径之间要以英文输入状态下的分号——“;”作为间隔
     4. 在就可以在cmd里尽情的使用git了~
 
-#### 4.与github关联
+#### 3.与github关联
    * 上传至github，为了方便不每次都输入用户名和密码，所以需要配置一下
      1. 打开Git Bash查看电脑上是否已经存在SSH密钥：
         ```
@@ -33,3 +33,22 @@
         ```
         * 然后提示输入 passphrase（密码），输入两次（**可以不输直接两次Enter**），然后会在 .ssh 目录生产两个文件：id_rsa和id_rsa.pub
      3.  登录github。打开setting->SSH keys，点击右上角 New SSH key，把生成好的公钥id_rsa.pub放进 key输入框中，再为当前的key起一个title来区分每个key。
+
+ ### 4.配置user信息
+   * 最小配置，为了方便区分上传者(配置user.name与user.email)
+     ```
+        // 配置user.name
+       git config --global user.name 'your_name'
+       //配置user.email
+       git config --global user.email "your user email"
+
+     ```
+   * 如果是修改
+     ```
+       //修改user.name
+       git config --global --replace-all user.name "your user name"
+
+       //修改user.email
+       git config --global --replace-all user.email"your user email"
+    
+     ```
