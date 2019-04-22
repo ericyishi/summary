@@ -7,8 +7,19 @@
 #### 创建版本库
   * **git clone <url>** 克隆远程版本库
   * **git init** 在需要版本控制的项目下使用，初始化一个空的git仓库，会生成一个.git文件夹 ，用于记录本地源代码的变更情况。
+      *  建立git仓库的两种场景
+        * 1. 已有项目纳入git管理
+          ```
+            cd 项目代码所在文件夹
+            git init
+          ```
+        * 2. 新建项目直接用git管理
+          ```
+           cd 文件夹
+           git init 项目名
+           cd 项目名
+          ```
 #### 修改和提交
-  * **git pull** 更新代码
   * **git status** 查看本地仓库变更状态，第一次查看是显示未被跟踪的文件
   * **git add 文件名** 添加当前文件添加到跟踪列表
     * 使用**git add .** 可以添加所有内容。【但不应该添加node_modules这类文件，只添加开发的源文件】
@@ -19,7 +30,9 @@
   * **git diff** 查看变化，对比当前代码与最后一次保存的代码。
 
   * **git reset --hard 哈希值前六位** 退回到原来的版本
+  * **git reset --hard** 删除暂存区里面的内容
   * **git help** 帮助命令
+
 #### 查看提交历史
   * **git log** 查看历史保存记录【会显示每次操作的哈希值】
   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/tool/gitHash.png)
@@ -34,6 +47,9 @@
     * pop 是取出最新的一次暂存数据，取出后，这次数据就不会存在于暂存区中了。
 ### 撤销
   * **git reset HEAD** 适用于撤销掉git add .【绿字变红字(撤销add)】
+
+### 其他操作
+  * **git mv 老文件 新文件** 重命名文件
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
 
