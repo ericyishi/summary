@@ -61,6 +61,8 @@
   * **git checkout 分支名** 切换分支
   * **git checkout -b 新分支名** 创建分支
 
+### 图形化界面
+  * **gitk** 启动图形化界面的命令
 
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
