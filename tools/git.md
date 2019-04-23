@@ -32,11 +32,16 @@
   * **git reset --hard 哈希值前六位** 退回到原来的版本
   * **git reset --hard** 删除暂存区里面的内容
   * **git help** 帮助命令
+  * **git help --web 需要查看的命令名** 以网页的方式打开相关命令的帮助文档
 
 #### 查看提交历史
-  * **git log** 查看历史保存记录【会显示每次操作的哈希值】
+  * **git log** 查看历史保存记录【会显示每次操作的哈希值】只查看当前分支
   ![image](https://github.com/ericyishi/img-folder/blob/master/summary/tool/gitHash.png)
+  * **git log --all** 查看所有分支的历史记录
   * **git log -p <file>** 查看指定文件提交历史记录
+  * **git log --oneline** 查看最近提交的历史记录
+  * **git log -n次数 --oneline** 指定最近几条的记录
+  * **git log --all --graph** 图形化线条，可以看出结构关系
 
 #### 暂存
   * **git stash "名字"** 比如想pull 最新代码，又不想加新commit;或者当在需要紧急处理一个bug时，工作区内容又没有完成，不适合提交，需要暂存起来。
@@ -50,6 +55,13 @@
 
 ### 其他操作
   * **git mv 老文件 新文件** 重命名文件
+
+### 分支
+  * **git branch -v** 查看有的分支
+  * **git checkout 分支名** 切换分支
+  * **git checkout -b 新分支名** 创建分支
+
+
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
 
