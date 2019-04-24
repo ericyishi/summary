@@ -58,11 +58,22 @@
 
 ### 分支
   * **git branch -v** 查看有的分支
+  * **git branch -av** 查看所有的分支，包括远端的
   * **git checkout 分支名** 切换分支
   * **git checkout -b 新分支名** 创建分支
 
 ### 图形化界面
   * **gitk** 启动图形化界面的命令
+
+### commit、tree、blob三个对象
+  * commit 执行一次commit命令就创建一个commit对象
+    * 一个commit只对应一个tree
+  * 一个tree对应当前一个快照，以tree来呈现（文件夹也对应是tree）
+  * blob 是具体的文件
+  * 查看命令：
+    ```
+      git cat-file -p 哈希值
+    ```
 
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
