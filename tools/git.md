@@ -74,6 +74,12 @@
     ```
       git cat-file -p 哈希值
     ```
+### 分离头指针detached HEAD
+  * 在如果没有跟branch挂钩，进行变更commit，不会被git保存
+    ```
+     解决方案：创建分支保存下来
+     git branch 新分支名 哈希值
+    ```
 
 ### git与github、gitLab关系
   * 为了协同工作，我们把git代码同步到在第三方服务器上，例如：github，gitlab
