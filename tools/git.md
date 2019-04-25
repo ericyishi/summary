@@ -28,6 +28,14 @@
   * **git commit -m “提交备注信息”** 保存副本,保存在.git本地仓库里。
   * **git push** 提交备注后，提交代码
   * **git diff** 查看变化，对比当前代码与最后一次保存的代码。
+    ```
+     git diff 哈希1 哈希2 //可以对两次commit比较
+     // 另外HEAD 可以指代最后一次提交
+     git diff HEAD HEAD^ //将最后一次提交与倒数第二次提交比对
+     等同于git diff HEAD HEAD~1
+     git diff HEAD HEAD^^
+     等同于git diff HEAD HEAD~2
+    ```
 
   * **git reset --hard 哈希值前六位** 退回到原来的版本
   * **git reset --hard** 删除暂存区里面的内容
@@ -60,7 +68,10 @@
   * **git branch -v** 查看有的分支
   * **git branch -av** 查看所有的分支，包括远端的
   * **git checkout 分支名** 切换分支
-  * **git checkout -b 新分支名** 创建分支
+  * **git checkout -b 新分支名** 创建分支，并且换到新分支上
+    ```
+      git checkout -b 新分支名 (基于哪个分支)
+    ```
 
 ### 图形化界面
   * **gitk** 启动图形化界面的命令
