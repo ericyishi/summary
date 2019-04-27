@@ -26,6 +26,7 @@
     * 创建一个添加本地git忽略清单文件 **.gitignore**,此文件用于说明哪些文件被跟踪哪些是忽略的。只能使用命令创建，因为window下无法创建以“.”开头的文件
     * 在cmd下创建touch .gitignore
   * **git commit -m “提交备注信息”** 保存副本,保存在.git本地仓库里。
+  * **git commit -am"提交备注信息"**  可以直接跳过add这个步骤
   * **git commit -amend** 对于最近一次提交的备注信息做变更
   * **git push** 提交备注后，提交代码
   * **git diff** 查看变化，对比当前代码与最后一次保存的代码。
