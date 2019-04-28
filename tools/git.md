@@ -27,7 +27,9 @@
     * 在cmd下创建touch .gitignore
   * **git commit -m “提交备注信息”** 保存副本,保存在.git本地仓库里。
   * **git commit -am"提交备注信息"**  可以直接跳过add这个步骤
-  * **git commit -amend** 对于最近一次提交的备注信息做变更
+  * **git commit -amend** 对于最近一次提交的备注信息做变更【测试没成功】
+  * **git commit rebase -i 当前需要修改的父亲的哈希值** 对于指定提交的备注信息做变更【测试没成功】
+
   * **git push** 提交备注后，提交代码
   * **git diff** 查看变化，对比当前代码与最后一次保存的代码。
     ```
@@ -38,7 +40,7 @@
      git diff HEAD HEAD^^
      等同于git diff HEAD HEAD~2
     ```
-
+  * **git diff --cached** 比较暂存区与HEAD文件的不同，需要先将修改提交到暂存区才有用。
   * **git reset --hard 哈希值前六位** 退回到原来的版本
   * **git reset --hard** 删除暂存区里面的内容
   * **git help** 帮助命令
