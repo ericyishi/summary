@@ -41,6 +41,8 @@
      等同于git diff HEAD HEAD~2
     ```
   * **git diff --cached** 比较暂存区与HEAD文件的不同，需要先将修改提交到暂存区才有用。
+  * **git reset HEAD** 取消暂存区里面所有内容，恢复至HEAD指向最新的commit的内容
+  * **git checkout -- 需要恢复的文件名** 恢复工作区的内容至暂存区状态
   * **git reset --hard 哈希值前六位** 退回到原来的版本
   * **git reset --hard** 删除暂存区里面的内容
   * **git help** 帮助命令
