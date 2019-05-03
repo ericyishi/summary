@@ -42,8 +42,8 @@
     ```
   * **git diff --cached** 比较暂存区与HEAD文件的不同，需要先将修改提交到暂存区才有用。
   * **git reset HEAD** 取消暂存区里面所有内容，恢复至HEAD指向最新的commit的内容
+  * **git reset HEAD -- 文件名1 文件名2** 暂存区的部分内容取消
   * **git checkout -- 需要恢复的文件名** 恢复工作区的内容至暂存区状态
-  * **git reset --hard 哈希值前六位** 退回到原来的版本
   * **git reset --hard** 删除暂存区里面的内容
   * **git help** 帮助命令
   * **git help --web 需要查看的命令名** 以网页的方式打开相关命令的帮助文档
@@ -82,6 +82,20 @@
 ### 删除分支
   * **git branch -d 分支名** 有时会有提示无法删除，使用-D
   * **git branch -D 分支名** 直接删除
+
+### 回退
+  * **git reset --hard 哈希值前六位** 退回到原来的版本
+
+### 存储修改
+  ```
+   经常有这样的事情发生，当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。
+   问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。
+   解决这个问题的办法就是git stash命令。
+  ```
+  * **git stash** 将所有修改放入stash中
+  * **git stash list** 查看stash里的存储
+  * **git stash apply** 将stash里的东西弹出到工作区，另外stash list里面的记录也保留
+  * **git stash pop** 将stash里的东西弹出到工作区，另外stash list里面记录也丢弃
 
 ### 图形化界面
   * **gitk** 启动图形化界面的命令
