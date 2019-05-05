@@ -96,6 +96,21 @@
   * **git stash list** 查看stash里的存储
   * **git stash apply** 将stash里的东西弹出到工作区，另外stash list里面的记录也保留
   * **git stash pop** 将stash里的东西弹出到工作区，另外stash list里面记录也丢弃
+### 备份
+
+### 远端
+ * **git remote -v**  查看远端版本库信息
+ * **git remote add [shortname] [url]**  添加远端仓库
+ * **git fetch shortname** 拉取远程版本库
+ ```
+   git fetch是将远程主机的最新内容拉到本地，用户在检查了以后决定是否合并到工作本机分支中。
+
+   而git pull 则是将远程主机的最新内容拉下来后直接合并，即：git pull = git fetch + git merge，这样可能会产生冲突，需要手动解决。
+ ```
+### 合并分支
+ * **git merge** git merge 是通过暴力地将两分支的最新commit 揉合到一个新的commit 上达到合并效果的.保持修改内容的历史记录，但是历史记录会很复杂。
+ * **git rebase** git rebase 则是通过一种续接的方式：将master 拆下，续到b1上来。就相当于本来master 与b1都在同一起点，现在改为master的起点为b1。
+
 
 ### 图形化界面
   * **gitk** 启动图形化界面的命令
