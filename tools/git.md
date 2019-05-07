@@ -77,7 +77,9 @@
   * **git checkout 分支名** 切换分支
   * **git checkout -b 新分支名** 创建分支，并且换到新分支上
     ```
-      git checkout -b 新分支名 (基于哪个分支)
+      git checkout -b 新分支名 基于哪个分支 #基于某个分支在本地创建一个新分支
+      git checkout -b feature origin/feature/feature1
+      # 从远端origin/feature/feature1的仓库拷贝一份至本地，新分支名为feature（实际是与远端分支建立了联系的，本地push直接会推到远端）
     ```
 ### 删除分支
   * **git branch -d 分支名** 有时会有提示无法删除，使用-D
