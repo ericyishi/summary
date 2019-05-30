@@ -62,7 +62,7 @@
  * 总结：这种方式，就是要记住安装的虚拟环境的路径，用起来比较麻烦，不方便管理
 
 
-### 使用virtualenvwrapper(虚拟环境管理工具)
+### 使用virtualenvwrapper(虚拟环境管理工具，用于管理virtualenv)
 * 安装步骤
    1. 安装
       * 注意windows下有“-win”别掉了
@@ -83,7 +83,7 @@
        * 如果要修改，通过环境变量WORKON_HOME来改变：
          1. 新建环境变量,变量名为"WORKON_HOME"
          2. 输入的值就是你的想要指定的路径
-   4. 创建虚拟环境
+   4. 创建虚拟环境(新创建虚拟环境都是WORKON_HOME的路径下面)
       ```
        mkvirtualenv 虚拟环境名
        mkvirtualenv yisvenv_v2
@@ -101,6 +101,13 @@
       ```
        workon 虚拟环境名
       ```
+      * 进入环境就可以正常操作了
+        ```
+         pip list
+         pip freeze
+         # 查看安装的包
+         pip install django==1.8.2
+        ```
 * 其他常用命令
    * 列出所有虚拟环境
       ```
