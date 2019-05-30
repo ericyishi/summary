@@ -36,7 +36,7 @@
      testserver
    ```
 2. 创建项目
-   * 进入需要创建项目的目录
+   * 进入需要创建项目的目录【需要在有权限的目录下才会成功】
    ```
     django-admin startproject 项目名
    ```
