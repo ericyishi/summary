@@ -48,22 +48,38 @@
       * 项目下还有guest目录，进入
         * \_\_init\_\_.py: 一个空文件，用来标志一个目录为python文件
         * setting.py: Django项目配置文件，包括django的模块应用配置，数据库配置，模板配置等。
+          ```
+            Databases字段下可以配置要使用的数据库。默认使用的sqllite数据库
+          ```
         * urls.py Django项目url声明
         * wsgi.py 与WSGI兼容的web服务器为你的项目提供服务入口点
 
-3. 在项目基础上创建应用
+3. 在项目基础上创建应用（一个项目可以创建多个应用）
+   * 添加应用（需要到manage.py文件下运行）
+   * 如果使用了虚拟环境，需要先workon进入到虚拟环境中，在切换到创建应用的路径下
    ```
     python manage.py startapp 应用名
    ```
    ```
     python manage.py startapp sign
    ```
-   * 进入sign文件夹应用结构：
+   * 运行后，就会在当前路径下生成一个应用，名字就是上面取的
+   * 进入sign文件夹应用结构【注意没有template模板模块】：
      * migrations文件夹：用于记录models中数据的变更
      * admin.py 映射models中的数据到django自带的admin后台
      * apps.py 用于应用程序的配置
      * models.py 模型文件，创建应用程序数据表模型（对应数据库的相关操作）
-     * test.py 创建django测试用例
+       1. 定义模型类
+       2. 注册应用。将应用名加入setting.py文件中的INSTALLED_APP字段中
+       3. 迁移migrations,就会将步骤1中模型生成需要的字段
+          ```
+           python manage.py makemigrations
+          ```
+       4. 执行迁移
+          ```
+           python manage.py migrate
+          ```
+     * test.py django自带的测试用例
      * views.py django的视图文件，控制向前端页面显示内容
 4. 运行项目，启动服务
    ```
@@ -126,4 +142,8 @@
       ```
     * 重启服务，访问 http://127.0.0.1:8000/index/，就能看到snow.html里面的内容了
       * 但是仅能显示html与css，如果有其他文件夹下的资源（如：引用图片），这样是无法加载显示的
-###
+### 测试数据操作
+* 进入python shell，进行简单的模型API练习
+  ```
+   python manage.py shell
+  ```

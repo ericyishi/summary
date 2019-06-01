@@ -120,5 +120,6 @@
 
 ### 在pycharm使用指定的虚拟环境
 ```
-file--setting--Project Interpreter--在里面指定需要的虚拟环境的路径即可
+file--setting--Project Interpreter--add--based Interpreter在里面指定需要的虚拟环境的python路径即可
+指定后，这个虚拟环境下的安装的包都能看到
 ```
