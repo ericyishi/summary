@@ -147,3 +147,4 @@
   ```
    python manage.py shell
   ```
+
