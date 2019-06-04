@@ -71,11 +71,11 @@
      * models.py 模型文件，创建应用程序数据表模型（对应数据库的相关操作）
        1. 定义模型类
        2. 注册应用。将应用名加入setting.py文件中的INSTALLED_APP字段中
-       3. 迁移migrations,就会将步骤1中模型生成需要的字段
+       3. 迁移migrations,就会将步骤1中模型生成需要的字段（根据模型类生成sql语句）
           ```
            python manage.py makemigrations
           ```
-       4. 执行迁移
+       4. 执行迁移（执行sql语句生成数据表）
           ```
            python manage.py migrate
           ```

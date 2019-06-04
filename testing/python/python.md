@@ -42,3 +42,4 @@
     * [常见问题](frontend/problem.md)
     * [SQLit与mysql配置](frontend/py_sqlite_mysql.md)
     * [路由url](frontend/py_url.md)
+    * [视图view](frontend/py_view.md)

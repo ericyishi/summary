@@ -65,3 +65,18 @@
 ### 管理界面
 * 先启动服务，然后到管理页面即可 http://127.0.0.1:8000/admin
 * 使用上面步骤6创建的用户即可登录
+
+### 注册模型
+* admin.py文件，注册模型
+```
+  from django.contrib import admin
+  from models import BookInfo
+  admin.site.register(BookInfo)
+```
+* 自定义管理页面
+```
+ class 自定义类名(admin.ModelAdmin):
+    ...
+  admin.site.register(需要自定的那个模型, 自定义类名)
+```
+  * 在这个类里面可以定义一些展示效果（参考页面：https://www.cnblogs.com/wendoudou/p/3415552.html）
