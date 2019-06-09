@@ -29,13 +29,41 @@ def index(reqeust):
     return render(reqeust, 'booktest/index.html')
 
 ```
+### 从url中正则匹配中取数据
+```
+   url(r'^([0-9]+)/$', views.detail),
+```
+* 这里正则中使用小括号括起来，就是代表取这个数据，作为参数传入view中
+
 ### 在模板中加入数据
 * render（request,template_name,context）,第三个参数即为数据
-* context是字典格式，context={'name':123}
+```
+ def show(request,id):# 这里的id 是url正则表达式里面取出来
+  book=BookInfo.objects.get(pk=id) #获取book信息
+  herolist=book.heroinfo_set.all() #把该book中的heroinfo拿出来
+  context={'list':herolist} # 放入字典里，键名为list
+  return render(reqeust, 'booktest/show.html',context
+```
+* context是字典格式，context={'name':123},context会整体传入模板中
 * 模板里面，需要的地方就用双花括号{{键名}}即可
 ```
  <p>{{name}}</p> # 根据键名，就可以往里面填入值，渲染结果就是123
 ```
 
-### 从模型中取数据
+### 从模型中填入数据
+* <%%>中为模板语法
+```
+<%for i in list%>
+<%endfor%>
+```
+```
+ <ul>
+   <%for i in list%>
+     <li>{{i.hname}}</li>
+   <%endfor%>
+ </ul>
+```
+
+
+
 
