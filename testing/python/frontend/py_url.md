@@ -4,6 +4,24 @@
 
 ### urls
 * django 项目中的url规则定义放在project 的urls.py目录下
+* 在新建的项目中，url.py文件配置（项目下的url.py是主url）
+* Django中，定义URLconf包括正则表达式、视图两部分
+* Django使用正则表达式匹配请求的URL，一旦匹配成功，则调用应用的视图
+  * 注意：只匹配路径部分，即除去域名、参数后的字符串
+* 在test1/urls.py插入booktest（这里是应用名），使主urlconf连接到booktest.urls模块
+   ```
+     url(r'^', include('booktest.urls')), #booktest.urls是应用下booktest新建的的urls.py
+   ```
+
+* 在booktest中的urls.py中添加urlconf
+  ```
+    from django.conf.urls import url
+    from . import views
+    urlpatterns = [
+        url(r'^$', views.index),
+        url(r'^([0-9]+)/$', views.detail),
+    ]
+  ```
 
 ### 使用 include() 配置 URL
 * 如果项目非常庞大，应用非常多，应用的 URL 都写在根 urls.py 配置文件中的话，会显的非常杂乱，还会出现名称冲突之类的问题，这样对开发整个项目是非常不利的。
