@@ -95,3 +95,4 @@
       * [Chrome](tools/browser/chrome/chrome.md)	  
     * 其他
       * [持续集成jenkins](tools/others/jenkins.md)
+	  * [实用工具](tools/others/usefulTool.md)
