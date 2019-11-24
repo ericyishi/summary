@@ -29,7 +29,7 @@
    * float 浮点数
    * complex 复数【complex(a,b)】
 2. 数值类型转换
-   * input获取的内容，都是字符串类型
+   * input获取的内容，都是字符串类型【这里说的是Python3，如果是python2只能是数值，要输入字符串要用raw_input()】
      * 可以使用type()验证
    ```
     a=int(input("请输入一个数："))
@@ -60,7 +60,7 @@
    str = "hello world"
   ```
   * len() 返回字符串长度
-    * 这是一个全局的函数
+    * 这是一个全局的函数,所以不仅仅字符串能使用，元祖也能
     ```
      格式：len(字符串)
      len(str)
@@ -71,6 +71,12 @@
      print(str.count("l")) # 3
     ```
      * 也可以统计指定字符串长度的统计
+	   ```
+	     sub -- 搜索的子字符串
+		start -- 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。
+		end -- 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置
+	   ```
+
        ```
          print(str.count("l", 0, 3))// # 1
        ```
@@ -81,7 +87,7 @@
      print(str.split("l"))  # ['he', '', 'o wor', 'd'] ，以l来分隔字符串
     ```
   * "分隔符".join(list|str|dict|tuple|sets) 可以将其他数据类型的数据，按指定分隔，转化为字符串
-    * 里面的元素要是字符串才能够使用
+    * 里面的元素要全部都是字符串才能够使用，如果有数值型是会报错的
     * 字典元素拼接的只是键
     ```
      t1 = ("a", "b", "c", "d", "e")
@@ -110,14 +116,16 @@
     ```
      print(str.capitalize()) # Hello world
     ```
-  * center(length,"字符")
-    * length长度大于原来字符串的长度，否则也没有任何效果
-    * 字符只能一位，多了也会报错【 exactly one character long】
+  * center(length,"字符")  返回一个原字符串居中,并使用空格填充至长度 width 的新字符串。默认填充字符为空格。
+    * length长度大于原来字符串的长度，否则也没有任何效果。另外是先补右侧，再补左侧
+    * 字符只能一位因为char类型，多了也会报错【 exactly one character long】
 
     ```
      print(str.center(25, "*")) # *******hello world*******
     ```
-  * find 找到返回下标，找不到返回-1
+	 * 第一个参数为字符串的总宽度
+	 
+  * find 找到返回下标，找不到返回-1。从0开始计算
     ```
      格式： 字符串.find()
      print(str.find("o")) # 4
@@ -138,14 +146,16 @@
      str.endswith("world") # True
     ```
   * startswith() 与上面类似，但是判断开头
-  * isalNum() 判断字符串中所有值都为数字或者字母且不含有空格，则返回true
+  * isalNum() 方法检测字符串是否由字母和数字组成
     ```
      str = "hello world"
      str2 = "hello"
      str3 = "12345"
+	 str4 = "123abc"
      print(str.isalnum())  # false,有空格也会返回false
      print(str2.isalnum())  # true
      print(str3.isalnum())  # true
+	 print(str4.isalnum())  # true
     ```
   * isalpha() 判断字符串中所有值都为者字母且不含有空格，则返回true
     ```
@@ -195,7 +205,7 @@
      str8 = "aA"
      print(str8.lower()) #aa
     ```
-  * isspace() 判断字符串中第一位是否空格，返回true
+  * isspace() 检测字符串是否只由空白字符组成，是返回true
     ```
      str9 = "hello world"
      str10 = "     "
@@ -229,7 +239,7 @@
        l-t1[1]="jerry"
        print(l_t1) # [1, "jerry", "ac", 65 ]
       ```
-   2. 删除del()
+   2. 删除del() 可以删除列表元素，也可以整个列表删除
      * 也可以不使用括号
       ```
        del l_t1[0]
@@ -278,6 +288,11 @@
 				print(l_t2) # ['123', 'ac', 3, 'new', 'hey', 'on']
 				l_t3.extend("abc")
 				print(l_t3) # ['new', 'hey', 'on', 'a', 'b', 'c']
+				——————————————
+				l_t2 = ["123", "ac", 3]
+				l_t3 = ["new", "hey", "on"]
+				l_t2.extend(l_t3)
+				print(l_t2) # ['123', 'ac', 3, ['new', 'hey', 'on']]
 			  ```
 	2. 删
 	   1. pop(index) 移除元素，不传参数是最后一个
@@ -295,7 +310,7 @@
 			 * 比较常用
 			 ```
 			 l_t5 =["ok",1,"haha",2,3,"2",1]
-			 l_t5.remove(1)
+			 l_t5.remove(1) #这里传入的只能是对象，而非下标
 			 print(l_t5)  # ['ok', 'haha', 2, 3, '2', 1]
 			 ```
 	   3. 删除整个变量
@@ -311,6 +326,7 @@
 		   ```
 	4. 查
 	   1. index() 查找某个值第一次出现的索引值，不存在是会报错的【列表没有find方法】
+	      * 字符串也具有该方法，使用相同
 		 ```
 		  l_t4 = [1, [2,[3]],[3], 3, "123", "ac", 3]
 		  l_t4.index(3) # 3
@@ -331,11 +347,36 @@
    
        2. 倒序
 	      1. reverse() 
+		    * 是python中列表的一个仅用于列表中数据的反转的内置方法（也就是说，在字典，字符串或者元组中，是没有这个内置方法的）
 		  ```
 		   l_t5 =["ok",1,"haha",2,3,"2",1]
 		   l_t5.reverse()
 		   print(l_t5) # [1, '2', 3, 2, 'haha', 1, 'ok']
 		  ```
+		    * reversed() 
+			  * 这是应该python3的方法，返回一个反转的迭代器，reversed()可以反转 tuple, string, list 或 range。
+			    ```
+				  也就是说，在经过reversed()的作用之后，
+				  返回的是一个把序列值经过反转之后的迭代器!!!
+				  所以，需要通过遍历，或者List,或者next()等方法，获取作用后的值；
+				  >>> bb = [1,3,5,7]          
+				  >>> print(list(reversed(bb)))
+					  [7, 5, 3, 1]
+				  >>> aa = (1, 2, 3)           
+				  >>> print(tuple(reversed(aa)))         
+					  (3, 2, 1)	  
+					  
+				  >>> l_t2=['123', 'ac', 3, ['new', 'hey', 'on']]
+				  >>> print(l_t2)
+                      ['123', 'ac', 3, ['new', 'hey', 'on']]
+
+				  >>> print(reversed(l_t2))
+			          <listreverseiterator object at 0x0000000004CA9828>
+
+			      >>> print(list(reversed(l_t2)))
+					  [['new', 'hey', 'on'], 3, 'ac', '123']
+				```
+		  
           2. 也能使用切片
 			```
 			 l_t5 =["ok",1,"haha",2,3,"2",1]
@@ -375,13 +416,14 @@
 				 print(a) # [1,2,3,'hey',5]
 				 print(b) # [1,2,3,4,5]
 				```
-			2. 情况2:有个子列表，修改会对两个同时修改，因为是copy的内存地址
+			2. 情况2:有个子列表，修改会对两个同时修改，因为是copy的是内存地址
 			   ```
 			     a = [1,2,3,[41,42],5]
 				 b = a.copy()
 				 a[3][0]='hel'
 				 print(a) # [1,2,3,['hel',42],5]
 				 print(b) # [1,2,3,['hel',42],5]
+				 #a 和b中数组指向的是相同地址
 			   ```
 			3. **浅拷贝几种方式**：
                1. 默认方式
@@ -415,7 +457,7 @@
    * 单个元素的元组要在后面加上逗号，例如（1,）
      ```
       >>> a=(1,2)
-      >>> b=(3)
+      >>> b=(3)  #type(b)的值为int
       >>> c=a+b
       Traceback (most recent call last):
         File "<interactive input>", line 1, in <module>
@@ -426,6 +468,10 @@
       (1, 2, 3)
      ```
    * **元组的元素无法修改**，但对于元组内有列表，那么是可以改变列表里的值
+     ```
+	  a=(1,2,3)
+	  a[1]=4 # TypeError: 'tuple' object does not support item assignment
+	 ```
 
      ```
       tup_c = (1, ["hello", 2, 3], "1sd", "hello")
@@ -477,15 +523,14 @@
     或者
     s=set()
    ```
-   * 使用set()方式，可以将其他类型的数据强制转化为集合类型,但是字符串达不到预期效果
+   * 使用set()方式，可以将其他类型的数据强制转化为集合类型
      ```
       sets_c = set({"a", 1, 2, "b", 2})
       sets_d = set(["a", "1", "2", "b", "2"])
       print(sets_c) # 去重 {1, 2, 'b', 'a'}
       print(sets_d) # 列表转化成集合，并去重了{'a', 'b', '1', '2'}
-      sets_e = set("1,2,3")
-      print(sets_e) # {',', '1', '2', '3'}
-
+      sets_e = set("123abc")
+	  print(sets_e)# {'c', '2', '1', 'a', 'b', '3'}
      ```
 2. 常用操作
    * 添加元素
@@ -622,10 +667,11 @@
    * 注意切片是从左开始数，所以注意顺序
    ```
     str[-1] # 输出最后一位d
-    str[-1:] # 输出最后一位d
-    str[:-1] # 输出：hello worl
-    str[-3:-1] # 输出：rl，从倒数第三位到倒数第二位（最后一位取不到）
-    str[-3:] # 输出：rld，从倒数第三位到最后
+	str[-3] # 输出导出第3位r
+    str[-1:] # 输出最后一位d  [-1,0)取值
+    str[:-1] # 输出：hello worl [0,-1)取值
+    str[-3:-1] # 输出：rl，从倒数第三位到倒数第二位（最后一位取不到）[-3,-1)取值
+    str[-3:] # 输出：rld，从倒数第三位到最后 [-3,0)取值
 
    ```
 
