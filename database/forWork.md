@@ -25,3 +25,21 @@
 
  
    ```
+2. mysql max_allowed_packet 设置过小导致记录写入失败
+  * 错误提示
+  ```
+    工作中经常需要导入或者导出较大的sql文件。导出时一般没问题，但在导入到其它Mysql库中，可能会出现
+	“Packet for query is too large (1706 > 1024). 
+	You can change this value on the server by setting the max_allowed_packet' variable. ”
+	或者程序（如python里面executemany）在插入大量数据时出现"MySQL server has gone away"。
+	这些错误都可能是Mysql的mysql max_allowed_packet默认值太小。
+  ```  
+  * 修改配置
+	1. 查看当前值大小【默认为4M】
+	```
+	 show variables like '%max_allowed_packate%'
+	```
+	2. 修改大小
+	```
+	 set global max_allowed_packet = 100*1024*1024*10 #100M
+	```

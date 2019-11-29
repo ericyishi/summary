@@ -12,6 +12,7 @@
         ```
          vi /root/.bash_profile
         ```
+		* 有的地方是配在/etc/profile（这里优先级最高，是全局的，用于整个系统的所有用户）
      2. 增加内容
         ```
          打开文件在PATH= $PATH:$HOME/bin  和 export PATH之间新增 3行如下命令：
@@ -27,6 +28,8 @@
         ```
      4. 检验是否生效。
        * 任何一个地方输入java，看是否有java的提示信息。
+	   * 输入：echo $JAVA_HOME；返回jdk的安装路径
+	   
 ### 2.安装tomcat
   1. 同样使用xshell，传入tomcat的安装文件
   2. 解压
