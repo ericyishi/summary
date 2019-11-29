@@ -1,6 +1,6 @@
 # 工作常见问题
 ### 配置类
-1. localhost可以访问数据库，但是ip却无法连接的问题
+**1. localhost可以访问数据库，但是ip却无法连接的问题**
    * 原因：Mysql 默认是没有开启这个权限的(只允许使用 host:localhost,或者 host:127.0.0.1)，如果想用  host:192.168.1.* ,来访问mysql ,需要手动开启这个权限
    ```
     1.打开cmd窗口，进入MySql安装的bin目录
@@ -25,7 +25,7 @@
 
  
    ```
-2. mysql max_allowed_packet 设置过小导致记录写入失败
+**2. mysql max_allowed_packet 设置过小导致记录写入失败**
   * 错误提示
   ```
     工作中经常需要导入或者导出较大的sql文件。导出时一般没问题，但在导入到其它Mysql库中，可能会出现
