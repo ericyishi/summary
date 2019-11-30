@@ -396,6 +396,17 @@
 			  print(l_t5) # [1, 4, 5, 9, 22, 77]
 			  print(l_t6) # [66, 8, 7, 5, 2, 1]
 			 ```
+			 * 如果列表里面是字典，字典存在多个键值对，所以就需要传入key来指定按哪个字段排序
+			 ```
+			  list1=[{"name":"rick","age":12},{"name":"ck","age":22},{"name":"fuji","age":18}]
+			  list1.sort(key=lambda x:x['name']) #key是参数的名，传入了一个匿名函数，用于指定按name字段排序
+			  print(list1) # [{'age': 22, 'name': 'ck'}, {'age': 18, 'name': 'fuji'}, {'age': 12, 'name': 'rick'}]
+              
+              # 同时还可以传入两个参数按年龄降序排序
+			  list1.sort(key=lambda x:x['age'],reverse=True)
+			  print(list1) # [{'age': 22, 'name': 'ck'}, {'age': 18, 'name': 'fuji'}, {'age': 12, 'name': 'rick'}]
+             			  
+			 ```
 	      2. sorted() 排序
 			 * 不会修改原来的内容，而是将排序后的结果返回一个新的列表
 			 ```
