@@ -120,6 +120,9 @@
       函数名=lambda 变量1，变量2: 函数体
       # 调用
       函数名(变量1，变量2)
+	  * 参数可以多个，也可以不用赋给一个变量。例如排序
+	  list1=[{"name":"rick","age":12},{"name":"ck","age":22},{"name":"fuji","age":18}]
+	  list1.sort(key=lambda x:x['name'])
      ```
      ```
       calc = lambda x, y: x ** y
@@ -127,7 +130,36 @@
      ```
   2. 注意事项
      * 主要是在定义单行函数使用
-     * 没有显示返回值【return】，执行后默认直接将结果返回。
+     * 没有显示地返回值【return】，执行后会默认直接将结果返回。
+  3. 应用
+     ```
+	  def test(a,b,func):
+	     result=func(a,b)
+		 return result
+	  num=test(11,22,lambda x,y:x+y)
+	  print(num)
+      num2=test(2,3,lambda x,y:x*y)
+      print(num2) 	  
+	 ```
+	 * 上面代码可以优化，因为Python是运行时语言
+	 ```
+		#coding=utf-8
+		import sys
+		def test(a, b, func):
+			result = func(a, b)
+			return result
+		value_a = input("请输入一个数:")
+		value_b = input("请输入另外一个数:")
+		func_new = input("输入一个匿名函数：")  #此处可以输入任意运算，如：lambda x,y:x*y
+		print(sys.version[0])
+		if(sys.version[0]=='3'):
+			print("版本为python3才进入")
+			func_new = eval(func_new)  # python3 中需要使用eval，因为python2中使用这个input没有问题，能够直接计算返回结果
+		# 但是python3中会直接转化成字符串后报错，所以使用eval变为可以算的
+		num = test(int(value_a), int(value_b), func_new)
+		print(num)
+		
+	 ```
 
 ### 文档字符串
   * 函式体的第一个语句可以是三引号括起来的字符串， 这个字符串就是函数的
