@@ -22,7 +22,7 @@
 	 * [sys模块](py_module_sys.md)
      * [json模块](py_module_JSON.md)
 	 * [random模块](py_module_random.md)
-  * [文件IO操作](py_IO.md)
+  * [文件IO操作](py_module_IO.md)
   * [异常处理](py_exception.md)
   * [多线程](py_thread.md)
 * 通信

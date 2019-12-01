@@ -40,14 +40,14 @@
 * f.writelines() 写入文件内容，可以是字符串也可以是列表
 ### I/O操作符
 * w
-  * 以写方式打开文件，可向文件写入信息。**如文件存在，则清空该文件**，再写入新内容
+  * 以写方式打开文件，可向文件写入信息。**如文件存在，则清空该文件**，再写入新内容。如果不存在该文件，就会创建。
   ```
    f = open(r"C:\Users\Administrator\Desktop\demo.txt", "w")
    f.write('aaa\nhahaha')
    f.close()
   ```
 * r
-  * 以读的方式打开文件，找不到文件会抛出异常
+  * 以读的方式打开文件，必须存在，找不到文件会抛出异常
   ```
    f = open(r"C:\Users\Administrator\Desktop\demo.txt", "r")
    con = f.read()
@@ -61,7 +61,7 @@
   ```
 * **a**
   * 以追加模式打开文件（即一打开文件，文件指针自动移到文件末尾【不会换行！】）
-  * 如果文件不存在则创建,可以追加文件内容
+  * 如果文件不存在则创建,如果文件存在，则可以追加文件内容
   * 只可以写，不可以读
   ```
    f = open(r"C:\Users\Administrator\Desktop\demo.txt", "a")
