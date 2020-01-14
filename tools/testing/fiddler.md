@@ -35,5 +35,10 @@
   ```
    * 使用了数据编码为名称/值对。这是标准的编码格式
    * ajax的POST请求的时候也需要带上。
-
-
+### 移动端
+* 移动端抓包需要配置fiddler允许远程连接
+  1. 点击Tools->Options->Connections，勾选allow remote computers to connect，默认监听端口为8888（Fiddler listens on 【8888】port就是端口号），若端口被占用可以设置成其他的。配置好后一定要重新启动fiddler。
+  2. 手机上的操作：确保手机和电脑连接同一个网络，打开手机浏览器，输入http://ip:端口号，点击前往
+  3. 前往之后会跳转到证书下载页，点击FiddlerRootcertificate下载证书
+  4. 更改手机WiFi的代理。手机系统设置-无线网-点击高级，代理选择手动，主机名就是fiddler的电脑ip地址，端口号，就是fiddler的端口号，与浏览器中ip：端口号保持一致，点击确定即可。
+  5. OK，开始操作手机吧，电脑fiddler中会显示一些http信息，成功
