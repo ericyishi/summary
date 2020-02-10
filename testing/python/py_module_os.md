@@ -40,7 +40,10 @@ import os
      os.path.dirname('D:\\pythontest\\ostest\\hello.py')
      'D:\\pythontest\\ostest'
    ```
-   * os.path.dirname(os.path.abspath(__file__)) //获取当前文件的绝对路径
+   * os.path.dirname(os.path.abspath(\__file\__)) //获取当前文件的绝对路径
+   ```
+    在Python控制台下，直接使用print __file__是会导致  name ‘__file__’ is not defined错误的，因为这时没有在任何一个脚本下执行，自然没有 __file__的定义了。
+   ```
    
 #### 时间相关命令
 1. os.path.getmtime(path) 文件或文件夹的最后**修改**时间，从新纪元到访问时的秒数。
