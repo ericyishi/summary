@@ -35,14 +35,18 @@ import os
 7. os.path.split(‘文件或者目录’)  把最后的一个目录或者文件和前面的目录分开，返回一个tuple
 8. os.path.splitext(‘文件’)    把文件的后缀名和前面分开，返回一个tuple
 9. os.path.basename(path)  返回path中的文件名
-10.  os.path.dirname(path) 返回path中的文件夹部分，结果不包含'\'。必须是实际存在的.py文件。否则会报错
+10.  os.path.dirname(path) 返回path中不含文件的路径，结果不包含'\'。必须是实际存在的.py文件。否则会报错
    ```
      os.path.dirname('D:\\pythontest\\ostest\\hello.py')
      'D:\\pythontest\\ostest'
    ```
-   * os.path.dirname(os.path.abspath(\__file\__)) //获取当前文件的绝对路径
+   * os.path.dirname(os.path.abspath(\__file\__)) //获取当前文件的绝对路径，也不包含文件
    ```
-    在Python控制台下，直接使用print __file__是会导致  name ‘__file__’ is not defined错误的，因为这时没有在任何一个脚本下执行，自然没有 __file__的定义了。
+    D:\\pythontest\\ostest\\hello.py
+    os.path.dirname(os.path.abspath(\__file\__))
+	# 运行该文件，解析出来就是D:\\pythontest\\ostest
+	# print(os.path.abspath(\__file\__))则为D:\\pythontest\\ostest\\hello.py
+    注意：在Python控制台下，直接使用print __file__是会导致  name ‘__file__’ is not defined错误的，因为这时没有在任何一个脚本下执行，自然没有 __file__的定义了。
    ```
    
 #### 时间相关命令
