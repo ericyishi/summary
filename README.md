@@ -68,7 +68,9 @@
     * UIAutomator
       1. [UIAutomator配置与使用](testing/android/android_uiautomator.md)
           * [快速调试工具UiautomatorHelper](testing/android/android_uiautomator_uiautomatorHelper.md)
-    * Appium跨平台测试框架
+    * 移动端Appium跨平台测试框架
+	  1. [appium移动端环境搭建](testing/android/appium/adroid_environment.md)
+	  
      
 ### 爬虫
   * [scrapy框架的安装](crawler/InstallScrapy.md)
