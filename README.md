@@ -70,7 +70,7 @@
           * [快速调试工具UiautomatorHelper](testing/android/android_uiautomator_uiautomatorHelper.md)
     * 移动端Appium跨平台测试框架
 	  1. [appium移动端环境搭建](testing/android/appium/adroid_environment.md)
-	      * 在启动中加入日志的方法(testing/android/appium/setupWithLog.md)
+	      * [在启动中加入日志的方法](testing/android/appium/setupWithLog.md)
 	  2. [robotFramework下使用appium的方法](testing/android/appium/adroid_robotframework.md)	  
      
 ### 爬虫
