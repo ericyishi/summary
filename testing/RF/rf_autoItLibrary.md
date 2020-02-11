@@ -1,4 +1,6 @@
 # 64位AutoItLibrary的安装
+### 说明
+* 时会遇到一些控件是非标准控件，selenium无法操作，需要用AutoItLibrary来模拟WINDOWS GUI的操作，如模拟键盘按键、鼠标移动等。
 ### 安装步骤
 1. pywin32的安装
    * 找到对应python的版本（https://github.com/mhammond/pywin32/releases）与python位数一致
