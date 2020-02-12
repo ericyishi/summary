@@ -8,8 +8,8 @@
 	  相关说明与下载的文章：https://www.cnblogs.com/0813lichenyu/p/8319124.html
 	```
 * LICEcap录屏
- * 用于测试复现步骤的录屏，生成gif图
+  * 用于测试复现步骤的录屏，生成gif图
 * Snipaste
- * 可以截屏粘贴在桌面上，用于临时对比
+  * 可以截屏粘贴在桌面上，用于临时对比
 * Everything
- * 全盘快速搜索
+  * 全盘快速搜索
