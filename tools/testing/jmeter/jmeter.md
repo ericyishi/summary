@@ -3,4 +3,5 @@
 * 需要基于jdk，Jmeter3需要jdk7以上的版本
 ### 运行
 * windows下: 双击 \bin\jmeter.bat
-
+### 常用组件介绍
+* [常用组件](jmeterComponent.md)

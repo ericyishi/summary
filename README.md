@@ -94,7 +94,7 @@
       * [fiddler](tools/testing/fiddler.md)
       * [wireshark](tools/testing/wireshark.md)
       * [loadrunner](tools/testing/loadrunner/loadrunner.md)
-      * 
+      * [Jmeter](tools/testing/jmeter/jmeter.md)
     * 浏览器
       * [Chrome](tools/browser/chrome/chrome.md)	  
     * 其他
