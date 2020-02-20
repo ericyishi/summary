@@ -120,10 +120,11 @@
         ```
          CREATE DATABASE LUCAS DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
         ```
-        * 数据库校验规则
+        * 数据库校验规则【排序规则】
           ```
            utf8_bin：区分大小写；
 	       utf8_general_cs：大小写敏感； # cs，即case sensitive，大小写敏感
 	       utf8_general_ci：大小写不敏感。 # ci是case insensitive的缩写
           ```
         * 网上有的地方写得是utf8_general_cs 但是mysql不支持这种字符集，所以使用utf8_bin就好了。
+		* 

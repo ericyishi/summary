@@ -54,7 +54,19 @@
     ```
       SHOW TABLES;
     ```
-
+	* 显示内容为：
+	```
+	  CREATE TABLE `goods` (
+      `g_id` int(11) NOT NULL AUTO_INCREMENT,
+      `g_name` varchar(50) NOT NULL,
+      `producer` varchar(50) NOT NULL,
+	  `price` float NOT NULL,
+      `pic` varchar(20) NOT NULL,
+      `stockNum` int(11) NOT NULL,
+       PRIMARY KEY (`g_id`)
+	   ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+	```
+	
 * **查看表的定义创建的语句**
     ```
      SHOW CREATE TABLE 表名;
@@ -64,6 +76,20 @@
     ```
       DESC 表名;
     ```
+	* 展示结果如下：
+	```
+	    +----------+-------------+------+-----+---------+----------------+
+		| Field    | Type        | Null | Key | Default | Extra          |
+		+----------+-------------+------+-----+---------+----------------+
+		| g_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+		| g_name   | varchar(50) | NO   |     | NULL    |                |
+		| producer | varchar(50) | NO   |     | NULL    |                |
+		| price    | float       | NO   |     | NULL    |                |
+		| pic      | varchar(20) | NO   |     | NULL    |                |
+		| stockNum | int(11)     | NO   |     | NULL    |                |
+		+----------+-------------+------+-----+---------+----------------+
+	```
+	 
 * 删除表
     ```
      DROP TABLE 表名;
@@ -72,7 +98,7 @@
 
 * **复制表**
     ```
-      CREATE TABLE 新表名 AS(SELECT * FROM 被复制的表名);
+      CREATE TABLE 目标库."源表"  AS SELECT * FROM  源库."源表名";
     ```
     ```
      只复制结构，不要内容
@@ -98,7 +124,11 @@
      如：
       ALTER TABLE t_parent MODIFY id INT(11) AUTO_INCREMENT;--修改自增属性
     ```
-
+	```
+	  alter table goods modify price varchar(30) not null;
+	```
+     * 将varchar长度由50改成30，但是注意其他参数也得带上，如：not null,因为不带的话，生效后该自带就会变成可以为空了。
+	 
 * 删除列
     ```
     ALTER TABLE 表名 DROP 列名
