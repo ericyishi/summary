@@ -8,6 +8,14 @@
   * MAX() 返回结果集，所有值的最大值
   * MIN() 返回结果集，所有值的最小值
   ```
+   # select sum(length),avg(length),max(length),min(length),count(*) from filesystem_table;
+     +-------------+-------------+-------------+-------------+----------+
+	 | sum(length) | avg(length) | max(length) | min(length) | count(*) |
+	 +-------------+-------------+-------------+-------------+----------+
+	 |    43494531 |  11365.1766 |     3998628 |           0 |     3827 |
+	 +-------------+-------------+-------------+-------------+----------+
+  ```
+  ```
    注意：
    1.SELECT后面出现了聚合函数，那么这条查询就是按分组返回一个大组；
    2.出现了聚合函数，SELECT后面出现的普通列（即既不是聚合函数也不是分组列）,那么结果只会显示该列的第一行;
@@ -207,7 +215,7 @@
       INNER JOIN course AS co
       ON stu.sno=co.sno
     ```
-    上面可以简写成：
+    上面可以简写成【常用的写法】：
 
     ```
       #【隐式】
@@ -219,6 +227,20 @@
 
   3. 外联接
      * 注意: 所谓左右表只是针对JOIN而言，JOIN之前的为左表，JOIN之后的为右表
+	 * 语法
+       ```
+	    左表left/right join 右表 on 左表.字段=右表.字段
+	   ```
+       ```
+	    SELECT
+    　　student.s_name,
+   　　 student.c_id,
+    　　class.id,
+    　　class.c_name
+　　	FROM
+    　　student
+　　	left JOIN class ON student.c_id = class.id;
+       ```  	   
 
   4. 三者区别
      * left join(左联接) 返回包括左表中的所有记录和右表中联结字段相等记录

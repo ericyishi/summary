@@ -100,6 +100,7 @@
        # 找出四个字的姓名的学生信息
          SELECT * FROM student WHERE sname LIKE "____";
     ```
+	 * like除了模糊查询，在复制表的时候也可以只复制结构不要内容：CREATE TABLE new1 LIKE old2;
 
   * 空行查询
     * NULL
