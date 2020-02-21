@@ -72,7 +72,7 @@
     ```
     ```
      CREATE PROCEDURE p()
-      BEIGIN
+      BEGIN
        DECLARE v INT DEFAULT 1;
        CASE v
         WHEN 2 THEN SELECT v;
@@ -156,12 +156,12 @@
       ```
        CREATE PROCEDURE proc_demo(OUT param1 INT)
        BEGIN
-         SELECT COUNT(*) INTO param1 FROM t;
+         SELECT COUNT(*) INTO param1 FROM t; # 查询t表行数，并把值赋给一个变量param1
        END
 
        调用：
-       CALL proc_demo(@a)
-       SELECT @a
+       CALL proc_demo(@a) #定义一个变量a来接收返回的结果
+       SELECT @a #显示结果
       ```
 
     * 调用
@@ -170,7 +170,7 @@
        # 如果没有使用use指定使用某个指定的数据库，要写全：
        # CALL 数据库名.存储过程名();
       ```
-    * 查看存储过程的详情
+    * 查看存储过程的详情【包括创建存储过程的语句，编码等信息】
       ```
        SHOW CREATE PROCEDURE 存储过程名;
       ```
@@ -187,7 +187,7 @@
      # 根据学生名字查询该学生的平均成绩和总分
       CREATE PROCEDURE pro_stu_score(IN sName VARCHAR(20),OUT avgScore FLOAT,OUT sumScore FLOAT)
       BEGIN
-        SELECT AVG(score),SUM(score) INTO avgScore,sumScore FROM sc,stu WHERE sc.sno=stu.sno WHERE stu.name=sName; 
+        SELECT AVG(score),SUM(score) INTO avgScore,sumScore FROM sc,stu WHERE sc.sno=stu.sno AND stu.name=sName; 
       END
       CALL pro_stu_score("lee Smith",@uavg,@usum);
       SELECT @uavg,@usum
@@ -210,15 +210,16 @@
 	 ```
 	 ```
 	  SELECT IF(1>2,2,3);
+	  # 显示的值为3
 	 ```
         3. IFNULL
 	 ```
 	  IFNULL(表达式1，表达式2);
-	  # 如果表达式1不为null,则返回表达式1，否则返回表达式2
+	  # 如果表达式1为null,则返回返回表达式2，否则表达式1
 	 ```
 	 ```
-          SELECT IFNULL(1,0)//输出值为0
-          SELECT IFNULL(NULL,10)//输出值为NULL;
+          SELECT IFNULL(1,0)//输出值为1
+          SELECT IFNULL(NULL,10)//输出值为10;
 	 ```
         4. NULLIF
 	 ```
@@ -227,6 +228,9 @@
 	 ```
 	 ```
 	  SELECT NULLIF(1,1)//返回值为NULL
+	  SELECT NULLIF('1',1)//返回值为NULL
+	  SELECT NULLIF('a',2)//返回值a
+	  
 	 ```
       * 字符串函数
         * 下面的函数都是系统内置的可以直接调用
@@ -245,7 +249,9 @@
 	        * TRIM(str);//去除字符串首尾的所有空格
 	        * UUID();//生成具有唯一值的字符串， UUID很好用的一点是这样设计出来的id永远不会是重复的
 	        * LAST_INSERT_ID();//返回最后插入的id值【在使用MySQL时，若表中含自增字段（auto_increment类型），则向表中insert一条记录后，可以调用last_insert_id()来获得最近insert的那行记录的自增字段值】
-	     
+	          ```
+			   select LAST_INSERT_ID(); #显示最后一次的id，前提是使用了AUTO_INCREMENT值
+			  ```
       * 时间函数
          * CURDATE()或者CURRENT_DATE() //返回当前的日期
          * CURTIME()或者CURRENT_TIME() //返回当前的时间
@@ -258,6 +264,8 @@
          * DATE_FORMAT(date,format)//用于以不同的格式显示日期/时间数据。
            ```
             DATE_FORMAT(NOW(),'%d %b %y')
+			
+			select DATE_FORMAT(NOW(),'%d %b %y');# 21 Feb 20
            ```
          * NOW() //返回当前的日期和时间
          format 规定日期/时间的输出格式。
@@ -273,7 +281,7 @@
              END
             # 返回值确定性DETERMINSTIC，优化用，如果输入值跟上次一样，就不再计算，直接返回上次结果。
             # 必须至少一个return语句
-            # 声明的地方时returns！
+            # 声明的地方是returns！
             ```
             ```
              CREATE FUNCTION func_sum(num1 INT,num2 INT)
@@ -322,6 +330,8 @@
        ```
       * old和new的使用
         * 即操作前状态，和操作后状态
+		* old表示插入之前的值，new表示新插入的值；
+		* old用在删除和修改，new用在添加和修改
            ```
              # 定义一个触发器tri_student_check_sex ,用于检测向student表插入数据性别列（sex）和年龄列（age）的有效性 （只包含 男 女, 触发器用于插入之前，默认为男，年龄0-100 有效，默认为0）
                 CREATE TRIGGER tri_student_check_sex BEFORE INSERT ON student FOR EACH ROW
@@ -354,6 +364,7 @@
       1. 创建
          ```
           DECLARE 处理动作 HANDLER FOR 异常状态,[异常状态,...] 执行语句
+		  # 说明：
           # 处理动作:[CONTINUE(继续执行),EXIT(跳出BEGIN END 语句块)]
           # 异常状态:[mysql_erroe_code|NOT FOUND|SQLWARNING|SQLEXCEPTION]
          ```
@@ -376,7 +387,7 @@
   * 概念
      * 游标(cursor) 是一个存储在MYSQL服务器上的数据库查询，它不是一条SELECT语句，而是被该语句检索出来的**结果集**。
      * 游标实际上是一种能从包括多条数据记录的结果集中每次提取一条记录的机制，所以效率不高，速度慢。
-     * 游标主要用于交互式应用。
+     * 游标的一个常见用途就是保存查询结果，以便以后使用。游标的结果集是有Select语句产生，如果处理过程需要重复使用一个记录集，那么创建一次游标而重复使用若干次，比重复查询数据库要快的多。
      * **注意：MYSQL游标只能用于存储过程(和函数)**
   * 语法
     1. 定义
@@ -400,7 +411,7 @@
        ```
        * 在结束使用游标时，必须关闭游标。
        ```
-        # 将读者表根据性别，分离到两张两张表中
+        # 将读者表根据性别，分离到两张两张表中，使用游标的好处是，不用反复去查询数据
 
          CREATE PROCEDURE pro_divideGender
          BEGIN
@@ -581,6 +592,7 @@
 	      ```
 	       mysql -u root -p # 进入数据库
 	       mysql> create database guest_test # 创建数据库表
+		   mysql> use guest_test 
 	       mysql> source d:/guest.sql
 	      ```
 	    * 注意：①导入的时候要跟上路径②注意斜杠的方向
@@ -623,8 +635,11 @@
        ```
          SHOW PROFILES; //查看所有权限
        ```
-
-
+  * 查看所有用户
+       ```
+	    SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
+	   ```
+    
 
 
 

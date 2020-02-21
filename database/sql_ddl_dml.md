@@ -10,7 +10,11 @@
     ```
      SHOW DATABASES;
     ```
-
+* 查看当前使用的数据库
+    ```
+	 SELECT DATABASE();
+	```
+	
 * 删除数据库
     ```
      DROP DATABASE 数据库名;
@@ -143,7 +147,7 @@
           id INT PRIMARY KEY,
           ...
         -- 由系统默认指定主键名
-        -- 如果要查看主键名 SHOW CREATE TABLE 表名
+        -- 如果要查看主键名 “SHOW CREATE TABLE 表名”也可以使用“DESC 表名”
         )
        ```
     * 2.用constraint声明主键
