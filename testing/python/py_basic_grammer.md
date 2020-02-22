@@ -6,7 +6,7 @@
     例如：接收int类型的值
      X = int(input("请输入一个数字"))
     ```
-	*input 里面的内容为提示信息
+	* input 里面的内容为提示信息
 * 输出print()
     ```
      print()
@@ -25,13 +25,48 @@
     >>> import keyword
     >>> keyword.kwlist
    ```
+   ```
+    ['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 
+    'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 
+    'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
+     'not', 'or', 'pass', 'print', 'raise', 'return', 'try',
+      'while', 'with', 'yield']
+   ```
 * 目前一共33个关键字，除 True、False 和 None 外，其他关键字均为小写形式
-  1. **False** 布尔类型的值，表示假，与 True 相反
-  2. **None** None 比较特殊，表示什么也没有，它有自己的数据类型: NoneType
+  1. **False** 布尔类型的值，表示假，与 True 相反type(False)为bool
+  2. **None** None 比较特殊，表示什么也没有，它有自己的数据类型type(None)为 NoneType
   3. **True** 布尔类型的值，表示真，与 False 相反
   4. **and** 用于表达式运算，逻辑与操作
-  5. **as** 用于类型转换
+  5. **as** 用于类对象替换
+     ```
+       1、导入对象的时候，起到别称的作用，比如现在用Remote代替的就是WebDriver 
+
+       from .webdriver import WebDriver as Remote
+ 
+
+       2、可以与with组合起来，即经典的with as 用法，with后面紧跟着的对象，会调用它的__enter__方法，返回的对象会赋值给temp
+
+        with object as temp：
+ 
+        pass
+      3、与except组合起来，看下面，捕获到Exception对象会赋值给e
+
+        try:
+         pass
+        except Exception as e:
+         pass
+
+     ```
   6. **assert** 断言，用于判断变量或者条件表达式的值是否为真
+       * 它用于对一个 bool 表达式进行断言，如果该 bool 表达式为 True，该程序可以继续向下执行；否则程序会引发 AssertionError 错误。 
+         ```
+           assert x>=0,'x is less than 0' #当为false时候抛出异常，显示后面的内容
+          
+           等同于：
+           if x<0:
+             raise Exception,'x is less than 0' 
+             
+         ```
   7. **break** 中断循环语句的执行
   8. **class** 用于定义类
   9. **continue** 跳出本次循环，继续执行下一次循环
@@ -75,6 +110,8 @@
 * 变量快速赋值
   ```
    a,b,c=1,2,3
+   d,e=(1,2)
+   f,g=[3,4]
   ```
 * 进行值互换(这是python才有的)
   ```
@@ -130,12 +167,18 @@
     ```
      x="this is a %(obj)s"% {"obj":"pen"}
      print(x) # this is a pen
+	 # 注意要把(key)值放在%和s中间
     ```
 
 ### 格式化format
+  * Python2.6 开始，新增了一种格式化字符串的函数 str.format()，它增强了字符串格式化的功能。相对于老版的%格式方法，它有很多优点。
+    1. 在%方法中%s只能替代字符串类型，而在format中不需要理会数据类型
+    2. 单个参数可以多次输出，参数顺序可以不相同
+    3. 填充方式十分灵活，对齐方式十分强大
+    4. 官方推荐用的方式，%方式将会在后面的版本被淘汰
   ```
     a = "i am {},age {}".format("seven",18,"alex")
-    print(a) # i am seven,age alex
+    print(a) # i am seven,age 18
     b = "i am {},age {}, {}".format(*["seven", 18 ,"alex"])
     print(b) # i am seven,age 18, alex
     c = "i am {0}, age {1}, really {0}".format("seven", 18)
@@ -156,7 +199,7 @@
     print(j) # i am seven, age 18
     k = "i am {name:s}, age {age:d}".format(**{"name":"seven","age":18})
     print(k) # i am seven, age 18
-    m = "numbers:{0:b},{0:o},{0:d},{0:x},{0:%}".format(15) # 显示百分比（默认显示小数点后6位）
+    m = "numbers:{0:b},{0:o},{0:d},{0:x},{0:%}".format(15) # 2进制、8进制、10进制、16进制、显示百分比（默认显示小数点后6位）
     print(m) # numbers:1111,17,15,f,1500.000000%
     tpl = "numbers: {num:b},{num:o},{num:d},{num:x},{num:X}, {num:%}".format(num=15)
     print(tpl) # numbers: 1111,17,15,f,F, 1500.000000%

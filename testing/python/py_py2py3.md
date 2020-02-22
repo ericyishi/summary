@@ -74,6 +74,13 @@
 4. 默认编码
   * python2默认编码是ASCII
   * python3，字符串的编码变成了unicode,文件默认编码变成了utf-8
-   
+
+5. input
+ * Python2.x 和 Python3.x 中 raw_input( ) 和 input( ) 区别
+   1. 在 Python2.x 中 raw_input( ) 和 input( )，两个函数都存在，其中区别为:
+	  * raw_input( ) 将所有输入作为字符串看待，返回字符串类型。
+	  * input( ) 只能接收"数字"的输入，在对待纯数字输入时具有自己的特性，它返回所输入的数字的类型（ int, float ）。
+   2. 在 Python3.x 中 raw_input( ) 和 input( ) 进行了整合，去除了 raw_input( )，仅保留了 input( ) 函数，其接收任意任性输入，将所有输入默认为字符串处理，并返回字符串类型。  
+ 
  ### 更多
   * https://www.cnblogs.com/kendrick/p/7478304.html
