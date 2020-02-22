@@ -34,8 +34,13 @@
              这是函数的注释
             """
     if __name__=="__main__":
-        print(test.__doc__)
-        print(test().func1.__doc__)
+        print(test.__doc__)#注意类型这里不用加上()
+        print(test().func1.__doc__)#注意方法这里都是不加上()
+    ```
+    ```
+       这是类的注释
+    
+         这是函数的注释
     ```
 
 ### 缩进
@@ -45,12 +50,54 @@
 
 ### python下查看命令
 1. help()帮助文档，写的比较详细
+  * help()函数帮助我们了解模块、类型、对象、方法、属性的详细信息
 ```
  import math
  help(math)
 ```
+```
+ NAME
+    math
+
+FILE
+    (built-in)
+
+DESCRIPTION
+    This module is always available.  It provides access to the
+    mathematical functions defined by the C standard.
+
+FUNCTIONS
+    acos(...)
+        acos(x)
+
+        Return the arc cosine (measured in radians) of x.
+
+    acosh(...)
+        acosh(x)
+
+        Return the inverse hyperbolic cosine of x.
+
+    asin(...)
+        asin(x)
+
+        Return the arc sine (measured in radians) of x.
+
+    asinh(...)
+-- More  --
+
+``` 
 2. dir() 概要文档，列出有的方法
+   * dir()用来查询一个**类或者对象**所有属性和方法
 ```
  import math
  dir(math)
+```
+```
+  ['__doc__', '__name__', '__package__', 'acos', 'acosh', 
+  'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 
+  'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1',
+   'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 
+   'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 
+   'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 
+   'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 ```

@@ -35,7 +35,12 @@
 	* 本地的txt文件
       ```
 	   pip install -r requirement.txt
-      ```	  
+      ```
+      * requirement.txt文件里面记录了当前程序运行所需要的所有安装包和其版本号，作用是方便程序在其他机器上重新构建项目安装所有依赖
+      * requirement.txt文件生成
+        ```
+         pip freeze > requirement.txt
+        ```	  
 ### pip常用命令
 1. 查看已经安装的包
    ```
