@@ -6,12 +6,55 @@
   * 有的地方，也把它称作数组
 * Tuple【元组】（）
 * Sets【集合】{}
-* Dictionary【字典】键值对
+* Dictionary【字典】键值对{key1 : value1, key2 : value2 }
 ```
  * Python中的变量是没有类型的，我们可以把它看做一个(*void)类型的指针
  * 变量是可以指向任何对象的，而对象才是有类型的。
  * 而且Python中的对象有不可变【指内存地址】对象（number，string，tuple）和可变
 对象之分（list,sets,dict）。
+```
+* 下面的例子就能看到可变对象与不可变对象在内存地址指向的不同了
+```
+a=20
+b=20
+In [69]: id(a)
+Out[69]: 49637120L
+
+In [70]: id(b)
+Out[70]: 49637120L
+
+In [71]: c=20
+
+In [72]: id(c)
+Out[72]: 49637120L
+
+In [73]: c=21
+
+In [74]: id(c)
+Out[74]: 49637096L
+
+In [76]: c=20
+
+In [77]: id(c)
+Out[77]: 49637120L
+
+In [78]: d=[1]
+
+In [79]: e=[1]
+
+In [80]: id(d)
+Out[80]: 80565768L
+
+In [81]: id(e)
+Out[81]: 80558088L
+
+In [82]: d.append(2)
+
+In [83]: d
+Out[83]: [1, 2]
+
+In [84]: id(d)
+Out[84]: 80565768L
 ```
 
 ### 查看数据类型有的方法
@@ -47,12 +90,6 @@
        str2="man"
        print(str1+str2)  # heyman
       ```
-      * 使用逗号“,”,两个字符串之间有空格
-        ```
-         str1="hey"
-         str2="man"
-         print(str1+str2)  # hey man
-        ```
       * 同种类型之间的连接，都可以使用加号
 
 3. 字符串函数
@@ -72,7 +109,7 @@
     ```
      * 也可以统计指定字符串长度的统计
 	   ```
-	     sub -- 搜索的子字符串
+	    sub -- 搜索的子字符串
 		start -- 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。
 		end -- 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置
 	   ```
@@ -87,7 +124,7 @@
      print(str.split("l"))  # ['he', '', 'o wor', 'd'] ，以l来分隔字符串
     ```
   * "分隔符".join(list|str|dict|tuple|sets) 可以将其他数据类型的数据，按指定分隔，转化为字符串
-    * 里面的元素要全部都是字符串才能够使用，如果有数值型是会报错的
+    * 里面的元素要全部都是**字符串**才能够使用，如果有数值型是会报错的
     * 字典元素拼接的只是键
     ```
      t1 = ("a", "b", "c", "d", "e")
@@ -146,54 +183,54 @@
      str.endswith("world") # True
     ```
   * startswith() 与上面类似，但是判断开头
-  * isalNum() 方法检测字符串是否由字母和数字组成
+  * isalnum() 方法检测字符串是否仅由字母或数字组成，且不含有空格，则返回True
     ```
      str = "hello world"
      str2 = "hello"
      str3 = "12345"
 	 str4 = "123abc"
-     print(str.isalnum())  # false,有空格也会返回false
-     print(str2.isalnum())  # true
-     print(str3.isalnum())  # true
-	 print(str4.isalnum())  # true
+     print(str.isalnum())  # False,含空格也会返回False
+     print(str2.isalnum())  # True
+     print(str3.isalnum())  # True
+	 print(str4.isalnum())  # True
     ```
-  * isalpha() 判断字符串中所有值都为者字母且不含有空格，则返回true
+  * isalpha() 判断字符串中所有值都为者字母且不含有空格，则返回True
     ```
      str = "hello world"
      str2 = "hello"
      str3 = "12345"
-     print(str.isalpha())  # false,有空格也会返回false
-     print(str2.isalpha())  # true
-     print(str3.isalpha())  # false
+     print(str.isalpha())  # False,有空格也会返回False
+     print(str2.isalpha())  # True
+     print(str3.isalpha())  # False
     ```
-  * isdigit() 判断字符串中所有值都为者数字且不含有空格，则返回true
+  * isdigit() 判断字符串中所有值都为者数字且不含有空格，则返回True
     ```
      str = "321 123"
      str2 = "hello"
      str3 = "12345"
-     print(str.isdigit())  # false,有空格也会返回false
-     print(str2.isdigit())  # false
-     print(str3.isdigit())  # true
+     print(str.isdigit())  # False,有空格也会返回False
+     print(str2.isdigit())  # False
+     print(str3.isdigit())  # True
     ```
-  * islower() 判断是否不含大写字母，可以含空格，返回true
+  * islower() 判断是否不含大写字母，可以含空格，返回True
     ```
      str6 = "aa12c"
      str7 = "aa aa"
      str8 = "aA"
-     print(str6.islower()) # true
-     print(str7.islower()) # true
-     print(str8.islower()) # false
+     print(str6.islower()) # True
+     print(str7.islower()) # True
+     print(str8.islower()) # False
     ```
-  * isupper() 判断是否都为大写字母，可以有空格，返回true
+  * isupper() 判断是否都为大写字母，可以有空格，返回True
     ```
      str6 = "aa12c"
      str7 = "aa aa"
      str8 = "aA"
      str9 = "AB C"
-     print(str6.isupper()) # false
-     print(str7.isupper()) # false
-     print(str8.isupper()) # false
-     print(str9.isupper()) # true
+     print(str6.isupper()) # False
+     print(str7.isupper()) # False
+     print(str8.isupper()) # False
+     print(str9.isupper()) # True
     ```
   * upper() 所有字母都变成大写
     ```
@@ -205,23 +242,30 @@
      str8 = "aA"
      print(str8.lower()) #aa
     ```
-  * isspace() 检测字符串是否只由空白字符组成，是返回true
+  * isspace() 检测字符串是否只由空白字符组成，是返回True
     ```
      str9 = "hello world"
      str10 = "     "
      str11 = ""
-     print(str9.isspace())  # false
-     print(str10.isspace())  # true
-     print(str11.isspace())  # false
+     print(str9.isspace())  # False
+     print(str10.isspace())  # True
+     print(str11.isspace())  # False
     ```
-  * istitle() 检查字符串中的单词的首字母是否都是大写开头，是返回true
+  * istitle() 检查字符串中的单词的首字母是否都是大写开头，是返回True
     ```
      str12 = "Hello World"
      str13 = "Hello world"
-     print(str12.istitle())  # true
-     print(str13.istitle())  # false
+     print(str12.istitle())  # True
+     print(str13.istitle())  # False
     ```
   * strip() 用于移除字符串头尾指定的字符（默认为空格）
+    ```
+     str = "00000003210Runoob01230000000"; 
+     print str.strip( '0' );  # 去除首尾字符 0
+     str2 = "   Runoob      ";   # 去除首尾空格
+     print str2.strip();
+
+    ```
 
 ### 列表【List】
 1. 定义
@@ -236,6 +280,7 @@
 2. 列表的操作
    1. 修改值
       ```
+       l-t1[1] = [1, "hah", "ac", 65]
        l-t1[1]="jerry"
        print(l_t1) # [1, "jerry", "ac", 65 ]
       ```
@@ -279,7 +324,7 @@
 			  print(l_t2) # ["123","haha", "ac", 3]
 			 ``` 
 	   3. extend(seq) 扩展。向一个列表中添加另一个列表
-			* 是把元素里面的值一个个放入
+			* 是把元素里面的值一个个放入【如果都是字符串实际与+号连接效果相同，只是+号只能连接相同运算符】
 			* **注意**当添加内容是一个字符串的时候，会拆分成单个元素添加进去，这就是与append区别
 			  ```
 				l_t2 = ["123", "ac", 3]
@@ -291,7 +336,7 @@
 				——————————————
 				l_t2 = ["123", "ac", 3]
 				l_t3 = ["new", "hey", "on"]
-				l_t2.extend(l_t3)
+				l_t2.append(l_t3)#将l_t3整体放入
 				print(l_t2) # ['123', 'ac', 3, ['new', 'hey', 'on']]
 			  ```
 	2. 删
@@ -421,16 +466,31 @@
 	      * copy()
 		    1. 情况1
 				```
-				 a = [1,2,3,4,5]
-				 b = a.copy()
-				 a[3]='hey'
-				 print(a) # [1,2,3,'hey',5]
-				 print(b) # [1,2,3,4,5]
+				 >>> b = a.copy()
+                 >>> a = [1,2,3,4,5]
+                 >>> b = a.copy()
+                 >>> id(a)
+                 14201760
+                 >>> id(b)
+                 14945656
+                 >>> id(a[3])
+                 1583167792
+                 >>> id(b[3])
+                 1583167792
+                 >>> a[3]='hey'
+                 >>> a
+                 [1, 2, 3, 'hey', 5]
+                 >>> b
+                 [1, 2, 3, 4, 5]
+                 >>> id(a[3])
+                 14950432
 				```
-			2. 情况2:有个子列表，修改会对两个同时修改，因为是copy的是内存地址
+			2. 情况2:有个子列表，修改会对两个同时修改，因为是copy的是其所指向值的内存地址
 			   ```
 			     a = [1,2,3,[41,42],5]
-				 b = a.copy()
+                 b = a.copy()
+                 id(a[3]) #14945456
+                 id(b[3]) #14945456
 				 a[3][0]='hel'
 				 print(a) # [1,2,3,['hel',42],5]
 				 print(b) # [1,2,3,['hel',42],5]
@@ -466,7 +526,9 @@
     tup_a = (1, "1sd", "hello")
 	可以一次对多个变量赋值【列表也可以这样赋值】
 	a,b=c=(1,2)
-	#a=1 b=2 c=(1,2)
+	#c=(1,2)
+	#a,b=(1,2)
+	#a=1 b=2 
    ```
    * 单个元素的元组要在后面加上逗号，例如（1,）
      ```
@@ -525,10 +587,11 @@
 ### 集合
 1. 定义
    * 使用 {}，以,分隔
-   * 无序的，不重复的元素集，所以没有下标，也不能进行切片
+   * **无序的，不重复的元素集**
+   * 所以**没有下标**，也**不能切片**
      ```
-      lis={"zhang","wang","lee","zhang"}
-      print(lis)//{'zhang', 'wang', 'lee'}自动去重复
+      s={"zhang","wang","lee","zhang"}
+      print(s)//{'zhang', 'wang', 'lee'}自动去重复
      ```
    * 支持交、并、差集、对称差集等集合运算
    * 因为无序，每次打印输出的结果的位置也是变化的
@@ -586,8 +649,7 @@
 ### 字典
 1. 定义
    * 使用 {键1:值1,键2:值2}
-   * 通过键来存取元素的，不是索引
-   * 根据键获取来获取值
+   * 根据键获取来获取值，不是索引
      ```
       dic_a = {"d1": "haha", "d2": "hehe"}
       print(dic_a["d1"]) # haha
@@ -639,7 +701,7 @@
             print("key is %r",k)
             print("value is %r",v)
      ```
-   * copy() 深度拷贝
+   * copy() 拷贝
      ```
       dic_a = {"d1": "haha", "d2": "hehe"}
       dic_c = dic_a.copy()
@@ -659,8 +721,18 @@
 
 ### 切片
 
- * 取值范围是**[a,b)**
- * 适用类型：只要有索引的，都可以应用
+ * 显示写出开始下标和结束下标,取值范围是**\[a,b\)**
+   ```
+    str = "hello world";
+    str[0:3]   # 取值是hel
+   ```
+ * 如果如果开始和结尾下标的值不写，那么会变成闭区间，全部取完
+   ```
+    str = "hello world";
+    str[0::1]#hello world
+    str[::1]#hello world
+   ```
+ * 适用类型：只要有索引的，都可以应用【字典、集合没有索引】
    ```
     str = "hello world";
     str[0:3]   # 取值是hel
@@ -675,18 +747,36 @@
    * 步长为负，是倒序输出。
    ```
     str[::-1]  # dlrow olleh
-    str[3::-1] # lleh,倒序将下标0至3的值输出
+    str[3::-1] # lleh,中间结尾没有写，倒序会将下标0至3的值输出
+    str[3:0:-1] # lle
    ```
  * 反向截取，从-1开始表示最后一个
    * 注意切片是从左开始数，所以注意顺序
    ```
-    str[-1] # 输出最后一位d
-	str[-3] # 输出导出第3位r
-    str[-1:] # 输出最后一位d  [-1,0)取值
-    str[:-1] # 输出：hello worl [0,-1)取值
-    str[-3:-1] # 输出：rl，从倒数第三位到倒数第二位（最后一位取不到）[-3,-1)取值
-    str[-3:] # 输出：rld，从倒数第三位到最后 [-3,0)取值
+    str[-1] # 索引正常取值，输出最后一位d
+	str[-3] # 索引正常取值，输出导数第3位r
+    str[-1:] # 输出最后一位d  [最后一位,最后一位)取值
+    str[:-1] # 输出：hello worl [0,最后一位)取值
+    str[-3:-1] # 输出：rl，从[倒数第三位到最后一位)取值
+    str[-3:] # 输出：rld，从[倒数第三位到最后一位]取值
 
    ```
 
 ### 不同类型之间的转换
+   ```
+    int(x [,base ])         将x转换为一个整数  
+    long(x [,base ])        将x转换为一个长整数  
+    float(x )               将x转换到一个浮点数  
+    complex(real [,imag ])  创建一个复数  
+    str(x )                 将对象 x 转换为字符串  
+    repr(x )                将对象 x 转换为表达式字符串  
+    eval(str )              用来计算在字符串中的有效Python表达式,并返回一个对象  
+    tuple(s )               将序列 s 转换为一个元组  
+    list(s )                将序列 s 转换为一个列表  
+    chr(x )                 将一个整数转换为一个字符  
+    unichr(x )              将一个整数转换为Unicode字符  
+    ord(x )                 将一个字符转换为它的整数值  
+    hex(x )                 将一个整数转换为一个十六进制字符串  
+    oct(x )                 将一个整数转换为一个八进制字符串
+
+   ``` 
