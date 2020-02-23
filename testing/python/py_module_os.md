@@ -9,7 +9,7 @@ import os
 #### 系统相关命令
 1. os.name 获取系统类型
    * windows系统为：nt
-   * windows系统为：posix
+   * Linux系统为：posix
 2. os.system("command")会执行括号中的命令
    * 如果命令成功执行，这条语句返回0【注意：0代表成功】，否则返回1
    * 参数-f是强制，-im是进程名

@@ -13,6 +13,7 @@
   * [控制结构](py_controlStructure.md)
   * [函数使用](py_function.md)
      * [内置函数](py_function_builtIn.md)
+  * [类和对象](py_classAndObject.md)   
   * [模块与包](py_module.md)
      * [time模块](py_module_time.md)
      * [logging模块](py_module_logging.md)
