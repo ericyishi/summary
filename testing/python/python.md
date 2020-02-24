@@ -17,6 +17,7 @@
   * [类和对象](py_classAndObject.md) 
      * [面向对象三大特性](py_oo.md) 
      * [装饰器与闭包](py_decoratorClosure.md) 
+  * [迭代器和生成器](py_iteratorGenerator.md)   
   * [模块与包](py_module.md)
      * [time模块](py_module_time.md)
      * [logging模块](py_module_logging.md)
