@@ -29,10 +29,11 @@
   * [异常处理](py_exception.md)
   * [多线程](py_thread.md)
 * 通信
-  * HTTP
+  * [HTTP协议](communication/py_http.md)
     * [使用http.client包](communication/py_http_client.md)
     * [使用requests包](communication/py_requests.md)
-  * [socket通信](py_socket.md)
+  * [socket通信层](communication/py_socket.md)
+  * [websocket协议](communication/py_websocket.md)
 * 虚拟环境
   * [virtualenv与virtualenvwrapper](./tools/py_virtualenv.md)
 * 常用操作
