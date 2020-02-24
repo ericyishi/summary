@@ -17,6 +17,7 @@
    * 协议名以ws开头  
  
 ### 测试代码
+1. 客服端
 ```html
     #-*- coding: utf-8 -*-
     import websocket,time,threading
@@ -52,3 +53,39 @@
     # 保持持久连接
     ws.run_forever()
 ``` 
+2. 服务器端
+```html
+    #-*- coding: utf-8 -*-
+    import websocket,time,threading
+    import sys
+    
+    def when_message(ws,message):
+        print("接收到的消息:"+message)
+    
+    def when_open(ws):
+        print("建立连接...")
+        def run():
+            while True:
+    
+                if sys.version > '3':
+                    msg=input("请输入内容")
+                else:
+                    msg=raw_input("请输入内容:")
+                ws.send(msg)
+                time.sleep(1)
+                # 如果用户输入close消息，则直接关闭本次连接
+                if msg=='close':
+                    ws.close()
+                    break
+        threading.Thread(target=run).start()
+    
+    def when_close(ws):
+        print("关闭连接...")
+    
+    ws=websocket.WebSocketApp("ws://localhost:8888",
+                           on_message=when_message,
+                           on_open=when_open,
+                           on_close=when_close)
+    # 保持持久连接
+    ws.run_forever()
+```
