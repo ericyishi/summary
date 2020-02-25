@@ -20,5 +20,18 @@
   * dismiss() 点击取消按钮，对上面confirm、prompt类型有效
   * send_keys("内容") 发送内容，针对prompt类型有效
 
-
-  
+### 其他类型
+* 除了上面alert弹框外，还有别的类型
+* 有的弹出框是div层，这种跟平常定位方法一样
+* 有的弹出框是嵌套的iframe层，这种切换iframe就可以了
+* 有的是嵌入的一个窗口
+  * 1.通过打印获取全部的窗口，发现居然打印的是两个handle,也就是说，这个表面上看起来是一个窗口，实际上内嵌了另外一个窗口了。 
+        ```   
+          # 打印所有的handle
+          all_handles = driver.window_handles
+          print(all_handles)
+           
+          # 切换到新的handle上
+          driver.switch_to.window(all_handles[1])
+          # 后面就直接定位
+        ``` 

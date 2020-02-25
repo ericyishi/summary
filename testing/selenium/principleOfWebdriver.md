@@ -15,7 +15,7 @@
     ```
      import logging
      logging.basicConfig(level=logging.DEBUG)
-     driver=webdriver.Chrome()
+     driver=webdriver.Chrome() #这里调用的chrome浏览器，相关驱动放在了python安装目录下即可C:\Python27
      driver.get("http://www.baidu.com")
      driver.find_element_by_id("kw").send_keys("hello")
      driver.find_element_by_id("su").click()

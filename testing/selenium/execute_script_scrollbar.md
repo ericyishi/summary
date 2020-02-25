@@ -14,7 +14,7 @@
   # 将垂直滚动条调到100px的位置
   driver.execute_script(js)
  ```
-  * 滑动到底:js="window.scrollTo(0,document.body.scrollHeight)"
+  * **滑动到底:js="window.scrollTo(0,document.body.scrollHeight)"**
     
 
 2. 操作滚动条到指定的元素的高度
@@ -28,6 +28,13 @@
   ```
    js="document.getElementById('choice').scrollIntoView(true)"
    driver.execute_script(js)
+  ```
+  ```html
+    #通过CSS定位到第10条搜索结果
+    target = driver.find_element_by_css_selector("div[id=‘10‘] h3 a")
+    
+    #利用js将定位到的元素拖动到可见区域
+    driver.execute_script("arguments[0].scrollIntoView();", target)
   ```  
 3. 移动指定的位移量
   ```

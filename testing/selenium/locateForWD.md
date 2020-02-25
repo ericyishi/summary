@@ -4,6 +4,9 @@
 * 高版本中官方文档建议使用find_element_by_*和find_elements_by_*
 * 对于同时定位多个页面的元素【需要使用find_elements_by_*】，以列表形式返回所有定位到的元素页面
 * 对于find_element_by_*方式若匹配到多个元素，实际只返回第一个页面元素对象
+### 使用优先级推荐
+* ID > name > CSS selector > Xpath
+
 ### 使用独立方法的方式【推荐】
 1. id
 * id元素的获取
@@ -22,37 +25,45 @@
   * driver.find_element_by_tag_name()
   * driver.find_elements_by_tag_name()
 5. link
-* 定位超文本链接
+* 定位超文本链接【需要完整写出a标签的内容】
   * driver.find_element_by_link_text()
   * driver.find_elements_by_link_text()
 
 6. partial_link
 * partial_link_text是对上面link的一个补充，部分文字的提取
-  * driver.find_element_by_partial_link_text()
+* 有些文本连接会比较长，这个时候我们可以取文本连接的一部分定位，只要这一部分信息可以唯一地标识这个连接。
+  ```html
+   <a class=’mnav’ name=’ti_lang’ href=’#’>一个很长的文本连接</a>
+  ```
+  * driver.find_element_by_partial_link_text('一个很长的')
   * driver.find_elements_by_partial_link_text()
 7. xpath
 * xml path的缩写
 * 性能不算好，尽量少用
 * 优势在于更加灵活，就算页面没有id、name等标签属性也能够定位
+* 可以使用xPath Helper插件，一款chrome的插件
+  * 打开/关闭xpath helper：ctrl+shift+x
+  * 如果我们要查找某一个、或者某一块元素的xpath路径，可以按住shift，并移动到这一块中，上面的框就会显示这个元素的xpath路径，右边则会显示解析出的文本内容
+  * 并且我们可以自己改动xpath路径，程序也会自动的显示对应的位置，可以很方便的帮助我们判断我们的xpath语句是否书写正确
 * **xpath中没有第0元素这样的表示方法，都是从1开始**
 * driver.find_element_by_xpath()或driver.find_elements_by_xpath()
 	1. 绝对路径定位
-	  * 从根路径开始寻找
-	  * 元素的xpath绝对路径可通过浏览器工具直接查询复制，一般不需要你手工去写
-	  * 一般不推荐使用绝对路径的写法，因为一旦页面结构发生变化，该路径也随之失效，必须重新写。
-	  * 绝对路径以单/号开头表示
-		```
-		 driver.driver.find_element_by_xpath("/html/body/div/div[1]/span")
-		 # 注意在xpath中下标是从1开始的
-		```
+	   * 从根路径开始寻找
+	   * 元素的xpath绝对路径可通过浏览器工具直接查询复制，一般不需要你手工去写
+	   * 一般不推荐使用绝对路径的写法，因为一旦页面结构发生变化，该路径也随之失效，必须重新写。
+	   * 绝对路径以单/号开头表示
+	   	```
+	   	 driver.driver.find_element_by_xpath("/html/body/div/div[1]/span")
+	   	 # 注意在xpath中下标是从1开始的
+	   	```
 	2. 相对路径定位【推荐】
-	  * 相对路径则以//表示
-	  * 当xpath路径以//开头时，则表示让xpath引擎从文档的任意符合的元素节点开始进行解析。
-	  ```
-	   查找页面上所有的input元素：//input
-	   查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
-	   查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，**不管还嵌套了多少个其他标签，使用相对路径表示，双//号**)：//form[1]//input
-	  ```
+	   * 相对路径则以//表示
+	   * 当xpath路径以//开头时，则表示让xpath引擎从文档的任意符合的元素节点开始进行解析。
+	   ```
+	    查找页面上所有的input元素：//input
+	    查找页面上第一个form元素内的直接子input元素(即只包括form元素的下一级input元素，使用绝对路径表示，单/号)：//form[1]/input
+	    查找页面上第一个form元素内的所有子input元素(只要在form元素内的input都算，**不管还嵌套了多少个其他标签，使用相对路径表示，双//号**)：//form[1]//input
+	   ```
 	3. xpath的函数
 	   1. starts-with(str1,str2)
 		  ```

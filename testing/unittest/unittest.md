@@ -236,4 +236,22 @@ def key(fn):
 2. 想运行某个测试用例，鼠标放到该测试用例区域右键，就会显示：Run 'Unittest xxx'
 
 
-
+### parameterized参数化
+* 因为unittest没有数据驱动，所以这个也得单独安装parameterized
+```html
+     @parameterized.expand([
+        ("user_null", '', "123", "请输入帐号"),
+        ("pawd_null", "user", '', "请输入密码"),
+        ("login_error", "error", "error", "帐号或密码错误"),
+        ("login_success", "admin", "admin123456", "admin你好"),
+    ])
+    def test_login(self, name, username, password, assert_text):
+        self.user_login(username, password)
+        if name == "login_success":
+            sleep(2)
+            tips = self.driver.find_element_by_id("user").text
+            self.assertEqual(tips, assert_text)
+        else:
+            tips = self.driver.find_element_by_id("tips").text
+            self.assertEqual(tips, assert_text)
+```

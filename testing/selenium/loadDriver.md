@@ -9,7 +9,7 @@
  driver=webdriver.Firefox(executable_path='c:\\geckodriver')
 ```
 * 需要下载，指定驱动路径即可
-2.添加环境变量
+2. 添加环境变量
 * 除了上面显示通过executable_path指明方式以外，还可以新建一个放驱动文件的文件夹(D:\\project\\driver),将不同的驱动添加至环境变量中去，会自动到环境变量中设定的路径中寻找驱动。
 
 ### 常见问题
@@ -37,7 +37,10 @@
    1. 首先找到插件的路径
       1. 打开命令行 Windows+R
 	  2. 输入 %APPDATA%\Mozilla\Firefox\Profiles\
-	  3. 进入.default文件夹，拷贝路径
+	  3. 拷贝路径xxx.default文件夹路径
+	     ```html
+          C:\Users\Administrator\AppData\Roaming\Mozilla\Firefox\Profiles\qrlgt4z4.default
+         ```
 	  4. 按下面代码方式添加，即可打开带插件的浏览器
 ```
 from selenium import webdriver
