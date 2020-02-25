@@ -1,9 +1,11 @@
 # Robot Framework
 ### 概念
-* 是一个基于Python可扩展地关键字驱动的测试自动化框架
-* 易于使用，采用表格式语法，统一测试用例格式；
-* 扩展性很强。
-
+* 是一个基于Python可扩展地关键字驱动的测试自动化框架，也支持Java
+* 易于使用，采用表格式语法，统一测试用例格式
+* 提供标签以分类选择被执行的测试用例
+* 扩展性很强
+* 类似的一款Java语言的cucumber自动化测试框架
+###
 ### 支持的 Library
 * 官网查看支持的库： http://robotframework.org/#libraries
 * 内置库：
@@ -29,7 +31,7 @@
   1. 语法：RF自建语法，unittest使用Python 语法
   2. 支持库：RF支持特定库，unittest支持python任意库  
 ### 安装
-* 因为我们希望使用RIDE(robot IDE，编写 Robot Framework 的标准编辑器)，只支持python2的环境。
+* 因为我们希望使用RIDE(robot IDE，编写 Robot Framework 的标准编辑器)，只支持python2的环境。【2018年12月Ride1.7.3版本已经支持python3.6】
 * 需要安装的文件：
   1. robot framework本身
      ```
@@ -52,7 +54,7 @@
       pip install selenium=2.53.6
      ```
 ### 运行RIDE
-* 需切换至python2环境下才能正常启动，双击或者使用python ride.py
+* 需切换至python2环境下才能正常启动，双击或者使用python ride.py【C:\Python27\Scripts下】
 * 也可以使用批处理文件.bat文件，来运行ride.py
   ```
    python ride.py
@@ -62,7 +64,36 @@
 * pybot是执行RF脚本的命令     
 
 ### RIDE图标创建方法
-* 在RIDE安装好之后，桌面就会生成一个RIDE图标，如果没有：
-1. 进入到python的安装目录的找到pythonw.exe文件-->右键-->发送到-->桌面快捷方式
-2. 桌面上的pythonw.exe快捷方式-->右键-->属性-->快捷方式-->更改图标-->浏览，找到python的安装目目录下\Lib\site-packages\robotide\widgets目录下robot图标，双击图标，然后再目标中添加： -c "from robotide import main; main()"，在常规中修改快捷方式名称为RIDE，点击确定就可以了
-* 以上操作本质来说就是一个快捷方式运行python ride.py的命令
+* 方法一【手动创建】：
+   * 在RIDE安装好之后，桌面就会生成一个RIDE图标，如果没有：
+   1. 进入到python的安装目录的找到pythonw.exe文件-->右键-->发送到-->桌面快捷方式
+   2. 桌面上的pythonw.exe快捷方式-->右键-->属性-->快捷方式-->更改图标-->浏览，找到python的安装目目录下\Lib\site-packages\robotide\widgets目录下robot图标，双击图标，然后再目标中添加： -c "from robotide import main; main()"，在常规中修改快捷方式名称为RIDE，点击确定就可以了
+   * 以上操作本质来说就是一个快捷方式运行python ride.py的命令
+* 方法二【工具创建】：
+   1. 使用ride自带创建快捷方式的工具
+      ```html
+       python C:\Python27\Scripts\ride_postinstall.py -install
+      ```
+### 基本架构
+* 从上到下的结构
+```html
+
+  |      用户代码
+  |      --------
+  |      RobotFramework【对应的关键字转换成下一层调用对应的库的方法】
+  |      --------
+  |      测试库
+  |      测试工具
+  |      --------
+  V      被测系统
+```
+### 其他库
+* requests接口库
+  ```html
+   pip install robotframework-requests
+  ```
+* 数据库
+  ```html
+   pip install robotframework-databaselibrary
+  ```  
+* 更多支持https://robotframework.org/#libraries  

@@ -1,5 +1,9 @@
 # robotFramework
-* [概述](rf_basic.md)
+* [概述与安装](rf_basic.md)
   * [autoItLibrary-64位的安装](rf_autoItLibrary.md)
+* [库的帮助文档](rf_library.md)
+  * 内置库BuiltIn
+    * [变量与常量](rf_param.md) 
+    * [关键字](rf_keyword.md) 
 * [RIDE的使用](rf_RIDE.md)
 * [Pycharm中使用RF](rf_pycharm.md)

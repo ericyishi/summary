@@ -1,8 +1,18 @@
 # RIDE
-* robot IDE，编写 Robot Framework 的标准编辑器)，只支持python2的环境
+* robot IDE，编写 Robot Framework 的标准编辑器)，只支持python2的环境。【2018年12月Ride1.7.3版本已经支持python3.6】
+### 步骤
+1. 创建项目
+2. 创建测试套件
+   1. 导入库
+3. 创建测试用例
+4. 保存
+5. 勾选要执行的测试用例
+6. 点击运行
+
 ### 创建测试项目
 * File--New Project
 * 测试项目Type可以目录（**建议使用Directory，否则无法新建suite**）或文件存储
+  * Directory 类似包的概念
 * 格式可以用TXT， Robot或TSV，HTML格式
   * 建议选择Robot，这样便于管理
 * setting设置项
@@ -22,7 +32,8 @@
   
 ### 引入第三方库Library
 * RIDE中经验证要在suite一层导入才有用，写在Project层是没有用的
-* 导入库名注意大小写，例如：Selnium2Library，写错了是红色的字体颜色。
+* 导包的库存放路径默认在C:\Python27\Lib\site-packages下面。
+* 导入库名都是手动添加，注意大小写，例如：Selnium2Library，写错了是红色的字体颜色。
 * Library对话框下的四个项：
   1. Name
   2. Args
@@ -42,8 +53,8 @@
 
 ### 关键字
 * 关键字支持中文
-* 正常引入关键字会显示蓝色，黑色是没有正常引入通常是因为没有导入库，或者resource
-* 关键字后面的红色代表需要输入参数
+* 正常引入关键字会显示**蓝色**，黑色是没有正常引入通常是因为没有导入库，或者resource
+* 关键字后面的红色代表需要输入必填参数，浅灰色代表可选参数，深灰色为不可写
 * 常用关键字：
   * Log 就是“print” 输出后面一个框的内容
   * 设置变量Set variable
@@ -56,145 +67,11 @@
    输出结果：hello world
   ```
 
-### 变量与常量
-#### 变量
-* 两者之间可以相互转换
-1. Scalar【单值变量】
-   * 使用$符号表示：${a}
-   * 字符串、数值等
-   * 常用方法
-      1. 变量赋值
-		  1. Set赋值
-			 
-			   |  ${val2} |Set variable|abc|
-			   |---|---|---|
-			   |  ${val3} |Set variable If |'${val2}'=='abc'| yes|no|
-			   * 如果是比较字符串也需要将变量名括号起来
-			 
-			 
-			   |  ${val2} |Set variable|123|
-			   |---|---|---|
-			   |  ${val3} |Set variable If |${val2}==123| yes|no|
-			 
-		  2. Get取值
-			 
-			   |  ${val2} |Get Length|123|
-			   |---|---|---|
-			   |  ${val3} |Get Time|
-			 		
-		  3. 命令行参数赋值
-		     * 通过Run界面上的Arguments里面加上一行
-               ```
-			    -v 变量名:变量值
-				-v val2:123
-			   ```						   
-		       * 经试验，如果变量已经赋值，通过变量的方式应该不起作用（存疑）
-	  2. 变量的使用
-         1. Run Keyword If
-		    * 如果判断条件成立，那就执行后面的语句
-			
-               |  Run Keyword If |'${val2}'=='123'|log|hello|
-			   |---|---|---|---|
-			   
-			   * 如果变量${val2}等于123的时候，那么就执行后面的log打印输出hello的语句，如果不等于则不执行后者
-         2. 字符串与变量的拼接
-             * 如果想把变量作为一个字符串的一部分，直接写就行。不用使用“+”
-			 
-               | ${val1}|Set Variable|123|
-			   |---|---|---|   
-			   |log|0${val1}456|
-		 3. 直接使用字符串下标或切片取值
-		 
-               |${val1}|Set Variable|12345|
-			   |---|---|---|
-               |log|${val1[2]}|
-               | log|${val1[0:2]}|	 
-		 4. 参加运算Evaluate
-           	* 这里指的是数值型的变量计算【可以加减乘除】
-			  * 对于字符串类型的数值，需要强制转换后才有效
-			
-               |${val1} | Set Variable |88|
-			   |---|---|---|
-               |${val2}| Evaluate|${val1}/2|
-			   | log|${val2}|
-		
-		       * 结果为44
-         	  
-2. List 【多值变量】 
-   * 使用@符号表示：@{b}
-   * 对象
-   * 常用方法
-     1. 变量赋值
-	    1. Create List【推荐】
-		2. Set Variable【不推荐，主要用于设置Scalar变量】
-		   
-		   | @{val} | Set Variable | 1 | 2 | 3| 
-		   |---|---|---|---|---|
-           | @{val2}| Create List| 1 | 2 | 3| 
-           | Log Many | @{val}| 
-           | Log Many | @{val2}| 
-		   
-           * 注意list需要Log Many输出，log只能输出scalar这样的单变量	
-     2. 变量的使用
-	 
-	       |@{val2}	|Create List|1|warn|
-		   |---|---|---|---|
-           |@{val}|	Set Variable |	999	| warn |
-           |${kw}|	Set Variable|	log	|
-           |Run Keyword	|${kw}	|@{val}	|
-		   
-		   * 这里使用Run Keyword关键字【传入两个参数，第一个是Scalar，第二是List 】，主要是用于将关键字log作为一个参数传入，后面一个参数可以是可变函数类型
-     
-	 3. 获取List元素
-        1. @{变量名}[index]
-           1. 一维
-              ```
-			    @{userList}[1]
-              ```	
-           2. 二维
-              ```
-			   @{listC[1]}[1]
-              ```	
-               * 注意写法			  
-		2. ${变量名[index]}
-		   1. 一维
-		      ```
-		        ${userList[1]}
-              ```		   
-		   2. 二维
-		      ```
-			    ${userList[1][1]}
-			  ```
-3. Dict 【字典对象】
-   * 使用&{c}
-   * 字典
-#### 常量
-* 主要是指环境变量、数值变量、特殊字符常量、系统保留变量
-  1. 环境变量%
-     
-	   |  log |%{JAVAHOME}|
-	   |---|---|
-	   
-	 
-  2. 数值常量
-     * RIDE中所有的字符都被当作字符串，包括变量的值是数值【个人理解不是】
-	 * 如果要让其为数值类型，要用数值常量
-     
-	  |  ${shuzhi} |Set variable|${2.6}|2.6|
-	  |---|---|---|---|
-    
-     
-  3. 特殊字符常量
-     ```
-	  ${/} ${:} ${EMPTY} ${False} ${None}等
-	 ```  
-   
-### 打印
-* log：适用于scalar变量
-* log many：**用于输出List、dict变量**
+
    
 ### 运行测试用例
 * run--Start
+* execution Profile选择默认的pybot，如果没有也可以自行添加，C:\Python27\Scripts下选择robot.exe文件
 * 可以给测试用例加tag，使指定这个tag运行或者不运行
 
 ### 测试日志与测试报告
@@ -203,7 +80,7 @@
 
 ### 快捷键
 1. F5 搜索关键字
-2. ctrl+alt+空格 提示关键字
+2. 'ctrl+alt+空格'或者'ctrl+shift+空格' 提示补全的关键字
 3. ctrl+鼠标指向关键字 提示该关键字的用法以及参数
 
 
