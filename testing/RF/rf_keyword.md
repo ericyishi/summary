@@ -1,5 +1,5 @@
 # 关键字
-### evaluate
+### Evaluate
 * evaluate能让你直接运行python脚本。这样可以在Library没有给你提供你想要的方法时，直接用python脚本来实现你想要的方法。
   ```html
    # 格式：
@@ -12,3 +12,22 @@
 * 打印
 * log：适用于scalar变量，或者输出dict这类需要把符号变成$
 * log many：**用于输出List、dict变量**  
+
+### Run Keywords
+* 后面跟多个参数
+  ```
+   Run Keywords log 123 AND 456
+  ```
+### 循环:FOR
+* “FOR”关键字前面需要增加一个“:”，写成“:FOR”，其它与Python的语法相同。  
+  ```html
+   :FOR	${i}	IN 	1	2	3
+    \	Log	${i}			
+  ```
+  * 值为1、2、3
+  ```html
+   :FOR	${i}	IN RANGE	1	10	2
+    \	Log	${i}			
+  ```
+  * 值为1、3、5、7、9
+  

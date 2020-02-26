@@ -7,14 +7,19 @@
   * AVG() 返回结果集，所有值的平均值
   * MAX() 返回结果集，所有值的最大值
   * MIN() 返回结果集，所有值的最小值
+  ```html
+    SELECT MAX(column_name) FROM table_name;
+  ```
   ```
    # select sum(length),avg(length),max(length),min(length),count(*) from filesystem_table;
+   
      +-------------+-------------+-------------+-------------+----------+
 	 | sum(length) | avg(length) | max(length) | min(length) | count(*) |
 	 +-------------+-------------+-------------+-------------+----------+
 	 |    43494531 |  11365.1766 |     3998628 |           0 |     3827 |
 	 +-------------+-------------+-------------+-------------+----------+
   ```
+
   ```
    注意：
    1.SELECT后面出现了聚合函数，那么这条查询就是按分组返回一个大组；
@@ -59,7 +64,7 @@
 
    SELECT 聚合函数()，分组列名 FROM 表名
    WHERE 条件
-   GROUP BY 列名
+   GROUP BY 分组列名
    HAVING 分组过滤条件
    ORDER BY <列名> ASC/DESC
    LIMIT

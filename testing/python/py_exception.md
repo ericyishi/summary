@@ -71,3 +71,11 @@
      # 输入123
      # 打印内容：the input is of length 3,expecting at lease 5
    ```
+### 常见异常类型
+1. ImportError： 指的是错误类型，引入错误 ，错误说明：提示没有命名的模块:import a 
+2. IndexError: list index out of range   ：索引错误：超出范围的列表索引
+3. KeyError:   键值错误，字典中不存在的键
+4. NameError: 使用了未定义的变量
+5. IndentationError: 缩进错误
+6. SyntaxError：语法错误
+7. ZeroDivisionError：除数为0

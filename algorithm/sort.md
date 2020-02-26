@@ -9,7 +9,7 @@
   var examplearr = [1, 4, 55, 32, 21, 44, 2];
   function sortarr(arr) {
   for (var i = 0; i < arr.length - 1; i++) {
-  for (var j = 0; j < arr.length - 1 - i; j++) {
+   for (var j = 0; j < arr.length - 1 - i; j++) {
     if (arr[j] > arr[j + 1]) {
     var temp = arr[j];
     arr[j] = arr[j + 1];
@@ -22,9 +22,24 @@
 
   sortarr(examplearr);
 ```
+```html
+
+#-*- coding: utf-8 -*-
+a=[1, 4, 55, 32, 21, 44, 2];
+def sortarr(arr):
+    for i in range(0,len(arr)-1):
+        for j in range(0,len(arr)-1-i):
+            if(arr[j]>arr[j+1]):
+                temp=arr[j]
+                arr[j]=arr[j+1]
+                arr[j+1]=temp
+    print(arr)
+
+sortarr(a)
+```
 
 ```
-2,4,7,21,32,44,55
+1, 2, 4, 21, 32, 44, 55
 ```
 
 【冒泡算法的优化】
@@ -95,8 +110,20 @@
 
     selectSort(examplearr);
 ```
+ def selectarr(arr):
+    for i in range(0,len(arr)-1):
+        for j in range(i+1,len(arr)):
+            if(arr[i]>arr[j]):
+                temp=arr[j]
+                arr[j]=arr[i]
+                arr[i]=temp
+    print(arr)
+
+selectarr(a)
+```    
+```
 
 ```
-2,4,7,21,32,44,55
+1, 2, 4, 21, 32, 44, 55
 ```
 

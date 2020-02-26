@@ -388,6 +388,17 @@
 	  ``` 
 	   export LAND=LC_ALL.UTF-8  # 这种方式是临时修改方式，只对当前shell生效
 	  ```
+12. 关机【shutdown】
+   ```html
+    shutdown -h now 
+    shutdown -h 10 10分钟后自动关机
+   ```
+13. 重启【reboot】
+   ```html
+    reboot
+    shutdown -r now
+    shutdown -r 10 过10分钟自动重启(root用户使用)
+   ```	  
 ### 网络通讯命令
 1. 查看所有的网络设置【ifconfig】
    ```

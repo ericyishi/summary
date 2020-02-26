@@ -108,7 +108,10 @@
     ```
      SELECT 列 FROM 表 WHERE 条件 IS NULL;
     ```
-* 排序 ORDER BY
+    ```html
+     SELECT * FROM table(表名) WHERE 字段 IS NULL or trim(字段)=''；
+    ```
+* 排序 ORDER BY + 列名 + 升降序
   * 升序【ASC】【不指名排序关键字，默认是升序】
   * 降序【DESC】
   * 多列排序中间用逗号分隔,优先级是按照列名的顺序确认优先级
