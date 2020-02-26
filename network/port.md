@@ -7,4 +7,5 @@
   * 3306 mysql
   * 1521 oracle
   * 443 https协议默认端口【访问时候无需加端口号】
+    * HTTPS（securely transferring web pages）服务器，默认端口号为443/tcp  443/udp
   * 8443 https
