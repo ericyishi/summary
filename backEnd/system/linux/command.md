@@ -236,7 +236,7 @@
 	        ```
 	          find / -name "*.txt"
 	        ```
-	     *  查找/root 目录下的所有子目录，目录需要跟参数-type d
+	     *  查找/root 目录下的所有子目录，目录需要跟参数-type d代表文件夹,-type f 代表文件
 	        ```
 	         find /root -type d
 	        ```

@@ -14,6 +14,7 @@
     * LINUX系统
 	  * [文件结构](backEnd/system/linux/structure.md)
       * [常用命令](backEnd/system/linux/command.md)
+      * [shell脚本](backEnd/system/linux/shell.md)
       * 常见问题
         1. [使用虚拟机的网络配置](backEnd/system/linux/solution/configureNetwork.md)
         2. [重置mysql的root密码](backEnd/system/linux/solution/resetPWD_mysql.md)
