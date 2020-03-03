@@ -276,7 +276,7 @@
            //输出root下所有文件数目
          ```
 ### 打包和压缩文件
-* 打包或解压【tar】（☆ ☆）
+* 打包或解压tar包【tar】（☆ ☆）
   * 打包或解压一个文件或目录
   * 常用参数：
      * -c创建一个新的tar文件
@@ -310,6 +310,18 @@
      ```
      * tar -xvf test1.tar -C b //将test1.tar解压到b目录**注意要有大写的-C参数才能解压到指定的目录去**
      * 非当前目录使用 -C参数，这里的文件可以加路径，但是解压到的目录只能加路径，不能设置解压后的名称（默认是跟解压前的文件同名）
+
+*还有xz包
+```html
+     xz命令使用方法如下：
+    Usage: xz [OPTION]... [FILE]...
+    以.xz格式压缩或解压缩文件。
+    
+    长选项的强制参数对短选项也是强制的。
+    
+      -z, --compress      强制压缩
+      -d, --decompress    强制解压
+```
 	 
 ### 系统设置
 
@@ -587,6 +599,7 @@
   ```
    yum install 要安装的软件
   ```
+  *ubuntu的命令是apt-get install
 
 * 下载资源【wget】
   ```
@@ -617,4 +630,33 @@
       * 注意：ps -ef (查找所有进程，或者使用-aux,只是返回列的内容稍有不同)
     * ps -ef|grep 3306  //查找3306端口
     * grep 1234 /root/411/3.txt  | wc -l //查找/root/411/3.txt 文件中出现含有1234的内容的行的次数
+
+### 源码的安装
+* 一般由3个步骤组成：配置（configure）、编译（make）、安装（make install）
+* Configure是一个可执行脚本，它有很多选项
+* 在待安装的源码路径下使用命令./configure–help输出详细的选项列表。
+* 其中，prefix选项是配置安装的路径
+  * 如果不配置该选项:
+    1. 安装后可执行文件默认放在/usr/local/bin
+    2. 库文件默认放在/usr/local/lib
+    3. 配置文件默认放在/usr/local/etc
+    4. 其它的资源文件放在/usr/local/share
+  * 如果配置prefix，如：./configure --prefix=/usr/local/test可以把所有资源文件放在/usr/local/test的路径中，不会杂乱
+* 配置好后，就可以编译与安装了：make && make install   
+
+### 环境变量的配置
+1. 通常当前用户是配置在主目录下名为.bash_profile的文件
+```html
+ cd ~
+ vim .bash_profile
+```
+* 有的地方是配在/etc/profile（这里优先级最高，是全局的，用于整个系统的所有用户）
+2. 添加路径，例如python
+```html
+ export PATH=$PATH:/usr/local/python37/bin
+```
+3. 使配置生效
+```html
+source .bash_profile
+```
 

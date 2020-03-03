@@ -78,3 +78,49 @@
     c = cl()
     del c
 ```
+### __new__()
+* 负责创建类的实例
+* 注意__init__方法是创建实例后负责初始化，所以先有__new__ 再执行__init__
+
+### __dir__()
+* 查看对象的方法和属性名称
+* 另外一个dir()是一个函数，调用__dir__()方法对其返回值进行排序，并返回一个列表
+```html
+    #-*- coding: utf-8 -*-
+    class A:
+        def __init__(self,name,age):
+            self.name=name
+            self.__age=age
+    
+    a=A('rick',18)
+    print(a.__dir__())
+    print(len(a.__dir__()))#28
+    print(dir(a))
+    print(len(dir(a)))#28
+    print(len(dir(A)))#26
+    print(dir(A))
+```
+* 内容一样，只是排序不同
+* 注意dir的内容如果是类名，则不包括实例属性，如dir(A)就没有name、age
+
+## __dict__
+* 当作用于**类**时，存储所有实例共享的变量（例如：类属性）和类的方法
+* 当作用于**实例对象**时，存储该对象所有的属性名和属性值
+* 用途：一般用于动态读取和设置对象的属性
+```html
+ #-*- coding: utf-8 -*-
+ class A:
+     def __init__(self,name,age):
+         self.name=name
+         self.__age=age
+ 
+ a=A('rick',18)
+ print(a.__dict__) #{'name': 'rick', '_A__age': 18}
+ print(A.__dict__) # {'__module__': '__main__', '__init__': <function A.__init__ at 0x0039CED0>, '__dict__': <attribute '__dict__' of 'A' objects>, '__weakref__': <attribute '__weakref__' of 'A' objects>, '__doc__': None}
+ print(a.__dict__['name'])#与a.name效果一样
+ # 还可以设置
+ a.__dict__['name']='jack'
+ print(a.name)
+ # 增加属性
+ a.__dict__['gender']='male' #但是仅对当前实例增加，不会对别的实例添加该属性
+```
