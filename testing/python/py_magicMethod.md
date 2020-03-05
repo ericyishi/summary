@@ -181,6 +181,55 @@
     
         
 2. __getattr__(self,xxxx):访问**未定义的属性**时被调用
+  * 当__getattribute__没有进行捕获异常AttributeError处理，就会调用__getattr__，否则就不会调用了
   ```html
-
+     #-*- coding:utf-8 -*-
+    class A:
+        def __init__(self,name):
+            self.name=name
+    
+        def __getattr__(self, item):
+            print("未定义属性属性%s被访问"%(item))
+    
+    a=A("zhangsan")
+    a.age #未定义属性age被访问 
   ```
+3. __setattr__(self,xxxx,value):当对xxx属性赋值时，就会调用该方法
+   * 在__init__下初始化时候，也会调用
+
+   ```html
+    # -*- coding:utf-8 -*-
+    class A:
+        def __init__(self,name):
+            self.name=name
+    
+        def __setattr__(self, key, value):
+            print("属性{}被赋值为{}".format(key,value))
+    
+    a=A("zhangsan")
+    a.name="lisi"
+    # 属性name被赋值为zhangsan
+    # 属性name被赋值为lisi
+   ``` 
+   * 常用于在修改属性时，需要符合一定规则，就可以在这里定义  
+   ```html
+        # -*- coding:utf-8 -*-
+    class A:
+        def __init__(self, name, age):
+            self.name = name
+            self.age = age
+    
+        def __setattr__(self, key, value):
+            if key == 'age':
+                if value > 18:
+                    self.__dict__[key] = value  # 赋值这样得写，不能写成self.age=value,会造成循环引用又调用__setattr__
+                else:
+                    raise Exception('年龄需要大于18')
+            else:
+                self.__dict__[key]=value
+    
+    a = A("zhangsan", 12)
+    print(a.name)
+   ```
+4. __delattr__(self,xxxx):当删除对象的xxxx属性时被调用
+   * del a.name  

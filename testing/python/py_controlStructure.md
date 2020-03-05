@@ -44,7 +44,8 @@
             print("value is %r",v)
       ```
 
-    2. for 变量 in range()
+    2. for 变量 in range(INTEGER)
+       * range里面的东西是整数
        * 对于进行一定次数的循环，需要使用range()
        * range() 指定区间范围，结束范围是**开区间**。
          ```
