@@ -124,3 +124,63 @@
  # 增加属性
  a.__dict__['gender']='male' #但是仅对当前实例增加，不会对别的实例添加该属性
 ```
+### 属性类
+1. __getattribute__(self,xxxx):访问对象任意属性（即便不存在）时被自动调用
+   * 举个栗子
+        ```html
+             #-*- coding: utf-8 -*-
+          class Student:
+              def __init__(self,name,age):
+                  self.name=name
+                  self.age=age
+              def __getattribute__(self, item):
+                  print("被访问的属性为%s"%(item))
+          
+          stu=Student('zhangsan',18)
+          stu.name #执行后输出：被访问的属性为name
+          stu.gender #执行后输出：被访问的属性为gender
+          print(stu.name)#此时获取不到属性值了，原因是重写了__getattribute__方法但是没有返回值造成的
+        ```
+        * 修改的后的样子
+        ```html
+              #-*- coding: utf-8 -*-
+          class Student:
+              def __init__(self,name,age):
+                  self.name=name
+                  self.age=age
+          
+              def __getattribute__(self, item):
+                  print("被访问的属性为%s"%(item))
+                  return super().__getattribute__(item) # 调用父类的这个方法来获取
+          
+          stu=Student('zhangsan',18)
+          stu.name #执行后输出：被访问的属性为name
+        ```
+        * 对于访问没有定义的属性，是会报错的，所以捕获异常并进行处理
+        ```html
+          #-*- coding: utf-8 -*-
+          class Student:
+              def __init__(self,name,age):
+                  self.name=name
+                  self.age=age
+          
+              def __getattribute__(self, item):
+          
+                  try:
+                      print("访问了%s属性" % (item))
+                      return super().__getattribute__(item)
+                  except AttributeError as e:
+                      print(e)
+                      print('{}为未定义属性，请检查'.format(item))
+          
+          
+          stu=Student('zhangsan',18)
+          stu.gender #执行后输出：被访问的属性为gender，并会捕获异常进行处理
+        ```
+    
+    
+        
+2. __getattr__(self,xxxx):访问**未定义的属性**时被调用
+  ```html
+
+  ```
