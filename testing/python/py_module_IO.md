@@ -62,16 +62,16 @@
 * **a**
   * 以追加模式打开文件（即一打开文件，文件指针自动移到文件末尾【不会换行！】）
   * 如果文件不存在则创建,如果文件存在，则可以追加文件内容
-  * 只可以写，不可以读
+  * **只可以写，不可以读**
   ```
-   f = open(r"C:\Users\Administrator\Desktop\demo.txt", "a")
+   f = open(r"C:\Users\Administrator\Desktop\demo.txt", "a",encoding='UTF-8')
    f.write('第二次加入数据')
    f.close()
   ```
   ```
    # 结果：
    aaa
-   hahahathe second time add
+   hahaha第二次加入数据
   ```
 * a+
   * 打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。
@@ -116,7 +116,23 @@
 
 * wb
   * 以二进制模式打开文件，并写入操作
+  
+### 总结
+```html
+r:	以只读方式打开文件。文件的指针将会放在文件的开头。这是**默认模式**。不存在会报错。
+rb: 以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。
+r+: 打开一个文件用于读写。文件指针将会放在文件的开头。
+rb+:以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。
+w:	打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。
+wb:	以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。
+w+:	打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。
+wb+:以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。
+a:	打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+ab:	以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+a+:	打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。
+ab+:以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。
 
+```
 ### 复制文件
   ```
    # 桌面上的Q1文件，复制到D盘下去
@@ -155,3 +171,44 @@
     ```
 
    * glob.glob("路径\文件")可以找到该路径下的所有的文件。
+### demo2
+* # 将1-9999之间的素数分别写入三个文件中（1-99之间的素数保存在a.txt中，100-999之间的素数保存在b.txt中，1000-9999之间的素数保存在c.txt中）。
+    ```html
+    from math import sqrt
+    
+    
+    def is_prime(n):
+        """判断素数的函数"""
+        assert n > 0
+        for factor in range(2, int(sqrt(n)) + 1):
+            if n % factor == 0:
+                return False
+        return True if n != 1 else False
+    
+    
+    def main():
+        filenames = ('a.txt', 'b.txt', 'c.txt')
+        fs_list = []
+        try:
+            for filename in filenames:
+                fs_list.append(open(filename, 'w', encoding='utf-8'))
+            for number in range(1, 10000):
+                if is_prime(number):
+                    if number < 100:
+                        fs_list[0].write(str(number) + '\n')
+                    elif number < 1000:
+                        fs_list[1].write(str(number) + '\n')
+                    else:
+                        fs_list[2].write(str(number) + '\n')
+        except IOError as ex:
+            print(ex)
+            print('写文件时发生错误!')
+        finally:
+            for fs in fs_list:
+                fs.close()
+        print('操作完成!')
+    
+    
+    if __name__ == '__main__':
+        main()
+    ```   

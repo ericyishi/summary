@@ -232,4 +232,44 @@
     print(a.name)
    ```
 4. __delattr__(self,xxxx):当删除对象的xxxx属性时被调用
-   * del a.name  
+   * del a.name
+   
+5. __slots__('attr1','attr2''):限定当前对象能绑定的属性，可以是没有定义的属性名。子类不起作用
+   * 注意_gender是没有的属性，因为在slots里面写了，所以可以绑定
+   ```html
+    #-*- coding: utf-8 -*-
+    class Person(object):
+    
+        # 限定Person对象只能绑定_name, _age和_gender属性
+        __slots__ = ('_name','_age',"_gender")
+    
+        def __init__(self, name, age):
+            self._name = name
+            self._age = age
+    
+        @property
+        def name(self):
+            return self._name
+    
+        @property
+        def age(self):
+            return self._age
+    
+        @age.setter
+        def age(self, age):
+            self._age = age
+    
+        def play(self):
+            if self._age <= 16:
+                print('%s正在玩飞行棋.' % self._name)
+            else:
+                print('%s正在玩斗地主.' % self._name)
+    
+    
+    
+    person = Person('王大锤', 22)
+    person.play()
+    print(person.age)
+    person._gender='男'
+    print(person._gender)
+   ```     
