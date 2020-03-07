@@ -18,6 +18,57 @@
         except TypeError as e: 
            print(getattr(people,content))
     ```
-* setattr:动态添加一个方法或属性
-* delattr:动态删除一个方法或属性
-
+* setattr(object,str,value):动态添加一个方法或属性
+  * 添加属性
+    ```html
+     #-*- coding: utf-8 -*-
+       class A:
+           def __init__(self,name):
+               self.name=name
+           def sleep(self):
+               print("{}正在睡".format(self.name))
+       
+       
+       a=A("zhangsan")
+       setattr(a,"age",3) #新增属性
+       print(dir(a)) #check的方式1
+       print(getattr(a,'age')) #check的方式2
+    ```
+  * 添加方法
+    * setattr(obj,"新定义的方法名",obj外的一个方法引用)  
+* delattr(obj,str):动态删除一个属性或方法。
+  ```html
+#-*- coding: utf-8 -*-
+    def run():
+        print("在跑")
+    class A:
+        def __init__(self,name):
+            self.name=name
+        def sleep(self):
+            print("{}正在睡".format(self.name))
+    
+    a=A("zhangsan")
+    # setattr(a,"age",3) #新增属性
+    # print(dir(a)) #check的方式1
+    # print(getattr(a,'age')) #check的方式2
+    setattr(a,"a_run",run)
+    print(dir(a))
+    delattr(a,'a_run')
+    print(dir(a))
+    delattr(a,'sleep') # 注意这里删除本来的方法会报错的。
+    # func()
+    print(dir(a))
+  ```
+  * 删除对象本身方法会报错的原因是：
+  
+  ```html
+    delattr和setattr其实都只能针对对象的属性，
+    刚刚看到的setattr动态设置的方法之所以能被delattr删除，
+    是因为setattr添加一个方法时，本质上是设置一个属性，
+    这个属性指向新添加的函数的地址，所以调用这个属性的时候，执行了方法而已，
+    而不是真正把这个方法加到这个对象上。
+    所以就是删除不了实际的定义的方法。
+    只能删除属性或方法的引用。
+    所以作者之所以把方法名叫做setattr和delattr，名副其实，诚不我欺也
+  ```
+    
