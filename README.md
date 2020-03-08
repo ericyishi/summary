@@ -32,7 +32,8 @@
     * [SQL【DQL-高级查询】(mysql为例)](database/sql_dql_advanced.md)
     * [SQL【高级特性】(mysql为例子)](database/sql_highLevel.md)
     * [工作中常见问题(mysql为例子)](database/forWork.md)
-  * 非关系型数据库
+  * [非关系型数据库](database/notOnlySql/nosql.md)
+    * [MongoDB](database/notOnlySql/mongodb/mongodb01.md)
 ### 测试
   * [测试理论](testing/theory/theory.md)
   * 开发语言

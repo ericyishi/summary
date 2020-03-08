@@ -1,5 +1,38 @@
 # JSON模块
-#### 四个常用的方法
+### JSON是什么
+* JSON是“JavaScript Object Notation”的缩写，它本来是JavaScript语言中创建对象的一种字面量语法
+* 因为JSON也是纯文本，目前JSON基本上已经取代了XML作为异构系统间交换数据的事实标准
+
+### JSON对象数据类型与python数据类型的关系
+| JSON                                   | Python       |
+| -------------------------------------- | ------------ |
+| object                                 | dict         |
+| array                                  | list         |
+| string                                 | str          |
+| number (int / real)                    | int / float  |
+| true / false                           | True / False |
+| null                                   | None         |
+
+
+
+| Python                                 | JSON         |
+| -------------------------------------- | ------------ |
+| dict                                   | object       |
+| list, tuple                            | array        |
+| str                                    | string       |
+| int, float, int- & float-derived Enums | number       |
+| True / False                           | true / false |
+| None                                   | null         |
+### 四个常用的方法
+* dump - 将Python对象按照JSON格式序列化到文件中
+* dumps -将Python对象处理成JSON格式的字符串
+* load - 将文件中的JSON数据反序列化成对象
+* loads - 将字符串的内容反序列化成Python对象
+
+* 备注：
+  * 序列化是把对象转换成有序字节流，以便在网络上传输或者保存在本地文件中。反序列化则是一个反向过程，从有序字节流重建对象，恢复对象状态。
+  * 序列化机制的核心作用就是对象状态的保存与重建
+
 1. json.dumps() 用于将dict类型的数据转成str
    * 如果直接将dict类型的数据写入json文件中会发生报错，因此在将数据写入时需要用到该函数。
    ```
@@ -12,21 +45,23 @@
     print(jsObj)  # {'a': '1111', 'c': '3333', 'b': '2222', 'd': '4444'} 
       
     print(type(name_emb))  #<type 'dict'>
-    print(type(jsObj))  # <type 'dict'>
+    print(type(jsObj))  # <class 'str'>
    ```
    * 若在数据写入json文件时，未先进行转换，报错如下
    ```
-    import json    
+    #-*- coding: utf-8 -*-
+    import json
     
-    name_emb = {'a':'1111','b':'2222','c':'3333','d':'4444'}    
-                
-    emb_filename = ('/home/cqh/faceData/emb_json.json')    
-        
-    # jsObj = json.dumps(name_emb) #如果不进行格式转换，是会报错的     
-        
-    with open(emb_filename, "w") as f:    
-        f.write(name_emb)    
-        f.close()    
+    name_emb = {'a': '1111', 'b': '2222', 'c': '3333', 'd': '4444'}
+    
+    emb_filename = ('./emb_json.json')
+    
+    # jsObj = json.dumps(name_emb) #如果不进行这步格式转换，下面写入文件的时候是会报错的
+    
+    with open(emb_filename, "w") as f:
+        f.write(name_emb) # TypeError: write() argument must be str, not dict
+        # f.write(jsObj) #传入转换后的格式
+        f.close()   
    ```
 2. json.loads() 用于将str类型的数据转成dict
    ```

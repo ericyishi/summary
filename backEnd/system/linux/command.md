@@ -6,7 +6,12 @@
   ```
   * 需要安装yum install man
   * 退出：q
-
+* 命令后面跟--help
+  ```html
+    ls --help
+  ```
+  * 推荐使用--help看着更方便
+  
 ### 文件和目录
 * 切换命令【cd】
   ```
@@ -34,7 +39,7 @@
   ```
    stat
   ```
-  * 用于显示文件或文件系统的详细信息
+  * 用于显示文件或文件系统的详细信息，包括三个时间（修改时间，访问时间，修改权限时间）
 
 * 文件夹操作
   1. 创建文件夹【mkdir】
@@ -99,6 +104,7 @@
       * mv a/b/*.txt c  //将a/b/所有的txt文件移动到c目录下
       * mv bb.txt b/cc.txt //将bb.txt 移动到b文件夹下并重命名cc.txt
       * mv  cc.txt dd.txt //直接将cc.txt重命名为dd.txt
+      * mv a.txt b.txt -t testfile //移动多个文件到指定目录需要跟上参数-t
    5. 查看文件内容
        1. cat、more、less
           ```
@@ -311,18 +317,23 @@
      * tar -xvf test1.tar -C b //将test1.tar解压到b目录**注意要有大写的-C参数才能解压到指定的目录去**
      * 非当前目录使用 -C参数，这里的文件可以加路径，但是解压到的目录只能加路径，不能设置解压后的名称（默认是跟解压前的文件同名）
 
-*还有xz包
-```html
-     xz命令使用方法如下：
-    Usage: xz [OPTION]... [FILE]...
-    以.xz格式压缩或解压缩文件。
-    
-    长选项的强制参数对短选项也是强制的。
-    
-      -z, --compress      强制压缩
-      -d, --decompress    强制解压
-```
-	 
+* 还有xz格式
+    ```html
+         xz命令使用方法如下：
+        Usage: xz [OPTION]... [FILE]...
+        以.xz格式压缩或解压缩文件。
+        
+        长选项的强制参数对短选项也是强制的。
+        
+          -z, --compress      强制压缩
+          -d, --decompress    强制解压
+    ```
+* 还有gz格式
+    ```html
+      gz格式：
+      压缩：gzip -d  压缩文件
+      解压：gunzip  压缩文件
+    ```	 
 ### 系统设置
 
 * 清空命令行【clear】
@@ -336,7 +347,11 @@
       //给命令mkdir取一个新别名md为了方便使用
   ```
    * 这种配置只是临时有效，关闭当前的SSH链接后，再次SSH登录到控制台终端的时候，这些别名设置就失效了。永久有效需要单独设置
-
+* 查看历史输入的命令【history】
+   * 如果要调用之前某条命令！+显示的对应序号
+     ```html
+      !序号
+     ```
 ### 系统管理类
 1. 显示系统时间【date】
    ```
@@ -404,7 +419,7 @@
 	   export LAND=LC_ALL.UTF-8  # 这种方式是临时修改方式，只对当前shell生效
 	  ```
 12. 关机【shutdown】
-   ```html
+   ```
     shutdown -h now 
     shutdown -h 10 10分钟后自动关机
    ```
@@ -413,7 +428,8 @@
     reboot
     shutdown -r now
     shutdown -r 10 过10分钟自动重启(root用户使用)
-   ```	  
+   ```
+14. 查看系统版本【cat /etc/issue】
 ### 网络通讯命令
 1. 查看所有的网络设置【ifconfig】
    ```
@@ -593,7 +609,7 @@
    ```
     rpm -ivh jdk-8u77-linux-i586.rpm
    ```
-
+   * yum与rpm的区别：rpm适用于所有环境，而yum要搭建本地yum源才可以使用！yum是上层管理工具，自动解决依赖性，而rpm是底层管理工具。
 ### 其他
 * 安装命令【yum】
   ```
