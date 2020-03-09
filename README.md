@@ -19,6 +19,7 @@
         1. [使用虚拟机的网络配置](backEnd/system/linux/solution/configureNetwork.md)
         2. [重置mysql的root密码](backEnd/system/linux/solution/resetPWD_mysql.md)
 		3. [环境问题排查步骤](backEnd/system/linux/solution/environmentalIssues.md)
+		4. [ubuntu系统遇到问题](backEnd/system/linux/solution/ubuntu.md)
       * 部署
         1. [javaweb项目:使用tomcat+mysql](backEnd/system/linux/deploy_javaweb.md)
         2. [nginx安装与配置](backEnd/system/linux/nginx.md)

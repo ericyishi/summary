@@ -27,3 +27,5 @@
    {'id':'001','isPay':false}
   ```
   
+### 安装
+* [安装说明](mongodb_install.md) 
