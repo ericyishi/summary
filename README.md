@@ -35,6 +35,7 @@
     * [工作中常见问题(mysql为例子)](database/forWork.md)
   * [非关系型数据库](database/notOnlySql/nosql.md)
     * [MongoDB](database/notOnlySql/mongodb/mongodb01.md)
+    * [redis](database/notOnlySql/redis/redis01.md)
 ### 测试
   * [测试理论](testing/theory/theory.md)
   * 开发语言

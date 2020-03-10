@@ -14,6 +14,10 @@
 ```html
  #启动输入：mongod
 ```      
+* 这种方式启动会占用一个服务窗口,也可以用下面方式【我没有成功】
+  ```html
+   sudo service mongod start
+  ```
 * 查看是否启动： pgrep mongod -l #打印出id进程就起好了
 * 配置文件在： /etc/mongod.conf ，包括端口信息
 ### mongo
@@ -60,3 +64,9 @@ test
 ```html
  ctrl+c或者exit
 ```  
+
+### GUI工具
+* robomongo
+  * 解压后在bin目录下有个robomongo文件，即可运行
+* windows下面也有个Robo 3T 的工具可以使用
+

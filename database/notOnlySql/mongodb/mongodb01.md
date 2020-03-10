@@ -27,5 +27,8 @@
    {'id':'001','isPay':false}
   ```
   
-### 安装
-* [安装说明](mongodb_install.md) 
+### 基本操作
+1. [安装说明](mongodb_install.md) 
+2. [操作数据库和集合](mongodb_operate.md)
+3. [数据类型](mongodb_dataType.md)
+4. 
