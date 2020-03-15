@@ -44,10 +44,11 @@
   * [操作excel](./tools/py_operateExcel.md)
   * [发送邮件](./tools/py_sendEmail.md)
 * 前端框架
-  * [Django](frontend/py_django.md)
+  * [快速Django项目](frontend/py_django.md)
     * [MTV开发模式](frontend/py_mtv.md)
-    * [常见问题](frontend/problem.md)
+    * [创建应用与添加数据模型](frontend/py_app.md)
     * [模型-含SQLit与mysql配置](frontend/py_sqlite_mysql.md)
     * [路由url](frontend/py_url.md)
     * [视图view](frontend/py_view.md)
     * [模板templates](frontend/py_template.md)
+    * [常见问题](frontend/problem.md)

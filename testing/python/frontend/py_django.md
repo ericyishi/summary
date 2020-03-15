@@ -3,7 +3,9 @@
 ```
  pip install django
 ```
-### 1.创建一个项目
+* 可以指定版本django==1.8.2，不指定下载最新的
+
+### 1.快速创建一个项目
 * 网页展示hello world
 1. 查看django提供的命令
    ```
@@ -45,7 +47,7 @@
    ```
    * 项目结构：
       * 项目下有一个manage.py文件，是一个命令行工具
-      * 项目下还有guest目录，进入
+      * 项目下还有项目名叫guest目录，进入
         * \_\_init\_\_.py: 一个空文件，用来标志一个目录为python文件
         * setting.py: Django项目配置文件，包括django的模块应用配置，数据库配置，模板配置等。
           ```
@@ -64,12 +66,18 @@
     python manage.py startapp sign
    ```
    * 运行后，就会在当前路径下生成一个应用，名字就是上面取的
-   * 进入sign文件夹应用结构【注意没有template模板模块】：
+   * 进入sign文件夹应用结构【注意没有template模板模块，因为初始化的视图内容还没有确定，所以没有模板】：
      * migrations文件夹：用于记录models中数据的变更
      * admin.py 映射models中的数据到django自带的admin后台
      * apps.py 用于应用程序的配置
      * models.py 模型文件，创建应用程序数据表模型（对应数据库的相关操作）
        1. 定义模型类
+          * 这里可以编写，需要的表结构
+            ```html
+             class BookInfo(models.Model):
+                pass 
+            ```
+            * **注意：**这里必须要继承django的models.Model，因为要使用django的model，不这样写就是个普通类，没法与数据库建立映射关联。
        2. 注册应用。将应用名加入setting.py文件中的INSTALLED_APP字段中
        3. 迁移migrations,就会将步骤1中模型生成需要的字段（根据模型类生成sql语句）
           ```
@@ -142,9 +150,5 @@
       ```
     * 重启服务，访问 http://127.0.0.1:8000/index/，就能看到snow.html里面的内容了
       * 但是仅能显示html与css，如果有其他文件夹下的资源（如：引用图片），这样是无法加载显示的
-### 测试数据操作
-* 进入python shell，进行简单的模型API练习
-  ```
-   python manage.py shell
-  ```
+
 
