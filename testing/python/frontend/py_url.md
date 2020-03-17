@@ -1,7 +1,21 @@
 # 路由
+### 作用
+* 根据浏览器上请求url，来匹配自己在应用中的正则表达式，从而跳转到对应的视图来处理
 ### 概述
-* django的路由系统作用就是使views里面处理数据的函数与请求的url建立映射关系。使请求到来之后，根据urls.py里的关系条目，去查找到与请求对应的（views中）处理方法，从而返回给客户端http页面数据
-
+* django的路由系统作用就是使views里面处理数据的函数与请求的url建立映射关系。
+* django的配置都在setting.py下，我们可以看到
+  ```html
+   ROOT_URLCONF = 'test2.urls'
+  ```
+  * 将这个配置指向了，项目test2下面urls.py文件下
+* 使请求到来之后，根据urls.py里的关系条目，去查找到与请求对应的（views中）处理方法，从而返回给客户端http页面数据
+  ```html
+   urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+   ]
+  ```
+  * 默认配置/admin的后台管理的url,所以我们可以直接打开登录进admin的页面
+  * 注意：匹配也是从‘ip:端口/’之后才开始作为匹配的内容
 ### urls
 * django 项目中的url规则定义放在project 的urls.py目录下
 * 在新建的项目中，url.py文件配置（项目下的url.py是主url）
@@ -25,7 +39,7 @@
 
 ### 使用 include() 配置 URL
 * 如果项目非常庞大，应用非常多，应用的 URL 都写在根 urls.py 配置文件中的话，会显的非常杂乱，还会出现名称冲突之类的问题，这样对开发整个项目是非常不利的。
-* 可以这样解决，把每个应用的 URL 写在它们各自的 urls.py 配置文件里，然后在根 urls.py 里用 include() 函数引用
+* 可以这样解决，把每个应用的 URL 写在它们各自的 urls.py 配置文件里，然后在项目下的 urls.py 里用 include() 函数引用
 * demo
    1. 在应用 violet 里创建 urls.py 配置文件：
   ```

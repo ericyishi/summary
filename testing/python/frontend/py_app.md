@@ -90,7 +90,7 @@
         ```
   2. 执行迁移，生成表【即到对应的数据库里面执行sql语句】
      ```html
-      python manager.py migrate
+      python manage.py migrate
      ```
      * 运行成功后，会有如下语句：
        ```html
@@ -151,6 +151,7 @@
    ```
 2. 引入包
    ```html
+    from booktest.models import *
     from datetime import datetime
  
    ```  
