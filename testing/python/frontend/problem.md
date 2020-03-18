@@ -88,3 +88,21 @@
       herolist=book.heroinfo_set.all()
       context={'list':herolist}
     ```
+
+8. mysql 数据库，迁移时候报错：django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb
+  * 原因：在 Django 中， 使用了pymysql，连接 MySQLdb 库
+  * 解决： 在项目下的__init__.py中添加如下内容：
+    ```html
+     import pymysql
+     pymysql.install_as_MySQLdb()
+    ```
+    
+9. python manage.py makemigrations后迁移生成文件里面发现字段少了
+  * 原因：是定义模型每行字段后面跟上了逗号“,”
+  * 解决：去掉就好  
+  
+10. 在迁移的时候输入python manage.py makemigrations 返回是 No changes detected  
+  * 原因： 人为把migrations文件夹给删了，会提示"Nochangesdetected."
+  * 解决： 
+    1. 先python manage.py makemigrations --empty yourappname生成一个空的initial.py
+    2. 再python manage.py makemigrations生成原先的model对应的migrationfile 

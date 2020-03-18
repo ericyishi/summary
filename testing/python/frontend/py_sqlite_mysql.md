@@ -22,7 +22,7 @@
      ```
         DATABASES = {
             'default':{
-                'ENGINE':'django.db.backends.mysql', #驱动
+                'ENGINE':'django.db.backends.mysql', #驱动,django提供好了的
                 'HOST':'127.0.0.1', #主机
                 'PORT':'3306', # 端口
                 'NAME':'guest', # 数据库
@@ -71,9 +71,3 @@
 * 使用上面步骤6创建的用户即可登录
 
 
-### 开发步骤
-1. 在models.py中定义模型类，要求继承自models.Model
-2. 把应用加入settings.py文件的installed_app项
-3. 生成迁移文件
-4. 执行迁移生成表
-5. 使用模型类进行crud操作
