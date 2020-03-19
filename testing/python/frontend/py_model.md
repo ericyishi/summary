@@ -103,9 +103,101 @@
                 db_table='bookinfo'
      ``` 
   2. ordering：对象的默认排序字段，获取对象的列表时使用，接收属性构成的列表
+     * 排序会增加数据库的开销
+     * 字符串前加-表示倒序，不加-表示正序'-id'
      ```html
       class BookInfo(models.Model):
          class Meta():
-             ordering = ['id']
+             ordering = ['id']  # id正序排序
      ```   
-  3. 
+### 管理器
+* objects，是管理器Manager类型的实例对象，用于与数据库进行交互
+* 管理器是Django的模型进行数据库的查询操作的接口
+* Django应用的每个模型都拥有**至少一个管理器**
+  * 我们常在view中去使用
+    ```html
+     bookList=BookInfo.objects.all()
+    ```  
+  * 当定义模型类时没有指定管理器，则Django会为模型类提供一个名为objects的管理器
+
+* 也能自定义管理器
+  ```html
+   class BookInfo(models.Model):
+      books = models.Manager() #自定义了一个叫books的对象
+  ```  
+  * 当为模型类指定管理器后，django不再为模型类生成名为objects的默认管理器
+  * 自定义管理器类**用途**主要用于两种情况：
+    1. 修改管理器返回的原始查询集：重写get_queryset()方法
+       ```html
+         class BookInfoManager(models.Manager): # 重新写一个类
+          def get_queryset(self):
+               return super(BookInfoManager, self).get_queryset().filter(isDelete=False) # filter是指获取满足条件的数据
+         class BookInfo(models.Model):
+          books = models.Manager() # 这是默认的
+          books2 = BookInfoManager() # 这是新增过滤条件的管理器对象
+       ```
+       ```html
+        BookInfo.books.all() # 所有数据
+        BookInfo.books2.all() # 会调用自定义管理器里面过滤后的数据
+       ```
+    2. 向管理器类中添加额外的方法：见下面“创建对象”中的方式二
+
+### 创建对象
+* _init_方法已经在基类models.Model中使用，在自定义模型中无法使用再以这样方式来创建
+* 方法一：定义一个类方法【不能定义普通方法的原因是因为此时没有实例对象】
+  ```html
+    class BookInfo(models.Model):
+    btitle=models.CharField(max_length=20,default='')
+    bpub_date=models.DateTimeField(db_column='pub_date',default='')
+    bread=models.IntegerField(default=0)
+    bcomment=models.IntegerField(default=0)
+    isDelete=models.BooleanField(default=False)
+    class Meta:
+        db_table='bookinfo'
+        ordering = ['bcomment']
+    # 创建对象不能使用__init__方法，因为继承的models.Model里面已经有了
+    @classmethod
+    def create(cls,btitle,bpub_date,bread=0):
+        b=BookInfo()
+        b.btitle=btitle
+        b.bpub_date=bpub_date
+        b.bread=bread
+        b.bcomment=0
+        b.isDelete=False
+        return b
+  ```
+  * 验证
+  ```html
+   # 引入模型类
+   from booktest.models import BookInfo
+   # 引入时间包
+   from datetime import *
+   # 调用
+   book=BookInfo.create("hello",datetime(1980,10,11),0);
+   # 保存，调用save()方法才与数据库交互，将对象保存到数据库中
+   book.save()
+  ```
+* 方法二：自定义的管理器中增加【推荐的方法】
+  ```html
+   class BookInfoManager(models.Manager): 
+     def create(self,btitle,bpub_date,bread=0):
+        b=BookInfo()
+        b.btitle=btitle
+        b.bpub_date=bpub_date
+        b.bread=bread
+        b.bcomment=0
+        b.isDelete=False
+        return b
+   class BookInfo(models.Model):  
+      book2= BookInfoManager() 
+  ```
+  * 调用  
+  ```html
+   # 引入模型类
+   from booktest.models import BookInfo
+   # 引入时间包
+   from datetime import *
+   # 调用管理器中定义的方法
+   b=BookInfo.book2.create("world",datetime(1987,10,11),0)  
+   b.save()
+  ```
