@@ -178,6 +178,7 @@
    book.save()
   ```
 * 方法二：自定义的管理器中增加【推荐的方法】
+  * 这种方法不用再手动调用.save()方法了
   ```html
    class BookInfoManager(models.Manager): 
      def create(self,btitle,bpub_date,bread=0):
@@ -199,5 +200,143 @@
    from datetime import *
    # 调用管理器中定义的方法
    b=BookInfo.book2.create("world",datetime(1987,10,11),0)  
-   b.save()
+   
   ```
+### 模型查询
+* 查询集表示从数据库中获取的对象集合
+* 查询集可以含有零个、一个或多个过滤器
+* 过滤器基于所给的参数限制查询的结果
+* 从Sql的角度，查询集和select语句等价，过滤器像where和limit子句  
+#### 查询集
+* 在管理器上调用过滤器方法会返回查询集
+* 查询集经过过滤器筛选后返回新的查询集，因此可以写成**链式过滤**
+  ```html
+    filter(键1=值1,键2=值2)
+    等价于
+    filter(键1=值1).filter(键2=值2)
+  ```
+* **惰性执行**：创建查询集不会带来任何数据库的访问，直到调用数据时，才会访问数据库
+  * 立即到数据库拿数据的情景：遍历，序列化，与if连用
+* 返回查询集的方法，称为过滤器
+  * all()
+    * 也可以下标索引，类似于切片，但是不支持负数
+    ```html
+     BookInfo.objects.all()[0]
+     BookInfo.objects.all()[0:5]
+     BookInfo.objects.all()[0:5:2]
+    ```
+  * filter()
+  * exclude()
+  * order_by()
+  * values()：一个对象构成一个字典，然后构成一个列表返回 
+  * 过滤器返回单个值的方法
+    * get()：返回单个满足条件的对象
+      * 如果未找到会引发"模型类.DoesNotExist"异常
+      * 如果多条被返回，会引发"模型类.MultipleObjectsReturned"异常
+  * count()：返回当前查询集的总条数
+  * first()：返回第一个对象
+  * last()：返回最后一个对象
+  * exists()：判断查询集中是否有数据，如果有则返回True  
+
+#### 惰性执行--查询集的缓存
+* 在新建的查询集中，缓存为空，首次对查询集求值时，会发生数据库查询，django会将查询的结果存在查询集的缓存中，并返回请求的结果，接下来对查询集求值将重用缓存的结果
+  ```html
+   querylist=Entry.objects.all() # 相当于这只是一条sql语句存到querylist
+   print([e.title for e in querylist]) # 到数据库查询数据
+   print([e.title for e in querylist])  # 访问本地缓存在querylist
+  ```
+* 不会执行缓存的情况：
+  1. 
+  ```html
+   print([e.title for e in Entry.objects.all()])
+   print([e.title for e in Entry.objects.all()]) # 两次都到数据库里面查询数据
+ 
+  ```  
+  2. 部分集数据集缓存
+  ```html
+   querylist=Entry.objects.all()
+   for i in querylist[0:10]# 查询数据库，缓存前十条数据缓存
+   for i in querylist[0:10]# 这次查询是读的缓存
+   for i in querylist[11:20]# 这次查询数据库，但不会缓存11~19的数据了
+   querylist2=Entry.objects.all()
+   for i in querylist # 缓存了全量数据
+   for i in querylist[0:10] # 读取缓存
+   for i in querylist[11:20] # 读取缓存
+ 
+  ```
+### 字段查询
+* 实现sql中where条件语句，作为方法filter()、exclude()、get()的参数
+* 语法：**属性名称__比较运算符=值**
+  * 表示两个下划线，左侧是属性名称，右侧是比较类型
+* 对于**外键**，使用“属性名_id”表示外键的原始值
+  ```html
+   class HeroInfo(models.Model):
+    ...
+    book=models.ForeignKey(BookInfo)
+  ```
+  ```html
+    hero # 为HeroInfo的对象
+    hero.book_id # z这样就能访问到对应book的id
+  ```
+* 转义：like语句中使用了%与，匹配数据中的%与，在过滤器中直接写，例如：filter(title__contains="%")=>where title like '%\%%'，表示查找标题中包含%  
+
+#### 比较运算符类型
+* exact：表示判等，大小写敏感；如果没有写“ 比较运算符”，表示为exact
+```
+ filter(isDelete=False)
+ # 等同于
+ filter(isDelete__exact=False)
+```
+* contains：是否包含，大小写敏感
+```
+ exclude(btitle__contains='传')
+```
+* startswith、endswith：以value开头或结尾，大小写敏感
+* exclude(btitle__endswith='传')
+* isnull、isnotnull：是否为null
+```
+ filter(btitle__isnull=False)
+```
+* 在前面加个i表示不区分大小写，如iexact、icontains、istarswith、iendswith
+* in：是否包含在范围内
+```html
+ filter(pk__in=[1, 2, 3, 4, 5])
+```
+* gt、gte、lt、lte：大于、大于等于、小于、小于等于
+```
+ filter(id__gt=3)
+```
+
+* year、month、day、week_day、hour、minute、second：对日期间类型的属性进行运算
+```html
+ filter(bpub_date__year=1980)
+ filter(bpub_date__gt=date(1980, 12, 31))
+```
+
+* 跨关联关系的查询：处理join查询
+  * 语法：**模型类名 <属性名> <比较>**
+  * 注：可以没有__<比较>部分，表示等于，结果同inner join
+  * 可反向使用，即在关联的两个模型中都可以使用
+    ```
+     BookInfo.objects.all().filter(heroinfo__hcontent__contains='八')
+    ```
+* 查询的快捷方式：pk，pk表示primary key，默认的主键是id
+  ``` 
+   BookInfo.objects.all().filter(pk__lt=3)
+  ```
+### F对象
+* 用于两列属性值的比较
+  ```html
+   list.filter(bread__gte=F('bcommet') * 2)
+  ```
+### Q对象
+* 用于逻辑或
+  ```html
+   list.filter(Q(pk_ _lt=6) | Q(bcommet_ _gt=10))
+  ```
+  * 逻辑与直接链式查询即可
+  ```html
+   list.filter(pk_ _lt=6).filter(bcommet_ _gt=10)
+  ```
+  
+  

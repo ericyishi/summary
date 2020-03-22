@@ -88,3 +88,29 @@ def index(request):
   ```
 
 
+### 自带的HTTP错误视图模板
+* Django原生自带几个默认视图用于处理HTTP错误
+* 只有关闭了debug模式，才有效果
+* 类型：
+  1. 404 (page not found) 视图
+  2. 500 (server error) 视图
+  3. 400 (bad request) 视图
+* 使用：
+  1. 项目下有templates文件夹，没有自行创建 
+  2. 配置settings文件，把该文件夹纳入dir路径
+     ```html
+       'DIRS': [os.path.join(BASE_DIR,'templates')],
+     ```
+  3. 在templates文件夹下创建相关的错误视图模板
+     * 404.html，内容根据实际而写【500.html同理】
+  4. settings下配置，关闭debug模式，并配置能访问的主机名，全部都可以写*
+     ```html
+      # SECURITY WARNING: don't run with debug turned on in production!
+      DEBUG = False
+      
+      ALLOWED_HOSTS = ['*']
+     ```      
+  5. 测试
+     ```html
+      http://127.0.0.1:8000/booktest/aaa # 没有定义aaa这个url，则会直接触发404的视图去调用404.html的模板
+     ```   
