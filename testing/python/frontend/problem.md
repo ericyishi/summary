@@ -106,3 +106,10 @@
   * 解决： 
     1. 先python manage.py makemigrations --empty yourappname生成一个空的initial.py
     2. 再python manage.py makemigrations生成原先的model对应的migrationfile 
+    
+11. no such table:django_session
+  * 原因：因为还没有这个表，sessionid需要存在数据库中
+  * 解决：迁移文件
+    ```html
+      python manage.py migrate
+    ```   

@@ -145,7 +145,15 @@
    <div>{{b}}</div>
    <div>{{c}}</div>
   ```
-
+### POST属性
+* 常与form表单中的控件一起使用，请求的数据放在body请求体里面
+* 问：表单中哪些控件会被提交？
+* 答：控件要有name属性，则name属性的值为键，value属性的值为键，构成键值对提交
+  * 对于checkbox控件，name属性一样为一组，当控件被选中后会被提交，存在一键多值的情况
+* **注意事项**：使用表单提交，注释掉settings.py中的中间件crsf 
+  ```html
+     # 'django.middleware.csrf.CsrfViewMiddleware'
+  ``` 
 ### HttpResponse对象
 * 在django.http模块中定义了HttpResponse对象的API
 * HttpRequest对象由Django自动创建，HttpResponse对象由开发者创建
@@ -194,3 +202,102 @@ from django.shortcuts import redirect
 ``` 
 #### 子类JsonResponse  
 * 返回json数据，一般用于异步请求
+
+#### session
+##### 配置session
+* 使用django-admin startproject projectname创建的项目**默认启用**session
+* 手动配置
+  ```html
+   在settings.py文件中
+   项INSTALLED_APPS列表中添加：
+   'django.contrib.sessions',
+   
+   项MIDDLEWARE_CLASSES列表中添加：
+   'django.contrib.sessions.middleware.SessionMiddleware',
+
+  ```
+##### session方法
+
+* 启用会话后，每个HttpRequest对象将具有一个session属性，它是一个类字典对象
+* get(key, default=None)：根据键获取会话的值
+  ```html
+   request.session.get('myname') # 这种方法如果key不存在，直接给一个默认值None,自己异常处理
+   request.session['myname'] # 这种方式如果key不存在会报错
+  ```
+* clear()：清除所有会话
+* flush()：删除当前的会话数据并删除会话的Cookie
+* del request.session['member_id']：删除会话
+
+##### 一个例子
+* 登录写入name存入session中，登录过程中记住name，退出清除name
+* urls
+  ```html
+    url(r"^login$",views.login),
+    url(r"^session1$",views.session1),
+    url(r"^session2$",views.session2),
+    url(r"^logout$",views.logout),
+  ```
+* views
+  ```html
+   def login(request):
+       context=None
+       return render(request,'login.html')
+   
+   
+   def session1(request):
+       request.session['myname']=request.POST['uname'] # session中加入一个值
+       return redirect('/booktest/session2')
+   
+   def session2(request):
+       uname=request.session.get('myname','未登录')# 这里如果没有获取到myname这个key值就会返回默认值‘未登录’
+       context={'uname':uname}
+       return render(request, 'session2.html', context)
+   
+   def logout(request):
+       del request.session['myname']
+       return redirect('/booktest/session2')
+  ```  
+* login.html
+  ```html
+   <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>登录</title>
+    </head>
+    <body>
+    <form  method="post" action="/booktest/session1">
+    
+    <div>
+    
+    <label for="example">Let's submit some text</label>
+    
+    <input id="example" type="text" name="uname">
+    
+    </div>
+    
+    <div>
+    
+    <input type="submit" value="Send">
+    
+    </div>
+    
+    </form>
+    </body>
+    </html>
+  ```
+* session2.html
+  ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <title>Title</title>
+   </head>
+   <body>
+   欢迎：{{uname}}
+   <a href="/booktest/logout">退出</a>
+   </body>
+   </html> 
+  ```  
+  
