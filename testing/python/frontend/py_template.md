@@ -12,7 +12,15 @@
 
   ```
 * 除了DIRS定义了一个目录列表，模板引擎按列表顺序搜索这些目录以查找模板源文件
-* 还有一种APP_DIRS告诉模板引擎是否应该在每个已安装的应用中查找模板【方便项目的迁移】
+* 还有一种APP_DIRS属性，告诉模板引擎是否应该在每个已安装的应用中查找模板【方便项目的迁移】
+  ```html
+   'DIRS': [os.path.join(BASE_DIR, 'app1/templates')],    ## templates
+   'APP_DIRS': True,
+  ```
+  * 'DIRS': [os.path.join(BASE_DIR, 'app1/templates')] 是指向 BASE_DIR/app1/templates文件夹中去取模板
+* 两者区别：
+  1. 指定公用的templates路径，所有apps都可以调用，方便快捷。
+  2. app专用的templates不需要指定，这样当要复用这个app的时候，不需要考虑templates路径问题   
 
 ### 调用模板
 * 是在view.py视图文件中去调用
@@ -23,7 +31,8 @@
 
 def index(request):
     template = loader.get_template('booktest/index.html')# 加载模板。是上面templates文件夹下面的又多了booklist的应用名的文件夹
-    return HttpResponse(template.render()) # 把模板渲染后作为响应返回给客户
+    context = RequestContext(request,{})
+    return HttpResponse(template.render(context)) # 把模板渲染后作为响应返回给客户
 ```
 
 * Django提供了函数Render()简化视图调用模板、构造上下文【常用，这样写方便】
@@ -31,7 +40,8 @@ def index(request):
  from django.shortcuts import render
 
  def index(reqeust):
-    return render(reqeust, 'booktest/index.html')
+    context={}
+    return render(reqeust, 'booktest/index.html',context)
 
 ```
 
@@ -118,3 +128,125 @@ def index(request):
      ```html
       http://127.0.0.1:8000/booktest/aaa # 没有定义aaa这个url，则会直接触发404的视图去调用404.html的模板
      ```   
+
+### 定义模板
+* 模板语言的结构：
+  1. 变量：{{变量名}} 
+     * 注意：只有变量是双花括号
+  2. 标签：{%代码块%}
+  3. 过滤器：|
+  4. 注释：{# 需要注释的内容 #}
+  
+##### 变量
+* 当模版引擎遇到一个变量，将计算这个变量，然后将结果输出
+* 变量名必须由字母、数字、下划线（不能以下划线开头）和点组成
+* 当模版引擎遇到点(".")，会按照下列顺序查询处理：
+  1. 字典查询，例如：foo["bar"]
+  2. 属性或方法查询，例如：foo.bar
+  3. 数字索引查询，例如：foo[bar]
+  4. 如果变量不存在， 模版系统将插入'' (空字符串)      
+* 在模板中调用方法时不能传递参数
+  ```html
+   class HeroInfo(models.Model):
+    ...
+    def showName(self):
+        return self.hname
+  ```
+  ```html
+   {{hero.showname}} # showname是一个方法，后面不用跟上执行的小括号
+  ```
+##### 过滤器
+* 用在变量后边主要是为了计算
+* 语法
+  ```html
+   { { 变量|过滤器 }}
+  ```  
+
+* 使用管道符号 (|)来应用过滤器
+* 通过使用过滤器来改变变量的计算结果
+* 可以在if标签中使用过滤器结合运算符 
+  ```html
+  {%for hero in list%}
+   {%if forloop.counter|divisibleby:"2"%} #求余
+     <div style="color:red">{{hero.showname}}</div>
+   {%else%}
+     <div style="color:blue">{{hero.showname}}</div>
+   {endif}
+  {%empty%}
+     <div>啥也没有找到</div>
+  {%endfor%}
+  ```
+* 系统提供的过滤器：[点击查看](https://www.cnblogs.com/huangxm/p/6286144.html) 
+  
+##### 标签
+* 语法：{ % tag % }
+* 作用
+  * 在输出中创建文本
+  * 控制循环或逻辑
+  * 加载外部信息到模板中供以后的变量使用    
+
+1. for循环标签
+   ```html
+    {%for ... in ...%}
+    循环逻辑
+    {{forloop.counter}}表示当前是第几次循环
+    {%empty%}
+    给出的列表为或列表不存在时，执行此处
+    {%endfor%}
+   ``` 
+2. if标签   
+   ```html
+    { %if ...%}
+    逻辑1
+    { %elif ...%}
+    逻辑2
+    { %else%}
+    逻辑3
+    { %endif%}
+   ```     
+3. include：加载模板并以标签内的参数渲染
+   ```html
+    { %include "foo/bar.html" % }
+   ```
+
+4. url：反向解析
+   * 链接的url是有配置url动态生成，好处在于以后变成路由的url匹配规则，不会改变模里面的url
+   ```html
+    { % url 'namespace:name' '参数1' '参数2' %}
+    <a href="{%url 'booktest:show' %}">点击</a>
+   ```
+   * 根目录的urls，include下面的第二个参数叫namespace
+     ```html
+      url(r'^booktest/',include('booktest.urls',namespace='booktest'))
+ 
+     ```
+   * 应用下的url,第三个参数name  
+     ```html
+      url(r'^abc/$',views.show,name='show')
+     ```
+   * 如果url带上参数，那么反向解析的url也需要保持一致
+     ```html
+      url(r'^(\d+)/(\d+)$',views.show,name='show')
+     ```  
+     ```  
+      { % url 'namespace:name' '123' '456' %} 
+     ```  
+5. csrf_token：这个标签用于跨站请求伪造保护
+   ```html
+    { % csrf_token %}
+   ```
+6. 布尔标签：and、or，and比or的优先级高
+7. block、extends：详见“模板继承”
+8. autoescape：详见“HTML转义”    
+##### 注释
+1. 单行注释
+   ```html
+    {# 注释内容 #}
+   ```
+2. 多行注释
+   ```html
+    {% comment %}
+      this is a comment 
+    {% endcomment %}  
+   ```
+ 
