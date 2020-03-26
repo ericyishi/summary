@@ -220,7 +220,7 @@ def index(request):
       url(r'^booktest/',include('booktest.urls',namespace='booktest'))
  
      ```
-   * 应用下的url,第三个参数name  
+   * 应用下的url,第三个参数name，通常name的值与前面views后面相同  
      ```html
       url(r'^abc/$',views.show,name='show')
      ```
@@ -250,3 +250,67 @@ def index(request):
     {% endcomment %}  
    ```
  
+### 模板继承
+* block标签：在父模板中预留区域，在子模板中填充
+  ```html
+   base.html文件
+ 
+   {%block 预留块的名称%}
+     这里可以定义默认值
+     如果不定义默认值，则表示空字符串
+   {%endblock 预留块的名称}
+  ```
+  * 为了更好的可读性，可以给endblock标签一个名字，但不是必须的  
+* extends继承：继承，写在模板文件的第一行
+  ```html
+   sub.html文件
+  
+   {%extends "base.html"%} #写在第一行，注意引用父文件时候要考虑路径问题
+   {%block 预留块的名称%}
+    替换父模板中的内容
+   {%endblock 预留块的名称}
+ 
+  ```
+* 注意：
+  * 如果在模版中使用extends标签，它必须是模版中的第一个标签
+  * 不能在一个模版中定义多个相同名字的block标签
+  * 子模版不必定义全部父模版中的blocks，如果子模版没有定义block，则使用了父模版中的默认值
+  * 使用可以获取父模板中block的内容
+
+### html转义
+* 默认html的标签尖括号会被转义，因为默认使用escape过滤器
+  * 视图中希望传一个html语言内容给模板
+  ```html
+   def index(request):
+    return render(request, 'temtest/index2.html',
+                  {
+                      't1': '<h1>hello</h1>'
+                  })
+  ```
+  * 默认情况下会被转义，因为处于安全考虑
+    
+    ```html
+     {{t1}} # 得不到我们想要的结果 
+     {{t1|escape}} # 默认的效果
+    ```
+  * 会被转义的符号
+    ```html
+     < 会转换为&lt;
+     > 会转换为&gt;
+     ' (单引号) 会转换为&#39;
+     " (双引号)会转换为 &quot;
+     & 会转换为 &amp;
+    ``` 
+
+  * 对于变量，使用关闭转义的过滤器safe
+    ```html
+     {{t1|safe}} 
+    ```
+  * 对于代码块
+    ```html
+      { % autoescape off %}
+       {{ body }}
+     { % endautoescape %}
+    ```
+    * 标签autoescape接受on或者off参数
+    * 自动转义标签在base模板中关闭，在child模板中也是关闭的  

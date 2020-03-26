@@ -150,10 +150,17 @@
 * 问：表单中哪些控件会被提交？
 * 答：控件要有name属性，则name属性的值为键，value属性的值为键，构成键值对提交
   * 对于checkbox控件，name属性一样为一组，当控件被选中后会被提交，存在一键多值的情况
-* **注意事项**：使用表单提交，注释掉settings.py中的中间件crsf 
+* **注意事项**：使用POST提交，settings.py中的中间件crsf会被拦截 
   ```html
-     # 'django.middleware.csrf.CsrfViewMiddleware'
+      'django.middleware.csrf.CsrfViewMiddleware'
   ``` 
+* 正确做法是在form加个csrf标签
+  ```html
+   <form>
+   {% csrf_token %}
+   ...
+   </form>
+  ```  
 ### HttpResponse对象
 * 在django.http模块中定义了HttpResponse对象的API
 * HttpRequest对象由Django自动创建，HttpResponse对象由开发者创建
