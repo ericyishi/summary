@@ -1,4 +1,10 @@
 # python2与python3的区别
+### 查看安装的路径
+* 这个是cmd下面的一个命令
+  ```html
+   whereis python  
+   # C:\Python27\python.exe
+  ```
 ### 区别
 ```
  PYTHON3不是向下兼容PYTHON2，所以很多在python2里面能用的库在python3里面都不能用了。
