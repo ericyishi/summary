@@ -95,6 +95,11 @@ Out[84]: 80565768L
        print(str1+str2)  # heyman
       ```
       * 同种类型之间的连接，都可以使用加号
+   * 字符串重复，星号（*）
+     ```html
+       seq="h"
+       print(seq*5) #hhhhh
+     ```   
 
 3. 字符串函数
   ```

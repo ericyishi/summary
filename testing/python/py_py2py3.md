@@ -87,6 +87,41 @@
 	  * raw_input( ) 将所有输入作为字符串看待，返回字符串类型。
 	  * input( ) 只能接收"数字"的输入，在对待纯数字输入时具有自己的特性，它返回所输入的数字的类型（ int, float ）。
    2. 在 Python3.x 中 raw_input( ) 和 input( ) 进行了整合，去除了 raw_input( )，仅保留了 input( ) 函数，其接收任意任性输入，将所有输入默认为字符串处理，并返回字符串类型。  
+
+6. 除法/
+ * python2中整数相除，丢弃小数部分
+ * python3中整数相除，整数相除如果有小数部分，会保留。如果希望得到一个整数，使用//
  
+7. range()
+ * python2返回的是一个列表
+   ```html
+    range(1,10)
+    # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   ```
+ * python3返回是一个迭代器 
+   ```html
+     x=range(1,10)
+       for i in x:
+         print(i)
+   ``` 
  ### 更多
   * https://www.cnblogs.com/kendrick/p/7478304.html
+  
+### python自带转换工具
+* C:\Python27\Tools\Scripts下面的2to3.py
+* 运行
+  ```html
+   python 2to3.py 需要对比的python2文件
+  ```  
+* 查看帮助
+  ```html
+   python 2to3.py --help
+  ```  
+
+### 兼容性写法
+* 判断不同的python版本方法为：
+  ```html
+   >>> import sys
+   >>> sys.version_info.major #获取python的大版本号
+   >>> sys.version_info # sys.version_info(major=2, minor=7, micro=15, releaselevel='final', serial=0)
+  ```  
