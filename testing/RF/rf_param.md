@@ -1,9 +1,9 @@
 # 变量与常量
 ### 变量
 * 两者之间可以相互转换
-1. Scalar【单值变量】
+1. Scalar【标量：单值变量】【常用】
    * 使用$符号表示：${a}
-   * 字符串、数值等
+   * 常用于赋值字符串、数值等，也可以List类型
    * 常用方法
       1. 变量赋值
 		  1. Set赋值
@@ -12,7 +12,6 @@
 			   |---|---|---|
 			   |  ${val3} |Set variable If |'${val2}'=='abc'| yes|no|
 			   * 如果是比较字符串也需要将变量名括号起来
-			 
 			 
 			   |  ${val2} |Set variable|123|
 			   |---|---|---|
@@ -62,9 +61,9 @@
 		
 		       * 结果为44
          	  
-2. List 【多值变量】 
+2. List 【列表：多值变量】 【不常用】
    * 使用@符号表示：@{b}
-   * 对象
+   * 可以赋值：字符串、子列表、字典，或者空
    * 常用方法
      1. 变量赋值
 	    1. Create List【推荐】
@@ -75,8 +74,10 @@
            | @{val2}| Create List| 1 | 2 | 3| 
            | Log Many | @{val}| 
            | Log Many | @{val2}| 
+           | Log      | &{val2}| 
 		   
-           * 注意list需要Log Many输出，log只能输出scalar这样的单变量	
+           * 注意list需要Log Many输出
+           * Log打印时只能整体输出，无法依次打印，且输出符号要换成$	
      2. 变量的使用
 	 
 	       |@{val2}	|Create List|1|warn|
@@ -107,9 +108,16 @@
 		      ```
 			    ${userList[1][1]}
 			  ```
-3. Dict 【字典对象】
-   * 使用&{c}
-   * 引用使用的时候还得使用"$":${c}
+3. Dict 【字典对象】【常用】
+   * 定义为：&{变量名}
+     ```html
+      &{icon_DBStyle}    border=//i[@class='icon-frame-style']    line=//i[@class='icon-frame-types']
+      ...               color=//i[@class='icon-frame-color']    background=//div[@class='yh-picker-button yh-picker-button-square']
+     ```
+   * 引用的方式：
+     1. &{变量名}\[key\]
+     2. ${变量名.key}
+         * 这种方式引用使用的时候还得使用"$":${icon_DBStyle.color}
    
 ### 常量
 * 主要是指环境变量、数值变量、特殊字符常量、系统保留变量
@@ -132,3 +140,13 @@
 	  ${/} ${:} ${EMPTY} ${False} ${None}等
 	 ```  
    
+### 其他变量
+1. 变量文件
+   * 本质就是一个python文件
+2. 命令行变量
+   * 在ride里面：argument里面引用。
+     1. 单个变量使用-v
+     2. 变量文件使用-V
+     3. 同时-v和-V，-v优先级高，多个-v，则后面优先级高；多个变量文件中定义了相同的变量，第一个变量文件中变量优先级最高。
+     
+     
