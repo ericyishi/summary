@@ -30,4 +30,18 @@
     \	Log	${i}			
   ```
   * 值为1、3、5、7、9
-  
+ 
+### Evaluate
+* 可以直接运行python
+* 3个参数：
+  * 表达式
+  * 导入的模块，默认为None
+  * 命名空间，默认为None
+```html
+ ${random}    Evaluate    random.randint(0,sys.maxint)    random,sys
+ Log    ${random} 
+```    
+* 注意：也可以引入对上一步骤变量做计算，但需要加上引号
+```html
+ Log    Evaluate    len('${a}')
+```

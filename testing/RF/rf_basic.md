@@ -97,3 +97,16 @@
    pip install robotframework-databaselibrary
   ```  
 * 更多支持https://robotframework.org/#libraries  
+
+### 解释器
+* Pybot是RF框架运行默认解释引擎，后面版本改名为Robot，所以两者等效
+* 可以直接在命令行中输入：
+  ```html
+   Pybot --help
+   或者
+   Robot --help
+  ```
+* 可以直接在命令行里面运行该测试套件
+  ```html
+   Robot D:\robotframework\robotframe2\TestCase\001_moduleName
+  ```  
