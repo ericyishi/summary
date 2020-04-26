@@ -35,6 +35,8 @@
   ```
    * 使用了数据编码为名称/值对。这是标准的编码格式
    * ajax的POST请求的时候也需要带上。
+* fiddler 抓取不到chrome浏览器的请求，可能是安装了代理，关闭代理设置即可：chrome://extensions/   
+   
 ### 移动端
 * 移动端抓包需要配置fiddler允许远程连接
   1. 点击Tools->Options->Connections，勾选allow remote computers to connect，默认监听端口为8888（Fiddler listens on 【8888】port就是端口号），若端口被占用可以设置成其他的。配置好后一定要重新启动fiddler。
