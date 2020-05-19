@@ -9,7 +9,7 @@
 * 在python中，urllib和urllib2不可相互替代的，而不是urllib2简单是urllib的升级版本
 * rllib2可以接受一个Request类的实例来设置URL请求的headers，urllib仅可以接受URL。这意味着，你不可以伪装你的User Agent字符串等。
 * urllib提供urlencode方法用来GET查询字符串的产生，而urllib2没有。这是为何urllib常和urllib2一起使用的原因
-
+* 编码工作使用urllib的urlencode()函数，帮我们将key:value这样的键值对转换成"key=value"这样的字符串，解码工作可以使用urllib的unquote()函数。（注意，不是urllib2.urlencode() )
 ### urlopen方法
 ```html
    # urllib2_urlopen.py
@@ -127,4 +127,5 @@
     urllib.unquote(data) # 'username=\xe5\xbc\xa0\xe4\xb8\x89'
 
     print urllib.unquote(date)  # username=张三
-  ``` 
+  ```
+  * 通过urllib.urlencode()方法，将字典键值对按URL编码转换，从而能被web服务器接受

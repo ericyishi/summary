@@ -80,6 +80,7 @@
       3. [连接真机注意事项](testing/android/appium/connectMobilephone.md)
 ### [爬虫](crawler/crawl_basic.md)
   * [urllib库的请求与响应](crawler/urllib.md)
+  * [requests库](crawler/requests.md)
   * [scrapy框架的安装](crawler/InstallScrapy.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
 ### [算法](algorithm/algorithm.md)
