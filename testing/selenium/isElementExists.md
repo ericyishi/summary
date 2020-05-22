@@ -5,7 +5,7 @@
    # 先导入异常包
    from selenium.common.exceptions import NoSuchElementException
    try:
-     ele=self.driver.find_element(by=by,balue=value)
+     ele=self.driver.find_element(by=by,value=value)
    except NoSuchElementException as e:
      print e
      return False

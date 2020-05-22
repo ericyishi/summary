@@ -20,7 +20,12 @@
      ```
      * 程序开头第一行加上
      * 注意：#coding=utf-8 的 = 号两边不要空格。
-     * Python2中默认的编码格式是 ASCII 格式，所以
+     * Python2中默认的编码格式是 **ASCII** 格式，所以需要手动指定编码
+       ```
+             import sys
+             reload(sys)
+             sys.setdefaultencoding("utf-8")
+       ```
      * Python3.X 源码文件默认使用utf-8编码，所以可以正常解析中文，无需指定 UTF-8 编码。
   2. IDE需要设置 py 文件存储的格式为 UTF-8
      * Pycharm 设置步骤：
@@ -53,4 +58,14 @@
 			  # bytes to str
 			  bytes.decode(b)
 			```
-		  
+### 写入csv乱码
+* 正确打开方式：encoding='utf-8-sig'
+  ```
+   import csv
+
+   data = [['American','美国人'],
+           ['Chinese','中国人']]
+   with open('results.csv','w',newline='',encoding='utf-8-sig') as f:
+       w = csv.writer(f)
+       w.writerows(data)
+  ```

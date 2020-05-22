@@ -82,7 +82,10 @@
   * [urllib库的请求与响应](crawler/urllib.md)
   * [requests库](crawler/requests.md)
   * [xml_html解析器](crawler/XML_HTML_Parser.md)
-  * [scrapy框架的安装](crawler/InstallScrapy.md)
+  * [Scrapy框架](crawler/scrapy.md)
+    * [新建项目与使用](crawler/scrapy_basic.md)
+    * [使用虚拟环境scrapy框架的安装](crawler/InstallScrapy.md)
+    * [管道pipeline]
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
 ### [算法](algorithm/algorithm.md)
 ### [计算机网络](network/network.md)
