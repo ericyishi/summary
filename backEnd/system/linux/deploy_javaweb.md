@@ -72,18 +72,48 @@
      ```
 
 ### 3.安装数据库(mysql为例)
-  1. 下载mysql相关包
-     ```
-      yum install myql mysql-server
-     ```
+  1. 获取mysql YUM源
+     * 进入mysql官网获取RPM包下载地址https://dev.mysql.com/downloads/repo/yum/
+     * 选择对应版本下载
+       ```
+	     wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+       ```	  
+     * 安装mysql源
+       ```
+         yum -y localinstall mysql57-community-release-el7-11.noarch.rpm
+	   ```	 
+     * 在线安装Mysql
+       ```
+	     yum -y install mysql-community-server
+       ```	   
+
   2. 启动数据库服务
      ```
-      service mysql start;
+      systemctl start mysqld
      ```
-  3. 设置mysql超级管理员账号
-     ```
-      mysqladmin -u root password "1234"
-     ```
+	 * 设置开机启动
+	 ```
+	  systemctl enable mysqld
+      systemctl daemon-reload
+	 ```
+  3. 修改root本地登录密码
+     * mysql安装完成之后，在/var/log/mysqld.log文件中给root生成了一个临时的默认密码
+	 * A temporary password is generated for root@localhost: LlpE1NruC2/o
+       ```
+	    # 查询方式：
+        grep 'temporary password' /var/log/mysqld.log
+	    # 方式2：进入编辑vim /var/log/mysqld.log,再底行模式：
+	    :/temporary password 
+
+       ```
+	 * 倘若没有获取临时密码，则删除原来安装过的mysql残留的数据
+	   ```
+	    rm -rf /var/lib/mysql
+	   ```
+	   * 再次启动服务
+	      ```
+		   systemctl start mysqld
+		  ```
   4. 将数据库内容放入linux目录下【比如/opt/miniStore.sql】
 
   5. 进入mysql
@@ -91,6 +121,21 @@
       mysql -u root -p  回车
       输入密码进入
      ```
+	 * 注意-p后面如果直接输入密码，不要跟空格，否则会认为输入的是数据库名，会报错
+	 ```
+	  ERROR 1049 (42000): Unknown database 'XXX'
+	 ```
+	 * 修改密码【备注 mysql5.7默认密码策略要求密码必须是大小写字母数字特殊字母的组合，至少8位.下面演示重新设置这种策略】
+	   * 修改策略（将策略要求置为LOW，长度要求置为1）
+		   ```
+			 set global validate_password_policy=0;
+			 set global validate_password_length=1;
+		   ```
+	   * 修改密码
+	      ```
+		    ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+		  ```
+		  
   6. 创建数据库【库名与开发环境的保持一致】
      ```
       create database ministore;
@@ -104,3 +149,16 @@
       source /opt/miniStore.sql
      ```
   9.  查看用户表，使用用户名、密码登录
+  10. 设置允许远程登录
+      * Mysql默认不允许远程登录，我们需要设置下，并且防火墙开放3306端口；
+	    ```
+		  GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+		```
+  11. 退出Mysql,开放3306端口；
+      ```
+	   exit;
+	  ```
+      ```
+	    firewall-cmd --zone=public --add-port=3306/tcp --permanent
+        firewall-cmd --reload
+      ```	  
