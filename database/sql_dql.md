@@ -47,14 +47,19 @@
    SELECT DISTINCT sno FROM score WHERE degree >70 AND degree<90 ;
   ```
 * **选择操作(过滤操作)【where】**
+  * where是表达式 , 当值为真 , 则取出该行
+    ```
+	 select * from user where 1; // 取出所有行
+     select * from user where 0; // 一行都取不出来
+	```
   * 单条件选择
-  ```
-   SELECT 列名 FROM 表 WHERE 条件=值
-  ```
+    ```
+     SELECT 列名 FROM 表 WHERE 条件=值
+    ```
   * 多条件选择
-  ```
-   SELECT 列名 FROM 表 WHERE 条件=值 AND/OR 条件=值
-  ```
+    ```
+     SELECT 列名 FROM 表 WHERE 条件=值 AND/OR 条件=值
+    ```
 
   * SQL中的运算符
     * =
