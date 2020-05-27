@@ -85,7 +85,7 @@
   * [Scrapy框架](crawler/scrapy.md)
     * [新建项目与使用](crawler/scrapy_basic.md)
     * [使用虚拟环境scrapy框架的安装](crawler/InstallScrapy.md)
-    * [管道pipeline]
+    * [管道pipeline](crawler/scrapy_pipeline.md)
   * [爬取文章类型网站数据并存储至本地数据库](crawler/crwalFromJobbole.md)
 ### [算法](algorithm/algorithm.md)
 ### [计算机网络](network/network.md)

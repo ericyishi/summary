@@ -28,8 +28,12 @@
 
 ### 制作 Scrapy 爬虫步骤
 1. 新建项目 (scrapy startproject xxx)：新建一个新的爬虫项目
-2. 明确目标 （编写items.py）：明确你想要抓取的目标
+2. 明确目标 （编写items.py）：明确你想要抓取的目标,需要的字段
 3. 制作爬虫 （spiders/xxspider.py）：制作爬虫开始爬取网页
+   ```
+        scrapy genspider 爬虫名 待爬取网站域名
+        scrapy genspider itcast itcast.cn
+   ```
 4. 存储内容 （pipelines.py）：设计管道存储爬取内容
 
 ### 安装
