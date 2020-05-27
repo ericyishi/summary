@@ -235,14 +235,9 @@
 	 * 语法
        ```
 	    左表left/right join 右表 on 左表.字段=右表.字段
-	   ```
-	 * demo   
+	   ```  
        ```
-	     SELECT
-    　　 student.s_name,
-   　　  student.c_id,
-    　　 class.id,
-    　　 class.c_name
+	     SELECT student.s_name,student.c_id,class.id,class.c_name
 　　	 FROM
     　　 student
 　　	 left JOIN class ON student.c_id = class.id;
