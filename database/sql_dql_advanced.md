@@ -38,6 +38,12 @@
     * 注意与WHERE语句的区别：
       1. where 是对分组前的数据进行过滤 ;having 是对分组后的数据进行过滤。
       2. where 后面不能使用聚合函数,having可以。
+	  *  where 是对内存中的表进行筛选 , 而 having 是对进一步计算出来的结果集进行再一步筛选
+	  * 并非所有查询语句一定要先用了where才使用having
+	    ```
+		  SELECT NAME,AVG(score) FROM result GROUP BY NAME HAVING SUM(score<60)>=2
+		  # 查询出 2 门及 2 门以上不及格者的平均成绩
+		```
 
   ```
     SELECT depNo,count(*)
@@ -237,7 +243,7 @@
 	    左表left/right join 右表 on 左表.字段=右表.字段
 	   ```  
        ```
-	     SELECT student.s_name,student.c_id,class.id,class.c_name FROM student left JOIN class ON student.c_id = class.id;
+	     SELECT student.s_name,student.c_id,class.id,class.c_name FROM student  left JOIN class ON student.c_id = class.id;
        ```  	   
 
   4. 三者区别

@@ -25,8 +25,19 @@
     import requests
 
     kw = {'wd':'长城'}
-
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"}
+     user_agent = [
+            "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36",
+            "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
+            "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0",
+            "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; rv:11.0) like Gecko",
+            "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)",
+            "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)",
+            "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+            "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+            ]
+			
+     headers =  {'User-Agent': random.choice(user_agent)}
 
     # params 接收一个字典或者字符串的查询参数，字典类型自动转换为url编码，不需要urlencode()
     response = requests.get("http://www.baidu.com/s?", params = kw, headers = headers)
@@ -142,8 +153,8 @@
     ```
      import requests
 
-     # 1. 创建session对象，可以保存Cookie值
-     ssion = requests.session()
+     # 1. 创建Session对象，可以保存Cookie值
+     ssion = requests.Session()
 
      # 2. 处理 headers
      headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36"}
@@ -160,6 +171,23 @@
      # 6. 打印响应内容
      print response.text
     ```
+	* 另外Sessions不能保持手动构建的cookie,原来requests只能保持 cookiejar 类型的cookie，而我们手动构建的cookie是dict类型的。所以要把dict转为 cookiejar类型
+	  ```
+	   # 两者转换
+	   #将CookieJar转为字典：
+       cookies = requests.utils.dict_from_cookiejar(r.cookies)
+
+       #将字典转为CookieJar：
+       cookies = requests.utils.cookiejar_from_dict(cookie_dict, cookiejar=None, overwrite=True)
+
+       #其中cookie_dict是要转换字典
+
+       转换完之后就可以把它赋给cookies 并传入到session中了：
+
+       s = requests.Session()
+       s.cookies = cookies
+
+	  ```
 # 处理HTTPS请求 SSL证书验证
   * 要想检查某个主机的SSL证书，你可以使用 verify 参数（默认为True）
   * 如果SSL证书验证不通过，或者不信任服务器的安全证书，则会报出SSLError，为了正常访问改为Flase
