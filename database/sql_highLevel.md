@@ -174,6 +174,10 @@
       ```
        SHOW CREATE PROCEDURE 存储过程名;
       ```
+    * 删除
+      ```
+        DROP PROCEDURE 存储过程名;
+      ```
  * 分类
    * 无输入参数和无输出参数的存储过程【很少使用】
      ```
@@ -192,6 +196,30 @@
       CALL pro_stu_score("lee Smith",@uavg,@usum);
       SELECT @uavg,@usum
      ```
+     ```
+      # 使用存储过程新增数据
+      DROP PROCEDURE insertdata;
+
+      DELIMITER $$
+      CREATE PROCEDURE insertdata(IN n INT,IN uid INT)
+      BEGIN
+       DECLARE i INT DEFAULT 1;
+       SET i=uid;
+       WHILE (i<n) DO
+        INSERT INTO yis.user VALUES(i,CONCAT("ceshi",i),i);
+        SET i = i + 1;
+        END WHILE;
+      END $$
+      DELIMITER ;
+
+      CALL insertdata(20,9);
+     ```
+     * 其实就是告诉mysql解释器，该段命令是否已经结束了，mysql是否可以执行了；
+     * 默认情况下，delimiter是分号;delimiter换成其它符号，如//或$$，最后需要换回来
+     * varchar与数值不能直接拼接，需要使用concat方法
+
+
+这种情况下，就需要事先把。
 
 ### 函数
   * 概述

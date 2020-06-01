@@ -109,4 +109,6 @@
 * 可以直接在命令行里面运行该测试套件
   ```html
    Robot D:\robotframework\robotframe2\TestCase\001_moduleName
-  ```  
+  ```
+### 环境搭建常见问题
+* https://www.cnblogs.com/101718qiong/p/8072590.html
