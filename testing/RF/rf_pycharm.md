@@ -8,4 +8,6 @@
 2. 关联文件
 * File--Setting--Editor--File Type，找到Robotframework Language后关联*.robot和*.txt文件类型
 * 默认是没有txt文件的
+### 增加右键选中执行
+ * 参考项目文档：https://github.com/ericyishi/Robotframework2
 
