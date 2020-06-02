@@ -67,7 +67,11 @@
 * 方法一【手动创建】：
    * 在RIDE安装好之后，桌面就会生成一个RIDE图标，如果没有：
    1. 进入到python的安装目录的找到pythonw.exe文件-->右键-->发送到-->桌面快捷方式
-   2. 桌面上的pythonw.exe快捷方式-->右键-->属性-->快捷方式-->更改图标-->浏览，找到python的安装目目录下\Lib\site-packages\robotide\widgets目录下robot图标，双击图标，然后再目标中添加： -c "from robotide import main; main()"，在常规中修改快捷方式名称为RIDE，点击确定就可以了
+   2. 桌面上的pythonw.exe快捷方式-->右键-->属性-->快捷方式-->更改图标-->浏览，找到python的安装目目录下\Lib\site-packages\robotide\widgets目录下robot图标，双击图标，然后再目标中添加：
+       ```
+        C:\Python27\pythonw.exe -c "from robotide import main; main()"
+       ```
+       * 在常规中修改快捷方式名称为RIDE，点击确定就可以了
    * 以上操作本质来说就是一个快捷方式运行python ride.py的命令
 * 方法二【工具创建】：
    1. 使用ride自带创建快捷方式的工具
