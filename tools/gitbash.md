@@ -53,7 +53,7 @@
    * 保存更新DNS
      * Winodws系统的做法：打开CMD，输入ipconfig /flushdns
      * Linux的做法：在终端输入sudo /etc/init.d/networking restart
-#### 6.配置user信息
+#### 6.配置user信息【需要配置，否则上传不了】
    * 最小配置，为了方便区分上传者(配置user.name与user.email)
      ```
         // 配置user.name
