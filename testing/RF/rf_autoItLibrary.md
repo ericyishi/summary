@@ -17,5 +17,11 @@
 
  
 ### 注意事项
-* 使用全英文路径安装，启用管理员身份进行打开   
+* 使用全英文路径安装，启用管理员身份进行打开
+
+### 帮助文档
+* 安装robotframework AutoItLibrary后会在下面路径下有一个英文帮助文档,包含关键字
+  ```buildoutcfg
+   file:///C:/RobotFramework/Extensions/AutoItLibrary/AutoItLibrary.html
+  ```   
    
