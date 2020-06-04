@@ -78,6 +78,7 @@
 	      * [在启动中加入日志的方法](testing/android/appium/setupWithLog.md)
 	  2. [robotFramework下使用appium的方法](testing/android/appium/adroid_robotframework.md)	  
       3. [连接真机注意事项](testing/android/appium/connectMobilephone.md)
+      4. [使用时遇到的一些坑](testing/android/appium/appium_traps.md)
 ### [爬虫](crawler/crawl_basic.md)
   * [urllib库的请求与响应](crawler/urllib.md)
   * [requests库](crawler/requests.md)
