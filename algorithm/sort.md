@@ -104,3 +104,18 @@ selectarr(a)
 1, 2, 4, 21, 32, 44, 55
 ```
 
+### 插入排序
+* 对于未排序的数据，在已排好序列从后往前比较，找到对应位置插入
+```
+ def insert_sort(alist):
+    # 从第二个位置，即下标为1的元素开始向前插入
+    for i in range(1, len(alist)):
+        # 从第i个元素开始向前比较，如果小于前一个元素，交换位置
+        for j in range(i, 0, -1):
+            if alist[j] < alist[j-1]:
+                alist[j], alist[j-1] = alist[j-1], alist[j]
+
+  alist = [54,26,93,17,77,31,44,55,20]3
+  insert_sort(alist)
+  print(alist)
+```
