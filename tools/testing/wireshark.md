@@ -1,5 +1,6 @@
 # wireshark
 ### 概念
+* 用来获取网络数据封包，包括http,TCP,UDP，等网络协议包
 * wireshark使用pcap network library来进行封包捕捉。Lipcap（Linux）或者Winpcap（Windows）。windows平台下，在安装wireshark的时候你就会发现会提示你安装winpcap，当然，如果你已经安装过了就没有这个提示了。
 * winPcap(Windows Packet Capture)是Windows平台下的链路层网络访问工具，其目的在于为Windows应用程序提供访问网络底层的能力。
   * winPcap功能:

@@ -89,7 +89,15 @@ www.aspxfans.com
          * 数据被编码为名称/值对。这是标准的编码格式。
       2. multipart/form-data
          * 数据被编码为一条消息，页上的每个控件对应消息中的一个部分。
-         * 使用表单上传文件时，必须让 form 的 enctyped 等于这个值
+         * 上传文件必须用这个值
+         * 如果是前端，form标签表单上传文件时，必须让 form 的 enctyped 等于这个值【表单数据会编码为 “application/x-www-form-urlencoded】
+           ```html
+              <form action="form_action.asp" enctype="multipart/form-data">
+                <p>First name: <input type="text" name="fname" /></p>
+                <p>Last name: <input type="text" name="lname" /></p>
+                <input type="submit" value="Submit" />
+              </form>
+           ```
       3. application/json
          * 用来告诉服务端消息主体是序列化后的 JSON 字符串，特别适合 RESTful 的接口
       4. text/xml

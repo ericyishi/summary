@@ -1,7 +1,7 @@
 # ADB常用指令
 ### ADB概念
 * ADB-Android Debug Bridge，电脑和安卓设备之间的连接，调试通道。
-* 存放于sdk的 **\SDK安装路径\sdk\platform-tools 目录下
+* 存放于sdk的 xx\SDK安装路径\sdk\platform-tools 目录下
 
 ### 常用命令
 * adb connect 127.0.0.1:62001 连接模拟器【62001是夜神模拟器的端口号，夜神模拟器需要单独安装】
@@ -21,11 +21,11 @@
      ```
       adb uninstall 包名
      ```
-     * **注意：**卸载是需要获取包名的
+     * **注意**卸载是需要获取包名的
 * 查看包名的几种方式
   1. adb shell pm list packages 打印出设备安装的所有包信息 
   2. ①进入adb shell ②cd /data/data ③ls 
-  3. ①\\AndroidADT\sdk\build-tools\android-4.3路径下运行cmd②输入：aapt dump badging 路径（将对应的app拖进来，即可得到对应的路径）
+  3. ①\\\sdk\build-tools\android-4.4.2路径下运行cmd②输入：aapt dump badging 路径（将对应的app拖进来，即可得到对应的路径）
 * adb shell 进入（android）的终端shell
 * exit 退出adb shell
 

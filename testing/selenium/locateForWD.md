@@ -12,6 +12,10 @@
 * id元素的获取
   * driver.find_element_by_id()
   * driver.find_elements_by_id() //返回的是一个列表，使用下标，就算只有一个元素也要用[0]
+    ```html
+     driver.find_element_by_id("kw")
+     driver.find_elements_by_id("kw")[0]
+    ```
 2. name
 * 通常是用于标签上有name属性的获取，常见于input
   * driver.find_element_by_name()
@@ -28,6 +32,9 @@
 * 定位超文本链接【需要完整写出a标签的内容】
   * driver.find_element_by_link_text()
   * driver.find_elements_by_link_text()
+    ```html
+      driver.find_element_by_link_text('一个很长的文本连接')
+    ```
 
 6. partial_link
 * partial_link_text是对上面link的一个补充，部分文字的提取
@@ -80,8 +87,9 @@
 		  ```
 		   //a[text()='搜狗搜索']   # 完全匹配
 		   //a[contains(text(),'百度')]    #包含即可
-		   //div[@class=" commonDiv mydiv"][text()='搜狗搜索']   #注意前面class必须要写全，与css写部分即可是有区别的
+		   //div[@class=" commonDiv mydiv"][text()='搜狗搜索']   
 		  ```
+		  * **注意**前面class必须要写全，与css写部分即可是有区别的
     4. xpath的运算符
        1. "|"【获取多个节点集】
 	     ```
@@ -111,6 +119,9 @@
 * 性能优于xpath
   * driver.find_element_by_css_selector()
   * driver.find_elements_by_css_selector()
+    ```html
+      find_element_by_css_selector(.importane) #获取类名为importance的元素
+    ```
 
 
 ### 使用By定位元素【不推荐】

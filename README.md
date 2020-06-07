@@ -47,6 +47,7 @@
       * [unittest框架](testing/unittest/unittest.md)
         1. [结合ddt框架进行数据驱动](testing/unittest/ddt.md)
     * API自动化测试
+      * python+requests+unittest
     * UI自动化测试
       * [selenium](testing/selenium/selenium.md)
       * [Robot Framework](testing/RF/robotFramework.md)

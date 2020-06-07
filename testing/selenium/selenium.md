@@ -36,3 +36,4 @@
     * [异常时截图](highLevel/screenShotWhenException.md)	
   * 异常处理
     * [元素是否存在](isElementExists.md)
+* 常见问题[FAQ.md]    
