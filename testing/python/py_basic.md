@@ -107,3 +107,25 @@ FUNCTIONS
    'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 
    'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 ```
+### 查看安装的路径
+* 这个是cmd下面的一个命令
+  ```html
+   where python  
+   # C:\Python27\python.exe
+  ```
+  * 适用于找其他程序安装路径
+  
+### 查看版本
+* 方法1：
+  ```html
+   import platform
+   platform.python_version()
+   # 2.7.15
+  ```  
+* 方法2：
+  ```html
+   import sys
+   sys.version
+   #  '2.7.15 (v2.7.15:ca079a3ea3, Apr 30 2018, 16:30:26) [MSC v.1500 64 bit (AMD64)]'
+  ```  
+  

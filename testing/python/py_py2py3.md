@@ -1,10 +1,5 @@
 # python2与python3的区别
-### 查看安装的路径
-* 这个是cmd下面的一个命令
-  ```html
-   whereis python  
-   # C:\Python27\python.exe
-  ```
+
 ### 区别
 ```
  PYTHON3不是向下兼容PYTHON2，所以很多在python2里面能用的库在python3里面都不能用了。
@@ -13,18 +8,20 @@
 * Python3中print为一个函数，必须用括号括起来；Python2中print为class
 * python2：
   ```
-    print 'Python', python_version()
+    import platform
+    print 'Python', platform.python_version()
 	print 'Hello, World!'
 	print('Hello, World!')
   ```
 * python3：
   ```
-    print('Python', python_version())
+    import platform
+    print('Python', platform.python_version())
 	print('Hello, World!')
   ```
 2. long整型
 * python2中当数字很大时会变成long类型，python3中没有这个概念都是int型【使用type()查看】
-  * 自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果
+  * 自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以在python3长整数数据后面不加字母L也不会导致严重后果
   ```
    python2：
    long(1)#1L，强制把int 1转化成长整型1L
@@ -87,6 +84,10 @@
 	  * raw_input( ) 将所有输入作为字符串看待，返回字符串类型。
 	  * input( ) 只能接收"数字"的输入，在对待纯数字输入时具有自己的特性，它返回所输入的数字的类型（ int, float ）。
    2. 在 Python3.x 中 raw_input( ) 和 input( ) 进行了整合，去除了 raw_input( )，仅保留了 input( ) 函数，其接收任意任性输入，将所有输入默认为字符串处理，并返回字符串类型。  
+      * 因为返回时字符串类型，对于其他类型需要强制转换
+        ```html
+          x=int(input("请输入一个数字"))
+        ```
 
 6. 除法/
  * python2中整数相除，丢弃小数部分

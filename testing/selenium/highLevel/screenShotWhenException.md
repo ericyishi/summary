@@ -4,12 +4,10 @@
 ```
 
  def currentDate():
-    date=time.localtime()
-	today=str(date.tm_year)+"-"+str(date.tm_mon)+"-"+str(date.tm_today)
+	today= time.strftime("%Y-%m-%d)
 	return today
 	
  def currentTime():
-    timeStr=datetime.now()
     now=timeStr.strftime('%H-%M-%S')
     return now
 

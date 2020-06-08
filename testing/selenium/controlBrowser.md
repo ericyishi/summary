@@ -47,6 +47,7 @@
 	self.assertEqual(title,u"百度一下，你就知道"，"assert error") # 这里assertEqual是unittest下面的一个方法，所以需要完全匹配
    ```
    * 一般用于断言是否已经成功打开某个页面
+   * assertEqual这里用的是unittest里面断言方法，所以需要先引入import unittest
 6. 获取当前页面url
    ```
     driver.current_url
@@ -64,6 +65,7 @@
        self.driver.set_window_position(x=300,y=0)
        print(self.driver.get_window_position()) # {'y': 0, 'x': 300}
    ```   
+   * 先在setup里面初始化了driver
    * 获取坐标返回的是字典
    * 部分浏览器获取设置坐标方法会失效
 8. 获取HTML页面源码
