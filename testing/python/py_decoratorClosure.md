@@ -195,17 +195,32 @@
  #### 闭包作用
  * 可以用来在一个函数与一组私有变量之间创建关联关系，在给定的函数被多次调用的过程中，让这些私有变量能够保持持久性
    ```html
-    func_list=[]
+    _list = []
+
     for i in range(3):
-       def clos(i):# 这就是闭包，如果没加上这层，结果是3 3 3
-           def myfunc(a):
-               return i+a
-           return myfunc
-       func_list.append(myfunc(i))
-      
-    for f in func_list:
-       print(f(1)) #1 2 3
+        def func(i):
+            def f_closure(a): #a接受传入的值1，而i每次状态都保留了下来
+                return i + a
+    
+            return f_closure
+    
+    
+        _list.append(func(i))
+    
+    for f in _list:
+        print(f(1)) #1 2 3
+    
    ```
+   ```html
+    _list = []
+    for i in range(3):
+        def func(a):
+            return i+a
+        _list.append(func)
+    for f in _list:
+        print(f(1)) # 3 3 3 
+   ```
+  
  #### 闭包特征
  * 必须要有函数的嵌套，外层函数必须返回内层函数。外层函数相当于给内层函数提供一个包装起来的运行环境
  * 内层函数一定要用到外层函数传入的自由参数

@@ -10,7 +10,7 @@ import os
 1. os.name 获取系统类型
    * windows系统为：nt
    * Linux系统为：posix
-2. os.system("command")会执行括号中的命令
+2. os.system("command")会执行括号中cmd的命令
    * 如果命令成功执行，这条语句返回0【注意：0代表成功】，否则返回1
    * 参数-f是强制，-im是进程名
    ```
@@ -33,9 +33,19 @@ import os
 5. os.path.join(os.getcwd(),'aaa', 'bbb', 'ccc')   拼接出来多级目录：E:\test\aaa\bbb\ccc
 6. os.path.exists('目录')  判断目录是否存在【返回True 或 False】
 7. os.path.split(‘文件或者目录’)  把最后的一个目录或者文件和前面的目录分开，返回一个tuple
+   ```html
+     os.path.split(os.getcwd())[0] # 'C:\\Users'
+     os.path.split(os.getcwd())[1] #  'Administrator'
+     
+   ```
 8. os.path.splitext(‘文件’)    把文件的后缀名和前面分开，返回一个tuple
 9. os.path.basename(path)  返回path中的文件名
-10.  os.path.dirname(path) 返回path中不含文件的路径，结果不包含'\'。必须是实际存在的.py文件。否则会报错
+   ```html
+    os.path.basename('D:\\pythontest\\ostest\\hello.py')
+    #  'hello.py'
+   ```
+10. os.path.abspath() 返回绝对路径
+11. os.path.dirname(path) 返回path中不含文件的路径，结果不包含最后一个'\\'。必须是实际存在的.py文件。否则会报错
    ```
      os.path.dirname('D:\\pythontest\\ostest\\hello.py')
      'D:\\pythontest\\ostest'
@@ -48,7 +58,7 @@ import os
 	# print(os.path.abspath(\__file\__))则为D:\\pythontest\\ostest\\hello.py
     注意：在Python控制台下，直接使用print __file__是会导致  name ‘__file__’ is not defined错误的，因为这时没有在任何一个脚本下执行，自然没有 __file__的定义了。
    ```
-   
+  
 #### 时间相关命令
 1. os.path.getmtime(path) 文件或文件夹的最后**修改**时间，从新纪元到访问时的秒数。
 2. os.path.getatime(path) 文件或文件夹的最后**访问**时间，从新纪元到访问时的秒数。

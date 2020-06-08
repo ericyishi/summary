@@ -4,7 +4,7 @@
 ### 继承
 * 类A继承类B，那么类A会自动获得类B的所有属性和方法
 * 可以提高代码的重用性，同时扩展自己方法与属性
-* 默认继承的是object类，可以不写显示写出
+* 默认继承的是object类，python3可以不写显示写出。Python2最好显示写成继承class(Object),不写的话是旧式类，参考关于class的部分：https://github.com/ericyishi/summary/blob/master/testing/python/py_basic_grammer.md
   ```
    class B:
      def study():
@@ -16,6 +16,7 @@
     A().study()#可以直接调用父类的方法  
   ```
  #### 继承后子类初始化的注意事项
+ * **特别注意**
  * 当使用继承时，我们必须注意初始化方法__init__的行为：
   1. 如果子类没有定义自己的初始化方法，则父类的初始化方法会自动调用。实例化时候也需要按照父类的初始化传入参数
   2. 如果子类定义了自己的初始化方法【为了定义自己的实例属性】，而子类中没有显式调用父类的初始化方法，则父类的**所有属性**【实例方法不受影响】不会被初始化！
@@ -40,7 +41,7 @@
        ``` 
         class A(B):
           def __init__(self,name,age): #父类的参数也得写上去
-             B.__init__(self,name) #这里需要对父类进行初始化
+             B.__init__(self,name) #这里需要对父类进行初始化，也可以写super(A,self).__init__(self,name)
              self.age=age
           pass 
           
@@ -88,6 +89,7 @@
      def say(self):
         print('羊在叫')
    class Dog(Animal):
+     def say(self):
         print('狗在叫')
         
    def animal_say(animal)   #外部的方法，传入一个动物的实例
