@@ -41,20 +41,23 @@
      ```
        1、导入对象的时候，起到别称的作用，比如现在用Remote代替的就是WebDriver 
 
-       from .webdriver import WebDriver as Remote
+          from .webdriver import WebDriver as Remote
  
 
        2、可以与with组合起来，即经典的with as 用法，with后面紧跟着的对象，会调用它的__enter__方法，返回的对象会赋值给temp
 
-        with object as temp：
- 
-        pass
+           with object as temp：
+    
+           pass
+
+           with open("1.txt","w",encoding="utf-8") as f:
+            
       3、与except组合起来，看下面，捕获到Exception对象会赋值给e
 
-        try:
-         pass
-        except Exception as e:
-         pass
+          try:
+           pass
+          except Exception as e:
+           pass
 
      ```
   6. **assert** 断言，用于判断变量或者条件表达式的值是否为真
@@ -69,6 +72,40 @@
          ```
   7. **break** 中断循环语句的执行
   8. **class** 用于定义类
+     ```
+       # coding=utf-8
+       # 旧式类
+       class A:
+           pass
+       
+       a = A()
+       # print A.__class__ #会报错
+       print a.__class__
+       print type(A)
+       print type(a)
+       
+       
+       #新式类
+       
+       class B(object):
+           pass
+       
+       
+       b = B()
+       
+       print B.__class__
+       print b.__class__
+       print type(B)
+       print type(b)
+       
+       旧式类:
+         实现不够好，类是类，实例是实例，类的类型是classobj，实例的类型是instance，两者的联系只在于__class__，这和内置对象是不同的，int对象的类型就是int，同时int()返回的也是int类型的对象，内置对象和自定义对象不同就对代码统一实现带来很大困难
+       新式类:
+         1. 所有类的类型都是type
+         2. 所有类调用的结果都是构造，返回这个类的实例
+         3. 所有类都是object的子类
+         4. 新式类不仅可以用旧类调用父类的方法，也可以用super方法
+     ```
   9. **continue** 跳出本次循环，继续执行下一次循环
   10. **def** 用于定义函数或方法
   11. **del** 删除变量或序列的值
