@@ -236,7 +236,7 @@
 		  /Xmx
 		  就能搜到此内容
 		 ```
-		 
+		* gerp 查找, sed 编辑, awk 根据内容分析并处理 https://blog.csdn.net/technologyleader/article/details/81945069
     8. 查找文件【find】
         ```
 	     find path -option 文件名
@@ -267,6 +267,12 @@
 	        ```
 	         find / -name "*al*.txt"
 	        ```
+	     * 结合find、grep
+	       * 查找所有".h"文件中的含有"helloworld"字符串的文件
+	         ```html
+               find /PATH -name "*.h" -exec grep -in "helloworld" {} \;
+               find /PATH -name "*.h" | xargs grep -in "helloworld"
+             ```   
     9. 创建快捷方式【ln】
        ```
          ln 文件名 快捷方式名

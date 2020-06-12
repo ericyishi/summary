@@ -48,20 +48,46 @@
    ```html
     import time
     
+    
     def mytimer(func):
+        print("mytimer1")
         def B():
+            print("mytimer1内部start")
             start_time = time.time()
             func()
             end_time = time.time()
-            print("运行时间", end_time - start_time)
+            print("运行时间1:%f"%(end_time - start_time))
+    
         return B
     
-    @mytimer
-    def A():
-        time.sleep(3)
-        print("AAA")
+    def mytimer2(func):
+        print("mytimer2")
+        def B():
+            print("mytimer2内部start")
+            start_time = time.time()
+            func()
+            end_time = time.time()
+            print("运行时间2：%f"%(end_time - start_time))
+    
+        return B
+    
+    if __name__=="__main__":
+     @mytimer
+     @mytimer2
+     def A():
+         time.sleep(3)
+         print("AAA")
     
     A()
+   ```
+   ```html
+     mytimer2
+     mytimer1
+     mytimer1内部start
+     mytimer2内部start
+     AAA
+     运行时间2：3.001000
+     运行时间1:3.001000 
    ```
    * 注意，装饰器函数要写在前面，先进行定义
    * @mytimer实际做的操作就是A=mytimer(A)赋值
@@ -190,7 +216,11 @@
     
     print(A('zhangsan'))
    ```
- 
+### 多个装饰器执行顺序
+* 在函数定义阶段：执行顺序是从最靠近函数的装饰器开始，自内而外的执行
+* 在函数执行阶段：执行顺序由外而内，一层层执行
+* https://blog.csdn.net/u013411246/article/details/80571462
+
 ### 闭包
  #### 闭包作用
  * 可以用来在一个函数与一组私有变量之间创建关联关系，在给定的函数被多次调用的过程中，让这些私有变量能够保持持久性

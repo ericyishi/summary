@@ -6,7 +6,7 @@
 import sys
 ```
 ### 常用方法
-1. sys.path 记录了导入模块时的搜索路径
+1. sys.path 对应调用python解释器的脚本所在的目录。 其实就是存放需要运行的代码的路径
    * 存放的是python的环境变量
    * 所有的模块都放在这些路径下的某一个
 2. sys.version  python的版本信息
