@@ -36,7 +36,13 @@
   * 后面跟两个参数，第一个为数据开始的下标【从0开始】,第二个为截取数据的长度
   * limit 不用加括号括起参数。
   ```
-   SELECT * FROM student LIMIT 3,10
+   SELECT * FROM student LIMIT 3,10 #代表从第四条数据开始取，长度为10，即4到13行的数据，共10条
+  ```
+  * oracle限制行数没有 limit用法，但有伪列rownum
+  ```html
+   select * from (select t.*,rownum rn from student t) n where n.rn>=4 and n.rn<14
+ 
+   select * from student where rownum<14 minus select * from student where rownum>3
   ```
 
 * 排除重复【DISTINCT】
