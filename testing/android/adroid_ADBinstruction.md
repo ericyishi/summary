@@ -33,6 +33,13 @@
 
 
      ```
+* 查看启动页名字
+   ```
+     adb logcat ActivityManager:I|find "cmp" 
+     # 输入以上命令，然后打开应用，cmp后面接的就是启动页名字
+     
+
+   ```     
 * adb shell 进入（android）的终端shell
 * exit 退出adb shell
 
