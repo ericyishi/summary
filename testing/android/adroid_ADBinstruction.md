@@ -26,6 +26,13 @@
   1. adb shell pm list packages 打印出设备安装的所有包信息 
   2. ①进入adb shell ②cd /data/data ③ls 
   3. ①\\\sdk\build-tools\android-4.4.2路径下运行cmd②输入：aapt dump badging 路径（将对应的app拖进来，即可得到对应的路径）
+  4. 直接动态查看运行的应用的报名
+     ```
+       1.先连接上手机，使用命令    adb shell am monitor
+       2.打开想要获取包名的APP即可,即会展示对应的报名
+
+
+     ```
 * adb shell 进入（android）的终端shell
 * exit 退出adb shell
 
