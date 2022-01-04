@@ -69,6 +69,63 @@ logger.setLevel(logging.INFO)  # 输出所有大于INFO级别的log
      
     输出结果会追加写入当前模块路径的class_test.log文件
 ```
+* 与unittest的结合例子
+```html
+    #encoding=utf-8
+
+import unittest
+import logging
+
+LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
+
+logging.basicConfig(filename='my.log',exc_info=True, stack_info=True, level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
+logging.debug("This is a debug log.")
+logging.info("This is a info log.")
+logging.warning("This is a warning log.")
+logging.error("This is a error log.")
+logging.critical("This is a critical log.")
+
+
+
+
+class Test(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        logging.info("setupclass method only called once.\n")
+
+    @classmethod
+    def tearDownClass(cls):
+        logging.info("teardownclass method only called once too.\n")
+
+    def setUp(self):
+        logging.info("setup\n")  # 如果没有可以不写或者pass代替
+
+    def tearDown(self):
+        logging.info("teardown\n")
+
+    def testSubtract(self):  # test method names begin with 'test'
+        result = 6 - 5  # 实际结果
+        hope = 1  # 期望结果
+        try:
+            self.assertEqual(result, hope)
+        except Exception as msg:
+            logging.error('错误信息%s' % msg)
+
+    def testDivide(self):
+        result = 7 / 2  # 实际结果
+        hope = 3.5  # 期望结果
+        try:
+            self.assertEqual(result, hope)
+        except Exception as msg:
+            logging.error('错误信息%s' % msg)
+
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+```
 ### handler
 * 控制输出到哪里，是控制台还是日志文件
 * 不可以重复实例handler，否则会遇到了重复记录日志的问题
