@@ -28,3 +28,24 @@
  # 当需要python3的pip时，只需
  py -3 -m pip install xxx
 ```
+
+### 方式四：修改文件名【推荐】
+1. 两个版本都装，并加入环境变量中
+2. 3版本修改：把python.exe，pythonw.exe改为python3.exe，pythonw3.exe
+3. 2版本修改：把python.exe，pythonw.exe改为python2.exe，pythonw2.exe
+4. 解决pip,两个版本重装pip：
+   ```html
+     python3 -m pip install --upgrade pip --force-reinstall，显示重新安装成功
+
+     python2 -m pip install --upgrade pip --force-reinstall，显示重新安装成功
+
+    ```
+5. 运行
+   ```html
+     PYTHON3:
+       python3
+       pip3
+     PYTHON2:
+       python2
+       pip2      
+   ```    
