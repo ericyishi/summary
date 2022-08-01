@@ -109,7 +109,7 @@
    * Python2随机写入二进制文件
      ```
        with open('/python2/random.bin','w') as f:
-          f.write(os.urandom(10))
+          f.write(os.urandom(10))   #os.urandom()此方法返回一个字符串，该字符串表示适合加密用途的随机字节
      ```
      * python3这样写会报错，TypeError:must be str, not bytes
      * Python3给open函数添加了名为encoding的新参数，而这个新参数的默认值却是‘utf-8’。这样在文件句柄上进行read和write操作时，系统就要求开发者必须传入包含Unicode字符的实例，而不接受包含二进制数据的bytes实例。
