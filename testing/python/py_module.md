@@ -7,11 +7,13 @@
 * 代码的重用性
 * 避免函数名变量名冲突
 #### 模块的导入方式
-* import module
+* import module #这种形式只能导入包名（或者叫模块）
   ```
    import math
    #导入了math包
    math.random(1,10)
+   
+   import math.random # 这样写就是错误的，random是函数名不能这样的方式引用
   ```
 * from moudule import funcname
   ```
