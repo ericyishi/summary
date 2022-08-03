@@ -48,7 +48,7 @@
 
 #### __init__.py文件的作用
 * 标识该目录是一个python的模块包（module package）
-* 简化模块导入操作，只要import这个包，就会执行对应的__init__.py文件
+* 简化模块导入操作，**只要import这个包，就会执行对应的__init__.py文件**
 
 ### 使用时候的注意事项
 * if __name__ == '__main__'
