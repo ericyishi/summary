@@ -14,10 +14,31 @@
   1. _thread：_thread是低级模块
   2. threading：threading是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用threading这个高级模块。
      ```
-	   threading.Thread(target=sayIt,args=('演员'))
+	   threading.Thread(target=function_name,args=(param,)) ;
 	 ```
-	 * function_name: 需要线程去执行的方法名
+	 * function_name: 需要线程去执行的方法名,注意**不要加括号**（）
      * args: 线程执行方法接收的参数，该属性是一个元组，如果只有一个参数也需要在末尾加**逗号**。
+    ```html
+    import threading
+    class People():
+    
+        def speakName(self,name):
+            print(name)
+    
+    
+    if __name__=='__main__':
+        p=People()
+        th1=threading.Thread(target=p.speakName,args=('wangsan',)) #一个入参一定要加,因为是元组
+        th2=threading.Thread(target=p.speakName,args=('lisi',))
+        th1.start()
+        th2.start()
+    ``` 
+    ```html
+      执行结果为：
+      wangsan
+      lisi
+ 
+    ```
 
     ```
 	 # 使用线程列表的方式
@@ -32,6 +53,39 @@
 		threads[i].start()
 		print("all over %s" %ctime()
 	```
+### 线程守护
+* 只要主线程结束了，无论子线程是否执行完成都会结束
+```html
+  '''
+  进程守护
+  '''
+    import threading
+    import time
+    class People():
+    
+        def speakName(self,name):
+            time.sleep(2)  #sleep2秒钟，为了让主线程先跑完
+            print(name)
+    
+    
+    if __name__=='__main__':
+        p=People()
+        th1=threading.Thread(target=p.speakName,args=('wangsan',))
+        th2=threading.Thread(target=p.speakName,args=('lisi',))
+        th1.setDaemon(True)
+        th2.setDaemon(True)
+        th1.start()
+        th2.start()
+        print('主线程结束')
+```
+```html
+  运行结果：
+    主线程结束  
+```
+* 只有这一个打印，没有机会打印出子线程里的内容，因为里面有个sleep2秒。还没有等到主线程就结束了。
+* **注意**：
+  * ①线程守护，需要每一个!子线程都要写:子线程.setDaemon(True),否则就可能失效
+  * ②写在start之前
 
 ### 线程锁
 * 多线程对同一个对象进行操作就会出现不安全情况
