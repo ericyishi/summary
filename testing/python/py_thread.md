@@ -86,6 +86,39 @@
 * **注意**：
   * ①线程守护，需要每一个!子线程都要写:子线程.setDaemon(True),否则就可能失效
   * ②写在start之前
+  
+### 线程阻塞
+* 阻塞主线程，让主线程在子线程结束后再结束
+```html
+    import threading
+    import time
+    class People():
+    
+        def speakName(self,name):
+            print(name)
+            print('\n')
+    
+    
+    
+    if __name__=='__main__':
+        p=People()
+        th1=threading.Thread(target=p.speakName,args=('wangsan',))
+        th2=threading.Thread(target=p.speakName,args=('lisi',))
+        th1.start()
+        th2.start()
+        th1.join()
+        th2.join()
+        print('主线程结束')
+```  
+```html
+运行结果：
+     wangsan
+     lisi
+     主线程结束
+```
+* **注意**：
+  * ①线程阻塞，每一个子线程都需要写join
+  * ②写在start之后
 
 ### 线程锁
 * 多线程对同一个对象进行操作就会出现不安全情况
