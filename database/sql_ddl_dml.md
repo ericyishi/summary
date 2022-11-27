@@ -237,6 +237,13 @@
           id INT PRIMARY KEY AUTO_INCREMENT
       )
    ```
+   * 如果规定“Id”列以 1000 起始且递增，把 IDENTITY 改为 IDENTITY(1000, 1)
+   ```html
+      CREATE TABLE demo(
+          id INT PRIMARY KEY IDENTITY (1000, 1)
+      )
+
+   ```
 * 创建唯一约束
     ```
      CREATE TABLE demoI(
