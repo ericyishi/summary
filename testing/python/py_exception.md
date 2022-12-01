@@ -71,6 +71,26 @@
      # 输入123
      # 打印内容：the input is of length 3,expecting at lease 5
    ```
+   ```html
+     # coding:utf-8
+
+    class ProjectNotFoundError(Exception):
+        def __init__(self, projectID):
+            self.project = projectID
+    
+        def __str__(self):
+            print("项目id有问题，请检查")
+    
+    
+    
+    if __name__ == '__main__':
+        project_id = None
+        if project_id:
+            print(project_id)
+        else:
+            raise ProjectNotFoundError("project_id有错误，请检查")
+
+   ```
 ### 常见异常类型
 1. ImportError： 指的是错误类型，引入错误 ，错误说明：提示没有命名的模块:import a 
 2. IndexError: list index out of range   ：索引错误：超出范围的列表索引
