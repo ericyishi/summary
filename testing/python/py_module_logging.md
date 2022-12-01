@@ -128,7 +128,8 @@ if __name__ == '__main__':
 ```
 ### handler
 * 控制输出到哪里，是控制台还是日志文件
-* 不可以重复实例handler，否则会遇到了重复记录日志的问题
+* 一共有三个子类：StreamHandler（控制台输出日志）、FileHandler（日志输出到文件）、TimedRotatingFileHandler（日志分割）
+* 不可以重复实例相同类型的handler，否则会遇到了重复记录日志的问题
 * handler也是有级别的
   * 想要在console里输出warning以上的日志，在log文件里输出debug以上的日志，该怎么办呢
     ```
