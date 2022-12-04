@@ -93,6 +93,15 @@
      SELECT 列 FROM 表 WHERE 条件1 IN(值1,值2,值3);
      ```
     * NOT IN
+  * 注意：逻辑表达式也有优先级，AND高于OR,下面的例子可以看出
+    ```html
+      select * from product p where p.pid=12 OR p.pid=13 AND p.price>15
+      --这里会把产品id为13的且价格大于15元的做并集处理。其实我们本意是筛选产品id为12或13且价格大于15元
+      select * from product p where (p.pid=12 OR p.pid=13) AND p.price>15
+      --可以加个括号或者使用in
+      select * from product p where p.pid in(12,13) AND p.price>15
+  
+    ```  
   * 模糊查询
     * LIKE
       * % : 匹配任意长度的字符串，0或N个
