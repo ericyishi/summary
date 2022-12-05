@@ -3,9 +3,26 @@
 * 聚合函数
   * COUNT() 返回结果集，行的数目
     * COUNT(*)与count(列)的区别在于count(列)会忽略null
+     ```html
+       select count(score) from t_a
+       --等同于下面语句
+       select count(*) from t_a where score is not null
+     ```
+    * COUNT(DISTINCT 列名)可以用于统计对应列的类型数目【必须要指定列名，如果写成count(distinct *)是错误的】
+     ```html
+       select count(DISTINCT seal_id) from t_seal --查询印章类型的个数
+     ```
+     * COUNT(表达式 or null)
+     ```html
+       count(score>60)
+        --如果这样写我们会发现统计的数据其实与count(score)是一样的，原因在于count()函数，只对括号里面不为null就会统计一次，
+    所以我们需要加个条件count(score>60 or null)这样就会让条件不为真的时候变为null
+    
+     ```
   * SUM() 返回结果集，所有值的总和
   * AVG() 返回结果集，所有值的平均值
   * MAX() 返回结果集，所有值的最大值
+    * 通常用于查找最大值或日期值类型，如果是文本类，max()返回最后一行,min()返回第一行
   * MIN() 返回结果集，所有值的最小值
   ```html
     SELECT MAX(column_name) FROM table_name;
@@ -24,7 +41,7 @@
    注意：
    1.SELECT后面出现了聚合函数，那么这条查询就是按分组返回一个大组；
    2.出现了聚合函数，SELECT后面出现的普通列（即既不是聚合函数也不是分组列）,那么结果只会显示该列的第一行;
-   3.Oracle、sql server等数据库，SELECT后面不允许普通列与聚合函数或者分组列并存，会直接报错。
+   3.Oracle、sql server、pg等数据库，SELECT后面不允许普通列与聚合函数或者分组列并存，会直接报错。
   ```
 
 * 分组 GROUP BY
@@ -41,7 +58,7 @@
 	  *  where 是对内存中的表进行筛选 , 而 having 是对进一步计算出来的结果集进行再一步筛选
 	  * 并非所有查询语句一定要先用了where才使用having
 	    ```
-		  SELECT NAME,AVG(score) FROM result GROUP BY NAME HAVING SUM(score<60)>=2
+		  SELECT NAME,AVG(score) FROM result GROUP BY NAME HAVING COUNT(score<60 or null)>=2
 		  # 查询出 2 门及 2 门以上不及格者的平均成绩
 		```
 
@@ -217,14 +234,17 @@
      * 外联接
        1. 左外联接【left join】
        2. 右外联接【right join】
+     * 自连接（read://https_huaweicloud.csdn.net/?url=https%3A%2F%2Fhuaweicloud.csdn.net%2F6335697dd3efff3090b562fe.html）
   2. 内联接
     ```
       #【显式】
       # INNER关键字可以省
-      SELECT S.sname,C.score
-      FROM student AS stu
-      INNER JOIN course AS co
-      ON stu.sno=co.sno
+      SELECT S.sname,C.score,T.tname
+      FROM student AS S
+      INNER JOIN course AS C
+      ON S.sno=C.sno
+      INNER JOIN teaher AS T
+      ON C.tname=T.tname
     ```
     上面可以简写成【常用的写法】：
 
@@ -232,8 +252,9 @@
       #【隐式】
       #逗号代替JOIN，WHERE代替ON
       SELECT S.sname,C.score
-      FROM student AS stu,course AS co
-      WHERE stu.sno=co.sno
+      FROM student AS S,course AS C,teacher AS T
+      WHERE S.sno=C.sno 
+      and C.tname=T.tname
     ```
 
   3. 外联接

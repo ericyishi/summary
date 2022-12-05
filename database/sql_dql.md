@@ -139,5 +139,8 @@
    # 查询学生信息，以年龄升序，性别降序排列
    SELECT * FROM student ORDER BY age,gender DESC;
   ```
-
+  * 值为空放在最后nulls last
+  ```html
+   SELECT * FROM student ORDER BY age DESC nulls last;
+  ```
 
