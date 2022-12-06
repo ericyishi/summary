@@ -40,6 +40,10 @@
        # 方式2： 选择复制
         SELECT sex INTO local_gender FROM stu WHERE sname="zhangsan";
        ```
+       ```html
+        # 方式3： 直接赋值
+         V1:=20
+       ```
      * 显示值
        ```
         SELECT local_gender;
@@ -214,12 +218,12 @@
 
       CALL insertdata(20,9);
      ```
-     * 其实就是告诉mysql解释器，该段命令是否已经结束了，mysql是否可以执行了；
+     * delimiter是mysql分隔符，在mysql客户端中分隔符默认是分号（；）。其实就是告诉mysql解释器，该段命令是否已经结束了，mysql是否可以执行了。 如果一次输入的语句较多，并且语句中间有分号，这时需要新指定一个特殊的分隔符。其中DELIMITER 定好结束符为"$$", 然后最后又定义为";", MYSQL的默认结束符为";"。
      * 默认情况下，delimiter是分号;delimiter换成其它符号，如//或$$，最后需要换回来
      * varchar与数值不能直接拼接，需要使用concat方法
 
 
-这种情况下，就需要事先把。
+
 
 ### 函数
   * 概述
@@ -310,6 +314,7 @@
             # 返回值确定性DETERMINSTIC，优化用，如果输入值跟上次一样，就不再计算，直接返回上次结果。
             # 必须至少一个return语句
             # 声明的地方是returns！
+            # 可以直接返回空 returns void
             ```
             ```
              CREATE FUNCTION func_sum(num1 INT,num2 INT)
@@ -339,6 +344,100 @@
             SELECT 数据库名.函数名;
             # 注意与存储过程的区别，不是CALL
            ```
+  * 例子
+    ```html
+        DROP FUNCTION application_insertdraft_proc(integer);
+        create or replace function application_insertDraft_proc(num int)returns void as $$
+        declare
+            num_days int;
+            num_a int;
+            rec_name RECORD;
+            cur_namedept CURSOR FOR Select a.fa_account,a.fa_name,o.paic_setid_descr,o.deptid_descr,a.fa_level,a.fa_haveaccount,b.paic_um_num,o.setid,
+        o.deptid,o.paic_treend_flg from f_account a,ps_paic_emp_info b,ps_paic_org_info o where a.fa_empno =b.paic_empno and a.business_unit
+        b.business_unit and a.business_unit =o.setid and b.business_unit =o.setid and b.deptid o.deptid and a.deptid o.deptid and fa_haveaccount ='1'
+        and a.deptid b.deptid and o.paic_treend_flg <>'D';
+        
+        begin
+            --num_days :ceil(random()*(180-90)+90 )
+            num_days :ceil(random()*(90-1)+1 )
+            OPEN cur_namedept;
+            LOOP
+                FETCH cur_namedept INTO rec_name;
+                EXIT WHEN not FOUND;
+            num_a:=num;
+            while num_a >0 loop
+                INSERT INTO pass_stamp_application(id_stamp_application,application_id,org_id,org_name,department_id,department_name,emergency_type,
+        secret_level,decrypt_type,decrypt_condition,apply_date,owner_id,owner_name,owner_tel,application_seal_type,use_type,is_oversea_seal,
+        is_voucher,is_note,is_auth,eoa_flow,eoa_flow_name,eoa_task_id,application_title,id_application_reason,application_state,finish_date,
+        task_type,old_application_id,source_id,source_name,special_note,created_date,created_by,updated_date,updated_by,first_signature,cheque,
+        hand_check,enabled,agreement_flag,law_approval_flag,tax_examine_flag,transaction_flag,save_recovery_flag,task_is_collect,ap_template_id,
+        process_instance_id)
+                select
+                nextval('seq pass stamp_application')as id_stamp_application,
+                'Y'lpad(cast(nextval('SEQ_PASS_STAMP_APPLICATION_APPLICATION_ID')as VARCHAR),18,'0')as application_id,
+                o.setid''lo.deptid as org_id,
+                o.deptid_descr as org_name
+                o.setid''lo.deptid as department_id
+                o.deptid_descr as department_name,
+                '4' as emergency_type,
+                '10' as secret_level,
+                '' as decrypt_type,
+                '' as decrypt_condition,
+                current_date -num_days as apply_date,
+                rec_name.paic_um_num as owner_id,
+                rec_name.fa_name as owner_name,
+                '666666'as owner_tel,
+                '0' as application_seal_type,
+                '24' as use_type,
+                'N' as is_oversea_seal,
+                'N' as is_voucher,
+                NULL as is_note,
+                'N'as is_auth,
+                '[("value":"ZHUM","1abe1“:"赵A丽敏”，"deptName'“:"中国平安保险（集团）股份有限公司"，"uniqueDeptId":"pA8e1S88 QQ00002","type“:“user“,“deptId":“PAee1_S8e888e
+        002"}]' as eoa_flow,
+                '赵A8丽敏' as eoa_,f1ow_name,
+                NULL as eoa_task_id,
+                '草稿-性能a测试-1~90天数据'||'_'||rec_name.paic_um_num||'_'|num_a as application_title,
+                nextval('seq_pass_application_reason') as id_application_reason,
+                '100' as application_state,
+                NULL as finish_date,
+                '1' as task_type,
+                NULL as old_application_id,
+                'OAS-CSMS-NEW' as source_id,
+                '印章系统2.0' as source_name,
+                '' as special_note,
+                current_timestamp make_interval(days:=num_days) as created_date,
+                'HJ_TEST' as created_by,
+                current_timestamp -make_interval(days:num_days)as updated_date,
+                'HJ_TEST' as updated_by,
+                'Y' as first_signature,
+                'N' as cheque,
+                'N' as hand_check,
+                'Y' as enabled,
+                'N' as agreement_flag,
+                'N' as law_approval_flag,
+                'N' as tax_examine_flag,
+                'N' as transaction_flag,
+                'N' as save_recovery_flag,
+                '0' as task_is_collect,
+                NULL as ap_template_id,
+                NULL as process_instance_id
+        from f_account a,ps_paic_emp_info b,ps_paic_org_info o where a.fa_empno =b.paic_empno and a.business_unit =b.business_unit and a.business_unit
+        o.setid and b.business_unit o.setid and b.deptid o.deptid and a.deptid o.deptid and a.deptid =b.deptid and o.paic_treend_flg <>'D'and
+        fa_haveaccount ='1'and a.fa_account rec_name.fa_account;
+                num_a num_a-1;
+              end loop;
+            end loop;
+            close cur_namedept;
+        
+        end;
+        $$language plpgsql;
+        
+        --select application_insertDraft_proc(7);--90days~180days
+        select application_insertDraft_proc(8);--1~90days------132352-84224=48128
+        select count(*)from pass_stamp_application a where a.created_by='HJ_TEST';
+
+    ```         
 ### 触发器
   * 概述
     * 触发器是一种特殊类型的存储过程，不由用户直接调用。主要用于强制类型完整性设置。
