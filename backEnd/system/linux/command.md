@@ -219,15 +219,16 @@
 
    7. 在内容中查找信息【grep】（☆）
          ```
-          grep 查找关键字 文件名
+          grep 查找关键字 文件名 【直接在命令行中查找，结果也返回命令行中】
 
           //关键字是区分大小写的
           //没有查到是不会返回结果的，直接是返回命令行；如果有多个都一起返回来
           //高亮找到的关键字使用参数--color，是两个“-”，默认就是高亮
           //-i 参数忽略大小写
+          //-n 能够返回查找关键字对应的行数 grep boy -n test.txt
 		 ```
-         * grep "lang" yum.conf //在yum.conf中查找“lang ”返回，结果所在行的所有内容
-         * grep "lang" yum.conf --color //在yum.conf中查找“lang ”并且高亮出来
+         * grep "lang" yum.conf //在yum.conf中查找“lang ”返回（不带双引号也行），结果所在行的所有内容.如果没有搜索到则不显示。
+         * grep "lang" yum.conf --color //在yum.conf中查找“lang ”并且高亮在命令行中返回。
          * grep "lang" yum.conf --color -A5 //在yum.conf中查找“lang ”所在行并且返回其后五行
          * grep "lang" yum.conf --color -B5 //在yum.conf中查找“lang ”并且返回其前五行
          * grep "lang" yum.conf --color -B5 -A5 //在yum.conf中查找“lang ”并且返回前后五行
@@ -404,8 +405,7 @@
    * ps -ef与ps aux之间的区别：
      ```
 	  1. 两者的输出结果差别不大，但展示风格不同。aux是BSD风格，-ef是System V风格。
-	  2. 一个影响使用的区别是aux会截断command列，而-ef不会。当结合grep时这种区别会影响到结果。
-	  3. 显示出来就是带全路径的进程名，会显示出bmgctl，在ps -ef | grep bmgctl命令下就可以完整显示该进程了。
+	  2. 一个影响使用的区别是aux会截断command列(ps aux可能显示的一行内容太长而会截断字符串)，而-ef不会。当结合grep时这种区别会影响到结果。
 	  
 	 ```
    * ps -ef|grep ssh 在进程中查找ssh （☆）
