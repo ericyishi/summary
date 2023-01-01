@@ -233,8 +233,14 @@ def index(request):
      ```  
 5. csrf_token：这个标签用于跨站请求伪造保护
    ```html
-    { % csrf_token %}
+    <form method="post">
+    <div><input type="text" name="username" placeholder="用户名"></div>
+    <div><input type="text" name="password" placeholder="密码"></div>
+    <button id="btn" type="admin">登录</button>
+    {%csrf_token%}
+    </form>
    ```
+   * {%csrf_token%}需要放在form标签中，如果是post请求，没有写这个标签，那么会报错。Django针对CSRF的保护措施，就是在生成每个表单中放置一个自动生成的令牌，通过这个令牌判断POST请求是否来自同个网站。
 6. 布尔标签：and、or，and比or的优先级高
 7. block、extends：详见“模板继承”
 8. autoescape：详见“HTML转义”    
