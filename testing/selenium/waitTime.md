@@ -73,6 +73,13 @@ from selenium.webdriver.support import expected_conditions as EC
 * presence_of_element_located: 判断某个元素是否被加到了dom树里，并不代表该元素一定可见
 
 * visibility_of_element_located: 判断某个元素是否可见.可见代表元素非隐藏，并且元素的宽和高都不等于0
+ ```html
+   try:
+     WebDriverWait(self.driver,5,0.5).until(EC.visibility_of_element_located(By.ID,"kw"))
+   except Exception as e:
+     raise e  
+
+ ```
 
 * visibility_of: 跟上面的方法做一样的事情，只是上面的方法要传入locator，这个方法直接传定位到的element就好了
 
