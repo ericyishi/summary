@@ -12,7 +12,7 @@
     * [鼠标事件](mouseEvent.md)
     * [键盘事件](keyboardEvent.md)
 	  * [组合键的三种方式(包括使用win32con)](keyboardEvent_keyCombination.md)
-    * [等待时间的三种方式](waitTime.md)
+    * [等待时间的三种方式以及Expected Conditions类](waitTime.md)
 	  * [使用js中止加载继续执行](waitTime_stopWaitInJS.md)
   * 常用操作
     * [打开本地文件](openLocalFile.md)
