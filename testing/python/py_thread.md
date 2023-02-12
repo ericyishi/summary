@@ -122,20 +122,48 @@
 
 ### 线程锁
 * 多线程对同一个对象进行操作就会出现不安全情况
+```html
+    #encoding=utf-8
+    import threading
+    
+    # 假定这是你的银行存款:
+    balance = 0
+    
+    
+    def change_it(n):
+        # 先存后取，结果应该为0:
+        global balance
+        balance = balance + n
+        balance = balance - n
+    
+    
+    def run_thread(n):
+        for i in range(1000000): #数值越大越容易造成结果错误
+            change_it(n)
+    
+    
+    t1 = threading.Thread(target=run_thread, args=(5,))
+    t2 = threading.Thread(target=run_thread, args=(8,))
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+    print(balance) #打印结果可能不为0
+```
 * 由于锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突。
 ```
     balance = 0
 	lock = threading.Lock()
 	def run_thread(n):
-	for i in range(100000):
-	# 先要获取锁:
-	lock.acquire()
-	try:
-	# 放心地改吧:
-	change_it(n)
-	finally:
-	# 改完了一定要释放锁:
-	lock.release()
+	    for i in range(100000): 
+	        # 先要获取锁:
+	        lock.acquire()
+	    try:
+	        # 放心地改吧:
+	        change_it(n)
+	    finally:
+	        # 改完了一定要释放锁:
+	        lock.release()
 ```
 ### 进程池
 
