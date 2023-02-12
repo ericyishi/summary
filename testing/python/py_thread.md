@@ -212,6 +212,32 @@ requests = threadpool.makeRequests(sayhello, name_list)
 [pool.putRequest(req) for req in requests] 
 pool.wait() 
 print '%d second'% (time.time()-start_time)
+
+#使用多线程，非线程池的方式
+
+import time
+import threading
+def sayhello(str):
+    print ("Hello ",str)
+    time.sleep(2)
+
+name_list =['xiaozi','aa','bb','cc']
+start_time = time.time()
+
+threads=[]
+for i in name_list:
+    t=threading.Thread(target=sayhello,args=(i,))
+    threads.append(t)
+
+for j in range(len(threads)):
+    threads[j].start()#启动线程
+
+
+
+for k in range(len(threads)):
+    threads[k].join() #线程阻塞，让主线程在子线程结束后再结束。但不能把这个线程阻塞写在线程启动后的循环里，因为他会每个等待2s后再去创建下一个线程，所以时间为8s
+
+print('%d second' % (time.time() - start_time)) #2s
 ```
 * 线程池的使用：
   1. 引入threadpool模块
