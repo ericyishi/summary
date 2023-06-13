@@ -21,7 +21,7 @@
       * 再次运行fiddler，依次点击Tools下的Options，
       * 然后点HTTPS选项卡，再点击actions下的Reset All Certificates，
       * 重置证书。
-  7. 重启浏览器和fiddler，发现已经可以打开https页面了。
+  7. 重启浏览器和fiddler，发现已经可以打开https页面了(浏览器需开启代理，代理端口即为fiddler上配置的)。
 ### 增加请求方式列
 * 设置步骤
   1. 在显示列右键，选择“cumstomize columns”
